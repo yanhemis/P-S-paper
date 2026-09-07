@@ -9,7 +9,7 @@
 ## 💻 1. 실행 환경 (Environment)
 * **OS:** Windows 11 (Local PC)
 * **Language:** Python 3.11 (venv 권장)
-* **Hardware:** CPU
+* **Hardware:** AMD Ryzen 5 5600X / 16GB RAM (GPU 비활성화, 순수 CPU 추론 연산)
 * **Core Libraries:** `paddlepaddle==2.6.2`, `paddleocr==2.8.1`, `transformers`, `torch`, `opencv-python`
 
 ---
