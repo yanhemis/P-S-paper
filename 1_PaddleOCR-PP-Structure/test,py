@@ -1,0 +1,18 @@
+import os
+import cv2
+from paddleocr import PPStructure, save_structure_res
+
+# 1. PP-Structure 모델 불러오기 (layout=False 추가!)
+table_engine = PPStructure(layout=False, show_log=True, image_orientation=True, lang='korean')
+
+# 2. 이미지 읽기
+img_path = 'sample.jpg'
+img = cv2.imread(img_path)
+
+# 3. 문서 구조 분석 및 표 인식 실행
+result = table_engine(img)
+
+# 4. 결과 저장 (엑셀 파일 및 영역별 자르기)
+save_folder = './output'
+save_structure_res(result, save_folder, 'contract_result')
+print("✅ 분석 완료! 왼쪽 파일 목록에서 output 폴더를 확인하세요.")
