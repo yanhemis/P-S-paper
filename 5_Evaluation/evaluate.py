@@ -16,7 +16,7 @@ def calculate_iou(boxA, boxB):
     return iou
 
 # 2. 모델 평가 함수 (일반 / 병합 분리)
-def evaluate_model(gt_data, pred_boxes, iou_threshold=0.5):
+def evaluate_model(gt_data, pred_boxes, iou_threshold=0.01):
     results = {"general": {"match": 0, "total": 0}, "merged": {"match": 0, "total": 0}}
     
     for gt in gt_data:

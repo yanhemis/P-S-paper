@@ -8,9 +8,21 @@
 
 ## 💻 1. 실행 환경 (Environment)
 * **OS:** Windows 11 (Local PC)
-* **Language:** Python 3.11 (venv 권장)
-* **Hardware:** AMD Ryzen 5 5600X / 16GB RAM (GPU 비활성화, 순수 CPU 추론 연산)
-* **Core Libraries:** `paddlepaddle==2.6.2`, `paddleocr==2.8.1`, `transformers`, `torch`, `opencv-python`
+* **CPU:** AMD Ryzen 5 5600X (GPU 비활성화, 순수 CPU 추론 연산)
+* **RAM:** 16GB
+* **Language:** Python 3.11 (가상환경 `venv` 권장)
+* **Core Libraries (과제별 핵심 종속성):** 
+  * **[과제 1: PP-Structure & 과제 4: SLANet]**
+    * `paddlepaddle==2.6.2` (CPU 버전)
+    * `paddleocr==2.8.1`
+    * `openpyxl`, `premailer` (SLANet 엑셀 파일 변환 및 저장용)
+  * **[과제 2: TATR (Table Transformer)]**
+    * `torch` (PyTorch)
+    * `transformers` (Hugging Face)
+  * **[과제 3: LayoutParser]**
+    * `layoutparser` (단, Windows 환경 내 Detectron2 C++ 빌드 충돌로 실제 추론은 불가했음)
+  * **[공통 및 GT 채점용]**
+    * `opencv-python` (정답지 좌표 추출 GUI 및 이미지 전처리용)
 
 ---
 
@@ -64,3 +76,13 @@
 이에 대한 다음 보완 작업으로, **예비 조사에서 적용 가능성을 확인한 'OpenCV 기반 ROI 접근법'을 후속 정량 비교 대상으로 선정**합니다. 
 
 다음 단계에서는 특정 모델의 지원 여부를 단정하기보다, 동일한 임대차계약서 샘플(Ground Truth)을 기준으로 **TATR 등에서 재구성한 Cell Bbox 결과와 OpenCV 기반 물리적 셀 분할 결과를 비교하여 IoU, Precision, Recall 등의 정량 지표를 통해 성능을 평가**하는 방향으로 발전시킬 예정입니다.
+
+---
+
+### 5_Evaluation (정량 평가 시스템 구축 및 검증)
+* **목적:** 수동으로 라벨링한 Ground Truth(GT) 좌표와 모델의 예측 BBox 간의 IoU(Intersection over Union)를 계산하여 정량적 일치율 평가.
+* **평가 방법:** 셀의 속성을 일반 셀(General)과 병합 셀(Merged)로 분리하여 각 특성별 재현율(Recall, IoU 임계값 0.5 기준) 측정.
+* **PP-StructureV3 예비 검증 결과:**
+  1. 모델이 예측한 BBox가 총 166개로 극심한 과분할(Over-segmentation) 현상을 보임.
+  2. 병합 셀 영역에서 단일 BBox가 GT 영역의 50% 이상을 커버하지 못하여 정량 점수(IoU > 0.5)가 일반 셀 대비 급감함(33.3%)을 수학적으로 확인.
+* **최종 시사점:** 기존 오픈소스 레이아웃 모델들은 복잡한 한국어 계약서의 병합 구조를 단독으로 해결할 수 없음. 추출된 파편화된 Cell BBox들을 룰베이스(Rule-based) 알고리즘이나 후처리 파이프라인을 통해 재병합하는 독자적인 기술 개발이 필수적임을 정량적으로 입증함.
