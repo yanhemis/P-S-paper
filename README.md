@@ -30,14 +30,20 @@
 각 폴더별로 독립적인 테스트 코드가 구성되어 있습니다. 각 폴더로 이동하여 `python test.py`를 실행하면 결과를 확인할 수 있습니다.
 
 ### `1_PP-Structure` (PaddleOCR 내장 레이아웃 엔진)
-* **테스트 방법:** 폴더 내 `test.py` 실행
-* **검출 결과:** 현재 테스트한 특정 버전에서 실행 제한
-* **사유 및 추후 과제:** 테스트에 사용된 특정 PP-Structure 버전에서는 `lang='korean'` 설정 시 런타임 에러가 발생하여 평가하지 못했습니다. 이는 Paddle 계열 전체의 한국어 미지원을 의미하지 않으며, 추후 최신 버전인 PP-StructureV3와 Korean OCR 조합으로 재검증이 필요합니다.
+* **테스트 방법:** 폴더 내 `test.py` 실행 (표 구조 분석 검증을 위해 영어 모드 우회 실행 포함)
+* **검출 결과:** 표 구조 분할 시 병합 셀 과분할(Over-segmentation) 현상 발생
+* **사유 및 한계 분석:**
+  1. **실행 제약과 성능 한계의 분리:** 특정 버전 환경에서 `lang='korean'` 설정 시 레이아웃 모델의 런타임 제약으로 인해 직접적인 한국어 평가가 제한되었습니다. 이는 Paddle 계열 전체의 한국어 지원 여부로 일반화할 수 없으며, 영어 모드(`lang='en'`) 우회 테스트를 통해 표 구조 인식(Table Structure Recognition) 성능을 별도로 검증하였습니다.
+  2. **구조 분석 성능:** 우회 테스트 결과, 복잡한 병합 셀(Spanning Cell) 영역에서 셀 좌표가 과도하게 쪼개지는 현상이 확인되었습니다.
+  3. **시사점:** Text Detection, Recognition, Table Structure 분석 단계를 분리하여 해석할 필요가 있으며, 향후 정량적 비교 및 파이프라인 설계를 고도화할 예정입니다.
 
-### `2_TATR` (Microsoft Table Transformer)
-* **테스트 방법:** `pip install transformers timm` 후 `test.py` 실행
-* **검출 결과:** `tatr_result.jpg` (행/열/병합 셀 등 구조 검출 확인)
-* **한계점 및 추후 과제:** 모델은 `row` / `column` / `spanning-cell` 등의 구조 결과를 정상적으로 반환하나, 본 임대차계약서 실험의 예비 테스트에서는 이 구조 결과로부터 목표 병합 셀(cell bbox)을 안정적으로 재구성하는 데에 어려움이 있었습니다. 향후 재구성된 cell bbox가 Ground Truth와 얼마나 일치하는지 정량적 검증이 필요하며, 텍스트 인식을 위한 별도의 OCR 결합이 요구됩니다.
+### `2_TATR` (Table Transformer)
+* **테스트 방법:** 폴더 내 `test.py` 실행 및 결과 시각화
+* **검출 결과:** row, column, spanning-cell 구조 결과로부터 cell bbox 재구성 완료 및 시각화 저장
+* **사유 및 한계 분석:**
+  1. TATR은 자체적으로 셀 좌표를 반환하는 것이 아니라, 검출된 선(row/column/spanning-cell)의 교차 연산을 통해 cell bbox를 재구성하는 방식을 취합니다.
+  2. 본 임대차계약서 실험에서는 추출된 구조 결과로부터 목표 병합 셀을 안정적으로 재구성하는 데 한계가 있었습니다.
+  3. **핵심 평가:** 본 과제의 핵심 질문은 "셀 좌표를 반환할 수 있는가"가 아니라, **"재구성된 cell bbox가 Ground Truth와 얼마나 일치하는가(정확도)"**에 있습니다. 예비 조사에서 OpenCV 기반 ROI 접근의 적용 가능성을 확인했으며, 이를 후속 정량 비교 대상으로 선정하여 추가 검증을 진행합니다.
 
 ### `3_LayoutParser` (Detectron2 기반 레이아웃 분할)
 * **테스트 방법:** `pip install layoutparser` 후 `test.py` 실행
