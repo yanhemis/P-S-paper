@@ -59,6 +59,7 @@ if __name__ == "__main__":
                 print(f"✅ PP-Structure 결과 로드 완료! (모델이 예측한 총 네모 칸: {len(pred_boxes)}개)\n")
             except Exception as e:
                 print(f"❌ 데이터 읽기 실패: {e}")
+                pred_boxes = []
     else:
         print(f"❌ '{pp_result_path}' 경로에 결과 파일이 없습니다.")
         pred_boxes = []
