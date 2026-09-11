@@ -66,14 +66,31 @@ OpenCV 구현 세부 내용은 넣지 않는다.
 
 대상: `bang_`
 
+현재 단계:
+- OpenCV Grid / Cell Detection 1차 프로토타입 완료
+- 병합 셀 후보 탐지까지 구현
+
+**다음 확정 작업:**
+
+```text
+primitive grid
+  -> shared boundary 판정
+  -> 인접 primitive cell 연결
+  -> Union-Find / connected component 기반 병합
+  -> General / Merged Cell bbox 생성
+  -> 표준 cells.json 출력
+  -> 공통 evaluator에 prediction 전달
+```
+
 정리하는 내용:
-- OpenCV Grid / Cell / ROI 프로토타입 피드백
 - 병합 셀 후보 탐지와 실제 merged bbox 재구성 차이
 - 경계선 기반 병합 로직
-- morphology kernel 및 고정 파라미터 점검
-- 최종 ROI 생성 관련 확인 사항
+- primitive grid → merged cell 구조 복원
+- 병합 전/후 bbox 시각화
+- 표준 `cells.json` 출력
+- 오병합 / 미병합 실패 사례
 
-범용 구조 모델 조사나 OCR 성능 비교는 넣지 않는다.
+**Morphology vs Contour 방식 선택은 `heewon`, OCR/Field Accuracy는 추가 인원 A가 담당하므로 `bang_`에서는 수행하지 않는다.**
 
 ---
 
@@ -130,13 +147,13 @@ OpenCV 구현 세부 내용은 넣지 않는다.
 
 ## 현재 역할 분담
 
-| 구분 | 핵심 역할 |
-|---|---|
-| `dahye_cell_DetectionSurvey` | 구조 모델 + TATR/PP-Structure + evaluator 기초 |
-| `bang_` | OpenCV grid + merged cell bbox 재구성 |
-| `heewon` | Morphology vs Contour 비교 |
-| 추가 인원 A | OCR / ROI 재인식 / Field Accuracy |
-| 추가 인원 B | Anchor-ROI / Field Mapping |
+| 구분 | 핵심 역할 | 다음 산출물 |
+|---|---|---|
+| `dahye_cell_DetectionSurvey` | 구조 모델 + TATR/PP-Structure + evaluator 기초 | 신뢰 가능한 공통 evaluator / 구조모델 prediction |
+| `bang_` | OpenCV grid → merged cell 구조 복원 | General/Merged bbox + `cells.json` |
+| `heewon` | Morphology vs Contour 비교 | 동일 GT 기반 방식별 성능 비교 |
+| 추가 인원 A | OCR / ROI 재인식 / Field Accuracy | Full vs GT ROI vs Detected ROI OCR 결과 |
+| 추가 인원 B | Anchor-ROI / Field Mapping | Anchor 기반 핵심 필드 추출 결과 |
 
 ---
 
@@ -153,6 +170,7 @@ OpenCV 구현 세부 내용은 넣지 않는다.
 - [x] 연구 가설 H1~H6 정리
 - [x] 추가 인원 2명 역할 분배
 - [x] 연구 범위 이탈 방지 프롬프트 추가
+- [x] `bang_` 다음 단계: Merged Cell Reconstruction으로 역할 확정
 
 ### 가장 먼저 수정할 것
 
@@ -163,9 +181,19 @@ OpenCV 구현 세부 내용은 넣지 않는다.
 - [ ] PP-Structure 2.x / PP-StructureV3 명칭과 실험 분리
 - [ ] OpenCV merged 판정 로직 검증
 
+### `bang_` 다음 작업 완료 조건
+
+- [ ] primitive cell 기반 실제 merged bbox 생성
+- [ ] 2열 / 2행 / 다중 행·열 병합 처리
+- [ ] General / Merged bbox 구분
+- [ ] 병합 전 / boundary 판정 / 병합 후 시각화
+- [ ] 표준 `cells.json` 출력
+- [ ] 공통 GT 샘플 prediction 생성
+- [ ] 오병합 / 미병합 사례 최소 3종 기록
+
 ### 그 다음 핵심 실험
 
-- [ ] TATR / PP-Structure / Morphology / Contour 동일 GT 비교
+- [ ] TATR / PP-Structure / Morphology / Contour / OpenCV merged reconstruction 동일 GT 비교
 - [ ] Full OCR vs GT ROI OCR vs Detected ROI OCR 비교
 - [ ] Anchor-ROI PoC
 - [ ] 최종 Field Accuracy 비교
