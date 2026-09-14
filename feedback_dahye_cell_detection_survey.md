@@ -1,175 +1,286 @@
 # 담당자 피드백 — `dahye_cell_DetectionSurvey`
 
-> 마지막 업데이트: 2026-09-11
+> 마지막 업데이트: 2026-09-14
 
 ## 이 문서의 역할
 
-이 파일은 `dahye_cell_DetectionSurvey` 브랜치의 **표 구조 인식 모델 조사, TATR/PP-Structure 실험, 정량 평가 코드에 대한 피드백만** 기록한다.
+이 파일은 `dahye_cell_DetectionSurvey` 브랜치의 **표 구조 인식 모델 조사, TATR/PP-Structure 실험, Ground Truth, 공통 정량 평가 코드에 대한 피드백만** 기록한다.
 
-OpenCV 구현 피드백은 다른 담당자 문서에서 관리하며, 공통 연구 방향과 전체 다음 작업은 `01_research_direction_and_next_steps.md`에서 관리한다.
+OpenCV 구현 세부는 `bang_`/`heewon` 피드백에서 관리하고, 공통 연구 방향과 전체 다음 작업은 `01_research_direction_and_next_steps.md`에서 관리한다.
 
 ---
 
-## 1. 현재 작업의 의미
+## 1. 현재 작업 상태
 
-이 브랜치는 초기 모델 조사 단계에서 한 단계 발전했다.
+이 브랜치는 초기 Survey 단계를 지나 **구조 모델 prediction + Ground Truth + 공통 evaluator를 연결하는 정량 평가 준비 단계**까지 발전했다.
 
-현재 역할:
-- PP-Structure, TATR, LayoutParser, SLANet 등 구조 모델 후보 조사
-- 한국어 임대차계약서 적용 가능성 예비 확인
-- 실행 환경/의존성 문제 기록
-- TATR cell bbox 재구성 실험
-- GT 수동 라벨링 도구 작성
-- Cell IoU 기반 정량 평가 코드 초안 작성
+현재 확인된 구현:
 
-즉, 현재는 단순 Survey가 아니라 **구조 모델 비교와 공통 evaluator의 기초를 만드는 역할**까지 포함한다.
+- PP-Structure (PaddleOCR 2.8.1) 예비 prediction
+- TATR row / column / spanning-cell 검출
+- TATR spanning-cell 정보를 반영한 cell bbox reconstruction
+- TATR 결과 `tatr_result.json` 저장
+- GT 수동 라벨링 도구
+- General / Merged GT 구분
+- IoU 0.3 / 0.5 / 0.7 민감도 평가
+- GT-Pred 1:1 Greedy Matching
+- TP / FP / FN 및 Precision / Recall / F1 출력
+- PP-Structure 2.x와 PP-StructureV3 명칭 분리
+
+따라서 이전 피드백 중 threshold 불일치, 1:1 matching 부재, TATR spanning-cell 미반영, PP-Structure/V3 명칭 혼용은 **1차적으로 해결된 것으로 본다.**
 
 ---
 
 ## 2. 잘 반영된 부분
 
-이전 피드백 중 다음 내용이 실제 README와 코드에 반영되었다.
+### 2.1 평가 코드 개선
 
-- 실행 실패와 모델 성능 실패를 분리해서 서술
-- `한국어라서 좌표가 붕괴한다`는 식의 과도한 일반화 완화
-- TATR의 row/column 결과에서 cell bbox를 재구성하는 코드 추가
-- Ground Truth 라벨링 도구 추가
-- 일반 셀과 병합 셀을 분리해 평가하려는 방향 추가
-- OpenCV를 `최적`이라고 단정하지 않고 후속 정량 비교 대상으로 변경
+기존 `iou_threshold=0.01` 문제를 없애고 `0.3 / 0.5 / 0.7` 기준을 명시적으로 비교하도록 변경했다.
 
-방향 자체는 현재 연구 흐름과 잘 맞는다.
+또한 예측을 중복 사용하지 않는 1:1 Greedy Matching을 도입하고 TP / FP / FN → Precision / Recall / F1까지 계산하도록 확장했다.
+
+이 방향은 공통 evaluator의 기초로 적절하다.
+
+### 2.2 TATR spanning-cell 반영
+
+현재 TATR 코드는 `table row`, `table column`, `table spanning cell`을 각각 수집하고, spanning 영역과 50% 이상 겹치는 기본 셀을 하나로 묶어 최종 bbox를 생성한다.
+
+즉 이전의 단순 `row × column` regular grid 단계에서 실제 **spanning-cell 기반 reconstruction** 단계로 발전했다.
+
+### 2.3 Ground Truth 개선
+
+GT가 기존 5개에서 General 5개 + Merged 5개, 총 10개로 확대되었고 이전에 보였던 거의 중복된 merged bbox도 정리되었다.
+
+GT 포맷도 `image_id`, `cell_id`, `type`, `bbox`를 포함하고 있어 이후 확장하기 좋은 구조다.
+
+### 2.4 보고서 표현 개선
+
+README에서 다음이 구분되고 있다.
+
+- 실행 환경 실패 vs 모델 성능 실패
+- PP-Structure 2.8.1 vs PP-StructureV3
+- 좌표 반환 가능 여부 vs Ground Truth와의 정확도
+- OpenCV를 미리 최적이라고 결론내리지 않음
+
+이 부분은 유지한다.
 
 ---
 
-## 3. 이번 버전에서 우선 수정할 부분
+# 3. 현재 가장 중요한 문제 — Partial GT에서 Global Precision을 계산하면 안 됨
 
-### 3.1 IoU threshold 코드와 출력 문구 불일치
+현재 `gt_sample.json`은 전체 페이지의 모든 셀을 라벨링한 것이 아니라 **선택된 10개 셀만 라벨링한 partial Ground Truth**이다.
 
-현재 `evaluate.py`의 기본값은 다음과 같다.
+반면 evaluator는 GT와 매칭되지 않은 모든 prediction을 FP로 계산한다.
 
-```python
-def evaluate_model(gt_data, pred_boxes, iou_threshold=0.01):
+예를 들어 문서에 실제 정상 셀이 150개 존재하고 모델이 그중 140개를 정확히 검출했더라도, GT에 10개만 라벨되어 있다면 라벨되지 않은 정상 prediction 대부분이 FP로 처리될 수 있다.
+
+따라서 현재 README에 기록된 다음 유형의 수치는 **논문 성능 결과로 확정하면 안 된다.**
+
+- PP-Structure FP 125개
+- TATR FP 156개
+- Precision / Recall 0%
+- 위 결과를 근거로 한 모델 우열 또는 범용 모델 한계 단정
+
+## 해결 방법
+
+### 권장: Exhaustive GT
+
+대표 페이지에서는 해당 평가 범위의 **모든 실제 셀을 빠짐없이 라벨링**한다.
+
+그 후에만 다음을 계산한다.
+
+- TP
+- FP
+- FN
+- Precision
+- Recall
+- F1
+
+최소 순서:
+
+1. 대표 문서 1장 전체 셀 GT 완성
+2. evaluator 검증
+3. 3~5장으로 확대
+4. 최종적으로 가능한 범위에서 10장 이상 확보
+
+### Partial GT를 계속 사용할 경우
+
+Partial GT에서는 global Precision / FP를 쓰지 않고 다음 수준만 사용한다.
+
+- GT별 best IoU
+- Localization Success Rate
+- 선택 GT에 대한 Recall
+- General / Merged GT subset별 detection success
+
+즉 **partial GT와 exhaustive GT의 평가 목적을 구분한다.**
+
+---
+
+## 4. General / Merged 평가의 의미를 더 명확히 할 것
+
+현재 prediction JSON은 기본적으로 bbox 리스트이며, 예측 bbox 자체에 `type=general/merged`가 없다.
+
+현재 evaluator는 매칭된 prediction의 유형을 GT 유형으로 간주하고, 미매칭 prediction은 가장 많이 겹치는 GT의 유형에 귀속한다.
+
+따라서 현재 출력되는 `General Precision`, `Merged Precision`은 엄밀하게 말하면 **모델이 General/Merged를 분류한 결과의 Precision이 아니다.**
+
+### 두 가지 평가 방식 중 하나를 명확히 선택
+
+#### A. 구조 위치 정확도만 평가
+
+모델이 cell type을 직접 반환하지 않는 경우:
+
+- 전체 Cell Detection Precision / Recall / F1
+- General GT subset Recall / IoU
+- Merged GT subset Recall / IoU
+
+처럼 표현한다.
+
+이 경우 `General Precision`, `Merged Precision`이라는 표현은 피한다.
+
+#### B. General / Merged classification까지 평가
+
+prediction 결과를 다음처럼 표준화한다.
+
+```json
+{
+  "bbox": [x1, y1, x2, y2],
+  "type": "general"
+}
 ```
 
-하지만 출력 문구와 README 설명은 `IoU Threshold: 0.5`를 기준으로 작성되어 있다.
+또는
 
-따라서 현재 출력된 점수는 문서에 적힌 평가 조건과 일치하지 않는다.
-
-필수 수정:
-- [ ] 실제 평가 threshold를 0.5로 할지 다른 값으로 할지 먼저 확정
-- [ ] 함수 기본값과 출력 문구를 동일하게 수정
-- [ ] threshold를 코드에 하드코딩하기보다 인자로 명시
-- [ ] 기존 점수는 수정 후 재측정
-
-현재 README의 `IoU > 0.5에서 33.3%` 같은 수치는 재평가 전까지 확정 결과로 사용하지 않는다.
-
----
-
-### 3.2 현재 평가는 과분할 False Positive를 충분히 반영하지 못함
-
-현재 평가는 각 GT에 대해 가장 높은 IoU의 예측 bbox 하나를 찾아 match 여부만 확인한다.
-
-이 방식은 예측 bbox가 매우 많이 생성되는 경우에도 GT 하나와 조금이라도 겹치는 bbox가 있으면 match로 처리될 수 있다.
-
-예를 들어 PP-Structure에서 166개의 bbox가 생성되었다면, 단순 Recall만으로는 over-segmentation을 충분히 벌점 줄 수 없다.
-
-필수 보완:
-- [ ] GT-Pred 1:1 matching 방식 구현
-- [ ] 이미 매칭된 prediction은 다시 사용하지 않도록 처리
-- [ ] TP / FP / FN 계산
-- [ ] Precision / Recall / F1 출력
-- [ ] General / Merged 셀을 각각 별도 집계
-
-가능하면 IoU 0.5를 기본 threshold로 두고 필요 시 0.3/0.5/0.7 민감도 비교를 추가한다.
-
----
-
-### 3.3 Ground Truth 샘플 검수 필요
-
-현재 `gt_sample.json`은 평가 코드 작동 확인용으로는 적절하지만 논문용 평가 데이터로는 부족하다.
-
-확인된 점:
-- GT가 5개뿐임
-- 병합 셀 좌표 중 거의 동일한 bbox가 두 개 존재하여 중복 라벨 가능성이 있음
-
-필수 작업:
-- [ ] 현재 5개 GT 수동 검수
-- [ ] 중복 bbox 여부 확인
-- [ ] 대표 한 페이지의 실제 셀을 더 충분히 라벨링
-- [ ] 이후 최소 10장 이상으로 확장
-- [ ] 가능하면 `image_id`, `cell_id`, `type`, `bbox`를 포함하도록 포맷 개선
-
----
-
-### 3.4 TATR reconstruction에 `spanning-cell`이 실제로 반영되어야 함
-
-현재 README에는 row / column / spanning-cell 결과에서 cell bbox를 재구성했다고 설명되어 있으나, 현재 코드에서는 실제로 `table row`, `table column`만 수집한 뒤 모든 row×column 조합을 cell로 생성한다.
-
-따라서 현재 구현은 **regular grid reconstruction**에 가깝고, 병합 셀 복원 로직은 아직 부족하다.
-
-필수 작업:
-- [ ] `table spanning cell` label 결과도 별도 수집
-- [ ] spanning 영역과 겹치는 기본 cell들을 병합
-- [ ] 단순 row×column 방식과 spanning 반영 방식 결과 비교
-- [ ] 일반 셀 / 병합 셀 Precision, Recall을 별도로 출력
-
-이 부분이 H3 검증의 핵심이다.
-
----
-
-### 3.5 `PP-Structure`와 `PP-StructureV3` 명칭 분리
-
-현재 저장된 실행 코드는 다음 계열이다.
-
-```python
-from paddleocr import PPStructure
+```json
+{
+  "bbox": [x1, y1, x2, y2],
+  "type": "merged"
+}
 ```
 
-실행 환경도 `paddleocr==2.8.1`로 기록되어 있다.
+TATR의 경우 spanning-cell reconstruction 결과를 `merged`, 나머지를 `general`로 저장할 수 있다.
 
-따라서 이 결과를 `PP-StructureV3 예비 검증 결과`라고 표기하면 실제 실행 코드와 모델 버전이 불일치하게 된다.
+OpenCV `bang_` 결과도 같은 구조를 사용하므로 이후 동일 evaluator에서 직접 비교할 수 있다.
 
-권장:
-- 현재 결과 → `PP-Structure (PaddleOCR 2.8.1)`
-- 향후 별도 실행 → `PP-StructureV3`
-
-필수 작업:
-- [ ] README 명칭 수정
-- [ ] 실제 V3를 실행했다면 별도 폴더/버전/requirements로 분리
-- [ ] V2.x 결과와 V3 결과를 섞지 않기
+PP-Structure처럼 명시적 type이 없는 방법은 구조 localization과 type classification을 분리해서 평가한다.
 
 ---
 
-## 4. 논문 표현에서 아직 보류할 문장
+## 5. `evaluate.py` 중복 실행 블록 정리
 
-현재 README의 다음 수준 표현은 평가 체계 수정 전까지 조금 약하게 유지하는 것이 좋다.
+현재 `evaluate.py`에는 `if __name__ == "__main__":` 블록이 두 번 존재한다.
 
-피해야 할 확정 표현:
-- `정량적으로 입증함`
-- `기술 개발이 필수적임`
-- `기존 오픈소스 모델은 해결할 수 없음`
+첫 블록에서 PP-Structure를 한 번 평가한 뒤, 두 번째 블록에서 PP-Structure와 TATR를 다시 순회하므로 실행 결과가 중복될 수 있다.
 
-현재 권장 수준:
+다음 형태로 하나만 남기는 것이 좋다.
 
-> 예비 평가에서는 복잡한 병합 셀 영역에서 과분할 및 낮은 일치율이 관찰되었으며, 평가 코드와 Ground Truth를 보완한 뒤 구조 모델과 후처리 방법의 성능을 추가 검증한다.
+```text
+GT load
+  ↓
+models_to_evaluate 정의
+  ↓
+모델별 prediction loader
+  ↓
+공통 evaluate_model()
+  ↓
+metrics 저장
+```
+
+가능하면 콘솔 출력만 하지 말고 `metrics.json` 또는 CSV에도 저장한다.
 
 ---
 
-## 5. 이 담당자의 다음 완료 기준
+## 6. GT 라벨링 도구는 자동 저장까지 연결
 
-다음 조건이 충족되면 이 브랜치의 1차 역할이 상당히 완성된다.
+현재 `gt_labeling.py`는 라벨링 결과를 터미널에 JSON으로 출력한다.
 
-- [ ] IoU threshold 오류 수정
-- [ ] 1:1 matching 구현
-- [ ] Precision / Recall / F1 출력
-- [ ] GT 중복 검수 및 확대
-- [ ] TATR spanning-cell 반영 reconstruction
-- [ ] PP-Structure 2.x / V3 명칭 분리
-- [ ] TATR / PP-Structure 결과를 동일 GT에서 평가
-- [ ] 결과 JSON과 대표 bbox 이미지 저장
+실험 데이터가 10장 이상으로 늘어나면 복사/붙여넣기 방식은 실수 가능성이 높다.
+
+추가 권장:
+
+- [ ] `q` 종료 시 `{image_id}_gt.json` 자동 저장
+- [ ] 기존 GT 파일이 있으면 이어서 수정할 수 있게 load 기능 추가
+- [ ] 저장 전 cell 수 / General / Merged 수 출력
+- [ ] 이미지별 GT 파일 분리 또는 dataset-level JSON 형식 결정
+
+이 작업은 새로운 연구 기능이 아니라 **Ground Truth 신뢰성을 위한 최소 도구 보완**에 해당한다.
+
+---
+
+## 7. TATR reconstruction에서 다음으로 확인할 것
+
+spanning-cell을 실제 reconstruction에 반영한 것은 완료됐지만, 현재는 기본 셀 면적의 `50%` 이상 겹치면 병합 대상으로 판단하는 heuristic을 사용한다.
+
+다음 사항만 추가 확인한다.
+
+- [ ] overlap threshold 0.5가 결과에 얼마나 민감한지 최소 범위 확인
+- [ ] 여러 spanning prediction이 겹칠 경우 처리 순서에 따라 결과가 달라지는지 확인
+- [ ] raw spanning bbox와 reconstructed merged bbox를 함께 저장
+- [ ] prediction confidence도 가능하면 저장
+- [ ] `row×column only` vs `+ spanning reconstruction` ablation 결과 비교
+
+중요한 것은 새로운 TATR 알고리즘을 개발하는 것이 아니라 **spanning 정보를 반영했을 때 H3의 merged-cell 성능이 실제로 개선되는지 검증**하는 것이다.
+
+---
+
+## 8. README 결과 표현 수정
+
+현재 README의 `Precision/Recall 0%`, 대량 FP 수치는 partial GT 상태에서는 해석이 왜곡될 수 있으므로 다음처럼 변경하는 것이 안전하다.
+
+권장 표현:
+
+> 현재 10개 선택 셀을 이용한 예비 localization 테스트에서는 PP-Structure와 TATR 모두 일부 목표 셀과의 좌표 불일치 및 과분할 양상이 관찰되었다. 다만 Ground Truth가 페이지 전체 셀을 포함하지 않는 partial annotation이므로, 현재 FP/Precision 수치는 최종 성능 비교에 사용하지 않는다. Exhaustive Ground Truth 구축 후 동일 evaluator로 재측정한다.
+
+즉, 현재 결과는 **실패 사례 발견 및 evaluator 디버깅 근거**로 사용하고 최종 모델 성능표에는 아직 넣지 않는다.
+
+---
+
+## 9. 이 담당자의 다음 작업 우선순위
+
+### Priority 0 — 평가 신뢰성 확보
+
+- [ ] 대표 문서 1장 exhaustive cell GT 완성
+- [ ] partial GT / exhaustive GT 평가 모드 구분
+- [ ] `evaluate.py` 중복 main 제거
+- [ ] prediction type이 없는 모델의 General/Merged 지표 명칭 수정
+- [ ] 현재 README의 FP / Precision / Recall 결과를 예비 결과로 하향 표기
+
+### Priority 1 — 공통 evaluator 완성
+
+- [ ] PP-Structure / TATR / OpenCV prediction을 같은 loader에서 처리
+- [ ] 가능한 경우 표준 prediction JSON 사용
+- [ ] IoU 0.3 / 0.5 / 0.7 유지
+- [ ] 1:1 matching 유지
+- [ ] 전체 Cell P/R/F1 + merged GT 성능 분리
+- [ ] 결과를 `metrics.json` 또는 CSV로 저장
+
+### Priority 2 — TATR H3 검증
+
+- [ ] `row×column only` 결과 저장
+- [ ] `row×column + spanning` 결과 저장
+- [ ] 동일 exhaustive GT에서 비교
+- [ ] merged cell 성능이 실제 개선되는지 확인
+
+이후 새로운 구조 모델을 계속 추가하기보다, `bang_`/`heewon`의 OpenCV prediction을 받아 같은 evaluator에서 비교하는 단계로 넘어간다.
+
+---
+
+## 10. 완료 조건
+
+다음이 충족되면 `dahye_cell_DetectionSurvey`의 1차 역할을 완료한 것으로 본다.
+
+- [ ] 적어도 대표 페이지 1장은 exhaustive GT
+- [ ] partial/exhaustive 평가 구분
+- [ ] 공통 evaluator 단일 실행 구조
+- [ ] PP-Structure / TATR / OpenCV prediction 입력 가능
+- [ ] 전체 Cell IoU / Precision / Recall / F1 출력
+- [ ] merged-cell 성능을 별도 확인 가능
+- [ ] TATR spanning ablation 완료
+- [ ] metrics 파일 저장
+- [ ] README에 최종값과 예비값을 구분하여 기록
 
 ---
 
 ## 한 줄 피드백
 
-> 이전 피드백이 상당 부분 반영되어 Survey에서 정량 평가 단계로 발전했다. 이제 모델을 더 추가하기보다 **평가 코드의 신뢰성을 먼저 고치고, TATR 병합 셀 reconstruction을 실제 spanning-cell 정보까지 반영하는 것**이 가장 중요하다.
+> 이전 피드백의 핵심이 상당 부분 잘 반영되었다. 이제 가장 중요한 것은 모델을 더 추가하는 것이 아니라, **partial GT에서 발생하는 FP/Precision 왜곡을 제거하고 exhaustive GT 기반 공통 evaluator를 완성해 PP-Structure / TATR / OpenCV를 같은 기준으로 비교할 수 있게 만드는 것**이다.
