@@ -97,6 +97,17 @@ H6. 전체 표 복원보다 Anchor-ROI 방식이 핵심 필드 추출에 더 효
 - 성능 검증 없이 복잡한 딥러닝 파인튜닝 범위를 무작정 확대하는 작업
 - 논문 기여와 관계없는 성능 최적화 또는 리팩터링
 
+### 현재 명시적으로 Future Work로 미룬 항목
+
+- 셀 자체를 객체처럼 학습하는 Object Detection 방식
+- YOLO / DETR / Faster R-CNN 등 별도 Cell Detector 학습
+- Mask R-CNN 등 Instance Segmentation 기반 셀 분할
+- 별도의 대규모 셀 라벨 데이터셋 구축 및 학습
+
+위 방법들은 연구적으로 관련은 있으나 현재 논문의 비교축을 크게 늘리고 별도 학습 데이터와 실험 설계를 요구한다. 따라서 **현재 본 실험에는 추가하지 않고 후속 연구 후보로만 기록한다.**
+
+현재 방법(OpenCV / TATR / PP-Structure / Anchor-ROI)의 정량 비교가 완료된 뒤에도 셀 위치 검출이 핵심 병목으로 남고, 연구 범위를 공식적으로 확대하기로 결정한 경우에만 다시 검토한다.
+
 ---
 
 [새 작업을 진행하기 전에 반드시 답할 질문]
@@ -121,6 +132,7 @@ H6. 전체 표 복원보다 Anchor-ROI 방식이 핵심 필드 추출에 더 효
 - 추가 실험은 기존 Ground Truth와 동일한 평가 기준을 사용할 수 있을 때 우선한다.
 - 하나의 기능을 깊게 만드는 것이 논문 가설 검증에 기여하지 않으면 중단한다.
 - 논문에서 사용할 가능성이 낮은 기능은 프로토타입 수준을 넘겨 구현하지 않는다.
+- Object Detection / Instance Segmentation 기반 셀 학습은 현재 논문 범위에서 구현하지 않는다. 필요 시 Future Work로만 기록한다.
 
 ---
 
@@ -181,4 +193,5 @@ OUT_OF_SCOPE이면 현재 구현을 중단하고 Future Work 후보로만 정리
 2. `OUT_OF_SCOPE` 작업은 별도 구현하지 않고 필요할 경우 Future Work 후보로만 기록한다.
 3. `ADJACENT` 작업은 기존 실험의 실패 원인 분석 또는 직접 비교에 필요한 최소 범위만 수행한다.
 4. 새 모델·새 기능을 추가할 때는 반드시 기존 가설 또는 공통 평가 지표와 연결한다.
-5. 연구 방향이 공식적으로 변경될 경우 먼저 `01_research_direction_and_next_steps.md`를 갱신한 뒤 이 프롬프트도 함께 수정한다.
+5. Object Detection / Instance Segmentation 기반 셀 딥러닝 학습은 현재 논문에서 제외하고 후속 연구 후보로 관리한다.
+6. 연구 방향이 공식적으로 변경될 경우 먼저 `01_research_direction_and_next_steps.md`를 갱신한 뒤 이 프롬프트도 함께 수정한다.
