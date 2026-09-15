@@ -1,0 +1,88 @@
+{
+  "image": "sample.jpg",
+  "fields": {
+    "소재지": {
+      "value": "서울특별시 강남구 테헤란로 123, 4층 401",
+      "anchor_found": true,
+      "anchor_bbox": [
+        286,
+        715,
+        479,
+        770
+      ],
+      "value_roi": [
+        479,
+        687,
+        1637,
+        797
+      ]
+    },
+    "임대인_성명": {
+      "value": "고결",
+      "anchor_found": true,
+      "anchor_bbox": [
+        2100,
+        3059,
+        2219,
+        3119
+      ],
+      "value_roi": [
+        2219,
+        3029,
+        2695,
+        3149
+      ]
+    },
+    "임차인_성명": {
+      "value": "김영수",
+      "anchor_found": true,
+      "anchor_bbox": [
+        2100,
+        3258,
+        2223,
+        3316
+      ],
+      "value_roi": [
+        2223,
+        3229,
+        2715,
+        3345
+      ]
+    },
+    "보증금": {
+      "value": "일억",
+      "anchor_found": true,
+      "anchor_bbox": [
+        285,
+        1130,
+        483,
+        1177
+      ],
+      "value_roi": [
+        483,
+        1083,
+        1671,
+        1224
+      ],
+      "anchor_method": "split_anchor"
+    },
+    "계약금": {
+      "value": "일천만",
+      "anchor_found": true,
+      "anchor_bbox": [
+        285,
+        1190,
+        482,
+        1239
+      ],
+      "value_roi": [
+        482,
+        1141,
+        1664,
+        1288
+      ],
+      "anchor_method": "split_anchor"
+    }
+  },
+  "processing_time_sec": 0.0008930999993026489
+}

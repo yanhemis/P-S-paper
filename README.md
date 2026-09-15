@@ -140,7 +140,7 @@ primitive grid
 | `bang_` | OpenCV grid → merged cell reconstruction | 실제 `cells.json` + 시각화 + 공통 평가 입력 |
 | `heewon` | Morphology vs Contour 비교 | 동일 GT 기반 방식별 성능 비교 |
 | 추가 인원 A | OCR / ROI 재인식 | Full vs GT ROI vs Detected ROI OCR 결과 |
-| 추가 인원 B | Anchor-ROI / Field Mapping | Anchor 기반 핵심 필드 추출 결과 |
+| `taegu` | Anchor-ROI / Field Mapping | Anchor 기반 핵심 필드 추출 결과 |
 
 ---
 
