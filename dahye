@@ -1,29 +1,19 @@
-# ==========================================
-# [공통 및 Evaluation (정량 평가 및 GT 라벨링)]
-# ==========================================
-opencv-python        # GT bbox 라벨링 GUI 도구 및 이미지 전처리용
+# [1. 공통 및 평가용]
+opencv-python
 
-# ==========================================
-# [과제 1 & 4: PP-Structure & SLANet]
-# ==========================================
-# 주의: 학교 서버가 GPU를 지원한다면 paddlepaddle 대신 paddlepaddle-gpu 설치 권장
-paddlepaddle==2.6.2  
+# [2. 과제 1 & 4 (PP-Structure / SLANet)]
+# (서버 GPU 지원 시 paddlepaddle-gpu로 설치 권장)
+paddlepaddle==2.6.2
 paddleocr==2.8.1
-openpyxl             # SLANet 표 엑셀 변환용
-premailer            # SLANet 표 HTML/엑셀 파싱용
+openpyxl
+premailer
 
-# ==========================================
-# [과제 2: TATR (Table Transformer)]
-# ==========================================
-# 주의: 학교 서버의 CUDA 버전에 맞춰 torch 버전이 다를 수 있음
+# [3. 과제 2 (TATR)]
+# (서버 CUDA 환경에 따라 torch 버전 확인 필요)
 torch
 torchvision
-transformers         # Hugging Face 모델 로드용
-Pillow               # 이미지 처리 및 BBox 시각화용
+transformers
+Pillow
 
-# ==========================================
-# [과제 3: LayoutParser]
-# ==========================================
-# 로컬(Windows)에서는 C++ 빌드 충돌로 실패했으나, 
-# 학교 서버(Linux)에서는 정상 작동할 가능성이 매우 높음.
+# [4. 과제 3 (LayoutParser)]
 layoutparser
