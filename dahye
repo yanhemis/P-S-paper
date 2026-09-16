@@ -1,15 +1,15 @@
-#[1. 공통 및 평가용]
+## [1. 공통 및 평가용]
 opencv-python
 
-# [2. 과제 1 & 4 (PP-Structure / SLANet)]
-# (서버 GPU 지원 시 paddlepaddle-gpu로 설치 권장)
+## [2. 과제 1 & 4 (PP-Structure / SLANet)]
+### (서버 GPU 지원 시 paddlepaddle-gpu로 설치 권장)
 paddlepaddle==2.6.2
 paddleocr==2.8.1
 openpyxl
 premailer
 
-# [3. 과제 2 (TATR)]
-# (서버 CUDA 환경에 따라 torch 버전 확인 필요)
+## [3. 과제 2 (TATR)]
+### (서버 CUDA 환경에 따라 torch 버전 확인 필요)
 torch
 torchvision
 transformers
