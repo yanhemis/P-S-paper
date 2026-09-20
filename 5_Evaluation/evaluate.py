@@ -83,7 +83,7 @@ def evaluate_model(model_name, gt_data, pred_boxes, iou_thresholds, eval_mode="P
 
 if __name__ == "__main__":
     # --- 설정 영역 ---
-    EVAL_MODE = "PARTIAL" 
+    EVAL_MODE = "EXHAUSTIVE" 
     gt_path = 'sample.jpg_gt.json' 
     metrics_output_path = 'metrics.json'
     

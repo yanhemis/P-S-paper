@@ -2,52 +2,88 @@
   "1. PP-Structure (Paddle 2.8.1)": {
     "0.3": {
       "general_recall": 0.0,
-      "merged_recall": 0.0,
-      "overall": "N/A (Partial Mode)"
+      "merged_recall": 15.555555555555555,
+      "overall": {
+        "TP": 7,
+        "FP": 159,
+        "FN": 88
+      }
     },
     "0.5": {
       "general_recall": 0.0,
       "merged_recall": 0.0,
-      "overall": "N/A (Partial Mode)"
+      "overall": {
+        "TP": 0,
+        "FP": 166,
+        "FN": 95
+      }
     },
     "0.7": {
       "general_recall": 0.0,
       "merged_recall": 0.0,
-      "overall": "N/A (Partial Mode)"
+      "overall": {
+        "TP": 0,
+        "FP": 166,
+        "FN": 95
+      }
     }
   },
   "2. TATR (Grid Only Ablation)": {
     "0.3": {
       "general_recall": 0.0,
       "merged_recall": 0.0,
-      "overall": "N/A (Partial Mode)"
+      "overall": {
+        "TP": 0,
+        "FP": 216,
+        "FN": 95
+      }
     },
     "0.5": {
       "general_recall": 0.0,
       "merged_recall": 0.0,
-      "overall": "N/A (Partial Mode)"
+      "overall": {
+        "TP": 0,
+        "FP": 216,
+        "FN": 95
+      }
     },
     "0.7": {
       "general_recall": 0.0,
       "merged_recall": 0.0,
-      "overall": "N/A (Partial Mode)"
+      "overall": {
+        "TP": 0,
+        "FP": 216,
+        "FN": 95
+      }
     }
   },
   "3. TATR (+ Spanning Recon)": {
     "0.3": {
       "general_recall": 0.0,
       "merged_recall": 0.0,
-      "overall": "N/A (Partial Mode)"
+      "overall": {
+        "TP": 0,
+        "FP": 209,
+        "FN": 95
+      }
     },
     "0.5": {
       "general_recall": 0.0,
       "merged_recall": 0.0,
-      "overall": "N/A (Partial Mode)"
+      "overall": {
+        "TP": 0,
+        "FP": 209,
+        "FN": 95
+      }
     },
     "0.7": {
       "general_recall": 0.0,
       "merged_recall": 0.0,
-      "overall": "N/A (Partial Mode)"
+      "overall": {
+        "TP": 0,
+        "FP": 209,
+        "FN": 95
+      }
     }
   }
 }

@@ -1,0 +1,1047 @@
+[
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 1,
+    "type": "general",
+    "bbox": [
+      270,
+      718,
+      503,
+      777
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 2,
+    "type": "general",
+    "bbox": [
+      267,
+      777,
+      505,
+      888
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 3,
+    "type": "general",
+    "bbox": [
+      267,
+      880,
+      503,
+      959
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 4,
+    "type": "general",
+    "bbox": [
+      264,
+      959,
+      505,
+      1015
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 5,
+    "type": "general",
+    "bbox": [
+      264,
+      1126,
+      503,
+      1185
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 6,
+    "type": "general",
+    "bbox": [
+      261,
+      1185,
+      502,
+      1245
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 7,
+    "type": "general",
+    "bbox": [
+      261,
+      1253,
+      502,
+      1308
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 8,
+    "type": "general",
+    "bbox": [
+      262,
+      1300,
+      500,
+      1372
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 9,
+    "type": "general",
+    "bbox": [
+      262,
+      1376,
+      498,
+      1427
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 10,
+    "type": "general",
+    "bbox": [
+      498,
+      772,
+      704,
+      880
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 11,
+    "type": "general",
+    "bbox": [
+      702,
+      760,
+      962,
+      868
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 12,
+    "type": "general",
+    "bbox": [
+      965,
+      760,
+      1312,
+      876
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 13,
+    "type": "general",
+    "bbox": [
+      1317,
+      752,
+      1631,
+      856
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 14,
+    "type": "general",
+    "bbox": [
+      1631,
+      748,
+      1822,
+      852
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 15,
+    "type": "general",
+    "bbox": [
+      1817,
+      744,
+      2068,
+      856
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 16,
+    "type": "general",
+    "bbox": [
+      2063,
+      748,
+      2223,
+      848
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 17,
+    "type": "general",
+    "bbox": [
+      2221,
+      728,
+      2662,
+      828
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 18,
+    "type": "general",
+    "bbox": [
+      505,
+      864,
+      704,
+      940
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 19,
+    "type": "merged",
+    "bbox": [
+      500,
+      708,
+      2660,
+      740
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 20,
+    "type": "merged",
+    "bbox": [
+      702,
+      860,
+      1509,
+      932
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 21,
+    "type": "merged",
+    "bbox": [
+      1512,
+      852,
+      1690,
+      932
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 22,
+    "type": "merged",
+    "bbox": [
+      1507,
+      920,
+      1692,
+      992
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 23,
+    "type": "merged",
+    "bbox": [
+      1697,
+      852,
+      2662,
+      928
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 24,
+    "type": "merged",
+    "bbox": [
+      1697,
+      912,
+      2671,
+      976
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 25,
+    "type": "merged",
+    "bbox": [
+      505,
+      936,
+      1509,
+      1000
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 26,
+    "type": "merged",
+    "bbox": [
+      265,
+      576,
+      2655,
+      672
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 27,
+    "type": "merged",
+    "bbox": [
+      268,
+      1008,
+      2671,
+      1084
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 28,
+    "type": "merged",
+    "bbox": [
+      502,
+      1124,
+      2676,
+      1136
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 29,
+    "type": "merged",
+    "bbox": [
+      498,
+      1176,
+      2683,
+      1188
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 30,
+    "type": "merged",
+    "bbox": [
+      502,
+      1236,
+      2683,
+      1264
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 31,
+    "type": "merged",
+    "bbox": [
+      502,
+      1292,
+      2688,
+      1328
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 32,
+    "type": "merged",
+    "bbox": [
+      498,
+      1360,
+      2692,
+      1388
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 33,
+    "type": "merged",
+    "bbox": [
+      258,
+      3016,
+      352,
+      3228
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 34,
+    "type": "merged",
+    "bbox": [
+      256,
+      3228,
+      350,
+      3428
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 35,
+    "type": "merged",
+    "bbox": [
+      256,
+      3432,
+      352,
+      3776
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 36,
+    "type": "general",
+    "bbox": [
+      352,
+      3024,
+      688,
+      3104
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 37,
+    "type": "general",
+    "bbox": [
+      354,
+      3088,
+      690,
+      3164
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 38,
+    "type": "general",
+    "bbox": [
+      692,
+      3148,
+      817,
+      3216
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 39,
+    "type": "general",
+    "bbox": [
+      695,
+      3348,
+      819,
+      3416
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 40,
+    "type": "general",
+    "bbox": [
+      354,
+      3164,
+      692,
+      3216
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 41,
+    "type": "general",
+    "bbox": [
+      350,
+      3224,
+      692,
+      3276
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 42,
+    "type": "general",
+    "bbox": [
+      350,
+      3288,
+      690,
+      3344
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 43,
+    "type": "general",
+    "bbox": [
+      352,
+      3352,
+      692,
+      3416
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 44,
+    "type": "general",
+    "bbox": [
+      350,
+      3416,
+      692,
+      3480
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 45,
+    "type": "general",
+    "bbox": [
+      350,
+      3476,
+      695,
+      3548
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 46,
+    "type": "general",
+    "bbox": [
+      350,
+      3548,
+      692,
+      3616
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 47,
+    "type": "general",
+    "bbox": [
+      2087,
+      3060,
+      2235,
+      3124
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 48,
+    "type": "general",
+    "bbox": [
+      2092,
+      3124,
+      2232,
+      3192
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 49,
+    "type": "general",
+    "bbox": [
+      1479,
+      3064,
+      1723,
+      3132
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 50,
+    "type": "general",
+    "bbox": [
+      1477,
+      3124,
+      1723,
+      3200
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 51,
+    "type": "general",
+    "bbox": [
+      1484,
+      3276,
+      1728,
+      3328
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 52,
+    "type": "general",
+    "bbox": [
+      1486,
+      3328,
+      1732,
+      3396
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 53,
+    "type": "general",
+    "bbox": [
+      2096,
+      3260,
+      2237,
+      3320
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 54,
+    "type": "general",
+    "bbox": [
+      2094,
+      3320,
+      2239,
+      3380
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 55,
+    "type": "general",
+    "bbox": [
+      350,
+      3616,
+      692,
+      3676
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 56,
+    "type": "general",
+    "bbox": [
+      347,
+      3676,
+      697,
+      3744
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 57,
+    "type": "general",
+    "bbox": [
+      1486,
+      3404,
+      1852,
+      3472
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 58,
+    "type": "general",
+    "bbox": [
+      1488,
+      3468,
+      1854,
+      3528
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 59,
+    "type": "general",
+    "bbox": [
+      1488,
+      3536,
+      1857,
+      3592
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 60,
+    "type": "general",
+    "bbox": [
+      1491,
+      3600,
+      1864,
+      3672
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 61,
+    "type": "general",
+    "bbox": [
+      1493,
+      3668,
+      1862,
+      3740
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 62,
+    "type": "merged",
+    "bbox": [
+      2540,
+      2980,
+      2765,
+      3184
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 63,
+    "type": "merged",
+    "bbox": [
+      2554,
+      3180,
+      2777,
+      3368
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 64,
+    "type": "merged",
+    "bbox": [
+      685,
+      3016,
+      2545,
+      3044
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 65,
+    "type": "merged",
+    "bbox": [
+      1723,
+      3068,
+      2089,
+      3124
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 66,
+    "type": "merged",
+    "bbox": [
+      2235,
+      3056,
+      2545,
+      3112
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 67,
+    "type": "merged",
+    "bbox": [
+      2230,
+      3124,
+      2549,
+      3176
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 68,
+    "type": "merged",
+    "bbox": [
+      1723,
+      3148,
+      2092,
+      3184
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 69,
+    "type": "merged",
+    "bbox": [
+      688,
+      3088,
+      1479,
+      3136
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 70,
+    "type": "merged",
+    "bbox": [
+      817,
+      3152,
+      1484,
+      3204
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 71,
+    "type": "merged",
+    "bbox": [
+      690,
+      3212,
+      2552,
+      3240
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 72,
+    "type": "general",
+    "bbox": [
+      1854,
+      3524,
+      2092,
+      3596
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 73,
+    "type": "general",
+    "bbox": [
+      1862,
+      3660,
+      2094,
+      3724
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 74,
+    "type": "general",
+    "bbox": [
+      2390,
+      3576,
+      2512,
+      3648
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 75,
+    "type": "general",
+    "bbox": [
+      1108,
+      3608,
+      1235,
+      3668
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 76,
+    "type": "general",
+    "bbox": [
+      690,
+      3548,
+      937,
+      3608
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 77,
+    "type": "general",
+    "bbox": [
+      697,
+      3676,
+      937,
+      3748
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 78,
+    "type": "merged",
+    "bbox": [
+      692,
+      3288,
+      1484,
+      3340
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 79,
+    "type": "merged",
+    "bbox": [
+      1728,
+      3268,
+      2096,
+      3324
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 80,
+    "type": "merged",
+    "bbox": [
+      2235,
+      3256,
+      2554,
+      3304
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 81,
+    "type": "merged",
+    "bbox": [
+      2239,
+      3320,
+      2554,
+      3376
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 82,
+    "type": "merged",
+    "bbox": [
+      1728,
+      3328,
+      2096,
+      3384
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 83,
+    "type": "merged",
+    "bbox": [
+      1852,
+      3392,
+      2777,
+      3432
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 84,
+    "type": "merged",
+    "bbox": [
+      1859,
+      3444,
+      2779,
+      3508
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 85,
+    "type": "merged",
+    "bbox": [
+      2092,
+      3528,
+      2786,
+      3568
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 86,
+    "type": "merged",
+    "bbox": [
+      2516,
+      3572,
+      2789,
+      3648
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 87,
+    "type": "merged",
+    "bbox": [
+      1862,
+      3588,
+      2387,
+      3652
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 88,
+    "type": "merged",
+    "bbox": [
+      2096,
+      3644,
+      2789,
+      3716
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 89,
+    "type": "merged",
+    "bbox": [
+      1237,
+      3604,
+      1493,
+      3668
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 90,
+    "type": "merged",
+    "bbox": [
+      937,
+      3536,
+      1488,
+      3600
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 91,
+    "type": "merged",
+    "bbox": [
+      822,
+      3348,
+      1488,
+      3396
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 92,
+    "type": "merged",
+    "bbox": [
+      692,
+      3416,
+      1488,
+      3468
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 93,
+    "type": "merged",
+    "bbox": [
+      695,
+      3480,
+      1488,
+      3520
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 94,
+    "type": "merged",
+    "bbox": [
+      695,
+      3608,
+      1106,
+      3680
+    ]
+  },
+  {
+    "image_id": "sample.jpg",
+    "cell_id": 95,
+    "type": "merged",
+    "bbox": [
+      937,
+      3672,
+      1488,
+      3732
+    ]
+  }
+]
