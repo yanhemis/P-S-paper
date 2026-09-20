@@ -1,7 +1,6 @@
 import json
 import os
 
-# 1. IoU 계산 함수
 def calculate_iou(boxA, boxB):
     xA = max(boxA[0], boxB[0])
     yA = max(boxA[1], boxB[1])
@@ -11,26 +10,25 @@ def calculate_iou(boxA, boxB):
     interArea = max(0, xB - xA) * max(0, yB - yA)
     boxAArea = (boxA[2] - boxA[0]) * (boxA[3] - boxA[1])
     boxBArea = (boxB[2] - boxB[0]) * (boxB[3] - boxB[1])
+    return interArea / float(boxAArea + boxBArea - interArea) if (boxAArea + boxBArea - interArea) > 0 else 0
 
-    iou = interArea / float(boxAArea + boxBArea - interArea) if (boxAArea + boxBArea - interArea) > 0 else 0
-    return iou
-
-# 2. 1:1 매칭 및 평가 함수 (임계값 리스트를 인자로 받음)
-def evaluate_model(gt_data, pred_boxes, iou_thresholds=[0.3, 0.5, 0.7]):
+def evaluate_model(model_name, gt_data, pred_boxes, iou_thresholds, eval_mode="PARTIAL"):
+    model_metrics = {}
     
-    # 3가지 IoU 임계값(0.3, 0.5, 0.7)에 대해 각각 평가 진행
     for thresh in iou_thresholds:
-        print(f"\n==================================================")
-        print(f"📊 정량 평가 결과 (IoU Threshold: {thresh})")
-        print(f"==================================================")
-
-        stats = {
-            "general": {"TP": 0, "FP": 0, "FN": 0},
-            "merged": {"TP": 0, "FP": 0, "FN": 0},
-            "background": {"FP": 0} # 어떤 정답과도 겹치지 않은 잉여 박스
+        print(f"\n[{model_name}] 📊 정량 평가 (IoU Threshold: {thresh} / 모드: {eval_mode})")
+        
+        # 전체 TP, FP, FN
+        overall_stats = {"TP": 0, "FP": 0, "FN": 0}
+        # 하위 그룹(Subset)별 매칭 추적
+        subset_stats = {
+            "general": {"total": 0, "matched": 0},
+            "merged": {"total": 0, "matched": 0}
         }
+        
+        for gt in gt_data:
+            subset_stats[gt["type"]]["total"] += 1
 
-        # [단계 A] 모든 GT-Pred 쌍의 IoU 계산
         iou_pairs = []
         for g_idx, gt in enumerate(gt_data):
             for p_idx, pred in enumerate(pred_boxes):
@@ -38,133 +36,109 @@ def evaluate_model(gt_data, pred_boxes, iou_thresholds=[0.3, 0.5, 0.7]):
                 if iou > 0:
                     iou_pairs.append((g_idx, p_idx, iou))
 
-        # [단계 B] 1:1 Greedy Matching을 위해 IoU가 높은 순으로 정렬
         iou_pairs.sort(key=lambda x: x[2], reverse=True)
-
         matched_gt = set()
         matched_pred = set()
 
-        # [단계 C] 진짜 1:1 매칭 (TP 산출)
+        # 1:1 Greedy Matching
         for g_idx, p_idx, iou in iou_pairs:
             if iou >= thresh:
-                # GT와 Pred 모두 아직 짝이 안 지어졌을 때만 매칭 성공!
                 if g_idx not in matched_gt and p_idx not in matched_pred:
                     matched_gt.add(g_idx)
                     matched_pred.add(p_idx)
-                    c_type = gt_data[g_idx]["type"]
-                    stats[c_type]["TP"] += 1
+                    overall_stats["TP"] += 1
+                    subset_stats[gt_data[g_idx]["type"]]["matched"] += 1
 
-        # [단계 D] 매칭 안 된 정답 (FN: 못 찾음)
-        for g_idx, gt in enumerate(gt_data):
-            if g_idx not in matched_gt:
-                c_type = gt["type"]
-                stats[c_type]["FN"] += 1
+        overall_stats["FN"] = len(gt_data) - len(matched_gt)
+        overall_stats["FP"] = len(pred_boxes) - len(matched_pred)
 
-        # [단계 E] 매칭 안 된 예측 (FP: 오답 및 과분할 찌꺼기)
-        for p_idx, pred in enumerate(pred_boxes):
-            if p_idx not in matched_pred:
-                # 이 쓰레기(FP)가 일반 칸을 쪼갠 건지, 병합 칸을 쪼갠 건지 추적
-                best_iou = 0
-                best_type = "background"
-                for g_idx, gt in enumerate(gt_data):
-                    iou = calculate_iou(gt["bbox"], pred)
-                    if iou > best_iou:
-                        best_iou = iou
-                        best_type = gt["type"]
+        # Partial 모드에서는 GT 대비 성공률(Recall)만 신뢰 가능
+        g_total = subset_stats["general"]["total"]
+        g_match = subset_stats["general"]["matched"]
+        m_total = subset_stats["merged"]["total"]
+        m_match = subset_stats["merged"]["matched"]
+        
+        g_recall = (g_match / g_total * 100) if g_total > 0 else 0
+        m_recall = (m_match / m_total * 100) if m_total > 0 else 0
+        
+        print(f"  - General GT Subset Recall : {g_recall:.1f}% ({g_match}/{g_total})")
+        print(f"  - Merged GT Subset Recall  : {m_recall:.1f}% ({m_match}/{m_total})")
+        
+        if eval_mode == "EXHAUSTIVE":
+            TP, FP, FN = overall_stats["TP"], overall_stats["FP"], overall_stats["FN"]
+            precision = (TP / (TP + FP) * 100) if (TP + FP) > 0 else 0
+            recall = (TP / (TP + FN) * 100) if (TP + FN) > 0 else 0
+            f1 = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
+            print(f"  - [전체 셀] Precision: {precision:.1f}% | Recall: {recall:.1f}% | F1: {f1:.1f}%")
+        else:
+            print("  - ⚠️ Partial GT 모드이므로 전체 FP 및 Precision은 산출하지 않습니다.")
 
-                if best_type in stats:
-                    stats[best_type]["FP"] += 1
-                else:
-                    stats["background"]["FP"] += 1
-
-        # [단계 F] 지표 계산 (Precision, Recall, F1)
-        for c_type in ["general", "merged"]:
-            TP = stats[c_type]["TP"]
-            FP = stats[c_type]["FP"]
-            FN = stats[c_type]["FN"]
-
-            precision = (TP / (TP + FP)) * 100 if (TP + FP) > 0 else 0
-            recall = (TP / (TP + FN)) * 100 if (TP + FN) > 0 else 0
-            f1_score = (2 * precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
-
-            print(f"[{c_type.upper()} Cell]")
-            print(f"  - TP(정답): {TP} | FP(오답/과분할): {FP} | FN(못찾음): {FN}")
-            print(f"  - Precision (정밀도) : {precision:.1f}%")
-            print(f"  - Recall    (재현율) : {recall:.1f}%")
-            print(f"  - F1-Score  (종합)   : {f1_score:.1f}%\n")
-
-        print(f"[BACKGROUND] 허공에 쳐진 잉여 박스(FP): {stats['background']['FP']}개\n")
-
-if __name__ == "__main__":
-    # 1. 정답지 로드
-    gt_path = 'gt_sample.json'
-    if os.path.exists(gt_path):
-        with open(gt_path, 'r', encoding='utf-8') as f:
-            gt_data = json.load(f)
-    else:
-        gt_data = []
-        print(f"❌ '{gt_path}' 파일이 없습니다.")
-
-    # 2. PP-Structure 예측 결과 로드
-    pp_result_path = '../1_PaddleOCR-PP-Structure/output/sample/res_0.txt'
-    pred_boxes = []
+        model_metrics[str(thresh)] = {
+            "general_recall": g_recall,
+            "merged_recall": m_recall,
+            "overall": overall_stats if eval_mode == "EXHAUSTIVE" else "N/A (Partial Mode)"
+        }
     
-    if os.path.exists(pp_result_path):
-        with open(pp_result_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-            try:
-                pp_data = json.loads(content)
-                pred_boxes = pp_data['res']['cell_bbox']
-                print(f"✅ PP-Structure 결과 로드 완료! (예측 박스: {len(pred_boxes)}개)")
-            except Exception as e:
-                print(f"❌ 데이터 파싱 실패: {e}")
-    else:
-        print(f"❌ 결과 파일이 없습니다: {pp_result_path}")
-
-    # 3. 평가 실행 (0.3 / 0.5 / 0.7 민감도 비교)
-    if gt_data and pred_boxes:
-        evaluate_model(gt_data, pred_boxes, iou_thresholds=[0.3, 0.5, 0.7])
+    return model_metrics
 
 if __name__ == "__main__":
-    # 1. 정답지(GT) 로드
-    gt_path = 'gt_sample.json'
+    # --- 설정 영역 ---
+    EVAL_MODE = "PARTIAL" 
+    gt_path = 'sample.jpg_gt.json' 
+    metrics_output_path = 'metrics.json'
+    
+    # 💡 [Priority 2] TATR Ablation 모델을 모두 평가 목록에 추가!
+    models_to_evaluate = {
+        "1. PP-Structure (Paddle 2.8.1)": "../1_PaddleOCR-PP-Structure/output/sample/res_0.txt",
+        "2. TATR (Grid Only Ablation)": "../2_TATR/tatr_result_grid.json",
+        "3. TATR (+ Spanning Recon)": "../2_TATR/tatr_result_spanning.json"
+    }
+    # ----------------
+
     if os.path.exists(gt_path):
         with open(gt_path, 'r', encoding='utf-8') as f:
             gt_data = json.load(f)
+    elif os.path.exists('gt_sample.json'):
+        with open('gt_sample.json', 'r', encoding='utf-8') as f:
+            gt_data = json.load(f)
     else:
         gt_data = []
-        print(f"❌ '{gt_path}' 파일이 없습니다.")
+        print("❌ 정답지 파일이 없습니다. 라벨링을 먼저 진행하세요.")
+        exit()
 
-    # 2. 채점할 모델들의 결과 파일 경로 세팅
-    models_to_evaluate = {
-        "1. PP-Structure": "../1_PaddleOCR-PP-Structure/output/sample/res_0.txt",
-        "2. TATR (Table Transformer)": "../2_TATR/tatr_result.json"  # 👈 TATR 결과 파일 이름에 맞게 수정 필요!
-    }
+    all_results = {}
 
-    # 3. 모델별로 돌아가면서 채점 시작
     for model_name, result_path in models_to_evaluate.items():
-        print(f"\n\n{'='*60}")
-        print(f"🚀 [{model_name}] 모델 채점 시작!")
-        print(f"{'='*60}")
-
         pred_boxes = []
         if os.path.exists(result_path):
             with open(result_path, 'r', encoding='utf-8') as f:
                 content = f.read()
                 try:
-                    # PP-Structure 형식인 경우
-                    if "res" in content and "cell_bbox" in content:
-                        data = json.loads(content)
+                    data = json.loads(content)
+                    # 1. PP-Structure 구조
+                    if "res" in data and "cell_bbox" in data["res"]:
                         pred_boxes = data['res']['cell_bbox']
-                    # TATR 형식인 경우 (리스트 형태라고 가정)
-                    else:
-                        pred_boxes = json.loads(content)
-                    print(f"✅ {model_name} 결과 로드 완료! (예측 박스: {len(pred_boxes)}개)")
+                    # 2. TATR Spanning 구조 (딕셔너리)
+                    elif "reconstructed_cells" in data:
+                        pred_boxes = [cell["bbox"] for cell in data["reconstructed_cells"]]
+                    # 3. TATR Grid Only 구조 (표준 JSON 리스트)
+                    elif isinstance(data, list) and len(data) > 0 and "bbox" in data[0]:
+                        pred_boxes = [cell["bbox"] for cell in data]
+                    # 구버전 호환용 (단순 좌표 리스트)
+                    elif isinstance(data, list):
+                        pred_boxes = data
                 except Exception as e:
-                    print(f"❌ 데이터 파싱 실패: {e}")
+                    print(f"❌ {model_name} 파싱 에러: {e}")
+                    
+        if pred_boxes:
+            all_results[model_name] = evaluate_model(
+                model_name, gt_data, pred_boxes, 
+                iou_thresholds=[0.3, 0.5, 0.7], 
+                eval_mode=EVAL_MODE
+            )
         else:
-            print(f"❌ 결과 파일이 없습니다: {result_path}")
+            print(f"❌ {model_name} 예측 결과를 찾을 수 없습니다.")
 
-        # 4. 채점 실행 (GT 데이터와 예측 박스가 모두 있을 때만)
-        if gt_data and pred_boxes:
-            evaluate_model(gt_data, pred_boxes, iou_thresholds=[0.3, 0.5, 0.7])    
+    with open(metrics_output_path, 'w', encoding='utf-8') as f:
+        json.dump(all_results, f, indent=2, ensure_ascii=False)
+    print(f"\n✅ 평가 완료! 결과가 '{metrics_output_path}'에 저장되었습니다.")

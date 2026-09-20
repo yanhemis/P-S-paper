@@ -1,0 +1,53 @@
+{
+  "1. PP-Structure (Paddle 2.8.1)": {
+    "0.3": {
+      "general_recall": 0.0,
+      "merged_recall": 0.0,
+      "overall": "N/A (Partial Mode)"
+    },
+    "0.5": {
+      "general_recall": 0.0,
+      "merged_recall": 0.0,
+      "overall": "N/A (Partial Mode)"
+    },
+    "0.7": {
+      "general_recall": 0.0,
+      "merged_recall": 0.0,
+      "overall": "N/A (Partial Mode)"
+    }
+  },
+  "2. TATR (Grid Only Ablation)": {
+    "0.3": {
+      "general_recall": 0.0,
+      "merged_recall": 0.0,
+      "overall": "N/A (Partial Mode)"
+    },
+    "0.5": {
+      "general_recall": 0.0,
+      "merged_recall": 0.0,
+      "overall": "N/A (Partial Mode)"
+    },
+    "0.7": {
+      "general_recall": 0.0,
+      "merged_recall": 0.0,
+      "overall": "N/A (Partial Mode)"
+    }
+  },
+  "3. TATR (+ Spanning Recon)": {
+    "0.3": {
+      "general_recall": 0.0,
+      "merged_recall": 0.0,
+      "overall": "N/A (Partial Mode)"
+    },
+    "0.5": {
+      "general_recall": 0.0,
+      "merged_recall": 0.0,
+      "overall": "N/A (Partial Mode)"
+    },
+    "0.7": {
+      "general_recall": 0.0,
+      "merged_recall": 0.0,
+      "overall": "N/A (Partial Mode)"
+    }
+  }
+}

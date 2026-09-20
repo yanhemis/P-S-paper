@@ -86,8 +86,7 @@
   * 단순 중복 매칭을 방지하기 위해 **1:1 Greedy Matching** 알고리즘을 도입.
   * 셀 속성을 **일반 셀(General)**과 **병합 셀(Merged)**로 분리하여 평가.
   * IoU Threshold(0.3, 0.5, 0.7)별로 **TP, FP, FN**을 산출하고 Precision, Recall, F1-Score를 측정.
-* **예비 검증 결과 (PP-Structure vs TATR):**
-  1. **PP-Structure (PaddleOCR 2.8.1):** 총 166개의 BBox를 예측하였으나 극심한 과분할(Over-segmentation)로 인해 막대한 잉여 박스(FP 125개)가 발생함.
-  2. **TATR (Table Transformer):** Spanning-cell 구조 결과를 반영하여 실제 cell bbox 재구성을 시도하였음에도, 총 209개의 예측 박스와 대량의 FP(156개)가 발생함.
-* **소결 및 향후 방향:**
-  두 모델 모두 복잡한 한국어 임대차계약서 병합 셀 영역에서 과분할 및 극히 낮은 일치율(Precision/Recall 0%)이 관찰되었습니다. 이는 범용 문서 구조 모델이 해당 도메인에 그대로 적용되기 어려움을 시사합니다. 향후 평가 코드와 Ground Truth(10장 이상)를 보완한 뒤, OpenCV 기반 물리적 셀 분할 등 독자적인 후처리 방법의 성능을 추가 검증할 계획입니다.
+* **예비 검증 결과 및 소결:**
+  현재 10개 선택 셀(Partial GT)을 이용한 예비 localization 테스트에서는 PP-Structure와 TATR 모두 일부 목표 셀과의 좌표 불일치 및 과분할 양상이 관찰되었습니다. 
+  다만, 현재의 Ground Truth가 페이지 전체 셀을 포함하지 않는 부분적 라벨링(Partial Annotation) 상태이므로, 이 단계에서 산출된 미매칭 예측(FP) 및 Precision 수치는 최종 성능 비교의 근거로 사용하지 않습니다. 
+  향후 대표 페이지의 모든 셀을 포함하는 Exhaustive Ground Truth를 구축한 후, 공통 evaluator를 통해 동일한 기준으로 재측정 및 추가 검증할 계획입니다.
