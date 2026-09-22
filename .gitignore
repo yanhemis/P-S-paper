@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# local envs (conda env는 저장소 밖 /opt/anaconda3/envs/tail 에 있음, 참고용)
+.venv/
+venv/
