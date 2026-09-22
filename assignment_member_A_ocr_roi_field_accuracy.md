@@ -1,4 +1,4 @@
-# 추가 인원 A 작업 배정 — OCR / ROI 재인식 / Field Accuracy
+# tail 작업 배정 — OCR / ROI 재인식 / Field Accuracy
 
 > 재배정일: 2026-09-22
 > 조기 체크: 2026-09-25
