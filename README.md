@@ -36,7 +36,7 @@
 | `dahye_cell_DetectionSurvey` | `assignment_dahye_structure_evaluation.md` | 09/30 | 10/05 | 구조 모델 비교 + 공통 evaluator |
 | `heewon` | `assignment_heewon_opencv_method_comparison.md` | 09/30 | 10/04 | Morphology vs Contour + Pipeline 현행화 |
 | `taegu` | `assignment_taegu_anchor_roi_field_mapping.md` | 10/02 | 10/06 | Anchor-ROI / Field Mapping |
-| 추가 인원 A | `assignment_member_A_ocr_roi_field_accuracy.md` | 09/25 | 10/07 | Full OCR vs ROI 재인식 |
+| `tail` | `assignment_member_A_ocr_roi_field_accuracy.md` | 09/25 | 10/07 | Full OCR vs ROI 재인식 |
 | 추가 인원 B | `assignment_member_B_anchor_roi_field_mapping.md` | 09/25 | 10/10 | 서버 의존성 / End-to-End 통합 |
 
 ---
