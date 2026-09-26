@@ -113,5 +113,5 @@
 * **예비 검증 결과 및 소결:**
   현재 10개 선택 셀(Partial GT)을 이용한 예비 localization 테스트에서는 PP-Structure와 TATR 모두 일부 목표 셀과의 좌표 불일치 및 과분할 양상이 관찰되었습니다. 
   다만, 현재의 Ground Truth가 페이지 전체 셀을 포함하지 않는 부분적 라벨링(Partial Annotation) 상태이므로, 이 단계에서 산출된 미매칭 예측(FP) 및 Precision 수치는 최종 성능 비교의 근거로 사용하지 않습니다. 
-  향후 대표 페이지의 모든 셀을 포함하는 Exhaustive Ground Truth를 구축한 후, 공통 evaluator를 통해 동일한 기준으로 재측정 및 추가 검증할 계획입니다.
+  현재 대표 페이지 1장 기준 95개 셀을 모두 포함하는 Exhaustive Ground Truth 구축을 완료하였으며, 이를 바탕으로 Baseline 모델(PP-Structure, TATR)의 최종 정량 평가를 수행한 결과는 상단의 비교표와 같습니다. 향후 팀원들의 OpenCV 기반 예측(Prediction) 결과 파일이 취합되면, 동일한 Evaluator를 돌려 표의 남은 빈칸을 채우고 최종 성능 비교를 완성할 계획입니다.
 
