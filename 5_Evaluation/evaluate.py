@@ -91,7 +91,8 @@ if __name__ == "__main__":
     models_to_evaluate = {
         "1. PP-Structure (Paddle 2.8.1)": "../1_PaddleOCR-PP-Structure/output/sample/res_0.txt",
         "2. TATR (Grid Only Ablation)": "../2_TATR/tatr_result_grid.json",
-        "3. TATR (+ Spanning Recon)": "../2_TATR/tatr_result_spanning.json"
+        "3. TATR (+ Spanning Recon)": "../2_TATR/tatr_result_spanning.json", 
+        "4. OpenCV (Rule-based)": "cells.json"
     }
     # ----------------
 
