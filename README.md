@@ -6,6 +6,18 @@
 
 ---
 
+## 🛠 공통 Evaluator 실행 방법 (evaluate.py)
+
+구조 인식 모델 및 OpenCV 파이프라인의 성능 평가는 `evaluate.py`를 통해 통합 진행합니다.
+
+1. **실행 명령어:** `cd 5_Evaluation` ->  `python evaluate.py`
+2. **평가 모드 설정:** 코드 내 `EVAL_MODE` 변수를 수정하여 진행
+   - `"PARTIAL"`: 일부 셀만 라벨링된 예비 GT용 (전체 Precision/FP 산출 안 함)
+   - `"EXHAUSTIVE"`: 페이지 내 모든 셀이 라벨링된 전체 GT용 (전체 P/R/F1 산출)
+3. **입력 데이터 포맷:** 새로운 모델 추가 시, 예측 결과는 아래 표준 JSON 리스트 형태를 권장합니다.
+   - `[{"bbox": [x1, y1, x2, y2], "type": "general" | "merged", "score": 0.99}, ...]`
+---
+
 ## 💻 1. 실행 환경 (Environment)
 * **OS:** Windows 11 (Local PC)
 * **CPU:** AMD Ryzen 5 5600X (GPU 비활성화, 순수 CPU 추론 연산)
@@ -90,3 +102,14 @@
   현재 10개 선택 셀(Partial GT)을 이용한 예비 localization 테스트에서는 PP-Structure와 TATR 모두 일부 목표 셀과의 좌표 불일치 및 과분할 양상이 관찰되었습니다. 
   다만, 현재의 Ground Truth가 페이지 전체 셀을 포함하지 않는 부분적 라벨링(Partial Annotation) 상태이므로, 이 단계에서 산출된 미매칭 예측(FP) 및 Precision 수치는 최종 성능 비교의 근거로 사용하지 않습니다. 
   향후 대표 페이지의 모든 셀을 포함하는 Exhaustive Ground Truth를 구축한 후, 공통 evaluator를 통해 동일한 기준으로 재측정 및 추가 검증할 계획입니다.
+
+---
+
+  ### 📊 모델별 구조 인식 성능 비교 (IoU 0.5 / 전체 95셀 기준)
+
+| 구조 모델 (Model) | Precision | Recall | F1-Score | General Recall | Merged Recall |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| 1. PP-Structure (Paddle 2.8.1) | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| 2. TATR (Grid Only Ablation) | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| 3. TATR (+ Spanning Recon) | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| 4. OpenCV (Rule-based) | - | - | - | - | - |
