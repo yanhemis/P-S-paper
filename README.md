@@ -17,3 +17,10 @@ python TestReult.py
 
 ## 출력
 각 셀은 `general`(일반) 또는 `merged`(병합) 타입으로 구분되어 bbox와 함께 저장됩니다.
+
+
+
+
+# Task_0930.py
+## venv를 켰는데도 No module named 'cv2'가 나오면, 폴더를 옮기면서 venv가 망가진 것입니다. 켜진 상태에서 패키지만 다시 설치하면 됩니다.
+# python -m pip install opencv-python numpy pillow matplotlib
