@@ -91,8 +91,9 @@ if __name__ == "__main__":
     models_to_evaluate = {
         "1. PP-Structure (Paddle 2.8.1)": "../1_PaddleOCR-PP-Structure/output/sample/res_0.txt",
         "2. TATR (Grid Only Ablation)": "../2_TATR/tatr_result_grid.json",
-        "3. TATR (+ Spanning Recon)": "../2_TATR/tatr_result_spanning.json", 
-        "4. OpenCV (Rule-based)": "cells.json"
+        "3. TATR (+ Spanning Recon)": "../2_TATR/tatr_result_spanning.json",
+        "4. OpenCV (Grid Only Ablation)": "cells_primitive.json",  # 기본 격자
+        "5. OpenCV (+ Spanning Recon)": "cells.json"               # 최종 완성본
     }
     # ----------------
 
@@ -116,8 +117,12 @@ if __name__ == "__main__":
                 content = f.read()
                 try:
                     data = json.loads(content)
+                    
+                    # 0. 추가 규칙: OpenCV 결과 (cells.json)
+                    if isinstance(data, dict) and "cells" in data:
+                        pred_boxes = [cell["bbox"] for cell in data["cells"]]
                     # 1. PP-Structure 구조
-                    if "res" in data and "cell_bbox" in data["res"]:
+                    elif "res" in data and "cell_bbox" in data["res"]:
                         pred_boxes = data['res']['cell_bbox']
                     # 2. TATR Spanning 구조 (딕셔너리)
                     elif "reconstructed_cells" in data:

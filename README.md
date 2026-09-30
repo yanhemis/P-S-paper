@@ -19,14 +19,15 @@
 
 ---
 
-  ### 📊 모델별 구조 인식 성능 비교 (IoU 0.5 / 전체 95셀 기준)
+  ### 📊 모델별 구조 인식 성능 비교 (IoU 0.5 / 95셀 Exhaustive GT)
 
 | 구조 모델 (Model) | Precision | Recall | F1-Score | General Recall | Merged Recall |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | 1. PP-Structure (Paddle 2.8.1) | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
 | 2. TATR (Grid Only Ablation) | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
 | 3. TATR (+ Spanning Recon) | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
-| 4. OpenCV (Rule-based) | - | - | - | - | - |
+| 4. OpenCV (Grid Only Ablation) | 11.7% | 28.4% | 16.6% | 48.0% | 6.7% |
+| 5. OpenCV (+ Spanning Recon) | 37.2% | 33.7% | 35.4% | 46.0% | 20.0% |
 
 ---
 

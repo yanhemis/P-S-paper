@@ -85,5 +85,63 @@
         "FN": 95
       }
     }
+  },
+  "4. OpenCV (Grid Only Ablation)": {
+    "0.3": {
+      "general_recall": 84.0,
+      "merged_recall": 33.33333333333333,
+      "overall": {
+        "TP": 57,
+        "FP": 174,
+        "FN": 38
+      }
+    },
+    "0.5": {
+      "general_recall": 48.0,
+      "merged_recall": 6.666666666666667,
+      "overall": {
+        "TP": 27,
+        "FP": 204,
+        "FN": 68
+      }
+    },
+    "0.7": {
+      "general_recall": 4.0,
+      "merged_recall": 0.0,
+      "overall": {
+        "TP": 2,
+        "FP": 229,
+        "FN": 93
+      }
+    }
+  },
+  "5. OpenCV (+ Spanning Recon)": {
+    "0.3": {
+      "general_recall": 74.0,
+      "merged_recall": 53.333333333333336,
+      "overall": {
+        "TP": 61,
+        "FP": 25,
+        "FN": 34
+      }
+    },
+    "0.5": {
+      "general_recall": 46.0,
+      "merged_recall": 20.0,
+      "overall": {
+        "TP": 32,
+        "FP": 54,
+        "FN": 63
+      }
+    },
+    "0.7": {
+      "general_recall": 4.0,
+      "merged_recall": 6.666666666666667,
+      "overall": {
+        "TP": 5,
+        "FP": 81,
+        "FN": 90
+      }
+    }
   }
 }
