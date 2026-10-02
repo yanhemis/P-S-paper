@@ -1,0 +1,99 @@
+{
+  "image_id": "sample_7.JPG",
+  "roi_source": "gt/gt_roi.json",
+  "pad_ratio": 0.1,
+  "runtime_sec": 0.6177575010224245,
+  "fields": {
+    "address": {
+      "text": "광 광역시 구 첨반 과기3 1235 5022",
+      "confidence": 0.6612353324890137,
+      "runtime_sec": 0.1835748750017956,
+      "items": [
+        {
+          "text": "광 광역시 구 첨반 과기3 1235 5022",
+          "confidence": 0.6612353324890137,
+          "bbox": [
+            21,
+            17,
+            1107,
+            114
+          ]
+        }
+      ]
+    },
+    "deposit_kor": {
+      "text": "일역사천9백",
+      "confidence": 0.7362222075462341,
+      "runtime_sec": 0.09718208300182596,
+      "items": [
+        {
+          "text": "일역사천9백",
+          "confidence": 0.7362222075462341,
+          "bbox": [
+            34,
+            25,
+            408,
+            96
+          ]
+        }
+      ]
+    },
+    "deposit_num": {
+      "text": "145,000,000",
+      "confidence": 0.9846517443656921,
+      "runtime_sec": 0.10162079200381413,
+      "items": [
+        {
+          "text": "145,000,000",
+          "confidence": 0.9846517443656921,
+          "bbox": [
+            30,
+            28,
+            363,
+            90
+          ]
+        }
+      ]
+    },
+    "down_payment": {
+      "text": "",
+      "confidence": 0.0,
+      "runtime_sec": 0.03984670899808407,
+      "items": []
+    },
+    "lessor_name": {
+      "text": "노경자",
+      "confidence": 0.9914526343345642,
+      "runtime_sec": 0.09749358301633038,
+      "items": [
+        {
+          "text": "노경자",
+          "confidence": 0.9914526343345642,
+          "bbox": [
+            48,
+            37,
+            270,
+            112
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "표진우",
+      "confidence": 0.9712173938751221,
+      "runtime_sec": 0.09803945900057442,
+      "items": [
+        {
+          "text": "표진우",
+          "confidence": 0.9712173938751221,
+          "bbox": [
+            46,
+            41,
+            265,
+            114
+          ]
+        }
+      ]
+    }
+  }
+}

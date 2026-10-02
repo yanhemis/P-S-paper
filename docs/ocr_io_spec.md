@@ -37,15 +37,18 @@
 
 - 필드마다 `quad`(4점, **좌상 → 우상 → 우하 → 좌하** 순서)나 `bbox` 중 하나를 준다. 둘 다 있으면 `quad`를 쓴다.
 - 기울어진 촬영본은 `quad`를 권장한다. `bbox`만 주면 기울어진 행에서 위아래 행이 섞인다.
-- 칸 경계(표 선) 기준으로 주면 된다. 손글씨가 선을 넘는 경우를 위해 모듈이 위아래로 칸 높이의 25%를 자동으로 늘린다.
+- 칸 경계(표 선) 기준으로 주면 된다. 손글씨가 선을 넘는 경우를 위해 모듈이 위아래로 칸 높이의 25%를 자동으로 늘린다 (`--pad`로 조절. 이미 여유를 크게 잡은 ROI는 `--pad 0`).
 - 검출하지 못한 필드는 키를 빼면 된다. 평가 시 빈 예측으로 처리된다(= 실패).
 - 참고 예시: `gt/gt_roi.json` (실험 B의 GT ROI, 같은 형식)
 
 실행:
 
 ```bash
-python scripts/roi_ocr.py <detected_roi.json> results/roi_detected
+python scripts/roi_ocr.py <detected_roi.json> results/roi_detected [--pad 0]
 python scripts/evaluate_fields.py --detected results/roi_detected
+
+# taegu field_mapping_result.json 형식({"image", "fields": {"소재지": {"value_roi": [...]}}})이면 먼저 변환
+python scripts/convert_teammate.py taegu-roi <field_mapping_result.json> results/detected_roi/taegu.json
 ```
 
 ## 2. ROI OCR 출력 — `<out_dir>/<image_stem>_roi_ocr.json`
@@ -54,6 +57,7 @@ python scripts/evaluate_fields.py --detected results/roi_detected
 {
   "image_id": "sample_1.JPG",
   "roi_source": "gt/gt_roi.json",
+  "pad_ratio": 0.25,
   "runtime_sec": 1.01,
   "fields": {
     "deposit_num": {

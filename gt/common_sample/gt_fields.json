@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "source": "taegu field_gt.json",
+    "corrections": {
+      "sample.jpg/address": {
+        "taegu": "서울특별시 강남구 테헤란로 123, 4층 401",
+        "tail": "서울특별시 강남구 테헤란로 123, 4층 401호"
+      }
+    }
+  },
+  "sample.jpg": {
+    "address": "서울특별시 강남구 테헤란로 123, 4층 401호",
+    "lessor_name": "고결",
+    "lessee_name": "김영수",
+    "deposit_kor": "일억",
+    "down_payment": "일천만"
+  }
+}

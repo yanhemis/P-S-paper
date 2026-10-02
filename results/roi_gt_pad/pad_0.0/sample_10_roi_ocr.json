@@ -1,0 +1,110 @@
+{
+  "image_id": "sample_10.JPG",
+  "roi_source": "gt/gt_roi.json",
+  "pad_ratio": 0.0,
+  "runtime_sec": 0.6935213330434635,
+  "fields": {
+    "address": {
+      "text": "대?광역시 수성2 달구발대로 235, 405",
+      "confidence": 0.7603164315223694,
+      "runtime_sec": 0.22673525000573136,
+      "items": [
+        {
+          "text": "대?광역시 수성2 달구발대로 235, 405",
+          "confidence": 0.7603164315223694,
+          "bbox": [
+            31,
+            27,
+            672,
+            71
+          ]
+        }
+      ]
+    },
+    "deposit_kor": {
+      "text": "이원만",
+      "confidence": 0.9343786239624023,
+      "runtime_sec": 0.10541425002156757,
+      "items": [
+        {
+          "text": "이원만",
+          "confidence": 0.9343786239624023,
+          "bbox": [
+            633,
+            30,
+            752,
+            73
+          ]
+        }
+      ]
+    },
+    "deposit_num": {
+      "text": "20000,000",
+      "confidence": 0.9653044939041138,
+      "runtime_sec": 0.08852145800483413,
+      "items": [
+        {
+          "text": "20000,000",
+          "confidence": 0.9653044939041138,
+          "bbox": [
+            54,
+            33,
+            272,
+            70
+          ]
+        }
+      ]
+    },
+    "down_payment": {
+      "text": "이백만",
+      "confidence": 0.8445823788642883,
+      "runtime_sec": 0.09519275001366623,
+      "items": [
+        {
+          "text": "이백만",
+          "confidence": 0.8445823788642883,
+          "bbox": [
+            359,
+            28,
+            472,
+            74
+          ]
+        }
+      ]
+    },
+    "lessor_name": {
+      "text": "재원석",
+      "confidence": 0.791557788848877,
+      "runtime_sec": 0.08865583300939761,
+      "items": [
+        {
+          "text": "재원석",
+          "confidence": 0.791557788848877,
+          "bbox": [
+            31,
+            28,
+            187,
+            84
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "봉하늘",
+      "confidence": 0.9560406804084778,
+      "runtime_sec": 0.08900179198826663,
+      "items": [
+        {
+          "text": "봉하늘",
+          "confidence": 0.9560406804084778,
+          "bbox": [
+            74,
+            33,
+            178,
+            84
+          ]
+        }
+      ]
+    }
+  }
+}

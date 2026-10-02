@@ -18,7 +18,7 @@
 | CER / Exact Match / confidence / Field Accuracy / sec/image | ✅ A vs B 비교 완료 |
 | 대표 성공·실패 사례 | ✅ 8개 정리 |
 | OCR 입출력 규격 문서 | ✅ 작성 완료 (전달 필요) |
-| **실험 C — 실제 검출 ROI OCR** | ⏳ **팀원 ROI 결과 대기** (아래 5절) |
+| **실험 C — 실제 검출 ROI OCR** | 🔶 파이프라인은 연결 완료 (공통 `sample.jpg` 1장, taegu ROI). **10장은 팀원 ROI 결과 대기** (아래 5절) |
 
 ---
 
@@ -75,7 +75,23 @@
 3. 박스 글자의 **50% 이상이 ROI 안이면 박스 전체를** 그 필드에 넣는다. 글자 폭이 일정하다는 가정 때문에 경계 글자가 잘리는 것을 막기 위해서다
 4. 모은 글자를 ROI의 가로 방향 순서로 이어 붙인다
 
-### 2-3. 결과 해석 시 주의할 점 (한계)
+### 2-3. 실험 C 중간 결과 — 공통 `sample.jpg` 1장, taegu anchor ROI
+
+팀원 결과가 아직 공통 `sample.jpg` 1장뿐이라, 파이프라인 연결 확인용으로만 돌렸다. **1장이라 수치 자체는 의미가 거의 없다.**
+(정답은 `taegu/field_gt.json`을 변환해 썼다. 보증금은 한글 금액만 있어서 전체 합계는 4필드다.)
+
+| 방법 | EM (4필드) | 평균 CER | sec/image |
+|---|---|---|---|
+| Full OCR | 3/4 | 0.012 | 30.94 |
+| GT ROI OCR | 3/4 | 0.012 | 0.60 |
+| Detected ROI OCR (taegu `value_roi`, 여유 0) | 2/4 | 1.024 | 3.23 |
+
+- 성명 2개는 taegu ROI로도 맞았다 (`(인)`이 함께 읽히지만 정규화에서 제거됨)
+- **보증금·계약금은 실패했다**: taegu ROI가 2~3행에 걸쳐 있어서 `금 금 금 일천만 사천만 원정은…`처럼 다른 행 값이 섞였다 → ROI를 해당 행 높이로 줄여야 실험 C에서 의미 있는 비교가 가능하다
+- 소재지는 세 방법 모두 `호`를 놓쳤다(`401`). taegu ROI는 아래 행 인쇄 글자 `(대지권의 목적인`도 섞였다
+- 결과: `results/eval/common_sample/summary.md`
+
+### 2-4. 결과 해석 시 주의할 점 (한계)
 
 - **표본이 작다**: 49필드, 10장이다. A와 B의 차이(+2건)는 통계적으로 확실한 차이가 아니라 경향으로 봐야 한다
 - **필체가 하나다**: 10장 모두 한 사람이 썼고 인쇄체 기입이 없다(#7도 손글씨). 다른 필체로 일반화할 수 있는지는 확인하지 않았다
@@ -85,7 +101,16 @@
 - **Full OCR 필드 배정은 근사다**: 글자 폭이 일정하다고 가정한다. 인쇄 글자와 손글씨가 섞인 긴 박스에서는 경계 글자가 한두 개 어긋날 수 있다
 - **ROI 처리 시간에는 칸 검출 시간이 빠져 있다**: 0.93초/장은 OCR만의 시간이다. 실제 파이프라인 시간은 실험 C에서 검출 시간을 더해야 한다
 - **인식 모델은 하나만 썼다**: `korean_PP-OCRv5_mobile_rec` 하나다. 서버 모델은 메모리 문제로 쓰지 못했다. 손글씨 오인식 결론은 이 모델에 한정된다
-- **ROI 여유 비율(25%)은 고정값이다**: 손글씨가 선을 넘는 경우를 위해 정했지만, 다음 행 글자가 섞이는 부작용이 있다(사례 C-1). 최적값은 탐색하지 않았다
+- **ROI 여유 비율(25%)은 고정값이지만, 결과는 이 값에 거의 영향을 받지 않는다**: 0 / 0.10 / 0.25 / 0.40으로 바꿔 돌려 봐도 EM은 30~31/49였다(아래 표). 같은 10장으로 최적값을 고르면 과적합이 되므로 0.25를 유지한다
+
+  | 여유 비율 | EM | 평균 CER | sec/image |
+  |---|---|---|---|
+  | 0 | 30/49 | 0.151 | 0.86 |
+  | 0.10 | 31/49 | 0.114 | 0.80 |
+  | **0.25 (사용)** | **31/49** | **0.117** | 0.93 |
+  | 0.40 | 30/49 | 0.150 | 1.04 |
+
+  여유가 0이면 선을 넘은 획이 잘리고, 0.40이면 다음 행 글자가 섞여서 CER이 양쪽 끝에서 나빠진다 (`results/eval/pad_sweep/`)
 
 ---
 
@@ -114,17 +139,22 @@ tail/
 │   ├── ocr_baseline.py        # 실험 A: 전체 페이지 OCR → results/<stem>_ocr.json, _vis.png
 │   ├── make_gt_roi.py         # GT ROI 생성 보조: 양식 템플릿 → 촬영본 호모그래피 → gt/gt_roi.json
 │   ├── roi_ocr.py             # 실험 B/C: ROI crop → OCR → <out_dir>/<stem>_roi_ocr.json
-│   └── evaluate_fields.py     # 평가: Full vs GT ROI (vs Detected ROI) → results/eval/
+│   ├── evaluate_fields.py     # 평가: Full vs GT ROI (vs Detected ROI) → results/eval/
+│   └── convert_teammate.py    # 팀원(taegu) 결과 → tail 형식 변환 (팀원 폴더는 읽기만)
 │
 ├── gt/
 │   ├── template.png           # 양식 PDF를 300dpi로 렌더링한 기준 이미지
 │   ├── gt_fields.json         # 정답 텍스트 (이미지 × 필드)
 │   ├── gt_roi.json            # 정답 ROI (이미지 × 필드, 4점 quad + bbox, 원본 좌표)
-│   └── check/                 # GT ROI 육안 검수용 이미지 10장
+│   ├── check/                 # GT ROI 육안 검수용 이미지 10장
+│   └── common_sample/         # 공통 sample.jpg 정답 (taegu field_gt.json 변환본)
 │
 ├── results/
 │   ├── sample_{1..10}_ocr.json / _vis.png   # 실험 A 결과 (+ 공통 sample.jpg 결과)
 │   ├── roi_gt/                # 실험 B 결과 + crops/ (ROI 60개)
+│   ├── roi_gt_pad/            # 실험 B 여유 비율 민감도 (0 / 0.1 / 0.4)
+│   ├── detected_roi/          # 실험 C 입력 (팀원 ROI 변환본)
+│   ├── common_sample/         # 공통 sample.jpg의 실험 B/C 결과
 │   ├── eval/                  # summary.md, field_results.json, 팀원 ROI 좌표 확인 이미지
 │   └── cases/                 # 대표 성공·실패 사례 (cases.md + crop 이미지)
 │
@@ -151,7 +181,9 @@ python scripts/make_gt_roi.py sample_data_jpg/sample_{1..10}.JPG
 python scripts/roi_ocr.py gt/gt_roi.json results/roi_gt
 
 # 실험 C — 검출 ROI OCR (팀원 ROI를 docs/ocr_io_spec.md 1절 형식으로 받은 뒤)
-python scripts/roi_ocr.py <detected_roi.json> results/roi_detected
+python scripts/roi_ocr.py <detected_roi.json> results/roi_detected --pad 0   # 검출 ROI는 이미 여유가 있으면 --pad 0
+# taegu field_mapping_result.json 형식으로 받은 경우 먼저 변환 (팀원 폴더는 읽기만 함)
+python scripts/convert_teammate.py taegu-roi ../taegu/<result>.json results/detected_roi/taegu.json
 
 # 평가
 python scripts/evaluate_fields.py                                  # A vs B
@@ -203,8 +235,9 @@ python scripts/evaluate_fields.py --detected results/roi_detected  # A vs B vs C
    | `임차인_성명` | `lessee_name` | |
 
    → **보증금 대표값을 숫자로 할지 한글로 할지 팀 차원에서 정하자** (tail 결과: 숫자 칸이 한글 칸보다 훨씬 정확함, EM 7~8/10 vs 2/10)
-3. **ROI 크기**: 현재 `value_roi`는 라벨 폭의 6배, 라벨 높이의 ±50%로 잡은 고정 비율 영역이다. 정답 대비 면적이 13~18배이고, 보증금 ROI가 계약금 행까지, 계약금 ROI가 중도금 행까지 내려간다. ROI를 다시 OCR하는 실험 C에서는 다른 행 글자가 섞여 결과가 나빠질 수 있다
-4. **평가 중복 정리**: `taegu/evaluate_fields.py`는 원문을 그대로 비교하고, `tail/scripts/evaluate_fields.py`는 정규화한 뒤 비교한다(공백·인쇄 글자·쉼표 제거, `docs/ocr_io_spec.md` 4절). 같은 예측이라도 점수가 달라지므로 공통 evaluator를 하나로 정하자
+3. **정답 확인**: `field_gt.json`의 sample.jpg 소재지가 `…4층 401`인데, 이미지에는 `401호`로 적혀 있다 (tail 변환본에서는 `401호`로 고쳐서 사용, 원본 파일은 건드리지 않음)
+4. **ROI 크기**: 현재 `value_roi`는 라벨 폭의 6배, 라벨 높이의 ±50%로 잡은 고정 비율 영역이다. 정답 대비 면적이 13~18배이고, 보증금 ROI가 계약금 행까지, 계약금 ROI가 중도금 행까지 내려간다. ROI를 다시 OCR하는 실험 C에서는 다른 행 글자가 섞여 결과가 나빠질 수 있다 → sample.jpg로 실제로 돌려 보니 **보증금·계약금이 다른 행 값과 섞여 실패**했다 (2-3절). ROI 높이를 해당 행으로 줄여 달라
+5. **평가 중복 정리**: `taegu/evaluate_fields.py`는 원문을 그대로 비교하고, `tail/scripts/evaluate_fields.py`는 정규화한 뒤 비교한다(공백·인쇄 글자·쉼표 제거, `docs/ocr_io_spec.md` 4절). 같은 예측이라도 점수가 달라지므로 공통 evaluator를 하나로 정하자
 
 ### 추가 인원 B (OCR 결과 통합)
 
@@ -225,8 +258,10 @@ python scripts/evaluate_fields.py --detected results/roi_detected  # A vs B vs C
 
 ## 6. 남은 작업 (tail)
 
-- [ ] 실험 C 실행 및 A/B/C 비교표 (팀원 ROI 수신 후 바로 가능)
+- [x] 실험 C 파이프라인 연결 확인 (sample.jpg 1장, taegu ROI)
+- [ ] 실험 C 10장 실행 및 A/B/C 비교표 (팀원 ROI 수신 후 바로 가능)
 - [ ] 촬영 조건 매핑 확인 → 조건별 비교 (H1)
-- [ ] (선택) ROI 후처리: crop 가장자리에 걸친 작은 박스 제거, 위아래 여유 비율 조정
+- [x] ROI 여유 비율 민감도 확인 (결과에 거의 영향 없음)
+- [ ] (선택) ROI 후처리: crop 가장자리에 걸친 작은 박스 제거
 - [ ] (선택) 잔금 / 계약기간 필드 추가
 - [ ] 결과 시각화 PNG 용량 정리 (장당 약 18MB) 후 커밋

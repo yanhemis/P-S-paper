@@ -3,6 +3,9 @@
 
 사용법:
     python evaluate_fields.py [--detected <roi_ocr_dir>]
+    # 다른 GT 세트(예: 공통 sample.jpg)로 평가할 때
+    python evaluate_fields.py --gt-fields <json> --gt-roi <json> --roi-gt-dir <dir> \
+        [--detected <dir>] --out-dir <dir>
 
 입력:
 - gt/gt_fields.json         : 필드별 정답 텍스트
@@ -27,6 +30,7 @@ Full OCR의 필드 배정 방식:
 
 import sys
 import json
+import argparse
 import re
 import unicodedata
 from pathlib import Path
@@ -34,7 +38,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from roi_ocr import expand_quad  # noqa: E402  실험 B와 같은 ROI 여유를 쓰기 위함
+from roi_ocr import expand_quad, quad_of  # noqa: E402  실험 B와 같은 ROI 여유를 쓰기 위함
 
 ROOT = Path(__file__).resolve().parent.parent
 GT_FIELDS = ROOT / "gt" / "gt_fields.json"
@@ -162,7 +166,7 @@ def evaluate_method(method, preds, gt_fields):
                 {
                     "method": method,
                     "image": image,
-                    "set": gt["set"],
+                    "set": gt.get("set", "-"),
                     "field": field,
                     "gt": gt_text,
                     "pred_raw": pred_raw,
@@ -176,17 +180,19 @@ def evaluate_method(method, preds, gt_fields):
     return rows
 
 
-def load_full_preds(gt_roi):
+def load_full_preds(gt_roi, full_dir=FULL_DIR):
     preds, runtimes = {}, {}
     for image, entry in gt_roi.items():
-        path = FULL_DIR / f"{Path(image).stem}_ocr.json"
+        if image.startswith("_"):
+            continue
+        path = Path(full_dir) / f"{Path(image).stem}_ocr.json"
         if not path.exists():
             continue
         data = json.loads(path.read_text(encoding="utf-8"))
         if data["items"] and "poly" not in data["items"][0]:
             raise SystemExit(f"{path.name}에 poly가 없음 -> ocr_baseline.py를 다시 실행할 것")
         preds[image] = {
-            f: assign_full_ocr(data["items"], np.float32(roi["quad"]))
+            f: assign_full_ocr(data["items"], quad_of(roi))
             for f, roi in entry["fields"].items()
         }
         runtimes[image] = data["runtime_sec"]
@@ -249,22 +255,32 @@ def summarize(rows, methods):
     return "\n".join(lines)
 
 
-def main():
-    detected_dir = None
-    if "--detected" in sys.argv:
-        detected_dir = Path(sys.argv[sys.argv.index("--detected") + 1]).resolve()
+def parse_args():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--gt-fields", type=Path, default=GT_FIELDS)
+    ap.add_argument("--gt-roi", type=Path, default=GT_ROI)
+    ap.add_argument("--full-dir", type=Path, default=FULL_DIR)
+    ap.add_argument("--roi-gt-dir", type=Path, default=ROI_GT_DIR)
+    ap.add_argument("--detected", type=Path, default=None)
+    ap.add_argument("--out-dir", type=Path, default=EVAL_DIR)
+    return ap.parse_args()
 
-    gt_fields = json.loads(GT_FIELDS.read_text(encoding="utf-8"))
-    gt_roi = json.loads(GT_ROI.read_text(encoding="utf-8"))
+
+def main():
+    args = parse_args()
+    detected_dir = args.detected
+
+    gt_fields = json.loads(args.gt_fields.read_text(encoding="utf-8"))
+    gt_roi = json.loads(args.gt_roi.read_text(encoding="utf-8"))
 
     rows, methods, perf = [], [], {}
 
-    full_preds, full_rt = load_full_preds(gt_roi)
+    full_preds, full_rt = load_full_preds(gt_roi, args.full_dir)
     rows += evaluate_method("Full OCR", full_preds, gt_fields)
     methods.append("Full OCR")
     perf["Full OCR"] = {"sec_per_image": float(np.mean(list(full_rt.values())))}
 
-    for name, d in [("GT ROI OCR", ROI_GT_DIR), ("Detected ROI OCR", detected_dir)]:
+    for name, d in [("GT ROI OCR", args.roi_gt_dir), ("Detected ROI OCR", detected_dir)]:
         if d is None or not Path(d).exists():
             continue
         preds, rt, per_roi = load_roi_preds(d)
@@ -277,8 +293,9 @@ def main():
             "sec_per_roi": float(np.mean(per_roi)),
         }
 
-    EVAL_DIR.mkdir(parents=True, exist_ok=True)
-    (EVAL_DIR / "field_results.json").write_text(
+    out_dir = args.out_dir
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "field_results.json").write_text(
         json.dumps({"performance": perf, "rows": rows}, ensure_ascii=False, indent=2), encoding="utf-8"
     )
 
@@ -303,7 +320,7 @@ def main():
                 cells.append("-" if x is None else ("✅ " if x["exact_match"] else "❌ ") + f"`{x['pred_norm']}`")
             md.append(f"| {img} | {FIELD_LABELS[f]} | `{base['gt_norm']}` | " + " | ".join(cells) + " |")
 
-    (EVAL_DIR / "summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+    (out_dir / "summary.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(summarize(rows, methods))
     print("\nperformance:", json.dumps(perf, ensure_ascii=False))
 

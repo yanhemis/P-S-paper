@@ -1,0 +1,110 @@
+{
+  "image_id": "sample_9.JPG",
+  "roi_source": "gt/gt_roi.json",
+  "pad_ratio": 0.0,
+  "runtime_sec": 0.8125820410205051,
+  "fields": {
+    "address": {
+      "text": "서월특별시 성동국 9심리3 115 11033",
+      "confidence": 0.8258287310600281,
+      "runtime_sec": 0.2603414579934906,
+      "items": [
+        {
+          "text": "서월특별시 성동국 9심리3 115 11033",
+          "confidence": 0.8258287310600281,
+          "bbox": [
+            33,
+            28,
+            999,
+            85
+          ]
+        }
+      ]
+    },
+    "deposit_kor": {
+      "text": "9천만",
+      "confidence": 0.6639881730079651,
+      "runtime_sec": 0.13234574999660254,
+      "items": [
+        {
+          "text": "9천만",
+          "confidence": 0.6639881730079651,
+          "bbox": [
+            835,
+            26,
+            1030,
+            91
+          ]
+        }
+      ]
+    },
+    "deposit_num": {
+      "text": "50,000,00",
+      "confidence": 0.9003403782844543,
+      "runtime_sec": 0.11572912501287647,
+      "items": [
+        {
+          "text": "50,000,00",
+          "confidence": 0.9003403782844543,
+          "bbox": [
+            31,
+            28,
+            440,
+            85
+          ]
+        }
+      ]
+    },
+    "down_payment": {
+      "text": "1백만",
+      "confidence": 0.6653559803962708,
+      "runtime_sec": 0.11217125001712702,
+      "items": [
+        {
+          "text": "1백만",
+          "confidence": 0.6653559803962708,
+          "bbox": [
+            488,
+            29,
+            647,
+            90
+          ]
+        }
+      ]
+    },
+    "lessor_name": {
+      "text": "도상현 ",
+      "confidence": 0.8520856499671936,
+      "runtime_sec": 0.09445545799098909,
+      "items": [
+        {
+          "text": "도상현 ",
+          "confidence": 0.8520856499671936,
+          "bbox": [
+            43,
+            32,
+            343,
+            110
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "마수빈",
+      "confidence": 0.9890918731689453,
+      "runtime_sec": 0.0975390000094194,
+      "items": [
+        {
+          "text": "마수빈",
+          "confidence": 0.9890918731689453,
+          "bbox": [
+            85,
+            35,
+            264,
+            102
+          ]
+        }
+      ]
+    }
+  }
+}

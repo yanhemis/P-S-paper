@@ -1,0 +1,93 @@
+{
+  "image_id": "sample.jpg",
+  "roi_source": "gt/common_sample/gt_roi.json",
+  "pad_ratio": 0.25,
+  "runtime_sec": 0.5962219990324229,
+  "fields": {
+    "address": {
+      "text": "서울특별시 강남구 테헤란로 123,4층 401",
+      "confidence": 0.9154221415519714,
+      "runtime_sec": 0.24789004100603051,
+      "items": [
+        {
+          "text": "서울특별시 강남구 테헤란로 123,4층 401",
+          "confidence": 0.9154221415519714,
+          "bbox": [
+            32,
+            25,
+            982,
+            116
+          ]
+        }
+      ]
+    },
+    "lessor_name": {
+      "text": "고결",
+      "confidence": 0.8584930300712585,
+      "runtime_sec": 0.08655416700639762,
+      "items": [
+        {
+          "text": "고결",
+          "confidence": 0.8584930300712585,
+          "bbox": [
+            35,
+            69,
+            164,
+            154
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "김영수",
+      "confidence": 0.9927313923835754,
+      "runtime_sec": 0.08342141701723449,
+      "items": [
+        {
+          "text": "김영수",
+          "confidence": 0.9927313923835754,
+          "bbox": [
+            30,
+            52,
+            177,
+            127
+          ]
+        }
+      ]
+    },
+    "deposit_kor": {
+      "text": "일억",
+      "confidence": 0.9816213846206665,
+      "runtime_sec": 0.08567841601325199,
+      "items": [
+        {
+          "text": "일억",
+          "confidence": 0.9816213846206665,
+          "bbox": [
+            29,
+            34,
+            184,
+            124
+          ]
+        }
+      ]
+    },
+    "down_payment": {
+      "text": "일천만",
+      "confidence": 0.9929576516151428,
+      "runtime_sec": 0.09267795798950829,
+      "items": [
+        {
+          "text": "일천만",
+          "confidence": 0.9929576516151428,
+          "bbox": [
+            34,
+            57,
+            209,
+            135
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "image_id": "sample_7.JPG",
+  "roi_source": "gt/gt_roi.json",
+  "pad_ratio": 0.0,
+  "runtime_sec": 0.6744505839888006,
+  "fields": {
+    "address": {
+      "text": "과우 광역시 구 첨반 과기3 1235 5022",
+      "confidence": 0.7017027139663696,
+      "runtime_sec": 0.21693912500631995,
+      "items": [
+        {
+          "text": "과우 광역시 구 첨반 과기3 1235 5022",
+          "confidence": 0.7017027139663696,
+          "bbox": [
+            24,
+            18,
+            1104,
+            99
+          ]
+        }
+      ]
+    },
+    "deposit_kor": {
+      "text": "일억사전오백",
+      "confidence": 0.7651836276054382,
+      "runtime_sec": 0.09921233300701715,
+      "items": [
+        {
+          "text": "일억사전오백",
+          "confidence": 0.7651836276054382,
+          "bbox": [
+            32,
+            27,
+            405,
+            84
+          ]
+        }
+      ]
+    },
+    "deposit_num": {
+      "text": "145,000,000 ",
+      "confidence": 0.9226827025413513,
+      "runtime_sec": 0.1211324589967262,
+      "items": [
+        {
+          "text": "145,000,000 ",
+          "confidence": 0.9226827025413513,
+          "bbox": [
+            30,
+            28,
+            468,
+            83
+          ]
+        }
+      ]
+    },
+    "down_payment": {
+      "text": "",
+      "confidence": 0.0,
+      "runtime_sec": 0.04098941700067371,
+      "items": []
+    },
+    "lessor_name": {
+      "text": "노경자",
+      "confidence": 0.993671715259552,
+      "runtime_sec": 0.09765091698500328,
+      "items": [
+        {
+          "text": "노경자",
+          "confidence": 0.993671715259552,
+          "bbox": [
+            28,
+            31,
+            272,
+            105
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "표진우",
+      "confidence": 0.9718702435493469,
+      "runtime_sec": 0.09852633299306035,
+      "items": [
+        {
+          "text": "표진우",
+          "confidence": 0.9718702435493469,
+          "bbox": [
+            29,
+            32,
+            269,
+            106
+          ]
+        }
+      ]
+    }
+  }
+}

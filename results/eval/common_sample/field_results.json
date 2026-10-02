@@ -1,0 +1,212 @@
+{
+  "performance": {
+    "Full OCR": {
+      "sec_per_image": 30.943263958004536
+    },
+    "GT ROI OCR": {
+      "sec_per_image": 0.5962219990324229,
+      "sec_per_roi": 0.11924439980648457
+    },
+    "Detected ROI OCR": {
+      "sec_per_image": 3.2266758759797085,
+      "sec_per_roi": 0.6453351751959417
+    }
+  },
+  "rows": [
+    {
+      "method": "Full OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "address",
+      "gt": "서울특별시 강남구 테헤란로 123, 4층 401호",
+      "pred_raw": "서울특별시 강남구 테헤란로 123,4층 401",
+      "pred_norm": "서울특별시강남구테헤란로1234층401",
+      "gt_norm": "서울특별시강남구테헤란로1234층401호",
+      "cer": 0.047619047619047616,
+      "exact_match": false,
+      "confidence": 0.9311750531196594
+    },
+    {
+      "method": "Full OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "deposit_kor",
+      "gt": "일억",
+      "pred_raw": "일억",
+      "pred_norm": "일억",
+      "gt_norm": "일억",
+      "cer": 0.0,
+      "exact_match": true,
+      "confidence": 0.9942190647125244
+    },
+    {
+      "method": "Full OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "down_payment",
+      "gt": "일천만",
+      "pred_raw": "일천만",
+      "pred_norm": "일천만",
+      "gt_norm": "일천만",
+      "cer": 0.0,
+      "exact_match": true,
+      "confidence": 0.9951245188713074
+    },
+    {
+      "method": "Full OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "lessor_name",
+      "gt": "고결",
+      "pred_raw": "고결",
+      "pred_norm": "고결",
+      "gt_norm": "고결",
+      "cer": 0.0,
+      "exact_match": true,
+      "confidence": 0.8622419834136963
+    },
+    {
+      "method": "Full OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "lessee_name",
+      "gt": "김영수",
+      "pred_raw": "김영수",
+      "pred_norm": "김영수",
+      "gt_norm": "김영수",
+      "cer": 0.0,
+      "exact_match": true,
+      "confidence": 0.994459331035614
+    },
+    {
+      "method": "GT ROI OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "address",
+      "gt": "서울특별시 강남구 테헤란로 123, 4층 401호",
+      "pred_raw": "서울특별시 강남구 테헤란로 123,4층 401",
+      "pred_norm": "서울특별시강남구테헤란로1234층401",
+      "gt_norm": "서울특별시강남구테헤란로1234층401호",
+      "cer": 0.047619047619047616,
+      "exact_match": false,
+      "confidence": 0.9154221415519714
+    },
+    {
+      "method": "GT ROI OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "deposit_kor",
+      "gt": "일억",
+      "pred_raw": "일억",
+      "pred_norm": "일억",
+      "gt_norm": "일억",
+      "cer": 0.0,
+      "exact_match": true,
+      "confidence": 0.9816213846206665
+    },
+    {
+      "method": "GT ROI OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "down_payment",
+      "gt": "일천만",
+      "pred_raw": "일천만",
+      "pred_norm": "일천만",
+      "gt_norm": "일천만",
+      "cer": 0.0,
+      "exact_match": true,
+      "confidence": 0.9929576516151428
+    },
+    {
+      "method": "GT ROI OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "lessor_name",
+      "gt": "고결",
+      "pred_raw": "고결",
+      "pred_norm": "고결",
+      "gt_norm": "고결",
+      "cer": 0.0,
+      "exact_match": true,
+      "confidence": 0.8584930300712585
+    },
+    {
+      "method": "GT ROI OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "lessee_name",
+      "gt": "김영수",
+      "pred_raw": "김영수",
+      "pred_norm": "김영수",
+      "gt_norm": "김영수",
+      "cer": 0.0,
+      "exact_match": true,
+      "confidence": 0.9927313923835754
+    },
+    {
+      "method": "Detected ROI OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "address",
+      "gt": "서울특별시 강남구 테헤란로 123, 4층 401호",
+      "pred_raw": "서울트별시 강남구 테헤란로 123,4층 401 (대지권의 목적인",
+      "pred_norm": "서울트별시강남구테헤란로1234층401(대지권의목적인",
+      "gt_norm": "서울특별시강남구테헤란로1234층401호",
+      "cer": 0.42857142857142855,
+      "exact_match": false,
+      "confidence": 0.9592590034008026
+    },
+    {
+      "method": "Detected ROI OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "deposit_kor",
+      "gt": "일억",
+      "pred_raw": "특적) 위 쿠공산ㅋ B 2 금 일천만 원정은 계약시에 지급히 일억",
+      "pred_norm": "특적위쿠공산ㅋB2일천만계약시에지급히일억",
+      "gt_norm": "일억",
+      "cer": 9.5,
+      "exact_match": false,
+      "confidence": 0.8678276737531027
+    },
+    {
+      "method": "Detected ROI OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "down_payment",
+      "gt": "일천만",
+      "pred_raw": "금 금 금 일천만 사천만 원정은 계약시에 지급해 원정은2",
+      "pred_norm": "일천만사천만계약시에지급해2",
+      "gt_norm": "일천만",
+      "cer": 3.6666666666666665,
+      "exact_match": false,
+      "confidence": 0.9147925206593105
+    },
+    {
+      "method": "Detected ROI OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "lessor_name",
+      "gt": "고결",
+      "pred_raw": "고결 (인)",
+      "pred_norm": "고결",
+      "gt_norm": "고결",
+      "cer": 0.0,
+      "exact_match": true,
+      "confidence": 0.9877040088176727
+    },
+    {
+      "method": "Detected ROI OCR",
+      "image": "sample.jpg",
+      "set": "-",
+      "field": "lessee_name",
+      "gt": "김영수",
+      "pred_raw": "김영수 (인)",
+      "pred_norm": "김영수",
+      "gt_norm": "김영수",
+      "cer": 0.0,
+      "exact_match": true,
+      "confidence": 0.9950226247310638
+    }
+  ]
+}

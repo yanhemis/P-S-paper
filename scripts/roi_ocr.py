@@ -2,12 +2,15 @@
 실험 B / C - ROI OCR
 
 사용법:
-    python roi_ocr.py <roi_json> <out_dir> [<image_dir>]
+    python roi_ocr.py <roi_json> <out_dir> [<image_dir>] [--pad 0.25]
 
     # 실험 B (GT ROI)
     python roi_ocr.py gt/gt_roi.json results/roi_gt
     # 실험 C (검출 ROI) - bang_/heewon 결과를 같은 포맷으로 변환해서 넣는다
     python roi_ocr.py <detected_roi.json> results/roi_detected
+
+--pad: ROI를 칸 높이 대비 위아래로 늘리는 비율 (기본 0.25). 이미 여유를 크게 잡은
+       검출 ROI(예: taegu value_roi)는 0으로 주는 것이 맞다.
 
 ROI json 포맷 (gt/gt_roi.json 과 동일):
     { "<image file name>": { "fields": { "<field>": { "quad": [[x,y] x4] } } } }
@@ -86,13 +89,19 @@ def ocr_crop(crop):
 
 
 def main():
-    if len(sys.argv) < 3:
-        print("usage: python roi_ocr.py <roi_json> <out_dir> [<image_dir>]")
+    args = sys.argv[1:]
+    pad = PAD_RATIO
+    if "--pad" in args:
+        i = args.index("--pad")
+        pad = float(args[i + 1])
+        del args[i:i + 2]
+    if len(args) < 2:
+        print("usage: python roi_ocr.py <roi_json> <out_dir> [<image_dir>] [--pad 0.25]")
         sys.exit(1)
 
-    roi_path = Path(sys.argv[1]).resolve()
-    out_dir = Path(sys.argv[2]).resolve()
-    image_dir = Path(sys.argv[3]).resolve() if len(sys.argv) > 3 else DEFAULT_IMAGE_DIR
+    roi_path = Path(args[0]).resolve()
+    out_dir = Path(args[1]).resolve()
+    image_dir = Path(args[2]).resolve() if len(args) > 2 else DEFAULT_IMAGE_DIR
     crop_dir = out_dir / "crops"
     crop_dir.mkdir(parents=True, exist_ok=True)
 
@@ -106,13 +115,14 @@ def main():
 
         fields = {}
         for field, roi in entry["fields"].items():
-            crop = crop_quad(image, quad_of(roi))
+            crop = crop_quad(image, quad_of(roi), pad)
             cv2.imwrite(str(crop_dir / f"{stem}_{field}.jpg"), crop, [cv2.IMWRITE_JPEG_QUALITY, 90])
             fields[field] = ocr_crop(crop)
 
         result = {
             "image_id": image_name,
             "roi_source": str(roi_path.relative_to(ROOT)) if roi_path.is_relative_to(ROOT) else str(roi_path),
+            "pad_ratio": pad,
             "runtime_sec": sum(f["runtime_sec"] for f in fields.values()),
             "fields": fields,
         }

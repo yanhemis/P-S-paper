@@ -1,0 +1,110 @@
+{
+  "image_id": "sample_5.JPG",
+  "roi_source": "gt/gt_roi.json",
+  "pad_ratio": 0.0,
+  "runtime_sec": 0.7804365400224924,
+  "fields": {
+    "address": {
+      "text": "인원공역시 부명 부평대로 283, 302호",
+      "confidence": 0.8011587262153625,
+      "runtime_sec": 0.23485649999929592,
+      "items": [
+        {
+          "text": "인원공역시 부명 부평대로 283, 302호",
+          "confidence": 0.8011587262153625,
+          "bbox": [
+            65,
+            25,
+            891,
+            85
+          ]
+        }
+      ]
+    },
+    "deposit_kor": {
+      "text": "오백만",
+      "confidence": 0.5983045697212219,
+      "runtime_sec": 0.14350333300535567,
+      "items": [
+        {
+          "text": "오백만",
+          "confidence": 0.5983045697212219,
+          "bbox": [
+            821,
+            28,
+            981,
+            86
+          ]
+        }
+      ]
+    },
+    "deposit_num": {
+      "text": "5,000,000",
+      "confidence": 0.9908862709999084,
+      "runtime_sec": 0.1038165409991052,
+      "items": [
+        {
+          "text": "5,000,000",
+          "confidence": 0.9908862709999084,
+          "bbox": [
+            33,
+            30,
+            345,
+            84
+          ]
+        }
+      ]
+    },
+    "down_payment": {
+      "text": "오십만",
+      "confidence": 0.6755976676940918,
+      "runtime_sec": 0.11064820800675079,
+      "items": [
+        {
+          "text": "오십만",
+          "confidence": 0.6755976676940918,
+          "bbox": [
+            451,
+            30,
+            610,
+            85
+          ]
+        }
+      ]
+    },
+    "lessor_name": {
+      "text": "서동철",
+      "confidence": 0.9433090686798096,
+      "runtime_sec": 0.09496325001236983,
+      "items": [
+        {
+          "text": "서동철",
+          "confidence": 0.9433090686798096,
+          "bbox": [
+            124,
+            42,
+            267,
+            102
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "전4연",
+      "confidence": 0.5914177894592285,
+      "runtime_sec": 0.092648707999615,
+      "items": [
+        {
+          "text": "전4연",
+          "confidence": 0.5914177894592285,
+          "bbox": [
+            27,
+            36,
+            260,
+            104
+          ]
+        }
+      ]
+    }
+  }
+}
