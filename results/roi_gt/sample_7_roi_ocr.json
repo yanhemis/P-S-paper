@@ -1,0 +1,108 @@
+{
+  "image_id": "sample_7.JPG",
+  "roi_source": "gt/gt_roi.json",
+  "runtime_sec": 0.945404748985311,
+  "fields": {
+    "address": {
+      "text": "과광주광역시 구 첨반 과기3 123,5 S02 목전인",
+      "confidence": 0.6113547384738922,
+      "runtime_sec": 0.5140618750010617,
+      "items": [
+        {
+          "text": "과광주광역시 구 첨반 과기3 123,5 S02",
+          "confidence": 0.7222621440887451,
+          "bbox": [
+            58,
+            18,
+            1102,
+            124
+          ]
+        },
+        {
+          "text": "목전인",
+          "confidence": 0.5004473328590393,
+          "bbox": [
+            624,
+            94,
+            734,
+            121
+          ]
+        }
+      ]
+    },
+    "deposit_kor": {
+      "text": "일억사원9백만 ",
+      "confidence": 0.8039159774780273,
+      "runtime_sec": 0.09762433299329132,
+      "items": [
+        {
+          "text": "일억사원9백만 ",
+          "confidence": 0.8039159774780273,
+          "bbox": [
+            44,
+            23,
+            406,
+            97
+          ]
+        }
+      ]
+    },
+    "deposit_num": {
+      "text": "145,000,000",
+      "confidence": 0.9884659051895142,
+      "runtime_sec": 0.10047124998527579,
+      "items": [
+        {
+          "text": "145,000,000",
+          "confidence": 0.9884659051895142,
+          "bbox": [
+            32,
+            31,
+            360,
+            100
+          ]
+        }
+      ]
+    },
+    "down_payment": {
+      "text": "",
+      "confidence": 0.0,
+      "runtime_sec": 0.03960329099209048,
+      "items": []
+    },
+    "lessor_name": {
+      "text": "노경자",
+      "confidence": 0.9983922839164734,
+      "runtime_sec": 0.09707637500832789,
+      "items": [
+        {
+          "text": "노경자",
+          "confidence": 0.9983922839164734,
+          "bbox": [
+            97,
+            50,
+            264,
+            114
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "표진우",
+      "confidence": 0.968585193157196,
+      "runtime_sec": 0.09656762500526384,
+      "items": [
+        {
+          "text": "표진우",
+          "confidence": 0.968585193157196,
+          "bbox": [
+            79,
+            50,
+            264,
+            126
+          ]
+        }
+      ]
+    }
+  }
+}

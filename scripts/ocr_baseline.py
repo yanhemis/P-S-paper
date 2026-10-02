@@ -71,6 +71,8 @@ def run_full_page_ocr(image_path: Path) -> dict:
                 "text": text,
                 "confidence": float(score),
                 "bbox": bbox,
+                # 기울어진 촬영본에서 글자 위치를 추정하려면 4점 polygon이 필요함
+                "poly": [[int(p[0]), int(p[1])] for p in poly],
             }
         )
 

@@ -16,10 +16,10 @@
 
 ## 2. 09/25 조기 체크
 
-- [ ] 전체 페이지 Korean OCR baseline 실행 성공
-- [ ] OCR 결과 JSON 저장
-- [ ] text bbox / text / confidence / runtime 저장
-- [ ] 최소 1장 이상 결과 시각화 또는 확인 가능한 출력 생성
+- [x] 전체 페이지 Korean OCR baseline 실행 성공
+- [x] OCR 결과 JSON 저장
+- [x] text bbox / text / confidence / runtime 저장
+- [x] 최소 1장 이상 결과 시각화 또는 확인 가능한 출력 생성
 
 이 단계에서 OCR baseline이 실제로 돌아가는지 먼저 확인한다.
 
@@ -59,11 +59,11 @@
 
 최소 5개부터 시작한다.
 
-- [ ] 소재지
-- [ ] 보증금
-- [ ] 계약금
-- [ ] 임대인 성명
-- [ ] 임차인 성명
+- [x] 소재지
+- [x] 보증금
+- [x] 계약금
+- [x] 임대인 성명
+- [x] 임차인 성명
 
 여유가 있으면:
 - 잔금
@@ -74,17 +74,17 @@
 ## 5. 평가 지표
 
 ### OCR 단위
-- [ ] CER
-- [ ] Exact Match
-- [ ] confidence
+- [x] CER
+- [x] Exact Match
+- [x] confidence
 
 ### 필드 단위
-- [ ] Field Accuracy
-- [ ] 필드별 성공/실패 건수
+- [x] Field Accuracy
+- [x] 필드별 성공/실패 건수
 
 ### 성능
-- [ ] sec/image
-- [ ] ROI별 평균 처리 시간
+- [x] sec/image
+- [x] ROI별 평균 처리 시간
 
 핵심 비교:
 
@@ -100,17 +100,17 @@ Detected ROI OCR
 
 ## 6. 10/07까지 최종 마감
 
-- [ ] 동일/유사 계약서 최소 10장
-- [ ] 핵심 필드 최소 5종
-- [ ] Full OCR 결과 저장
-- [ ] GT ROI OCR 결과 저장
-- [ ] 실제 검출 ROI OCR 결과 저장
-- [ ] CER / Exact Match / confidence 비교
-- [ ] Field Accuracy 표 작성
-- [ ] sec/image 기록
-- [ ] 대표 성공/실패 사례 3개 이상 저장
+- [x] 동일/유사 계약서 최소 10장
+- [x] 핵심 필드 최소 5종
+- [x] Full OCR 결과 저장
+- [x] GT ROI OCR 결과 저장
+- [ ] 실제 검출 ROI OCR 결과 저장 (`bang_` ROI 수신 대기)
+- [x] CER / Exact Match / confidence 비교
+- [x] Field Accuracy 표 작성
+- [x] sec/image 기록
+- [x] 대표 성공/실패 사례 3개 이상 저장
 - [ ] `bang_`에서 받은 ROI 결과 반영
-- [ ] 추가 인원 B에게 통합 가능한 OCR 입력/출력 규격 전달
+- [ ] 추가 인원 B에게 통합 가능한 OCR 입력/출력 규격 전달 (규격 문서 `docs/ocr_io_spec.md` 작성 완료, 전달 필요)
 
 ---
 

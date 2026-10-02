@@ -1,0 +1,104 @@
+{
+  "_meta": {
+    "source": "sample_data_jpg/fake_contract_data.md",
+    "note": "이미지에 실제 기입된 내용으로 세트를 매칭함 (파일 번호와 세트 번호가 다른 장: sample_5=#6, sample_6=#5, sample_8=#9, sample_9=#8). null = 미기입(평가 제외).",
+    "fields": {
+      "address": "소재지",
+      "deposit_num": "보증금 - 숫자 금액 (보증금 필드의 대표값)",
+      "deposit_kor": "보증금 - 한글 금액 (보조)",
+      "down_payment": "계약금 - 한글 금액",
+      "lessor_name": "임대인 성명",
+      "lessee_name": "임차인 성명"
+    }
+  },
+  "sample_1.JPG": {
+    "set": 1,
+    "address": "서울특별시 마포구 월드컵로 45길 12, 301호",
+    "deposit_num": "180,000,000",
+    "deposit_kor": "일억팔천만",
+    "down_payment": "일천팔백만",
+    "lessor_name": "박정훈",
+    "lessee_name": "이서연"
+  },
+  "sample_2.JPG": {
+    "set": 2,
+    "address": "서울특별시 관악구 관악로 210, 지하 102호",
+    "deposit_num": "10,000,000",
+    "deposit_kor": "일천만",
+    "down_payment": "일백만",
+    "lessor_name": "정미경",
+    "lessee_name": "오준혁"
+  },
+  "sample_3.JPG": {
+    "set": 3,
+    "address": "경기도 성남시 분당구 판교로 256번길 33, 1204동 803호",
+    "deposit_num": "250,000,000",
+    "deposit_kor": "이억오천만",
+    "down_payment": "이천오백만",
+    "lessor_name": "강태식",
+    "lessee_name": "신유진"
+  },
+  "sample_4.JPG": {
+    "set": 4,
+    "address": "부산광역시 해운대구 센텀중앙로 79, 1508호",
+    "deposit_num": "30,000,000",
+    "deposit_kor": "삼천만",
+    "down_payment": "삼백만",
+    "lessor_name": "문영숙",
+    "lessee_name": "배현우"
+  },
+  "sample_5.JPG": {
+    "set": 6,
+    "address": "인천광역시 부평구 부평대로 283, 302호",
+    "deposit_num": "5,000,000",
+    "deposit_kor": "오백만",
+    "down_payment": "오십만",
+    "lessor_name": "서동철",
+    "lessee_name": "권나연"
+  },
+  "sample_6.JPG": {
+    "set": 5,
+    "address": "대전광역시 유성구 대학로 99, 옥천빌라 201호",
+    "deposit_num": "320,000,000",
+    "deposit_kor": "삼억이천만",
+    "down_payment": "삼천이백만",
+    "lessor_name": "황보석",
+    "lessee_name": "안다은"
+  },
+  "sample_7.JPG": {
+    "set": 7,
+    "address": "광주광역시 북구 첨단과기로 123, 5층 502호",
+    "deposit_num": "145,000,000",
+    "deposit_kor": "일억사천오백만",
+    "down_payment": null,
+    "lessor_name": "노경자",
+    "lessee_name": "표진우"
+  },
+  "sample_8.JPG": {
+    "set": 9,
+    "address": "경기도 수원시 영통구 광교중앙로 145, 2301동 1502호",
+    "deposit_num": "410,000,000",
+    "deposit_kor": "사억일천만",
+    "down_payment": "사천일백만",
+    "lessor_name": "남궁순옥",
+    "lessee_name": "독고진성"
+  },
+  "sample_9.JPG": {
+    "set": 8,
+    "address": "서울특별시 성동구 왕십리로 115, 1103호",
+    "deposit_num": "50,000,000",
+    "deposit_kor": "오천만",
+    "down_payment": "오백만",
+    "lessor_name": "도상현",
+    "lessee_name": "마수빈"
+  },
+  "sample_10.JPG": {
+    "set": 10,
+    "address": "대구광역시 수성구 달구벌대로 2350, 405호",
+    "deposit_num": "20,000,000",
+    "deposit_kor": "이천만",
+    "down_payment": "이백만",
+    "lessor_name": "채원석",
+    "lessee_name": "봉하늘"
+  }
+}
