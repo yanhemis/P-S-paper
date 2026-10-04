@@ -1,12 +1,26 @@
 {
   "image_id": "sample_3.JPG",
   "roi_source": "gt/gt_roi.json",
-  "runtime_sec": 0.981090666988166,
+  "pad_ratio": 0.25,
+  "runtime_sec": 0.981843377056066,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1004.4
+  },
   "fields": {
     "address": {
       "text": "성남시 분당? 핀교로 256년2 33 , 1204 803",
       "confidence": 0.8885665933291117,
-      "runtime_sec": 0.4037627090001479,
+      "runtime_sec": 0.4050442920124624,
       "items": [
         {
           "text": "성남시 분당? 핀교로",
@@ -43,7 +57,7 @@
     "deposit_kor": {
       "text": "이억 9천만",
       "confidence": 0.8435935378074646,
-      "runtime_sec": 0.14975816698279232,
+      "runtime_sec": 0.14848945901030675,
       "items": [
         {
           "text": "이억 9천만",
@@ -60,7 +74,7 @@
     "deposit_num": {
       "text": "250,000,000",
       "confidence": 0.9663907885551453,
-      "runtime_sec": 0.1113302500161808,
+      "runtime_sec": 0.1111147090268787,
       "items": [
         {
           "text": "250,000,000",
@@ -77,7 +91,7 @@
     "down_payment": {
       "text": "이전오백만",
       "confidence": 0.800432026386261,
-      "runtime_sec": 0.11747945798560977,
+      "runtime_sec": 0.11905041700811125,
       "items": [
         {
           "text": "이전오백만",
@@ -94,7 +108,7 @@
     "lessor_name": {
       "text": "강태식",
       "confidence": 0.9991161823272705,
-      "runtime_sec": 0.09943708300124854,
+      "runtime_sec": 0.09922591701615602,
       "items": [
         {
           "text": "강태식",
@@ -111,7 +125,7 @@
     "lessee_name": {
       "text": "신유진",
       "confidence": 0.9974467754364014,
-      "runtime_sec": 0.09932300000218675,
+      "runtime_sec": 0.09891858298215084,
       "items": [
         {
           "text": "신유진",

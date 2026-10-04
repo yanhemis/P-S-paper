@@ -1,12 +1,26 @@
 {
   "image_id": "sample_8.JPG",
   "roi_source": "gt/gt_roi.json",
-  "runtime_sec": 0.9584526249964256,
+  "pad_ratio": 0.25,
+  "runtime_sec": 0.9536169159691781,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1022.5
+  },
   "fields": {
     "address": {
       "text": "경기도 4원시 영2 광교앙3145. 23이동 1502",
       "confidence": 0.85408616065979,
-      "runtime_sec": 0.24754591600503772,
+      "runtime_sec": 0.2476863749907352,
       "items": [
         {
           "text": "경기도 4원시 영2 광교앙3145. 23이동 1502",
@@ -23,7 +37,7 @@
     "deposit_kor": {
       "text": "사역일천만",
       "confidence": 0.9740064740180969,
-      "runtime_sec": 0.148816083004931,
+      "runtime_sec": 0.1475272079987917,
       "items": [
         {
           "text": "사역일천만",
@@ -40,7 +54,7 @@
     "deposit_num": {
       "text": "410,000,000 0",
       "confidence": 0.6050171852111816,
-      "runtime_sec": 0.24842495899065398,
+      "runtime_sec": 0.24718458400457166,
       "items": [
         {
           "text": "410,000,000",
@@ -67,7 +81,7 @@
     "down_payment": {
       "text": "사천일백만",
       "confidence": 0.901584267616272,
-      "runtime_sec": 0.12024691700935364,
+      "runtime_sec": 0.119559874990955,
       "items": [
         {
           "text": "사천일백만",
@@ -84,7 +98,7 @@
     "lessor_name": {
       "text": "남궁순옥",
       "confidence": 0.9567130208015442,
-      "runtime_sec": 0.09704016699106432,
+      "runtime_sec": 0.09626183297950774,
       "items": [
         {
           "text": "남궁순옥",
@@ -101,7 +115,7 @@
     "lessee_name": {
       "text": "특고진성",
       "confidence": 0.8801028728485107,
-      "runtime_sec": 0.09637858299538493,
+      "runtime_sec": 0.09539704100461677,
       "items": [
         {
           "text": "특고진성",

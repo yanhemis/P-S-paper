@@ -1,15 +1,15 @@
 {
   "performance": {
     "Full OCR": {
-      "sec_per_image": 30.943263958004536
+      "sec_per_image": 30.674360415985575
     },
     "GT ROI OCR": {
-      "sec_per_image": 0.5962219990324229,
-      "sec_per_roi": 0.11924439980648457
+      "sec_per_image": 0.5885687510017306,
+      "sec_per_roi": 0.1177137502003461
     },
     "Detected ROI OCR": {
-      "sec_per_image": 3.2266758759797085,
-      "sec_per_roi": 0.6453351751959417
+      "sec_per_image": 3.1885557509667706,
+      "sec_per_roi": 0.6377111501933541
     }
   },
   "rows": [

@@ -31,7 +31,7 @@ import cv2
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from ocr_baseline import get_ocr  # noqa: E402  실험 A와 동일한 모델/설정 사용
+from ocr_baseline import get_ocr, run_meta  # noqa: E402  실험 A와 동일한 모델/설정 사용
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_IMAGE_DIR = ROOT / "sample_data_jpg"
@@ -124,6 +124,7 @@ def main():
             "roi_source": str(roi_path.relative_to(ROOT)) if roi_path.is_relative_to(ROOT) else str(roi_path),
             "pad_ratio": pad,
             "runtime_sec": sum(f["runtime_sec"] for f in fields.values()),
+            "meta": run_meta(),
             "fields": fields,
         }
         out_path = out_dir / f"{stem}_roi_ocr.json"

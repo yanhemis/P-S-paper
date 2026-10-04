@@ -9,3 +9,7 @@ __pycache__/
 # local envs (conda env는 저장소 밖 /opt/anaconda3/envs/tail 에 있음, 참고용)
 .venv/
 venv/
+
+# H1 전처리 이미지 (scripts/h1_quality.py prepare 로 재생성 가능, 장당 수 MB)
+results/h1/images/
+results/h1/homography/

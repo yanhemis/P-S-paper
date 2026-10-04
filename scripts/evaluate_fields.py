@@ -118,9 +118,15 @@ def point_in_quad(pt, quad):
     return True
 
 
-def assign_full_ocr(items, quad):
-    """quad 안에 중심이 들어오는 글자만 모아 quad의 가로 방향 순서대로 이어 붙인다."""
-    q = expand_quad(quad)
+def assign_full_ocr(items, quad, pad_ratio=None, whole_box_ratio=None):
+    """quad 안에 중심이 들어오는 글자만 모아 quad의 가로 방향 순서대로 이어 붙인다.
+
+    pad_ratio / whole_box_ratio 기본값은 필드 평가용 설정. 단어 단위 평가(h1_quality.py)에서는
+    옆 단어가 통째로 붙지 않도록 whole_box_ratio를 1보다 크게 줘서 박스 통째 배정을 끈다.
+    """
+    q = expand_quad(quad) if pad_ratio is None else expand_quad(quad, pad_ratio)
+    if whole_box_ratio is None:
+        whole_box_ratio = WHOLE_BOX_RATIO
     axis = (q[1] - q[0]) / np.linalg.norm(q[1] - q[0])
     chars, confs = [], []
     for it in items:
@@ -135,7 +141,7 @@ def assign_full_ocr(items, quad):
         inside = [point_in_quad(c, q) for c in centers]
         if not any(inside):
             continue
-        if sum(inside) / n >= WHOLE_BOX_RATIO:
+        if sum(inside) / n >= whole_box_ratio:
             # 박스 대부분이 칸 안이면 통째로 쓴다 (균일 글자 폭 가정 때문에 경계 글자가 잘리는 것 방지)
             inside = [True] * n
         for c, ch, ok in zip(centers, text, inside):

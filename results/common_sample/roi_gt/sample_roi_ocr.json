@@ -2,12 +2,25 @@
   "image_id": "sample.jpg",
   "roi_source": "gt/common_sample/gt_roi.json",
   "pad_ratio": 0.25,
-  "runtime_sec": 0.5962219990324229,
+  "runtime_sec": 0.5885687510017306,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 947.7
+  },
   "fields": {
     "address": {
       "text": "서울특별시 강남구 테헤란로 123,4층 401",
       "confidence": 0.9154221415519714,
-      "runtime_sec": 0.24789004100603051,
+      "runtime_sec": 0.24484383297385648,
       "items": [
         {
           "text": "서울특별시 강남구 테헤란로 123,4층 401",
@@ -24,7 +37,7 @@
     "lessor_name": {
       "text": "고결",
       "confidence": 0.8584930300712585,
-      "runtime_sec": 0.08655416700639762,
+      "runtime_sec": 0.08545099999173544,
       "items": [
         {
           "text": "고결",
@@ -41,7 +54,7 @@
     "lessee_name": {
       "text": "김영수",
       "confidence": 0.9927313923835754,
-      "runtime_sec": 0.08342141701723449,
+      "runtime_sec": 0.08259962502052076,
       "items": [
         {
           "text": "김영수",
@@ -58,7 +71,7 @@
     "deposit_kor": {
       "text": "일억",
       "confidence": 0.9816213846206665,
-      "runtime_sec": 0.08567841601325199,
+      "runtime_sec": 0.08469395901192911,
       "items": [
         {
           "text": "일억",
@@ -75,7 +88,7 @@
     "down_payment": {
       "text": "일천만",
       "confidence": 0.9929576516151428,
-      "runtime_sec": 0.09267795798950829,
+      "runtime_sec": 0.09098033400368877,
       "items": [
         {
           "text": "일천만",

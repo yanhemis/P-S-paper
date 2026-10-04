@@ -39,7 +39,7 @@
 
 | 방법 | sec/image | sec/ROI |
 |---|---|---|
-| Full OCR | 29.93 | nan |
+| Full OCR | 29.32 | nan |
 | GT ROI OCR | 0.93 | 0.15 |
 
 (ROI 방법의 sec/image = 한 장의 ROI OCR 시간 합. Cell/ROI 검출 시간은 포함하지 않음)

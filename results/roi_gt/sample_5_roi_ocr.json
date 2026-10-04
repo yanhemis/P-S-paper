@@ -1,12 +1,26 @@
 {
   "image_id": "sample_5.JPG",
   "roi_source": "gt/gt_roi.json",
-  "runtime_sec": 0.8024841249571182,
+  "pad_ratio": 0.25,
+  "runtime_sec": 0.7975223760295194,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1014.8
+  },
   "fields": {
     "address": {
       "text": "인천광역시 명 부평대로 283, 302",
       "confidence": 0.8545769453048706,
-      "runtime_sec": 0.2562897919851821,
+      "runtime_sec": 0.2534982920042239,
       "items": [
         {
           "text": "인천광역시 명 부평대로 283, 302",
@@ -23,7 +37,7 @@
     "deposit_kor": {
       "text": "9백",
       "confidence": 0.6548184752464294,
-      "runtime_sec": 0.1418720840010792,
+      "runtime_sec": 0.14196833400637843,
       "items": [
         {
           "text": "9백",
@@ -40,7 +54,7 @@
     "deposit_num": {
       "text": "5,000,000",
       "confidence": 0.9381316304206848,
-      "runtime_sec": 0.10078316598082893,
+      "runtime_sec": 0.10119495799881406,
       "items": [
         {
           "text": "5,000,000",
@@ -57,7 +71,7 @@
     "down_payment": {
       "text": "요심만",
       "confidence": 0.6102703213691711,
-      "runtime_sec": 0.10953845799667761,
+      "runtime_sec": 0.10920475001330487,
       "items": [
         {
           "text": "요심만",
@@ -74,7 +88,7 @@
     "lessor_name": {
       "text": "서동철",
       "confidence": 0.8700936436653137,
-      "runtime_sec": 0.09673116699559614,
+      "runtime_sec": 0.0963646250020247,
       "items": [
         {
           "text": "서동철",
@@ -91,7 +105,7 @@
     "lessee_name": {
       "text": "권4연",
       "confidence": 0.7862311005592346,
-      "runtime_sec": 0.09726945799775422,
+      "runtime_sec": 0.0952914170047734,
       "items": [
         {
           "text": "권4연",

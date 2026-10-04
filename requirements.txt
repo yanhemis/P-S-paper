@@ -1,0 +1,14 @@
+# tail (OCR / ROI 재인식) 실행 의존성 — 2026-10-04 기준 conda env `tail`에서 확인
+# Python 3.11.16 (CPU 실행 확인, GPU 미검증)
+paddlepaddle==3.3.1
+paddleocr==3.7.0
+# paddleocr가 설치하는 하위 패키지. 버전이 다르면 모델/API 동작이 달라질 수 있어서 고정
+paddlex==3.7.2
+numpy==2.3.5
+# SIFT(make_gt_roi.py) 포함. 같은 환경에 opencv-python 5.0.0.93도 깔려 있지만 실제 import되는 것은 4.10.0
+# (paddlex 쪽 의존성으로 함께 설치됨. 서버에서는 한 가지만 설치하는 것을 권장)
+opencv-contrib-python==4.10.0.84
+
+# 모델 파일은 첫 실행 시 ~/.paddlex/official_models/ 에 자동 다운로드됨
+#   PP-OCRv5_mobile_det, korean_PP-OCRv5_mobile_rec
+# 서버 모델(PP-OCRv5_server_det)은 4000x3000 이미지에서 peak 54GB로 OOM → 사용하지 않음

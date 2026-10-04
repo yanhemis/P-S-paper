@@ -1,12 +1,26 @@
 {
   "image_id": "sample_2.JPG",
   "roi_source": "gt/gt_roi.json",
-  "runtime_sec": 1.0687912510184105,
+  "pad_ratio": 0.25,
+  "runtime_sec": 1.0664383749535773,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 999.0
+  },
   "fields": {
     "address": {
       "text": "서열특별시 관악구 관악로 210 지하102호",
       "confidence": 0.8671611547470093,
-      "runtime_sec": 0.47876720799831674,
+      "runtime_sec": 0.4766704999783542,
       "items": [
         {
           "text": "서열특별시",
@@ -53,7 +67,7 @@
     "deposit_kor": {
       "text": "일천만",
       "confidence": 0.9957954287528992,
-      "runtime_sec": 0.15399612500914373,
+      "runtime_sec": 0.1553019580023829,
       "items": [
         {
           "text": "일천만",
@@ -70,7 +84,7 @@
     "deposit_num": {
       "text": "10.000,000",
       "confidence": 0.9429052472114563,
-      "runtime_sec": 0.11337233398808166,
+      "runtime_sec": 0.11470241699134931,
       "items": [
         {
           "text": "10.000,000",
@@ -87,7 +101,7 @@
     "down_payment": {
       "text": "일백만",
       "confidence": 0.8830975890159607,
-      "runtime_sec": 0.12197154201567173,
+      "runtime_sec": 0.12163058298756368,
       "items": [
         {
           "text": "일백만",
@@ -104,7 +118,7 @@
     "lessor_name": {
       "text": "정미경",
       "confidence": 0.9660127758979797,
-      "runtime_sec": 0.10368349999771453,
+      "runtime_sec": 0.10274254201794975,
       "items": [
         {
           "text": "정미경",
@@ -121,7 +135,7 @@
     "lessee_name": {
       "text": "오준혁",
       "confidence": 0.9862165451049805,
-      "runtime_sec": 0.09700054200948216,
+      "runtime_sec": 0.09539037497597747,
       "items": [
         {
           "text": "오준혁",

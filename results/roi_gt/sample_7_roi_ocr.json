@@ -1,12 +1,26 @@
 {
   "image_id": "sample_7.JPG",
   "roi_source": "gt/gt_roi.json",
-  "runtime_sec": 0.945404748985311,
+  "pad_ratio": 0.25,
+  "runtime_sec": 0.9686760809563566,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1017.7
+  },
   "fields": {
     "address": {
       "text": "과광주광역시 구 첨반 과기3 123,5 S02 목전인",
       "confidence": 0.6113547384738922,
-      "runtime_sec": 0.5140618750010617,
+      "runtime_sec": 0.5099172499903943,
       "items": [
         {
           "text": "과광주광역시 구 첨반 과기3 123,5 S02",
@@ -33,7 +47,7 @@
     "deposit_kor": {
       "text": "일억사원9백만 ",
       "confidence": 0.8039159774780273,
-      "runtime_sec": 0.09762433299329132,
+      "runtime_sec": 0.11970166699029505,
       "items": [
         {
           "text": "일억사원9백만 ",
@@ -50,7 +64,7 @@
     "deposit_num": {
       "text": "145,000,000",
       "confidence": 0.9884659051895142,
-      "runtime_sec": 0.10047124998527579,
+      "runtime_sec": 0.10449404097744264,
       "items": [
         {
           "text": "145,000,000",
@@ -67,13 +81,13 @@
     "down_payment": {
       "text": "",
       "confidence": 0.0,
-      "runtime_sec": 0.03960329099209048,
+      "runtime_sec": 0.04168191601638682,
       "items": []
     },
     "lessor_name": {
       "text": "노경자",
       "confidence": 0.9983922839164734,
-      "runtime_sec": 0.09707637500832789,
+      "runtime_sec": 0.09694191598100588,
       "items": [
         {
           "text": "노경자",
@@ -90,7 +104,7 @@
     "lessee_name": {
       "text": "표진우",
       "confidence": 0.968585193157196,
-      "runtime_sec": 0.09656762500526384,
+      "runtime_sec": 0.09593929100083187,
       "items": [
         {
           "text": "표진우",

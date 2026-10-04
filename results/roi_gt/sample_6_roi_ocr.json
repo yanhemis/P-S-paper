@@ -1,12 +1,26 @@
 {
   "image_id": "sample_6.JPG",
   "roi_source": "gt/gt_roi.json",
-  "runtime_sec": 1.0467050409934018,
+  "pad_ratio": 0.25,
+  "runtime_sec": 1.0329005420207977,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1014.9
+  },
   "fields": {
     "address": {
       "text": "대전광역시 유성 대학로 99. 옥원 빌라 2이호",
       "confidence": 0.7740381062030792,
-      "runtime_sec": 0.46841924998443574,
+      "runtime_sec": 0.4613562500162516,
       "items": [
         {
           "text": "대전광역시 유성 대학로 99. 옥원 빌라",
@@ -33,7 +47,7 @@
     "deposit_kor": {
       "text": "삼익이천만",
       "confidence": 0.9034796953201294,
-      "runtime_sec": 0.15240595801151358,
+      "runtime_sec": 0.15143287499086,
       "items": [
         {
           "text": "삼익이천만",
@@ -50,7 +64,7 @@
     "deposit_num": {
       "text": "320,000,000",
       "confidence": 0.9953467845916748,
-      "runtime_sec": 0.1124159999890253,
+      "runtime_sec": 0.11079216600046493,
       "items": [
         {
           "text": "320,000,000",
@@ -67,7 +81,7 @@
     "down_payment": {
       "text": "삼천이백만",
       "confidence": 0.9409530758857727,
-      "runtime_sec": 0.11969016699003987,
+      "runtime_sec": 0.11906037500011735,
       "items": [
         {
           "text": "삼천이백만",
@@ -84,7 +98,7 @@
     "lessor_name": {
       "text": "중요식",
       "confidence": 0.6335862278938293,
-      "runtime_sec": 0.09690195799339563,
+      "runtime_sec": 0.09533383400412276,
       "items": [
         {
           "text": "중요식",
@@ -101,7 +115,7 @@
     "lessee_name": {
       "text": "안다은",
       "confidence": 0.9453546404838562,
-      "runtime_sec": 0.09687170802499168,
+      "runtime_sec": 0.09492504200898111,
       "items": [
         {
           "text": "안다은",

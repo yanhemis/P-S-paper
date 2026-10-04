@@ -1,0 +1,112 @@
+{
+  "sample_1.JPG": {
+    "brightness": 167.83022624731828,
+    "contrast_p95_p5": 150.0,
+    "sharpness_lap_var": 794.2964464967654,
+    "illum_nonuniformity_cv": 0.1268037797777377,
+    "effective_dpi": 302.4,
+    "tilt_deg": -0.13,
+    "keystone_ratio": 1.145,
+    "homography_inliers": 1282,
+    "reproj_err_median_px": 2.23
+  },
+  "sample_2.JPG": {
+    "brightness": 172.52119713505235,
+    "contrast_p95_p5": 149.0,
+    "sharpness_lap_var": 706.8231594303251,
+    "illum_nonuniformity_cv": 0.1164394428132787,
+    "effective_dpi": 315.7,
+    "tilt_deg": -0.26,
+    "keystone_ratio": 1.155,
+    "homography_inliers": 870,
+    "reproj_err_median_px": 1.74
+  },
+  "sample_3.JPG": {
+    "brightness": 186.78837786201876,
+    "contrast_p95_p5": 140.0,
+    "sharpness_lap_var": 765.06799961817,
+    "illum_nonuniformity_cv": 0.10266053819873937,
+    "effective_dpi": 299.3,
+    "tilt_deg": -1.72,
+    "keystone_ratio": 1.187,
+    "homography_inliers": 1045,
+    "reproj_err_median_px": 2.08
+  },
+  "sample_4.JPG": {
+    "brightness": 187.51196255063252,
+    "contrast_p95_p5": 146.0,
+    "sharpness_lap_var": 802.6786891849214,
+    "illum_nonuniformity_cv": 0.06490295854558155,
+    "effective_dpi": 288.1,
+    "tilt_deg": -0.19,
+    "keystone_ratio": 1.034,
+    "homography_inliers": 963,
+    "reproj_err_median_px": 2.52
+  },
+  "sample_5.JPG": {
+    "brightness": 176.20255798518545,
+    "contrast_p95_p5": 135.0,
+    "sharpness_lap_var": 307.3902380723548,
+    "illum_nonuniformity_cv": 0.08087254861891076,
+    "effective_dpi": 277.2,
+    "tilt_deg": -2.06,
+    "keystone_ratio": 1.226,
+    "homography_inliers": 853,
+    "reproj_err_median_px": 2.12
+  },
+  "sample_6.JPG": {
+    "brightness": 168.40818665523034,
+    "contrast_p95_p5": 144.0,
+    "sharpness_lap_var": 380.51196453097396,
+    "illum_nonuniformity_cv": 0.08904388215878856,
+    "effective_dpi": 305.2,
+    "tilt_deg": -2.04,
+    "keystone_ratio": 1.184,
+    "homography_inliers": 662,
+    "reproj_err_median_px": 2.37
+  },
+  "sample_7.JPG": {
+    "brightness": 172.32398190297113,
+    "contrast_p95_p5": 150.0,
+    "sharpness_lap_var": 398.42568929248813,
+    "illum_nonuniformity_cv": 0.10123601303988589,
+    "effective_dpi": 296.1,
+    "tilt_deg": -2.87,
+    "keystone_ratio": 1.183,
+    "homography_inliers": 491,
+    "reproj_err_median_px": 3.7
+  },
+  "sample_8.JPG": {
+    "brightness": 171.82042364583725,
+    "contrast_p95_p5": 155.0,
+    "sharpness_lap_var": 361.57166306080086,
+    "illum_nonuniformity_cv": 0.09312233251297038,
+    "effective_dpi": 298.3,
+    "tilt_deg": -1.47,
+    "keystone_ratio": 1.163,
+    "homography_inliers": 528,
+    "reproj_err_median_px": 2.43
+  },
+  "sample_9.JPG": {
+    "brightness": 171.66241007280055,
+    "contrast_p95_p5": 150.0,
+    "sharpness_lap_var": 311.1992772170856,
+    "illum_nonuniformity_cv": 0.10152932550919362,
+    "effective_dpi": 291.9,
+    "tilt_deg": -2.16,
+    "keystone_ratio": 1.192,
+    "homography_inliers": 545,
+    "reproj_err_median_px": 2.24
+  },
+  "sample_10.JPG": {
+    "brightness": 176.88696301448218,
+    "contrast_p95_p5": 129.0,
+    "sharpness_lap_var": 197.37785133866026,
+    "illum_nonuniformity_cv": 0.0783846797681447,
+    "effective_dpi": 207.0,
+    "tilt_deg": 0.02,
+    "keystone_ratio": 1.135,
+    "homography_inliers": 1499,
+    "reproj_err_median_px": 1.81
+  }
+}

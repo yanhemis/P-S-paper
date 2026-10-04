@@ -1,12 +1,26 @@
 {
   "image_id": "sample_1.JPG",
   "roi_source": "gt/gt_roi.json",
-  "runtime_sec": 1.0107683729729615,
+  "pad_ratio": 0.25,
+  "runtime_sec": 1.0073289590363856,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 949.1
+  },
   "fields": {
     "address": {
       "text": "서오특별시 마포구 월드컵3 45일 12, 3013",
       "confidence": 0.7611527244249979,
-      "runtime_sec": 0.4343914999917615,
+      "runtime_sec": 0.4360228329896927,
       "items": [
         {
           "text": "서오특별시",
@@ -43,7 +57,7 @@
     "deposit_kor": {
       "text": "일억팔천만",
       "confidence": 0.9121745228767395,
-      "runtime_sec": 0.15180833300109953,
+      "runtime_sec": 0.15137954201782122,
       "items": [
         {
           "text": "일억팔천만",
@@ -60,7 +74,7 @@
     "deposit_num": {
       "text": "180,000,000",
       "confidence": 0.9792198538780212,
-      "runtime_sec": 0.11154470799374394,
+      "runtime_sec": 0.11031200000434183,
       "items": [
         {
           "text": "180,000,000",
@@ -77,7 +91,7 @@
     "down_payment": {
       "text": "일천팔백만",
       "confidence": 0.9290325045585632,
-      "runtime_sec": 0.11967666598502547,
+      "runtime_sec": 0.11817787500331178,
       "items": [
         {
           "text": "일천팔백만",
@@ -94,7 +108,7 @@
     "lessor_name": {
       "text": "박정훈",
       "confidence": 0.9689779877662659,
-      "runtime_sec": 0.09683820800273679,
+      "runtime_sec": 0.09570066700689495,
       "items": [
         {
           "text": "박정훈",
@@ -111,7 +125,7 @@
     "lessee_name": {
       "text": "이서연",
       "confidence": 0.8166268467903137,
-      "runtime_sec": 0.09650895799859427,
+      "runtime_sec": 0.09573604201432317,
       "items": [
         {
           "text": "이서연",

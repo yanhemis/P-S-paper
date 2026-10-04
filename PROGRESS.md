@@ -11,7 +11,7 @@
 
 ## 남은 작업
 
-- [ ] 팀원 요청 전달 (README 5절, 기한 10-05~06)
+- [ ] 팀원 요청 전달 (README 5절: bang_·taegu·dahye·heewon·추가 인원 B, 기한 10-05~07)
 - [ ] 실험 C 10장: `convert_teammate.py` → `roi_ocr.py --pad 0` → `evaluate_fields.py --detected`
 - [ ] 촬영 조건 매핑 확인 (`sample_5/6`, `sample_8/9`) → H1 비교
 - [ ] (선택) ROI 후처리, 잔금·계약기간 필드

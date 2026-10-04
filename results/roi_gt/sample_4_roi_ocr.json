@@ -1,12 +1,26 @@
 {
   "image_id": "sample_4.JPG",
   "roi_source": "gt/gt_roi.json",
-  "runtime_sec": 0.8214004580222536,
+  "pad_ratio": 0.25,
+  "runtime_sec": 0.8190292489307467,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1012.5
+  },
   "fields": {
     "address": {
       "text": "부산광역시 해운배구 선팀중양3 19.1508",
       "confidence": 0.8420419692993164,
-      "runtime_sec": 0.25210066602448933,
+      "runtime_sec": 0.24950041598640382,
       "items": [
         {
           "text": "부산광역시 해운배구 선팀중양3 19.1508",
@@ -23,7 +37,7 @@
     "deposit_kor": {
       "text": "삼전만",
       "confidence": 0.8019136786460876,
-      "runtime_sec": 0.1483360420097597,
+      "runtime_sec": 0.14774433299317025,
       "items": [
         {
           "text": "삼전만",
@@ -40,7 +54,7 @@
     "deposit_num": {
       "text": "30,000,000",
       "confidence": 0.9878052473068237,
-      "runtime_sec": 0.11354904199833982,
+      "runtime_sec": 0.11245787498774007,
       "items": [
         {
           "text": "30,000,000",
@@ -57,7 +71,7 @@
     "down_payment": {
       "text": "삼백만",
       "confidence": 0.9757238030433655,
-      "runtime_sec": 0.11991158299497329,
+      "runtime_sec": 0.12092849999316968,
       "items": [
         {
           "text": "삼백만",
@@ -74,7 +88,7 @@
     "lessor_name": {
       "text": "은영숙",
       "confidence": 0.63885897397995,
-      "runtime_sec": 0.09377862501423806,
+      "runtime_sec": 0.09442299997317605,
       "items": [
         {
           "text": "은영숙",
@@ -91,7 +105,7 @@
     "lessee_name": {
       "text": "배현우",
       "confidence": 0.9539179801940918,
-      "runtime_sec": 0.0937244999804534,
+      "runtime_sec": 0.09397512499708682,
       "items": [
         {
           "text": "배현우",

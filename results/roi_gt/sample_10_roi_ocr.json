@@ -1,12 +1,26 @@
 {
   "image_id": "sample_10.JPG",
   "roi_source": "gt/gt_roi.json",
-  "runtime_sec": 0.6958446669450495,
+  "pad_ratio": 0.25,
+  "runtime_sec": 0.6899417910026386,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1022.5
+  },
   "fields": {
     "address": {
       "text": "매?광역시 수성2 달구발애로 235, 40",
       "confidence": 0.6768900156021118,
-      "runtime_sec": 0.21042462499463,
+      "runtime_sec": 0.2080388329923153,
       "items": [
         {
           "text": "매?광역시 수성2 달구발애로 235, 40",
@@ -23,7 +37,7 @@
     "deposit_kor": {
       "text": "이원만",
       "confidence": 0.8044449687004089,
-      "runtime_sec": 0.11817429200164042,
+      "runtime_sec": 0.11754729200038128,
       "items": [
         {
           "text": "이원만",
@@ -40,7 +54,7 @@
     "deposit_num": {
       "text": "20,000,000",
       "confidence": 0.9268700480461121,
-      "runtime_sec": 0.09301412498462014,
+      "runtime_sec": 0.09185883300960995,
       "items": [
         {
           "text": "20,000,000",
@@ -57,7 +71,7 @@
     "down_payment": {
       "text": "이백만",
       "confidence": 0.9327868819236755,
-      "runtime_sec": 0.10476824999204837,
+      "runtime_sec": 0.10446304100332782,
       "items": [
         {
           "text": "이백만",
@@ -74,7 +88,7 @@
     "lessor_name": {
       "text": "채원석",
       "confidence": 0.9156929850578308,
-      "runtime_sec": 0.08493445898056962,
+      "runtime_sec": 0.08414120899396949,
       "items": [
         {
           "text": "채원석",
@@ -91,7 +105,7 @@
     "lessee_name": {
       "text": "봉하늘",
       "confidence": 0.7926729321479797,
-      "runtime_sec": 0.084528915991541,
+      "runtime_sec": 0.08389258300303482,
       "items": [
         {
           "text": "봉하늘",

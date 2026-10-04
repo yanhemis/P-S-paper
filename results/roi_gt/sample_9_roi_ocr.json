@@ -1,12 +1,26 @@
 {
   "image_id": "sample_9.JPG",
   "roi_source": "gt/gt_roi.json",
-  "runtime_sec": 0.9494415020162705,
+  "pad_ratio": 0.25,
+  "runtime_sec": 0.9378601249773055,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1022.5
+  },
   "fields": {
     "address": {
       "text": "서울토별시 성동국 9심리3 115, 11033",
       "confidence": 0.7673320968945821,
-      "runtime_sec": 0.37904983400949277,
+      "runtime_sec": 0.375169958017068,
       "items": [
         {
           "text": "서울토별시",
@@ -43,7 +57,7 @@
     "deposit_kor": {
       "text": "9원만",
       "confidence": 0.8096022009849548,
-      "runtime_sec": 0.14718079200247303,
+      "runtime_sec": 0.1452758749946952,
       "items": [
         {
           "text": "9원만",
@@ -60,7 +74,7 @@
     "deposit_num": {
       "text": "50,000,00",
       "confidence": 0.9734662175178528,
-      "runtime_sec": 0.11110537499189377,
+      "runtime_sec": 0.11002237498178147,
       "items": [
         {
           "text": "50,000,00",
@@ -77,7 +91,7 @@
     "down_payment": {
       "text": "오백만",
       "confidence": 0.5895527005195618,
-      "runtime_sec": 0.11823279201053083,
+      "runtime_sec": 0.11627629201393574,
       "items": [
         {
           "text": "오백만",
@@ -94,7 +108,7 @@
     "lessor_name": {
       "text": "도상현",
       "confidence": 0.9736917614936829,
-      "runtime_sec": 0.09702054201625288,
+      "runtime_sec": 0.09581241698469967,
       "items": [
         {
           "text": "도상현",
@@ -111,7 +125,7 @@
     "lessee_name": {
       "text": "마수빈",
       "confidence": 0.9911034107208252,
-      "runtime_sec": 0.09685216698562726,
+      "runtime_sec": 0.09530320798512548,
       "items": [
         {
           "text": "마수빈",

@@ -1,7 +1,20 @@
 {
   "image_id": "sample_5.JPG",
-  "runtime_sec": 30.294851582992123,
+  "runtime_sec": 29.860642665997148,
   "num_text_boxes": 162,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1965.6
+  },
   "items": [
     {
       "text": "부동산임대차계약서",

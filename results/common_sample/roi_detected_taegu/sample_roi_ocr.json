@@ -2,12 +2,25 @@
   "image_id": "sample.jpg",
   "roi_source": "results/detected_roi/taegu_common_sample.json",
   "pad_ratio": 0.0,
-  "runtime_sec": 3.2266758759797085,
+  "runtime_sec": 3.1885557509667706,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1012.9
+  },
   "fields": {
     "address": {
       "text": "서울트별시 강남구 테헤란로 123,4층 401 (대지권의 목적인",
       "confidence": 0.9592590034008026,
-      "runtime_sec": 0.5839662090002093,
+      "runtime_sec": 0.5765175829874352,
       "items": [
         {
           "text": "서울트별시 강남구 테헤란로 123,4층 401",
@@ -34,7 +47,7 @@
     "lessor_name": {
       "text": "고결 (인)",
       "confidence": 0.9877040088176727,
-      "runtime_sec": 0.25475437499699183,
+      "runtime_sec": 0.2521620829938911,
       "items": [
         {
           "text": "고결",
@@ -61,7 +74,7 @@
     "lessee_name": {
       "text": "김영수 (인)",
       "confidence": 0.9950226247310638,
-      "runtime_sec": 0.2539343340031337,
+      "runtime_sec": 0.2526978339883499,
       "items": [
         {
           "text": "김영수",
@@ -88,7 +101,7 @@
     "deposit_kor": {
       "text": "특적) 위 쿠공산ㅋ B 2 금 일천만 원정은 계약시에 지급히 일억",
       "confidence": 0.8678276737531027,
-      "runtime_sec": 1.300915832980536,
+      "runtime_sec": 1.2824496669927612,
       "items": [
         {
           "text": "특적) 위 쿠공산ㅋ B",
@@ -155,7 +168,7 @@
     "down_payment": {
       "text": "금 금 금 일천만 사천만 원정은 계약시에 지급해 원정은2",
       "confidence": 0.9147925206593105,
-      "runtime_sec": 0.8331051249988377,
+      "runtime_sec": 0.8247285840043332,
       "items": [
         {
           "text": "금",
