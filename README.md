@@ -18,6 +18,8 @@
 | CER / Exact Match / confidence / Field Accuracy / sec/image | ✅ A vs B 비교 완료 |
 | 대표 성공·실패 사례 | ✅ 8개 정리 |
 | OCR 입출력 규격 문서 | ✅ 작성 완료 (전달 필요) |
+| H1 — 이미지 품질 영향 (인쇄 글자 비교 + 원본/전처리 비교) | ✅ 1차 분석 완료 (2-4절) |
+| 개인정보 — 사진 GPS 위치정보 제거 | ✅ 현재 파일은 제거 완료 (이전 커밋에는 남아 있음, 2-6절) |
 | **실험 C — 실제 검출 ROI OCR** | 🔶 파이프라인은 연결 완료 (공통 `sample.jpg` 1장, taegu ROI). **10장은 팀원 ROI 결과 대기** (아래 5절) |
 
 ---
@@ -26,7 +28,7 @@
 
 | 방법 | Field Accuracy (Exact Match) | 평균 CER | 평균 confidence | sec/image |
 |---|---|---|---|---|
-| 실험 A: Full OCR | 29/49 (59.2%) | 0.141 | 0.886 | 29.93 |
+| 실험 A: Full OCR | 29/49 (59.2%) | 0.141 | 0.886 | 29.32 |
 | 실험 B: GT ROI OCR | **31/49 (63.3%)** | **0.117** | 0.874 | 0.93 (ROI당 0.15) |
 
 | 필드 | Full OCR (EM · CER) | GT ROI OCR (EM · CER) |
@@ -51,6 +53,9 @@
 > → **부분적으로 그렇다.** 정답 ROI로 잘라 재인식하면, 전체 페이지에서 여러 칸이 한 박스로 합쳐지는 오류는 해결된다(Field Accuracy 59.2% → 63.3%, CER 0.141 → 0.117).
 > 하지만 손글씨 글자 자체의 오인식(소재지 0/10, 한글 금액 2/10)은 ROI로 해결되지 않는다. 남은 오류의 대부분은 **위치가 아니라 인식 모델의 문제**다.
 > 이 결과는 정답 ROI 기준의 상한선이다. 자동 검출 ROI에서도 개선이 유지되는지는 실험 C로 확인할 예정이다.
+>
+> **추가로 확인된 점 (H1 분석)**: ROI를 자르지 않고 페이지 전체를 **원근 보정만 해서** 전체 OCR을 돌려도 Field Accuracy가 31/49로, GT ROI OCR과 같았다.
+> ROI 재인식의 이득 중 일부는 "칸을 특정한 효과"가 아니라 **문서를 크게(고해상도로) 보는 효과**일 수 있다. 논문에서 H5를 주장할 때 이 대조군을 같이 보고해야 한다.
 
 ### 2-2. 평가 방법과 용어
 
@@ -91,7 +96,43 @@
 - 소재지는 세 방법 모두 `호`를 놓쳤다(`401`). taegu ROI는 아래 행 인쇄 글자 `(대지권의 목적인`도 섞였다
 - 결과: `results/eval/common_sample/summary.md`
 
-### 2-4. 결과 해석 시 주의할 점 (한계)
+### 2-4. H1 — 이미지 품질의 영향 (`results/h1/summary.md`)
+
+> H1: "Text bbox는 한국어 자체보다 이미지 품질의 영향을 더 크게 받는다"
+
+**방법**: 양식에 **인쇄된 한글**(53줄, 1,325자)은 10장 모두 내용이 같다. 그래서 인쇄 글자의 인식률을 장별로 비교하면 글자 내용(한국어)은 고정되고 이미지 품질만 달라진다. 정답은 양식 PDF의 텍스트 레이어에서 가져왔다(`gt/template_words.json`).
+- **인쇄 재현율**: 줄 단위로, 정답 한글 중 순서대로 맞게 읽힌 비율(LCS). 같은 줄에 쓴 손글씨는 감점하지 않는다
+- **위치 무관 재현율**: 페이지 전체 한글 2글자 묶음 중 OCR 결과에 나온 비율. 정렬 오차의 영향을 받지 않으며, 두 지표가 같은 결론을 내는지 교차 확인하는 용도다
+- **품질 지표**: 원근 보정한 문서에서 밝기, 대비, 선명도, 조명 불균일, 유효 해상도, 기울기, 원근비를 측정했다
+- **검출 입력 해상도**: 검출 모델이 실제로 보는 해상도. 사진 긴 변을 1536px로 줄이므로, 유효 해상도 × 1536 / 사진 긴 변으로 계산한다
+
+**결과 1 — 품질이 좋으면 인쇄 한글은 거의 다 읽힌다**
+
+| 이미지 (세트) | 검출 입력 dpi | 인쇄 재현율 | 위치 무관 재현율 | 원인 |
+|---|---|---|---|---|
+| 7장 (#1, #2, #3, #5, #6, #8, #9) | 106~120 | **0.971~0.995** | 0.943~0.944 | — |
+| sample_4 (#4) | 110 | 0.903 | 0.904 | 클립보드 가장자리에 걸린 맨 아래 안내문 줄 전체 누락 |
+| sample_7 (#7 접힘) | 113 | 0.888 | 0.913 | 접힌 자국 부근(제1조 줄 끝) 누락 |
+| sample_10 (#10 멀리서) | **79** | **0.871** | **0.836** | 문서가 작게 찍혀 검출 입력 해상도가 가장 낮음 |
+
+- 같은 한국어 인쇄 글자인데 장에 따라 재현율이 0.87~0.99로 달라진다. 떨어지는 3장은 모두 촬영 상태(거리, 접힘, 가장자리)로 설명된다 → **H1을 지지한다**
+- 품질 지표 중 인쇄 재현율과 순위 상관이 뚜렷한 것은 **유효 해상도(ρ=+0.73)**뿐이다. 조명 불균일도 ρ=+0.78로 나왔지만, "불균일할수록 잘 읽힌다"는 방향이라 설명이 안 된다. #4와 #10의 값이 우연히 낮아서 생긴 상관으로 보고 해석하지 않는다(n=10)
+- 손글씨 CER과 인쇄 재현율의 상관은 ρ=−0.71이다. 인쇄 글자가 잘 안 읽히는 장은 손글씨도 잘 안 읽힌다. 다만 깨끗한 #1에서도 손글씨 CER이 0.105라서, **손글씨 인식은 이미지 품질과 별개인 병목**이다
+
+**결과 2 — 원본 vs 전처리** (전체 OCR, 10장 평균)
+
+| 입력 | 인쇄 재현율 | 손글씨 Field Accuracy | 손글씨 CER |
+|---|---|---|---|
+| 원본 | 0.957 | 29/49 | 0.142 |
+| CLAHE 대비 보정 | 0.960 | **24/49** ↓ | 0.205 |
+| **원근 보정** (문서만 잘라 정면으로 펴기) | **0.975** | **31/49** | **0.119** |
+
+- **원근 보정이 가장 효과가 크다**. #10은 인쇄 재현율이 0.871에서 0.990으로 회복됐다. 문서만 잘라 펴면 같은 1536px 제한 안에서 문서가 더 크게 들어가기 때문이다(검출 입력 79dpi → 131dpi)
+- **대비 보정(CLAHE)은 효과가 없거나 오히려 해롭다**. 인쇄 글자는 거의 같고, 손글씨 Field Accuracy는 29에서 24로 떨어졌다
+- #4와 #7은 원근 보정으로도 회복되지 않았다(0.907, 0.891). 평면 변환으로 고칠 수 없는 국소 문제(가장자리, 접힘)다
+- 주의: 원근 보정에는 GT ROI 생성과 같은 양식 템플릿 정합(호모그래피)을 썼다. 실제 파이프라인에서는 문서 경계 검출 같은 자동 방법이 필요하다. #7은 정합이 부정확해서 원근 보정본의 필드 칸이 일부 어긋난다
+
+### 2-5. 결과 해석 시 주의할 점 (한계)
 
 - **표본이 작다**: 49필드, 10장이다. A와 B의 차이(+2건)는 통계적으로 확실한 차이가 아니라 경향으로 봐야 한다
 - **필체가 하나다**: 10장 모두 한 사람이 썼고 인쇄체 기입이 없다(#7도 손글씨). 다른 필체로 일반화할 수 있는지는 확인하지 않았다
@@ -111,6 +152,16 @@
   | 0.40 | 30/49 | 0.150 | 1.04 |
 
   여유가 0이면 선을 넘은 획이 잘리고, 0.40이면 다음 행 글자가 섞여서 CER이 양쪽 끝에서 나빠진다 (`results/eval/pad_sweep/`)
+
+- **H1 분석도 표본이 작다**: 10장, 양식 1종, 촬영자 1명이다. 상관계수는 방향을 보는 참고 자료이고, 장별 원인은 이미지를 직접 확인해서 붙였다
+
+### 2-6. 개인정보 — 사진 GPS 위치정보
+
+- 촬영 사진 11장과 공통 `sample.jpg`에 **GPS 위치정보(촬영 장소 좌표)가 들어 있었다**. 2026-10-05에 `exiftool -gps:all=`로 **GPS 항목만** 지웠다
+  - EXIF 전체를 지우면 회전 정보(Orientation)까지 사라져 사진이 가로로 돌아가고, 정답 좌표가 전부 틀어진다. 그래서 GPS만 지웠다
+  - 지우기 전과 후에 디코딩한 픽셀의 해시를 비교해, 12장 모두 **픽셀과 회전이 완전히 같음**을 확인했다 → 정답 좌표와 OCR 결과는 그대로 유효하다
+- **이전 커밋(`eaee964`, `1e9bbe2` 등)에는 GPS가 남은 원본이 여전히 있고, GitHub에 push된 상태다.** 완전히 지우려면 git 히스토리를 다시 써서 강제 push해야 하므로 팀 합의가 필요하다
+- 이후 사진을 추가할 때는 커밋 전에 `exiftool -gps:all= -overwrite_original <파일>`을 실행할 것
 
 ---
 
@@ -141,12 +192,14 @@ tail/
 │   ├── make_gt_roi.py         # GT ROI 생성 보조: 양식 템플릿 → 촬영본 호모그래피 → gt/gt_roi.json
 │   ├── roi_ocr.py             # 실험 B/C: ROI crop → OCR → <out_dir>/<stem>_roi_ocr.json
 │   ├── evaluate_fields.py     # 평가: Full vs GT ROI (vs Detected ROI) → results/eval/
+│   ├── h1_quality.py          # H1: 품질 지표, 인쇄 글자 평가, 원본/전처리 비교 → results/h1/
 │   └── convert_teammate.py    # 팀원(taegu) 결과 → tail 형식 변환 (팀원 폴더는 읽기만)
 │
 ├── gt/
 │   ├── template.png           # 양식 PDF를 300dpi로 렌더링한 기준 이미지
 │   ├── gt_fields.json         # 정답 텍스트 (이미지 × 필드)
 │   ├── gt_roi.json            # 정답 ROI (이미지 × 필드, 4점 quad + bbox, 원본 좌표)
+│   ├── template_words.json    # 양식 PDF의 인쇄 단어와 좌표 (H1 인쇄 글자 정답)
 │   ├── check/                 # GT ROI 육안 검수용 이미지 10장
 │   └── common_sample/         # 공통 sample.jpg 정답 (taegu field_gt.json 변환본)
 │
@@ -156,6 +209,8 @@ tail/
 │   ├── roi_gt_pad/            # 실험 B 여유 비율 민감도 (0 / 0.1 / 0.4)
 │   ├── detected_roi/          # 실험 C 입력 (팀원 ROI 변환본)
 │   ├── common_sample/         # 공통 sample.jpg의 실험 B/C 결과
+│   ├── h1/                    # H1: quality_metrics.json, printed_*.json, ocr/(전처리 OCR), eval_*/, summary.md
+│   │                          #     (images/, homography/ 는 재생성 가능해서 .gitignore)
 │   ├── eval/                  # summary.md, field_results.json, 팀원 ROI 좌표 확인 이미지
 │   └── cases/                 # 대표 성공·실패 사례 (cases.md + crop 이미지)
 │
@@ -189,7 +244,20 @@ python scripts/convert_teammate.py taegu-roi ../taegu/<result>.json results/dete
 # 평가
 python scripts/evaluate_fields.py                                  # A vs B
 python scripts/evaluate_fields.py --detected results/roi_detected  # A vs B vs C
+
+# H1 (순서대로, 자세한 옵션은 scripts/h1_quality.py 상단 주석)
+python scripts/h1_quality.py prepare sample_data_jpg/sample_{1..10}.JPG
+python scripts/ocr_baseline.py results/h1/images/clahe/*.jpg --out-dir results/h1/ocr/clahe --no-vis
+python scripts/ocr_baseline.py results/h1/images/rectified/*.jpg --out-dir results/h1/ocr/rectified --no-vis
+python scripts/h1_quality.py printed results original photo
+python scripts/h1_quality.py printed results/h1/ocr/clahe clahe photo
+python scripts/h1_quality.py printed results/h1/ocr/rectified rectified template
+python scripts/evaluate_fields.py --full-dir results/h1/ocr/clahe --roi-gt-dir results/h1/none --out-dir results/h1/eval_clahe
+python scripts/evaluate_fields.py --full-dir results/h1/ocr/rectified --gt-roi results/h1/gt_roi_rectified.json --roi-gt-dir results/h1/none --out-dir results/h1/eval_rectified
+python scripts/h1_quality.py report
 ```
+
+결과 json의 `meta`에 모델명, 버전, 실행 환경(CPU/GPU), 최대 메모리가 기록된다. 이 환경에서는 CPU이고 최대 메모리는 약 1.9GB다.
 
 주의:
 - OCR 모델은 `PP-OCRv5_mobile_det` + `korean_PP-OCRv5_mobile_rec`로 고정했다. 기본값(서버 모델)은 16GB RAM에서 OOM이 난다. 자세한 내용은 PROGRESS.md 09-23 참고
@@ -291,7 +359,9 @@ B가 tail에게서 받기로 한 것은 "OCR/ROI 재인식 모듈과 결과 포�
 
 - [x] 실험 C 파이프라인 연결 확인 (sample.jpg 1장, taegu ROI)
 - [ ] 실험 C 10장 실행 및 A/B/C 비교표 (팀원 ROI 수신 후 바로 가능)
-- [ ] 촬영 조건 매핑 확인 → 조건별 비교 (H1)
+- [x] H1 1차 분석 (인쇄 글자 비교, 원본/전처리 비교)
+- [ ] 촬영 조건 매핑 확인 → H1 표에 계획 조건 열 추가
+- [ ] 이전 커밋에 남은 GPS 원본 사진 처리 결정 (2-6절)
 - [x] ROI 여유 비율 민감도 확인 (결과에 거의 영향 없음)
 - [ ] (선택) ROI 후처리: crop 가장자리에 걸친 작은 박스 제거
 - [ ] (선택) 잔금 / 계약기간 필드 추가

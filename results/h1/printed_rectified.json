@@ -1,0 +1,82 @@
+{
+  "sample_10": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.990188679245283,
+    "page_bigram_recall": 0.9386792452830188,
+    "char_cer": 0.06943396226415094,
+    "line_detect_rate": 1.0
+  },
+  "sample_1": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9984905660377359,
+    "page_bigram_recall": 0.9394654088050315,
+    "char_cer": 0.07169811320754717,
+    "line_detect_rate": 1.0
+  },
+  "sample_2": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9977358490566037,
+    "page_bigram_recall": 0.9394654088050315,
+    "char_cer": 0.06037735849056604,
+    "line_detect_rate": 1.0
+  },
+  "sample_3": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9977358490566037,
+    "page_bigram_recall": 0.9394654088050315,
+    "char_cer": 0.0739622641509434,
+    "line_detect_rate": 1.0
+  },
+  "sample_4": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9071698113207547,
+    "page_bigram_recall": 0.8970125786163522,
+    "char_cer": 0.15396226415094338,
+    "line_detect_rate": 0.9433962264150944
+  },
+  "sample_5": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9879245283018868,
+    "page_bigram_recall": 0.9355345911949685,
+    "char_cer": 0.07924528301886792,
+    "line_detect_rate": 1.0
+  },
+  "sample_6": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9947169811320755,
+    "page_bigram_recall": 0.9378930817610063,
+    "char_cer": 0.0649056603773585,
+    "line_detect_rate": 1.0
+  },
+  "sample_7": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.8905660377358491,
+    "page_bigram_recall": 0.9072327044025157,
+    "char_cer": 0.16,
+    "line_detect_rate": 0.9433962264150944
+  },
+  "sample_8": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9909433962264151,
+    "page_bigram_recall": 0.9378930817610063,
+    "char_cer": 0.08452830188679246,
+    "line_detect_rate": 1.0
+  },
+  "sample_9": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.990188679245283,
+    "page_bigram_recall": 0.934748427672956,
+    "char_cer": 0.08,
+    "line_detect_rate": 1.0
+  }
+}

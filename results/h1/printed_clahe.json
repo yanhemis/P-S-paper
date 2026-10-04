@@ -1,0 +1,82 @@
+{
+  "sample_10": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9479245283018868,
+    "page_bigram_recall": 0.9088050314465409,
+    "char_cer": 0.1079245283018868,
+    "line_detect_rate": 0.9811320754716981
+  },
+  "sample_1": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9932075471698113,
+    "page_bigram_recall": 0.940251572327044,
+    "char_cer": 0.07547169811320754,
+    "line_detect_rate": 1.0
+  },
+  "sample_2": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9924528301886792,
+    "page_bigram_recall": 0.9378930817610063,
+    "char_cer": 0.0649056603773585,
+    "line_detect_rate": 1.0
+  },
+  "sample_3": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9947169811320755,
+    "page_bigram_recall": 0.940251572327044,
+    "char_cer": 0.07849056603773585,
+    "line_detect_rate": 1.0
+  },
+  "sample_4": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.8966037735849056,
+    "page_bigram_recall": 0.8985849056603774,
+    "char_cer": 0.16528301886792454,
+    "line_detect_rate": 0.9433962264150944
+  },
+  "sample_5": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9743396226415094,
+    "page_bigram_recall": 0.9386792452830188,
+    "char_cer": 0.09207547169811321,
+    "line_detect_rate": 1.0
+  },
+  "sample_6": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9841509433962264,
+    "page_bigram_recall": 0.940251572327044,
+    "char_cer": 0.07471698113207548,
+    "line_detect_rate": 1.0
+  },
+  "sample_7": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.8890566037735849,
+    "page_bigram_recall": 0.910377358490566,
+    "char_cer": 0.15924528301886792,
+    "line_detect_rate": 0.9433962264150944
+  },
+  "sample_8": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9449056603773585,
+    "page_bigram_recall": 0.904874213836478,
+    "char_cer": 0.12075471698113208,
+    "line_detect_rate": 0.9811320754716981
+  },
+  "sample_9": {
+    "lines": 53,
+    "hangul_chars": 1325,
+    "char_recall": 0.9818867924528302,
+    "page_bigram_recall": 0.9418238993710691,
+    "char_cer": 0.08679245283018867,
+    "line_detect_rate": 1.0
+  }
+}

@@ -39,6 +39,7 @@ from make_gt_roi import (  # noqa: E402
     TEMPLATE_PATH, TEMPLATE_FIELDS, find_homography, local_homography,
 )
 from evaluate_fields import assign_full_ocr, levenshtein  # noqa: E402
+from ocr_baseline import DET_LIMIT_SIDE_LEN  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 H1_DIR = ROOT / "results" / "h1"
@@ -285,6 +286,12 @@ def cmd_report():
 
     stems = sorted({Path(k).stem for k in q}, key=lambda s: int(s.split("_")[1]))
     nan = float("nan")
+    # 검출 입력 해상도: 검출 모델은 이미지 긴 변을 DET_LIMIT_SIDE_LEN(1536)으로 줄여서 본다.
+    # 문서가 프레임에서 작을수록(멀리서 촬영) 검출 단계에서 글자가 더 작아진다.
+    for s_ in stems:
+        h, w = cv2.imread(str(ROOT / "sample_data_jpg" / f"{s_}.JPG"), cv2.IMREAD_REDUCED_GRAYSCALE_8).shape
+        long_side = max(h, w) * 8
+        q[f"{s_}.JPG"]["det_input_dpi"] = q[f"{s_}.JPG"]["effective_dpi"] * min(1.0, DET_LIMIT_SIDE_LEN / long_side)
     L = ["# H1 — 이미지 품질과 인쇄 글자 / 손글씨 인식\n"]
     L.append("- 인쇄 글자: 양식 PDF 텍스트 레이어의 한글(세로 라벨 제외 53줄, 1,325자). 10장 모두 내용이 같아서 이미지 품질만 다르다")
     L.append("- 인쇄 재현율: 줄 단위로 정답 한글 중 순서대로 맞게 읽힌 비율(LCS). 위치 무관 재현율: 페이지 전체 한글 2글자 묶음 중 OCR에 나온 비율(정렬 오차 영향 없음)")
@@ -292,15 +299,15 @@ def cmd_report():
     L.append("- 품질 지표는 원근 보정한 문서(양식 좌표계, 300dpi 기준)에서 측정\n")
 
     L.append("## 1. 장별 품질 지표와 인식 결과 (원본)\n")
-    L.append("| 이미지 | 세트 | 밝기 | 대비 | 선명도 | 조명 불균일 | 유효 dpi | 기울기° | 원근비 | 인쇄 재현율 | 위치 무관 재현율 | 손글씨 CER |")
-    L.append("|---|---|---|---|---|---|---|---|---|---|---|---|")
+    L.append("| 이미지 | 세트 | 밝기 | 대비 | 선명도 | 조명 불균일 | 유효 dpi | 검출 입력 dpi | 기울기° | 원근비 | 인쇄 재현율 | 위치 무관 재현율 | 손글씨 CER |")
+    L.append("|---|---|---|---|---|---|---|---|---|---|---|---|---|")
     for s_ in stems:
         m = q[f"{s_}.JPG"]
         pr = printed.get("original", {}).get(s_, {})
         L.append(
             f"| {s_} | #{gt_fields[f'{s_}.JPG']['set']} | {m['brightness']:.0f} | {m['contrast_p95_p5']:.0f} | "
             f"{m['sharpness_lap_var']:.0f} | {m['illum_nonuniformity_cv']:.3f} | {m['effective_dpi']:.0f} | "
-            f"{m['tilt_deg']:.1f} | {m['keystone_ratio']:.3f} | "
+            f"{m['det_input_dpi']:.0f} | {m['tilt_deg']:.1f} | {m['keystone_ratio']:.3f} | "
             f"{pr.get('char_recall', nan):.3f} | {pr.get('page_bigram_recall', nan):.3f} | "
             f"{hw['original'][0].get(s_, nan):.3f} |"
         )
@@ -316,7 +323,7 @@ def cmd_report():
     hc = [hw["original"][0].get(s_, nan) for s_ in stems]
     labels = {
         "brightness": "밝기", "contrast_p95_p5": "대비", "sharpness_lap_var": "선명도",
-        "illum_nonuniformity_cv": "조명 불균일", "effective_dpi": "유효 dpi",
+        "illum_nonuniformity_cv": "조명 불균일", "effective_dpi": "유효 dpi", "det_input_dpi": "검출 입력 dpi",
         "tilt_deg": "기울기 (절댓값)", "keystone_ratio": "원근비", "reproj_err_median_px": "정합 오차",
     }
     for k, lab in labels.items():
