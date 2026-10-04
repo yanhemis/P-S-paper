@@ -14,8 +14,10 @@
   run_batch(INPUT_DIR)                폴더 일괄 처리 → output/summary.csv, output/failure_cases.csv
 
 출력 (이미지 1장당 output/<이미지 이름>/)
-  cells.json            전달용 prediction. 형식 고정 (아래)
+  cells.json            전달용 prediction. 형식 고정 (아래). 좌표 = 보정본(<이름>_aligned.png) 기준
   cells_primitive.json  병합 전 primitive grid. 같은 형식 → 'primitive vs merged' 평가 비교용
+  cells_original.json            cells.json 과 같은 셀을 원본 이미지 좌표로 변환한 것 (GT 가 원본 위에 그려진 평가용)
+  cells_primitive_original.json  cells_primitive.json 의 원본 좌표 버전
   <이름>_aligned.png    bbox 기준 이미지 (기울기/EXIF 보정이 있었을 때만 저장)
   report.json           검증 결과, 실패 사례, 경계 점수, 파라미터, 처리 시간
   vis/0_lines.png       초록=grid 에 쓰인 선 / 주황=표 선에 안 붙어 grid 에서 빠진 선 / 파랑=표 영역
@@ -635,6 +637,22 @@ def save_cells_json(path, image_name, source_name, rotation_deg, cells):
     path.write_text(text, encoding="utf-8")
 
 
+def to_original(cells, skew, src_w, src_h):
+    """보정본(aligned) 좌표 → 원본 이미지 좌표. bbox 중심을 되돌리고 크기는 유지한다."""
+    if not skew["affine"]:                 # 기울기 보정을 안 했으면 좌표가 같다
+        return cells
+    Ai = np.linalg.inv(np.vstack([np.array(skew["affine"]), [0, 0, 1]]))
+    out = []
+    for c in cells:
+        x1, y1, x2, y2 = c["bbox"]
+        cx, cy, _ = Ai @ [(x1 + x2) / 2, (y1 + y2) / 2, 1]
+        w, h = x2 - x1, y2 - y1
+        bx1, by1 = max(0, round(cx - w / 2)), max(0, round(cy - h / 2))
+        bx2, by2 = min(src_w, round(cx + w / 2)), min(src_h, round(cy + h / 2))
+        out.append({**c, "bbox": [int(bx1), int(by1), int(bx2), int(by2)]})
+    return out
+
+
 # ==============================================================
 # 11. 시각화
 # ==============================================================
@@ -769,7 +787,8 @@ def show_images(items):
 def _clean_outputs(folder):
     """재실행 시 이전 결과가 섞이지 않도록 이 코드가 만드는 파일만 지운다"""
     if folder.exists():
-        for pat in ("cells.json", "cells_primitive.json", "report.json",
+        for pat in ("cells.json", "cells_primitive.json", "cells_original.json",
+                    "cells_primitive_original.json", "report.json",
                     "*_aligned.png", "vis/*.png", "roi/*.png"):
             for f in folder.glob(pat):
                 f.unlink()
@@ -799,6 +818,12 @@ def run_pipeline(image_path=IMAGE_PATH, out_dir=OUTPUT_DIR, params=None, show=SH
     # 3) 전달용 cells.json + primitive baseline
     save_cells_json(folder / "cells.json", ref_name, image_path.name, r["rotation_deg"], cells)
     save_cells_json(folder / "cells_primitive.json", ref_name, image_path.name, r["rotation_deg"], r["prims"])
+    # 평가용: GT 가 원본 이미지 위에 그려져 있으므로 원본 좌표 버전도 저장
+    sw, sh = src.shape[1], src.shape[0]
+    save_cells_json(folder / "cells_original.json", image_path.name, image_path.name, 0.0,
+                    to_original(cells, r["skew"], sw, sh))
+    save_cells_json(folder / "cells_primitive_original.json", image_path.name, image_path.name, 0.0,
+                    to_original(r["prims"], r["skew"], sw, sh))
 
     # 4) 시각화
     t = max(1, int(round(r["scale"])))
