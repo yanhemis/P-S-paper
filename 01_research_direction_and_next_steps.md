@@ -1,457 +1,299 @@
 # 연구 방향성 · 가설 · 다음 작업 통합 문서
 
-> 마지막 업데이트: 2026-09-14
+> 마지막 업데이트: 2026-10-08
+> 상태: 논문 중심축 재설정 및 최종 실험 단계 진입
 
-## 이 문서의 역할
+## 1. 개정된 논문 주제
 
-이 파일은 팀 전체가 공통으로 참고하는 **연구 방향, 현재 가설, 실험 우선순위, 공통 평가 기준, 다음 작업 모음, 전체 진행 현황**을 한 곳에서 관리한다.
+**정형 임대차계약서 핵심정보 추출 파이프라인의 단계별 오류 전파 분석: 이미지 품질, 구조 복원, ROI 설정, 문자 인식을 중심으로**
 
-담당자 개인에 대한 피드백은 이 문서에 적지 않는다. 담당자별 피드백은 `feedback_*.md`, 추가 인원에게 배정한 작업은 `assignment_*.md`에서 관리한다.
+기존 연구에서는 ROI 재인식을 주요 개선 수단으로 보았으나, 현재 실험에서는 GT ROI OCR의 개선 폭이 제한적이고 원근 보정만으로도 유사한 수준의 개선이 관찰되었다. 따라서 이제 ROI 자체의 우수성을 전제로 하지 않고, 각 단계가 최종 Field Accuracy에 미치는 영향을 통제 실험으로 분리한다.
 
-새 기능이나 새로운 모델을 추가하기 전에는 `00_scope_guard_prompt.md`로 현재 논문 범위에 해당하는지 먼저 확인한다.
-
----
-
-## 1. 현재 연구 방향
-
-현재 연구의 핵심은 단순한 한국어 OCR 인식률 비교가 아니라 다음 흐름을 단계별로 검증하는 것이다.
+핵심 흐름:
 
 ```text
-문서 이미지
-  -> 전처리
-  -> Text Detection
-  -> Cell / ROI Detection
-  -> 구조 또는 필드 매핑
-  -> ROI 재인식
-  -> 필드별 후처리
-  -> 핵심 정보 추출 정확도 평가
+입력 이미지
+  -> 이미지 품질 / 전처리
+  -> 문서 구조 복원
+  -> 필드 ROI 설정
+  -> OCR 문자 인식
+  -> 정규화 / 검증
+  -> 최종 Field Accuracy
 ```
 
-임대차계약서는 표와 병합 셀이 많고, `보증금`, `계약금`, `임대인`, `임차인`, `소재지`, `계약기간` 등 핵심 필드의 위치 관계가 비교적 정형적이다.
-
-따라서 전체 표를 완벽하게 복원하는 것 자체보다 **핵심 필드 ROI를 얼마나 안정적으로 특정하고, 그 결과가 최종 Field Accuracy 개선으로 이어지는지**를 중심으로 본다.
-
-현재는 다음 세 층을 분리해서 평가한다.
-
-1. **Text Detection**: OCR이 텍스트 위치를 안정적으로 잡는가?
-2. **Structure / ROI Detection**: 텍스트가 어느 셀·필드에 속하는지 공간 구조를 안정적으로 복원하는가?
-3. **Field Extraction**: 최종적으로 보증금·주소·성명 등 핵심 값을 정확히 추출하는가?
+본 연구의 핵심 기여는 새로운 OCR 모델 제안이 아니라 **같은 데이터와 Ground Truth에서 각 단계의 오류를 하나씩 분리하고, 최종 필드 추출 성능에 미치는 영향을 정량적으로 귀속하는 것**이다.
 
 ---
 
-## 2. 현재까지 정리된 핵심 해석
+## 2. 최종 연구 질문
 
-### 2.1 `한국어라서 좌표가 붕괴한다`고 단정하지 않는다
+### RQ1. 이미지 품질
+촬영 거리, 원근 왜곡, 접힘, 가장자리 누락, 유효 해상도 등 이미지 품질 차이가 OCR과 최종 Field Accuracy에 어느 정도 영향을 주는가?
 
-OCR Text Detection과 한국어 Recognition, Table Structure Recognition을 분리해서 본다.
+### RQ2. 구조 복원
+PP-Structure, TATR, OpenCV 등 구조 복원 방식의 Cell/ROI localization 오류가 이후 핵심 필드 추출에 어떤 영향을 주는가?
 
-- Text bbox는 한국어 자체보다 저해상도, 기울기, 블러, 표선 겹침, 원근 왜곡 등의 영향을 더 크게 받을 수 있다.
-- 텍스트가 검출되어도 읽기 순서와 행/열/병합 셀 복원 과정에서 구조가 무너질 수 있다.
-- 핵심 문제는 `텍스트 bbox 검출 실패`와 `셀-텍스트 매핑 실패` 중 어느 쪽인지 실험으로 분리한다.
+### RQ3. ROI 설정
+Full OCR, GT ROI OCR, 실제 검출 ROI OCR 사이에서 Field Accuracy와 CER이 어떻게 변하며, ROI가 해결하는 오류와 해결하지 못하는 오류는 무엇인가?
 
-### 2.2 범용 구조 모델 실패와 실행 환경 실패를 구분한다
+### RQ4. 최종 병목
+구조와 ROI 오류를 통제한 이후에도 남는 오류는 어디에서 발생하며, 현재 데이터에서 최종 성능의 주요 병목은 구조/ROI인가 문자 Recognition인가?
 
-- 실행이 되지 않았으면 `성능이 낮다`가 아니라 `현재 환경에서 평가하지 못함`으로 기록한다.
-- 특정 버전에서 한국어 설정이 제한되었다고 해서 모델 계열 전체가 한국어를 지원하지 않는다고 일반화하지 않는다.
-
-### 2.3 OpenCV를 미리 최적이라고 결론 내리지 않는다
-
-OpenCV 기반 line/cell detection은 현재 **유망한 비교 대상 또는 proposed 후보**이다.
-
-최종 결론은 동일 Ground Truth에서 구조 모델과 정량 비교한 뒤 결정한다.
-
-### 2.4 단순 검출 개수는 성능 지표가 아니다
-
-모델이 반환한 bbox 개수만으로 성능을 판단하지 않는다.
-
-가능하면 **exhaustive Ground Truth + 1:1 matching 기반 IoU / Precision / Recall / F1**로 비교하고, 마지막에는 Field Accuracy까지 확인한다.
-
-일부 셀만 라벨링한 partial GT를 사용할 경우, 라벨링되지 않은 정상 예측까지 FP로 처리될 수 있으므로 global Precision/FP를 논문 성능 근거로 사용하지 않는다.
+Anchor-ROI는 RQ3의 대안적 ROI 생성 방법으로 평가하며, 10장 정량평가가 완료되지 않으면 PoC 수준으로 보고한다.
 
 ---
 
-## 3. 현재 연구 범위 결정
+## 3. 현재까지 확인된 핵심 결과
 
-### 본 논문에서 유지할 비교축
+### 이미지 품질
+- 동일/유사 양식 10장에 대해 Full OCR, GT ROI OCR, 이미지 품질 분석이 진행되었다.
+- 품질이 좋은 촬영본에서는 인쇄 한글 재현율이 높고, 거리/접힘/가장자리 문제가 있는 이미지에서 재현율 저하가 관찰되었다.
+- H1은 현재 데이터에서 지지되는 방향이다.
 
-- PaddleOCR 기반 전체 이미지 OCR baseline
-- PP-Structure 계열의 구조/셀 좌표
-- TATR row/column/spanning-cell 기반 cell reconstruction
-- OpenCV 표선/grid/contour 기반 Cell/ROI Detection
-- OpenCV 병합 셀 reconstruction
-- ROI crop 후 OCR 재인식
-- Anchor-ROI 기반 Field Mapping
-- 공통 Ground Truth 기반 좌표/OCR/Field Accuracy 평가
-
-### 현재 본 논문에서 제외하고 후속 연구로 미룬 항목
-
-**셀 자체를 객체로 학습하는 이미지 딥러닝 방법은 현재 논문 범위에서 구현하지 않는다.**
-
-예:
-- YOLO / DETR / Faster R-CNN 기반 Cell Object Detection
-- Mask R-CNN 등 Instance Segmentation 기반 셀 분할
-- 별도 셀 검출 모델 파인튜닝
-- 이를 위한 대규모 Cell Detection 학습 데이터셋 구축
-
-이 방법들은 현재 연구와 관련은 있으나 새로운 학습 데이터, 모델 선정, 학습/검증 실험축을 추가해야 하므로 연구 범위가 크게 확장된다.
-
-따라서 현재 OpenCV/구조 모델/Anchor-ROI 비교가 완료된 뒤에도 **Cell/ROI Detection 자체가 최종 Field Accuracy의 주요 병목으로 남는 경우** 후속 연구에서 검토한다.
-
----
-
-## 4. 현재 연구 가설
-
-### H1. Text bbox는 한국어 자체보다 이미지 품질의 영향을 더 크게 받는다
-
-검증:
-- PaddleOCR 전체 이미지 실행
-- 원본 / 전처리 이미지 비교
-- Text bbox 검출 성공률, OCR CER, confidence 비교
-
-### H2. 주요 오류는 Text Detection보다 Table Structure / Cell-Text Mapping에서 증가한다
-
-검증:
-- Text bbox와 Cell bbox를 별도로 시각화
-- 각 텍스트가 정답 셀에 포함되는지 평가
-- 읽기 순서 및 필드 매핑 오류 유형 기록
-
-### H3. 병합 셀은 범용 Table Structure Recognition의 주요 실패 지점이다
-
-검증:
-- 일반 셀과 병합 셀 Ground Truth를 구분
-- Cell IoU / Precision / Recall / F1을 각각 측정
-- TATR spanning-cell 반영 결과와 단순 row×column 교차 결과 비교
-- 잘못 분할된 병합 셀과 누락된 셀 사례 기록
-
-### H4. 표선 기반 ROI 검출은 정형 계약서에서 핵심 필드 영역을 안정적으로 특정할 수 있다
-
-검증:
-- OpenCV ROI와 PP-Structure/TATR ROI 비교
-- Morphological Grid / Contour 기반 방법을 동일 GT에서 비교
-- 핵심 필드 ROI IoU 및 검출 성공률 비교
-- 끊어진 선, 흐린 선, 짧은 내부 경계, 기울기 실패 조건 분석
-
-### H5. ROI 재인식은 전체 이미지 OCR 후 좌표 매핑보다 최종 필드 정확도를 높일 수 있다
-
-비교:
+### ROI 재인식
+현재 확보된 49개 평가 필드 기준:
 
 ```text
-Baseline
-전체 OCR -> text bbox -> 필드 매핑 -> 핵심 필드 추출
-
-ROI 방식
-Cell/Anchor 검출 -> ROI crop -> ROI OCR -> 필드 후처리 -> 핵심 필드 추출
+Full OCR Field Accuracy: 29/49 (59.2%)
+GT ROI OCR Field Accuracy: 31/49 (63.3%)
+평균 CER: 0.141 -> 0.117
 ```
 
-평가:
-- Field Exact Match
-- Field Accuracy
-- CER
-- confidence
-- sec/image
+ROI 개선은 존재하지만 크지 않다. 또한 원근 보정된 전체 이미지 OCR에서도 유사한 Field Accuracy가 관찰되어, ROI의 이득 중 일부는 해상도/문서 보정 효과와 구분할 필요가 있다.
 
-### H6. 전체 표 복원보다 Anchor-ROI 방식이 더 효율적일 수 있다
+### 구조 복원
+OpenCV 기반 grid + merged reconstruction은 실제 cells JSON, 원본 좌표 JSON, report, 시각화까지 생성 가능한 상태다.
 
-예:
+다만 현재 구조 비교표에서는 좌표계가 다른 OpenCV aligned 좌표와 원본 GT가 함께 평가된 흔적이 있으므로 **최종 수치 확정 전 original-coordinate prediction으로 재평가가 필수**다.
 
-```text
-"보증금" 라벨 검출
-  -> 라벨 bbox 기준 상대 위치 탐색
-  -> 값 ROI 생성
-  -> ROI OCR
-  -> 금액 형식 후처리
-```
+PP-Structure/TATR의 낮은 IoU 결과도 같은 표 영역/좌표계가 맞는지 overlay 확인 후 해석한다.
 
-전체 표 복원이 불안정한 경우 핵심 라벨의 위치 관계만 사용하는 방식도 별도 비교한다.
+### Anchor-ROI
+현재 공통 sample 수준의 PoC는 있으나 일부 금액 ROI가 여러 행에 걸쳐 다른 값이 섞이는 문제가 있다. 10장 정량평가가 완료되지 않으면 최종 핵심 결과로 확대하지 않는다.
 
 ---
 
-## 5. 2026-09-14 최신 진행 상황
+## 4. 최종 실험 단계
 
-### 5.1 `dahye_cell_DetectionSurvey`
+### E0 — Raw Full OCR Baseline
+목적: 아무 단계도 통제하지 않은 현실 baseline.
 
-이전 피드백 중 주요 항목이 반영되었다.
-
-완료/개선:
-- IoU threshold를 `0.3 / 0.5 / 0.7`로 명시
-- GT-Pred 1:1 Greedy Matching 구현
-- TP / FP / FN 기반 Precision / Recall / F1 계산 구현
-- GT를 general 5개 + merged 5개까지 확대
-- TATR에서 `table spanning cell`을 읽어 실제 cell reconstruction에 반영
-- TATR prediction을 `tatr_result.json`으로 저장
-- PP-Structure 2.8.1과 PP-StructureV3 명칭 분리
-
-남은 핵심 문제:
-- 현재 GT가 페이지 전체 셀이 아니라 일부 선택 셀만 라벨된 상태라면, 나머지 정상 예측이 모두 FP로 계산될 수 있음
-- 따라서 현재 README의 대량 FP/Precision 수치는 exhaustive GT가 확보되기 전 논문 성능 결과로 확정하지 않음
-- `evaluate.py`의 중복 `__main__` 실행 블록 정리 필요
-- prediction에도 general/merged 타입을 명시하면 클래스별 평가가 더 명확해짐
-
-### 5.2 `bang_`
-
-이전의 `병합 후보 탐지` 단계에서 **실제 병합 셀 구조 복원 구현 단계**로 발전했다.
-
-추가 구현:
-- HoughLinesP 기반 deskew
-- 해상도 비례 parameter scaling
-- 수평/수직 closing 길이 분리
-- shared boundary 판정
-- Union-Find 기반 primitive cell 병합
-- general / merged bbox 생성
-- `primitive_cells` 정보 저장
-- 표준 `cells.json` 출력 코드
-- 3단계 시각화 코드
-
-현재 확인할 점:
-- 실제 실행부의 line extraction 기본값은 여전히 `h_ratio=0.4`, `v_ratio=0.4`이므로 짧은 내부 경계선 누락 가능성 검증 필요
-- boundary 누락이 곧 union으로 이어지기 때문에 선 검출 실패가 오병합으로 연결되는지 확인 필요
-- L자 형태 등 비직사각형 primitive component가 생길 경우 bbox가 불필요한 영역까지 포함할 수 있으므로 rectangularity 검증 권장
-- 현재 브랜치에는 코드가 추가됐지만 실제 생성된 `cells.json`과 최종 시각화 결과를 공통 결과물로 남기는 단계가 필요
-
-### 5.3 `heewon`
-
-현재 역할은 그대로 유지한다.
-
-- Morphological Opening 기반 검출
-- Contour 기반 검출
-- kernel/filter sensitivity
-- 동일 Ground Truth에서 두 방식 비교
-
-`bang_`은 최종 구조 복원, `heewon`은 입력 검출 방식 비교로 역할을 구분한다.
-
-### 5.4 연구 단계
-
-```text
-1단계: 방법 가능성 조사
-  ↓
-2단계: Cell/ROI 검출 프로토타입 구현
-  ↓
-3단계: 평가 체계의 신뢰성 확보  ← 현재 최우선
-  ↓
-4단계: 구조 모델 vs OpenCV 정량 비교
-  ↓
-5단계: ROI OCR 효과 검증
-  ↓
-6단계: Anchor-ROI와 최종 Field Accuracy 비교
-```
-
----
-
-## 6. 우선 비교할 파이프라인
-
-| 구분 | 방법 | 주요 확인 대상 |
-|---|---|---|
-| A | PaddleOCR 단독 | Text bbox / OCR baseline |
-| B | PP-Structure 계열 | 구조/셀 좌표 및 병합 셀 |
-| C | TATR + Korean OCR | row/column/span 기반 cell reconstruction |
-| D1 | OpenCV Morphological Grid | 표선 기반 Cell/ROI Detection |
-| D2 | OpenCV Contour | contour 기반 Cell/ROI Detection |
-| D3 | OpenCV Grid + Merged Reconstruction | 병합 전/후 구조 복원 효과 |
-| E | Anchor-ROI + Korean OCR | 전체 표 복원 없는 핵심 필드 추출 |
-
-현재 본 논문에서는 위 파이프라인을 우선하며, 새로운 Cell Detection 딥러닝 모델은 추가하지 않는다.
-
----
-
-## 7. 공통 실험 데이터 및 Ground Truth
-
-### 데이터
-
-- [ ] 동일 기준의 임대차계약서 이미지 10~20장 선정
-- [ ] 개인정보 포함 여부 및 비식별화 확인
-- [ ] 해상도, 기울기, 블러, 촬영/스캔 방식 기록
-- [ ] 대표 bbox 시각화 문서 1~3장 고정
-
-**주의:** 10~20장의 실험 이미지를 확보하는 것과 `서로 다른 계약서 양식 10종`을 확보하는 것은 다르다.
-
-현재 연구는 정형 문서의 공간 구조 활용 가능성을 검증하는 것이므로, 우선 동일 또는 유사한 정형 양식 안에서 이미지 품질과 내용이 다른 샘플을 확보한다. 서로 크게 다른 양식으로 일반화하는 실험은 1차 결과 이후 별도 범위로 판단한다.
-
-### Ground Truth
-
-최소 다음 항목을 준비한다.
-
-- [ ] 핵심 필드 라벨 bbox
-- [ ] 핵심 필드 값 bbox
-- [ ] 일반 셀 bbox
-- [ ] 병합 셀 bbox
-- [ ] 필드별 정답 텍스트
-- [ ] GT 중복 좌표 검수
-
-Cell Detection의 Precision / Recall / F1을 계산할 대표 페이지는 **페이지 내 평가 대상 셀을 모두 라벨링하는 exhaustive GT**를 우선 구축한다.
-
-우선 필드:
-- 소재지
-- 보증금
-- 계약금
-- 잔금
-- 계약기간
-- 임대인 성명
-- 임차인 성명
-
----
-
-## 8. 다음 작업 모음
-
-### Priority 0 — 평가 신뢰성 확보
-
-- [x] IoU threshold 실제값과 출력 문구 일치
-- [x] GT-Pred 1:1 matching 구현
-- [x] Precision / Recall / F1 계산 구현
-- [ ] 대표 페이지 exhaustive GT 구축
-- [ ] partial GT와 exhaustive GT 평가를 구분
-- [ ] GT 라벨 검수
-- [ ] evaluator 중복 실행 블록 정리
-- [ ] prediction type(general/merged) 표현 방식 통일
-
-### Priority 1 — 구조 모델 / OpenCV 동일 기준 비교
-
-- [x] PP-Structure 2.x / PP-StructureV3 명칭 분리
-- [x] TATR spanning-cell 기반 reconstruction 1차 구현
-- [x] `bang_` Union-Find 기반 merged reconstruction 1차 구현
-- [ ] `bang_` 실제 `cells.json` / 시각화 결과 저장
-- [ ] `bang_` rectangularity / 오병합 검증
-- [ ] Morphological Grid 결과를 공통 evaluator에 연결
-- [ ] Contour 결과를 공통 evaluator에 연결
-- [ ] PP-Structure / TATR / OpenCV를 동일 exhaustive GT에서 비교
-
-### Priority 2 — OCR / ROI 재인식 효과 검증
-
-- [ ] PaddleOCR 전체 페이지 baseline
-- [ ] GT ROI에서 OCR 수행하여 이상적 ROI 상한선 측정
-- [ ] 실제 검출 ROI에서 OCR 수행
-- [ ] CER / Exact Match / confidence 비교
-- [ ] Field Accuracy 비교
-
-### Priority 3 — Anchor-ROI PoC
-
-- [ ] `보증금`
-- [ ] `계약금`
-- [ ] `임대인`
-- [ ] `임차인`
-- [ ] `소재지`
-- [ ] 라벨 탐색 성공률
-- [ ] ROI 포함률
-- [ ] Field Exact Match
-- [ ] Cell 기반 방식과 처리 시간/정확도 비교
-
----
-
-## 9. 현재 역할 분담
-
-| 역할 | 담당 범위 | 겹치지 않도록 제외할 범위 |
-|---|---|---|
-| `dahye_cell_DetectionSurvey` | 구조 모델 조사, TATR/PP-Structure, 공통 evaluator | OpenCV 알고리즘 개발 자체 |
-| `bang_` | OpenCV grid, shared boundary, 병합 셀 bbox 재구성, `cells.json` | 구조 모델 조사, OCR 성능 비교, 딥러닝 Cell Detector 학습 |
-| `heewon` | Morphology vs Contour 방식 비교 및 파라미터 실험 | 병합 셀 최종 재구성 로직, OCR 후처리 |
-| 추가 인원 A | 전체 OCR vs ROI OCR, CER/Exact Match/Field Accuracy | Cell Detection 알고리즘 개발 |
-| 추가 인원 B | Anchor-ROI 및 label-to-value Field Mapping | 구조 모델/셀 검출 모델 비교 |
-
-추가 인원 A/B의 상세 체크리스트는 별도 `assignment_*.md`에서 관리한다.
-
----
-
-## 10. 공통 평가 기준
-
-### 좌표
-- IoU
-- Precision
-- Recall
-- F1
-- GT-Pred 1:1 matching 여부 명시
-- partial / exhaustive GT 여부 명시
-
-### OCR
+지표:
 - CER
 - Exact Match
 - confidence
-
-### 필드 추출
 - Field Accuracy
-- 필드별 성공/실패 건수
-
-### 실행 성능
 - sec/image
-- CPU/GPU 여부
-- 메모리 사용량(가능한 경우)
 
----
+### E1 — Image-corrected Full OCR
+목적: ROI를 사용하지 않고 이미지 품질/원근 보정 효과만 분리.
 
-## 11. 결과 저장 형식
-
-가능하면 방법별로 동일한 구조를 사용한다.
-
+비교:
 ```text
-results/
-  sample_01/
-    original.jpg
-    text_bbox.jpg
-    primitive_grid.jpg
-    boundary.jpg
-    cell_bbox.jpg
-    roi.jpg
-    ocr.json
-    cells.json
-    metrics.json
+Raw Full OCR vs Corrected Full OCR
 ```
 
-모델별 결과는 최소한 다음 정보를 남긴다.
+### E2 — Structure Recovery Evaluation
+목적: 구조 복원 단계 자체의 localization 성능 확인.
 
-- 사용 모델/버전
-- 실행 환경
-- text bbox
-- cell bbox
-- general / merged type(가능한 경우)
-- OCR text/confidence
-- runtime
-- 핵심 필드 prediction / ground truth / correct 여부
+대상:
+- PP-Structure
+- TATR Grid
+- TATR + Spanning
+- OpenCV Grid
+- OpenCV + Merged Reconstruction
+- heewon 방식은 machine-readable 결과가 즉시 가능할 때 보조 비교
+
+필수 조건:
+- 같은 원본 이미지 좌표계
+- Exhaustive GT
+- 1:1 matching
+
+지표:
+- IoU 0.3 / 0.5 / 0.7
+- Precision / Recall / F1
+- General GT localization recall
+- Merged GT localization recall
+
+### E3 — Oracle ROI OCR
+목적: 구조/ROI 오류를 제거했을 때 OCR Recognition의 상한선과 잔여 오류 확인.
+
+```text
+GT ROI -> OCR -> Field Accuracy
+```
+
+### E4 — Detected ROI OCR
+목적: 실제 자동 Cell/Field ROI에서 개선 효과가 유지되는지 확인.
+
+```text
+자동 구조/ROI -> ROI OCR -> Field Accuracy
+```
+
+E3와 E4 차이가 크면 ROI localization이 병목이고, 차이가 작으면서 둘 다 낮으면 Recognition이 병목이라는 해석이 가능하다.
+
+### E5 — Anchor-ROI OCR
+목적: 전체 표 복원을 우회하는 필드 ROI 방식의 가능성 확인.
+
+- 10장 결과가 10/10까지 나오면 정량 비교
+- 아니면 공통 sample PoC 및 실패 사례만 보고
+
+### E6 — End-to-End 재현
+목적: 최종 선택 경로가 실제 서버/환경에서 재현되는지 확인.
+
+최소 흐름:
+```text
+input image
+  -> image correction / structure or field ROI
+  -> OCR
+  -> normalization
+  -> final_fields.json
+```
+
+이미 구현된 Guardrail은 E6의 보조 검증으로만 사용하며 논문의 새 핵심 주장으로 확장하지 않는다.
 
 ---
 
-## 12. 현재 현황
+## 5. 공통 평가 기준
 
-### 완료/진행된 내용
+### 이미지 품질 단계
+- 인쇄 한글 재현율
+- CER
+- Field Accuracy 변화량
 
-- [x] 범용 Table Structure 모델 예비 조사
-- [x] OpenCV line/cell detection 1차 프로토타입 구현
-- [x] Morphological / Contour 기반 OpenCV 비교 실험 시작
-- [x] GT 라벨링 도구 구현
-- [x] 1:1 Greedy Matching 기반 evaluator 1차 구현
-- [x] TATR spanning-cell 기반 reconstruction 1차 구현
-- [x] `bang_` Union-Find 기반 merged reconstruction 1차 구현
-- [x] 연구 가설 H1~H6 정리
-- [x] 추가 인원 2명 역할 분리
-- [x] 이미지 딥러닝 Cell Detection을 Future Work로 범위 고정
+### 구조 단계
+- Cell IoU
+- Precision / Recall / F1
+- General/Merged GT localization recall
 
-### 가장 먼저 필요한 내용
+### ROI 단계
+- ROI Coverage Rate
+- 가능하면 ROI IoU
+- 필드 ROI 성공/실패 건수
 
-- [ ] 대표 페이지 exhaustive GT 구축
-- [ ] 현재 partial GT 기반 FP/Precision 해석 수정
-- [ ] `bang_` 실제 결과 파일 생성 및 공통 evaluator 연결
-- [ ] OpenCV 0.4 line kernel의 짧은 경계 누락 여부 검증
-- [ ] Union-Find component rectangularity 검증
-- [ ] 동일 데이터셋에서 구조 모델 / OpenCV 정량 비교
+### 문자 인식 단계
+- CER
+- Exact Match
+- confidence
+- 필드별 성공/실패 유형
 
-### 이후 핵심 단계
+### 최종 성능
+- Field Accuracy
+- 필드별 Accuracy
+- sec/image
 
-- [ ] 전체 OCR vs ROI OCR Field Accuracy 비교
-- [ ] Anchor-ROI PoC
-- [ ] 대표 실패 사례 유형화
-
----
-
-## 13. Future Work 후보
-
-현재 논문의 결론을 낸 뒤 다음 연구로 확장할 수 있다.
-
-- Object Detection 기반 Cell Detector 학습
-- Instance Segmentation 기반 셀 단위 분할
-- 다양한 계약서 양식 간 일반화 성능 평가
-- 더 다양한 정형 행정/금융 문서로의 적용 가능성 검토
-
-이 항목들은 현재 논문의 필수 구현 범위가 아니다.
+모든 결과는 가능하면 동일한 10장 데이터와 동일한 field GT를 사용한다.
 
 ---
 
-## 중심 연구 질문
+## 6. 최종 논문에서 만들어야 할 핵심 표
 
-> **한국어 정형 표 문서에서 Text Bounding Box와 Cell Bounding Box는 각각 어느 단계에서 불안정해지며, 공간 구조를 활용한 ROI 재인식 또는 Anchor-ROI 방식이 핵심 필드 추출 정확도를 실제로 향상시키는가?**
+최종적으로 다음 형태의 표가 하나 있어야 한다.
+
+| Pipeline | Image correction | Structure/ROI | OCR condition | Field Accuracy | CER | 비고 |
+|---|---|---|---|---:|---:|---|
+| P0 | X | Full page | Full OCR | 확정값 | 확정값 | baseline |
+| P1 | O | Full page | Full OCR | 확정값 | 확정값 | 이미지 품질 효과 |
+| P2 | O/동일 | GT ROI | ROI OCR | 확정값 | 확정값 | oracle ROI |
+| P3 | O/동일 | Detected ROI | ROI OCR | 확정값 | 확정값 | 실제 자동 ROI |
+| P4 | O/동일 | Anchor ROI | ROI OCR | 가능 시 | 가능 시 | 보조 비교 |
+
+이 표와 구조 복원 비교표가 논문의 핵심 정량 결과가 된다.
+
+---
+
+## 7. 역할 재설정 — 2026-10-08
+
+### `bang_` — 자동 구조 복원 결과 공급
+- 기존 알고리즘 수정 최소화
+- 공통 10장에 batch 실행
+- `cells_original.json` 중심으로 전달
+- 원본 좌표/보정 좌표 혼동 방지
+- 성공/실패 사례 및 report 전달
+
+### `dahye_cell_DetectionSurvey` — 공통 구조 평가 감사자
+- OpenCV 평가를 original-coordinate prediction으로 재실행
+- PP/TATR 결과 overlay 확인
+- 같은 표 영역/좌표계인지 검증
+- 최종 Structure Recovery 비교표 확정
+- 지표 이름과 해석 정리
+
+### `heewon` — 구조 입력 방식 보조 실험 + 오류 유형 정리
+- Morphology vs Contour 기존 결과를 신규 구현 없이 정리
+- 즉시 가능하면 best setting bbox JSON export
+- 공통 평가 연결이 어렵다면 기존 결과를 구조 방식 선정 근거/실패 taxonomy로 정리
+- 단계별 오류 흐름 그림/Pipeline 현행화
+
+### `taegu` — Field ROI Localization
+- 핵심 5개 필드의 ROI 생성 규칙 고정
+- 가능한 경우 공통 10장에 ROI 출력
+- ROI Coverage / 실패 유형 정리
+- 금액 ROI의 행 간 혼입 문제 수정은 최소 범위에서만 수행
+- 10장 완료 불가 시 Anchor-ROI를 PoC로 명확히 축소
+
+### `tail` — 이미지 품질 + OCR + 최종 Field Accuracy
+- 기존 E0/E1/E3 결과 확정
+- `bang_`/`taegu` 결과를 받아 E4/E5 OCR 실행
+- 모든 pipeline의 Field Accuracy/CER를 같은 규칙으로 계산
+- 단계별 성능 변화표 작성
+- Recognition 잔여 오류 분석
+
+### 추가 인원 B — End-to-End 통합 + 보조 품질검증
+- 각 담당 모듈의 입출력 연결
+- clean environment/requirements 확인
+- 입력 이미지 -> final_fields.json 최소 경로 완성
+- 기존 OCR Guardrail이 실제 OCR 결과에 연결 가능하면 PASS/RECHECK/BLOCK 보조 분석
+- Guardrail threshold 연구 확장은 하지 않음
+
+### PM/논문 통합
+- 연구 질문/주장 동결
+- 서로 다른 좌표계/평가 정의 방지
+- 결과표 숫자 일치 확인
+- 논문 Method/Experiment/Discussion 통합
+
+---
+
+## 8. 남은 일정
+
+### 10/08 — 연구 설계 동결
+- 새 주제/RQ/실험축 확정
+- 신규 모델/대규모 기능 추가 금지
+
+### 10/09 — 평가 입력 확정
+- OpenCV 좌표계 수정 평가
+- PP/TATR overlay 확인
+- 공통 10장 자동 구조/ROI 결과 최대한 확보
+
+### 10/10 — 자동 ROI 및 End-to-End 마감
+- Detected ROI 입력 확보
+- Anchor 10장 가능 여부 최종 결정
+- 최소 End-to-End 실행 성공
+
+### 10/11 — 최종 정량표 확정
+- 단계별 Field Accuracy 표
+- Structure Recovery 표
+- 실패 taxonomy
+- 대표 사례 확정
+
+### 10/12 — 논문 최종 검토
+- 결과/본문 숫자 일치
+- 과장된 주장 제거
+- 한계/후속 연구 정리
+
+### 10/13 — 프로젝트 최종 완료
+- 코드/결과/문서 동결
+- 재현 명령 확인
+- 최종 논문본 정리
+
+---
+
+## 9. 최종 해석 원칙
+
+본 논문은 다음을 증명하려 하지 않는다.
+
+- ROI가 항상 Full OCR보다 우수하다.
+- OpenCV가 모든 구조 모델보다 우수하다.
+- 현재 10장 결과가 모든 임대차계약서에 일반화된다.
+
+대신 다음을 실험적으로 보여주는 것이 목표다.
+
+> 동일/유사한 정형 임대차계약서 환경에서 이미지 품질, 구조 복원, ROI 설정, 문자 인식 단계가 최종 핵심정보 추출 성능에 서로 다른 방식으로 영향을 미치며, 각 단계를 통제했을 때 실제 병목이 어디에 남는지를 정량적으로 분석할 수 있다.
