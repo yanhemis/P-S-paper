@@ -1,143 +1,69 @@
-# tail 작업 배정 — OCR / ROI 재인식 / Field Accuracy
+# tail 최종 작업 — 이미지 품질 / OCR / 최종 Field Accuracy
 
-> 재배정일: 2026-09-22
-> 조기 체크: 2026-09-25
-> 최종 담당 결과 마감: 2026-10-07
+> 재설정일: 2026-10-08
+> 내부 마감: 2026-10-11
 
-## 1. 담당 목표
+## 담당 목표
 
-다음 질문에 답하는 것이 핵심이다.
+논문의 핵심 정량 담당. 기존 Full OCR / GT ROI OCR 결과를 기반으로 **각 단계가 최종 Field Accuracy에 미치는 영향을 같은 기준으로 비교**한다.
 
-> **전체 페이지 OCR보다 핵심 필드 ROI를 잘라 다시 OCR했을 때 실제 문자 인식과 Field Accuracy가 좋아지는가?**
+## 유지할 기존 결과
 
-이 작업은 연구 가설 H1과 H5를 직접 검증한다.
+- Full OCR baseline 10장
+- GT ROI OCR 10장
+- CER / Exact Match / confidence
+- Field Accuracy
+- sec/image
+- H1 이미지 품질 분석
 
----
+## 추가로 해야 할 일
 
-## 2. 09/25 조기 체크
+### E0 — Raw Full OCR
+- [ ] 기존 결과 최종값 확정
 
-- [ ] 전체 페이지 Korean OCR baseline 실행 성공
-- [ ] OCR 결과 JSON 저장
-- [ ] text bbox / text / confidence / runtime 저장
-- [ ] 최소 1장 이상 결과 시각화 또는 확인 가능한 출력 생성
+### E1 — Image-corrected Full OCR
+- [ ] 원근 보정/기존 전처리 Full OCR 결과 확정
+- [ ] E0 대비 Field Accuracy/CER 변화 정리
 
-이 단계에서 OCR baseline이 실제로 돌아가는지 먼저 확인한다.
+### E3 — GT ROI OCR
+- [ ] 기존 oracle ROI 결과 최종값 확정
 
----
+### E4 — Detected ROI OCR
+- [ ] `bang_` 또는 최종 자동 ROI 결과 수신
+- [ ] 같은 OCR 조건으로 실행
+- [ ] Field Accuracy / CER / confidence 계산
 
-## 3. 실험 구성
+### E5 — Anchor ROI OCR
+- [ ] `taegu` 10장 ROI가 오면 실행
+- [ ] 미완료 시 공통 sample PoC만 유지
 
-### 실험 A — 전체 페이지 OCR baseline
+## 최종 핵심 표
 
-동일 계약서 이미지에 Korean OCR을 적용한다.
+| Pipeline | Image correction | ROI source | Field Accuracy | CER | sec/image |
+|---|---|---|---:|---:|---:|
+| P0 | X | Full page | 값 | 값 | 값 |
+| P1 | O | Full page | 값 | 값 | 값 |
+| P2 | 조건 고정 | GT ROI | 값 | 값 | 값 |
+| P3 | 조건 고정 | Detected ROI | 값 | 값 | 값 |
+| P4 | 조건 고정 | Anchor ROI | 가능 시 | 가능 시 | 가능 시 |
 
-저장할 정보:
-- text bbox
-- text
-- confidence
-- runtime
+## 오류 분석
 
-### 실험 B — Ground Truth ROI OCR
+- 이미지 품질로 설명되는 오류
+- 구조/ROI localization 오류
+- ROI crop 혼입/잘림 오류
+- 구조/ROI가 맞아도 남는 Recognition 오류
 
-정답 ROI를 직접 crop해서 OCR한다.
+특히 GT ROI에서도 실패한 필드는 문자 인식 병목 후보로 분류한다.
 
-목적:
-- Cell Detection 오류를 제외했을 때 ROI OCR이 낼 수 있는 성능 상한선 확인
+## 하지 않을 것
 
-### 실험 C — 실제 검출 ROI OCR
+- Cell Detection 알고리즘 수정
+- Anchor 규칙 재설계
+- 새 OCR 모델 학습
 
-`bang_`, `heewon` 또는 최종 Cell/ROI Detection 결과를 받아 동일하게 OCR한다.
+## 완료 기준
 
-목적:
-- 자동 검출 ROI에서도 개선 효과가 유지되는지 확인
+논문에서 다음 질문에 숫자로 답할 수 있어야 한다.
 
-이 단계에서는 ROI 생성 알고리즘을 직접 수정하지 않는다. 받은 bbox를 입력으로 사용한다.
-
----
-
-## 4. 우선 평가 필드
-
-최소 5개부터 시작한다.
-
-- [ ] 소재지
-- [ ] 보증금
-- [ ] 계약금
-- [ ] 임대인 성명
-- [ ] 임차인 성명
-
-여유가 있으면:
-- 잔금
-- 계약기간
-
----
-
-## 5. 평가 지표
-
-### OCR 단위
-- [ ] CER
-- [ ] Exact Match
-- [ ] confidence
-
-### 필드 단위
-- [ ] Field Accuracy
-- [ ] 필드별 성공/실패 건수
-
-### 성능
-- [ ] sec/image
-- [ ] ROI별 평균 처리 시간
-
-핵심 비교:
-
-```text
-Full OCR
-vs
-GT ROI OCR
-vs
-Detected ROI OCR
-```
-
----
-
-## 6. 10/07까지 최종 마감
-
-- [ ] 동일/유사 계약서 최소 10장
-- [ ] 핵심 필드 최소 5종
-- [ ] Full OCR 결과 저장
-- [ ] GT ROI OCR 결과 저장
-- [ ] 실제 검출 ROI OCR 결과 저장
-- [ ] CER / Exact Match / confidence 비교
-- [ ] Field Accuracy 표 작성
-- [ ] sec/image 기록
-- [ ] 대표 성공/실패 사례 3개 이상 저장
-- [ ] `bang_`에서 받은 ROI 결과 반영
-- [ ] 추가 인원 B에게 통합 가능한 OCR 입력/출력 규격 전달
-
----
-
-## 7. 다른 담당자와 겹치지 않는 범위
-
-### 하지 않을 것
-
-- TATR cell reconstruction 수정
-- PP-Structure 모델 조사
-- Morphology/Contour 셀 검출 알고리즘 개발
-- 병합 셀 bbox 생성 로직 개발
-- Anchor 위치 규칙 설계
-
-### 받아서 사용할 것
-
-- 공통 Ground Truth
-- `bang_` 또는 최종 팀 Cell/ROI bbox
-- 공통 evaluator 포맷
-
-### 넘겨줄 대상
-
-- 추가 인원 B: OCR/ROI 재인식 모듈 및 결과 포맷
-
----
-
-## 최종 산출물
-
-이 작업이 끝나면 다음 문장을 실험으로 판단할 수 있어야 한다.
-
-> ROI를 정확히 특정하는 것이 실제 OCR 및 핵심 필드 추출 정확도 개선으로 이어지는가?
+> 이미지 보정, 구조/ROI localization, 문자 인식 단계 중 어떤 단계를 통제했을 때 Field Accuracy가 얼마나 변하는가?
