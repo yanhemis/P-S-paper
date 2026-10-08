@@ -1,68 +1,36 @@
-# heewon 작업 배정 — Morphology vs Contour 비교 및 Pipeline 현행화
+# heewon 최종 작업 — 구조 입력 방식 보조 실험 및 오류 유형 정리
 
-> 배정일: 2026-09-22
-> 1차 마감: 2026-09-30
-> 최종 담당 결과 마감: 2026-10-04
+> 재설정일: 2026-10-08
+> 내부 마감: 2026-10-10
 
-## 1. 현재까지 진행된 내용
+## 담당 목표
 
-현재 `heewon` / `Documents` 브랜치에는 Pipeline 및 Sequence Diagram이 있고, 기존 연구 방향상 Morphological Opening과 Contour 기반 검출 비교를 담당한다.
+Morphological Opening vs Contour 비교를 **새로 확장하지 않고**, 현재 결과를 구조 복원 단계의 보조 근거와 실패 유형 분석으로 정리한다.
 
-`bang_`이 최종 병합 셀 reconstruction을 맡고 있으므로 이 담당은 **입력 단계 검출 방식 비교**에 집중한다.
+## 해야 할 일
 
----
+- [ ] 기존 Morphology / Contour 결과표 정리
+- [ ] 각 방식의 best setting 명시
+- [ ] kernel/filter sensitivity 핵심 결과 요약
+- [ ] 끊어진 선, 흐린 선, 표선-글자 간섭 등 실패 유형 정리
+- [ ] 가능하면 best setting의 bbox를 machine-readable JSON으로 export
+- [ ] JSON export가 즉시 어렵다면 기존 수치/시각화만 논문 보조 실험으로 정리
+- [ ] 현재 실제 구현 기준 Pipeline / Sequence 흐름 그림 현행화
 
-## 2. 담당 목표
+## 논문에서의 위치
 
-> Morphology와 Contour 방식이 동일 계약서에서 어떤 차이를 보이는지 정량/정성 비교하고, 현재 실제 구현에 맞게 Pipeline 문서를 갱신한다.
+이 담당 결과는 최종 Field Accuracy의 직접 핵심 비교라기보다,
 
----
+> OpenCV 구조 복원에서 어떤 입력 검출 방식이 선택되었고 어떤 실패 유형이 있었는가
 
-## 3. 09/30까지 반드시 완료할 1차 산출물
+를 설명하는 보조 실험으로 사용한다.
 
-- [ ] Morphological Opening 기반 line/cell 검출 실행
-- [ ] Contour 기반 검출 실행
-- [ ] 동일 이미지 / 동일 GT에서 결과 비교
-- [ ] 주요 kernel / filter parameter 기록
-- [ ] 대표 성공/실패 이미지 저장
-- [ ] 표선이 흐리거나 끊긴 경우의 실패 유형 정리
+## 하지 않을 것
 
----
+- 새로운 검출 방법 추가
+- 새로운 Cell Detector 학습
+- 대규모 파라미터 탐색 재실행
 
-## 4. 10/04까지 최종 마감
+## 완료 기준
 
-- [ ] 두 방식의 공통 비교표 작성
-- [ ] 가능한 경우 공통 evaluator에 넣을 prediction 파일 생성
-- [ ] parameter sensitivity 요약
-- [ ] 현재 구현 기준으로 `PipeLine.jpg` / `Sequence Diagram.jpg` 현행화
-- [ ] `bang_` 담당에게 참고할 검출 결과 전달
-- [ ] 추가 인원 B에게 실제 통합 Pipeline 흐름 전달
-
----
-
-## 5. 다른 담당자와의 경계
-
-### 하지 않을 것
-
-- Union-Find 기반 merged reconstruction 재구현
-- TATR / PP-Structure 비교
-- Anchor-ROI 개발
-- OCR 정확도 자체 비교
-
-### 받아서 사용할 것
-
-- 공통 GT
-- 공통 evaluator 형식
-
-### 넘겨줄 대상
-
-- `bang_`: 입력 검출 방식 비교 참고
-- 추가 인원 B: 최신 Pipeline / Sequence 흐름
-
----
-
-## 6. 완료 기준
-
-이 작업이 끝나면 다음 질문에 답할 수 있어야 한다.
-
-> Morphology와 Contour 중 각 방식은 어떤 조건에서 안정적이고, 어떤 조건에서 실패하며, 전체 Pipeline에서 어느 위치에 적용되는가?
+현재 보유한 결과가 논문 Method/Discussion에서 재사용 가능한 표·그림·오류 유형으로 정리되어 있어야 한다.
