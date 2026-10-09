@@ -89,7 +89,7 @@ if __name__ == "__main__":
     # --- 설정 영역 ---
     EVAL_MODE = "EXHAUSTIVE" 
     gt_path = 'sample.jpg_gt.json' 
-    metrics_output_path = 'metrics_audit_draft.json'
+    metrics_output_path = 'metrics_affine_audit.json'
     
     # 💡 [Priority 2] TATR Ablation 모델을 모두 평가 목록에 추가!
     models_to_evaluate = {

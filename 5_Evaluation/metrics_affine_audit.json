@@ -1,0 +1,202 @@
+{
+  "1. PP-Structure (Paddle 2.8.1)": {
+    "0.3": {
+      "precision": 4.964539007092199,
+      "recall": 7.368421052631578,
+      "f1": 5.932203389830509,
+      "general_gt_localization_recall": 0.0,
+      "merged_gt_localization_recall": 15.555555555555555,
+      "overall": {
+        "TP": 7,
+        "FP": 134,
+        "FN": 88
+      }
+    },
+    "0.5": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "general_gt_localization_recall": 0.0,
+      "merged_gt_localization_recall": 0.0,
+      "overall": {
+        "TP": 0,
+        "FP": 141,
+        "FN": 95
+      }
+    },
+    "0.7": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "general_gt_localization_recall": 0.0,
+      "merged_gt_localization_recall": 0.0,
+      "overall": {
+        "TP": 0,
+        "FP": 141,
+        "FN": 95
+      }
+    },
+    "status": "OK",
+    "prediction_path": "../1_PaddleOCR-PP-Structure/output/sample/res_0.txt"
+  },
+  "2. TATR (Grid Only Ablation)": {
+    "0.3": {
+      "precision": 24.761904761904763,
+      "recall": 27.368421052631582,
+      "f1": 26.0,
+      "general_gt_localization_recall": 28.000000000000004,
+      "merged_gt_localization_recall": 26.666666666666668,
+      "overall": {
+        "TP": 26,
+        "FP": 79,
+        "FN": 69
+      }
+    },
+    "0.5": {
+      "precision": 2.857142857142857,
+      "recall": 3.1578947368421053,
+      "f1": 3.0000000000000004,
+      "general_gt_localization_recall": 4.0,
+      "merged_gt_localization_recall": 2.2222222222222223,
+      "overall": {
+        "TP": 3,
+        "FP": 102,
+        "FN": 92
+      }
+    },
+    "0.7": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "general_gt_localization_recall": 0.0,
+      "merged_gt_localization_recall": 0.0,
+      "overall": {
+        "TP": 0,
+        "FP": 105,
+        "FN": 95
+      }
+    },
+    "status": "OK",
+    "prediction_path": "../2_TATR/tatr_result_grid.json"
+  },
+  "3. TATR (+ Spanning Recon)": {
+    "0.3": {
+      "precision": 24.761904761904763,
+      "recall": 27.368421052631582,
+      "f1": 26.0,
+      "general_gt_localization_recall": 28.000000000000004,
+      "merged_gt_localization_recall": 26.666666666666668,
+      "overall": {
+        "TP": 26,
+        "FP": 79,
+        "FN": 69
+      }
+    },
+    "0.5": {
+      "precision": 2.857142857142857,
+      "recall": 3.1578947368421053,
+      "f1": 3.0000000000000004,
+      "general_gt_localization_recall": 4.0,
+      "merged_gt_localization_recall": 2.2222222222222223,
+      "overall": {
+        "TP": 3,
+        "FP": 102,
+        "FN": 92
+      }
+    },
+    "0.7": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0,
+      "general_gt_localization_recall": 0.0,
+      "merged_gt_localization_recall": 0.0,
+      "overall": {
+        "TP": 0,
+        "FP": 105,
+        "FN": 95
+      }
+    },
+    "status": "OK",
+    "prediction_path": "../2_TATR/tatr_result_spanning.json"
+  },
+  "4. OpenCV (Grid Only Ablation)": {
+    "0.3": {
+      "precision": 35.064935064935064,
+      "recall": 85.26315789473684,
+      "f1": 49.69325153374233,
+      "general_gt_localization_recall": 98.0,
+      "merged_gt_localization_recall": 71.11111111111111,
+      "overall": {
+        "TP": 81,
+        "FP": 150,
+        "FN": 14
+      }
+    },
+    "0.5": {
+      "precision": 27.27272727272727,
+      "recall": 66.3157894736842,
+      "f1": 38.65030674846626,
+      "general_gt_localization_recall": 92.0,
+      "merged_gt_localization_recall": 37.77777777777778,
+      "overall": {
+        "TP": 63,
+        "FP": 168,
+        "FN": 32
+      }
+    },
+    "0.7": {
+      "precision": 18.181818181818183,
+      "recall": 44.21052631578947,
+      "f1": 25.766871165644172,
+      "general_gt_localization_recall": 74.0,
+      "merged_gt_localization_recall": 11.11111111111111,
+      "overall": {
+        "TP": 42,
+        "FP": 189,
+        "FN": 53
+      }
+    },
+    "status": "OK",
+    "prediction_path": "cells_primitive_original.json"
+  },
+  "5. OpenCV (+ Spanning Recon)": {
+    "0.3": {
+      "precision": 93.02325581395348,
+      "recall": 84.21052631578947,
+      "f1": 88.3977900552486,
+      "general_gt_localization_recall": 86.0,
+      "merged_gt_localization_recall": 82.22222222222221,
+      "overall": {
+        "TP": 80,
+        "FP": 6,
+        "FN": 15
+      }
+    },
+    "0.5": {
+      "precision": 81.3953488372093,
+      "recall": 73.68421052631578,
+      "f1": 77.34806629834254,
+      "general_gt_localization_recall": 86.0,
+      "merged_gt_localization_recall": 60.0,
+      "overall": {
+        "TP": 70,
+        "FP": 16,
+        "FN": 25
+      }
+    },
+    "0.7": {
+      "precision": 68.6046511627907,
+      "recall": 62.10526315789474,
+      "f1": 65.19337016574586,
+      "general_gt_localization_recall": 82.0,
+      "merged_gt_localization_recall": 40.0,
+      "overall": {
+        "TP": 59,
+        "FP": 27,
+        "FN": 36
+      }
+    },
+    "status": "OK",
+    "prediction_path": "cells_original.json"
+  }
+}

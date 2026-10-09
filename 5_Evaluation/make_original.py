@@ -25,10 +25,30 @@ def convert_file(input_name, output_name):
     if data.get("source_image") != "sample.jpg":
         raise ValueError("원본 이미지 정보 확인 필요")
 
-    angle = float(data["rotation_deg"])
-    center = (w // 2, h // 2)
 
-    M = cv2.getRotationMatrix2D(center, angle, 1.0)
+    # 과거 OpenCV 실행 보고서에서 실제 Affine Matrix 불러오기
+    with open(BASE / "opencv_historical_report.json", encoding="utf-8") as f:
+        report = json.load(f)
+
+    # Prediction과 실행 보고서의 정보 일치 여부 확인
+    if report["source_image"] != data["source_image"]:
+        raise ValueError("원본 이미지 불일치")
+
+    if report["image"] != data["image"]:
+        raise ValueError("정렬 이미지 불일치")
+
+    if tuple(report["source_size"]) != (w, h):
+        raise ValueError("원본 이미지 크기 불일치")
+
+    if abs(float(report["rotation_deg"]) - float(data["rotation_deg"])) > 0.001:
+        raise ValueError("회전각 불일치")
+
+    # 확장 캔버스의 이동 보정이 포함된 회전 행렬
+    M = np.asarray(report["deskew"]["affine"], dtype=np.float64)
+
+    if M.shape != (2, 3):
+        raise ValueError("Affine Matrix 형식 오류")
+
     M_inv = cv2.invertAffineTransform(M)
 
     converted = []

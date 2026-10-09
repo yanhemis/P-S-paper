@@ -44,11 +44,11 @@
 
 | 평가군 | F1 @ IoU 0.3 | F1 @ IoU 0.5 | F1 @ IoU 0.7 | 검증 상태 |
 |---|---:|---:|---:|---|
-| PP-Structure | 5.9% | 0.0% | 0.0% | 조건부 결과 |
-| TATR Grid Only | 26.0% | 3.0% | 0.0% | 조건부 결과 |
-| TATR + Spanning Reconstruction | 26.0% | 3.0% | 0.0% | 조건부 결과 |
-| OpenCV Primitive Grid | 27.0% | 2.5% | 0.0% | 좌표계 미확정 |
-| OpenCV + Cell Reconstruction | 63.0% | 8.8% | 0.0% | 좌표계 미확정 |
+| PP-Structure | 5.9% | 0.0% | 0.0% | Overlay 확인 |
+| TATR Grid Only | 26.0% | 3.0% | 0.0% | 좌표 변환 및 Overlay 확인 |
+| TATR + Spanning Reconstruction | 26.0% | 3.0% | 0.0% | 좌표 변환 및 Overlay 확인 |
+| OpenCV Primitive Grid | 49.7% | 38.7% | 25.8% | 과거 Affine 적용·정량 재평가 완료 |
+| OpenCV + Cell Reconstruction | 88.4% | 77.3% | 65.2% | 과거 Affine 적용·정량 재평가 완료 |
 
 **해석 시 주의사항**
 - 위 수치는 단일 이미지의 지정된 두 표 영역에 한정되며, 페이지 전체 또는 전체 데이터셋 성능을 의미하지 않는다.
@@ -67,8 +67,8 @@
 | PP-Structure | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
 | TATR Grid Only | 2.9% | 3.2% | 3.0% | 4.0% | 2.2% |
 | TATR + Spanning Reconstruction | 2.9% | 3.2% | 3.0% | 4.0% | 2.2% |
-| OpenCV Primitive Grid | 1.7% | 4.2% | 2.5% | 8.0% | 0.0% |
-| OpenCV + Cell Reconstruction | 9.3% | 8.4% | 8.8% | 8.0% | 8.9% |
+| OpenCV Primitive Grid | 27.3% | 66.3% | 38.7% | 92.0% | 37.8% |
+| OpenCV + Cell Reconstruction | 81.4% | 73.7% | 77.3% | 86.0% | 60.0% |
 
 **지표 해석**
 - Precision, Recall, F1은 IoU 0.5에서 예측 BBox와 GT BBox를 1:1 매칭해 산출한 위치 검출 지표이다.
@@ -83,47 +83,67 @@
 
 | 평가군 | Evaluator 입력 파일 | 좌표계 처리 | 검증 상태 |
 |---|---|---|---|
-| PP-Structure | `1_PaddleOCR-PP-Structure/output/sample/res_0.txt` | 원본 이미지 좌표계 | Overlay 확인 |
-| TATR Grid Only | `2_TATR/tatr_result_grid.json` | 원본 이미지 방향으로 90° 좌표 변환 | Overlay 확인 |
-| TATR + Spanning Reconstruction | `2_TATR/tatr_result_spanning.json` | 원본 이미지 방향으로 90° 좌표 변환 | Overlay 확인 |
-| OpenCV Primitive Grid | `5_Evaluation/cells_primitive_original.json` | 기록된 회전각의 역변환 | 좌표계 미확정 |
-| OpenCV + Cell Reconstruction | `5_Evaluation/cells_original.json` | 기록된 회전각의 역변환 | 좌표계 미확정 |
+| PP-Structure | `1_PaddleOCR-PP-Structure/output/sample/res_0.txt` | 원본 이미지 좌표계 | Overlay 점검 완료 |
+| TATR Grid Only | `2_TATR/tatr_result_grid.json` | 원본 이미지 방향으로 90° 좌표 변환 | 좌표 변환 및 Overlay 점검 완료 |
+| TATR + Spanning Reconstruction | `2_TATR/tatr_result_spanning.json` | 원본 이미지 방향으로 90° 좌표 변환 | 좌표 변환 및 Overlay 점검 완료 |
+| OpenCV Primitive Grid | `5_Evaluation/cells_primitive_original.json` | 과거 실행 기록의 Affine Matrix 역변환 | 좌표 변환 및 정량 재평가 완료 |
+| OpenCV + Cell Reconstruction | `5_Evaluation/cells_original.json` | 과거 실행 기록의 Affine Matrix 역변환 | 좌표 변환, Overlay 점검 및 정량 재평가 완료 |
 
-평가는 공통 GT로 정의한 두 표 영역에 중심점이 포함된 예측 BBox를 대상으로 수행하였다. 따라서 보고된 Precision, Recall 및 F1은 페이지 전체에 대한 성능이 아니라 지정된 평가 영역과 필터링 조건에 따른 결과이다.
+평가는 공통 GT로 정의한 두 표 영역에 예측 BBox의 중심점이 포함되는 경우를 대상으로 수행하였다. 따라서 보고된 Precision, Recall 및 F1은 페이지 전체에 대한 성능이 아니라 지정된 평가 영역과 필터링 조건에 따른 결과이다.
 
-OpenCV의 좌표 역변환은 수학적으로 검토되었으나, 과거 Prediction 생성 과정이 재현되지 않아 원본 좌표계와의 정합성이 최종 입증되지 않았다. 이에 따라 OpenCV 정량 결과는 잠정 결과로 유지한다.
+**OpenCV Prediction 출처 및 좌표 변환 검증**
 
-평가 입력의 SHA-256 기록은 `5_Evaluation/evaluation_input_manifest.txt`, 좌표계 검토 내용은 `5_Evaluation/coordinate_audit.md`에 제시하였다.
+Git 이력 검토 결과, `f352da0` 커밋에서 원본 OpenCV 구조 복원 예측 파일 `output/sample/cells.json`, 정렬 이미지 `output/sample/sample_aligned.png` 및 실행 보고서 `output/sample/report.json`을 확인하였다. 해당 커밋의 `cells.json`과 현재 평가에 사용한 원본 `5_Evaluation/cells.json`의 Git Blob 해시가 일치하여 파일 동일성을 검증하였다.
+
+과거 실행 보고서에 따르면 원본 이미지 크기는 3000×4000, 정렬 이미지 크기는 3074×4055이며, 기록된 회전각은 -1.061°이다. 또한 캔버스 확장에 따른 이동 보정을 포함한 Affine Matrix가 저장되어 있음을 확인하였다.
+
+기존 좌표 변환에서는 회전각만 이용하여 역변환 행렬을 생성하였으나, 과거 파이프라인은 회전 과정에서 이미지 캔버스를 확장하고 이동 보정을 적용한 것으로 확인되었다. 이에 따라 기존 변환의 한계를 확인하고, 과거 실행 보고서에 기록된 Affine Matrix를 역변환하여 OpenCV 예측 BBox를 공통 GT 좌표계로 복원하였다.
+
+변환 후 OpenCV Restored 86개와 Primitive 231개의 BBox가 원본 이미지 좌표 범위에 포함됨을 확인하였다. OpenCV Restored 결과는 원본 이미지 Overlay를 통해 위치 정합성을 시각적으로 점검하였다. 이후 정식 평가 입력 파일을 이용해 동일한 Evaluator에서 IoU 0.3, 0.5 및 0.7에 대한 정량 평가를 재실행하였으며, 별도 Affine 감사 평가와 동일한 지표가 산출됨을 확인하였다.
+
+**평가 재현성 및 해석 제한**
+
+과거 실행 기록의 Affine Matrix를 이용한 좌표 복원과 정량 재평가는 완료하였으나, 현재 OpenCV 파이프라인에서는 과거 구조 복원 Prediction을 처음부터 동일하게 생성하지 못하였다. 따라서 과거 Prediction의 좌표 변환 및 평가 재현과 현재 파이프라인의 전체 실행 재현성은 구분하여 해석한다.
+
+또한 본 평가 결과는 단일 계약서 이미지의 두 표 영역에 한정된다. 해당 조건에서 관찰된 모델별 지표 차이를 다른 문서나 데이터셋에 대한 일반적인 성능 우위로 확대 해석하지 않는다.
+
+좌표계 감사 기록은 `5_Evaluation/coordinate_audit.md`, 과거 실행 보고서는 `5_Evaluation/opencv_historical_report.json`, Affine 기반 재평가 결과는 `5_Evaluation/metrics_affine_audit.json`을 참고한다. 기존 `evaluation_input_manifest.txt`는 수정 전 입력 파일의 해시 기록을 포함하므로, 최종 파일 해시는 별도로 갱신해야 한다.
 
 #### 논문 Results 초안 — 표 구조 복원 성능 (RQ2)
 
-동일한 계약서 이미지와 Ground Truth를 기준으로 PP-Structure, TATR 및 OpenCV 기반 구조 복원 결과를 비교하였다. 평가 대상은 상단 표 32개 셀과 하단 표 63개 셀로 구성된 총 95개 Ground Truth 셀이며, IoU 임계값 0.3, 0.5 및 0.7에서 예측 BBox와 정답 BBox 간 1:1 매칭을 수행하였다. Precision, Recall 및 F1은 지정된 두 표 영역에 중심점이 포함된 예측을 대상으로 산출하였다.
+동일한 부동산 임대차계약서 이미지(`sample.jpg`)와 Ground Truth를 기준으로 PP-Structure, TATR 및 OpenCV 기반 표 구조 복원 결과를 비교하였다. 평가 대상은 상단 표 32개 셀과 하단 표 63개 셀로 구성된 총 95개 Ground Truth 셀이며, IoU 임계값 0.3, 0.5 및 0.7에서 예측 Bounding Box와 정답 간 1:1 Greedy Matching을 수행하였다. Precision, Recall 및 F1은 지정된 두 표 영역에 중심점이 포함된 예측을 대상으로 산출하였다.
 
-잠정 평가 결과, IoU 0.3에서 PP-Structure, TATR Grid, TATR Spanning, OpenCV Primitive 및 OpenCV Restored의 F1은 각각 5.9%, 26.0%, 26.0%, 27.0% 및 63.0%로 계산되었다. IoU 0.5에서는 각각 0.0%, 3.0%, 3.0%, 2.5% 및 8.8%였으며, IoU 0.7에서는 모든 평가군의 F1이 0.0%로 나타났다.
+IoU 0.3에서 PP-Structure, TATR Grid, TATR Spanning, OpenCV Primitive 및 OpenCV Restored의 F1은 각각 5.9%, 26.0%, 26.0%, 49.7% 및 88.4%로 산출되었다. IoU 0.5에서는 각각 0.0%, 3.0%, 3.0%, 38.7% 및 77.3%였으며, IoU 0.7에서는 각각 0.0%, 0.0%, 0.0%, 25.8% 및 65.2%로 나타났다.
 
-IoU 0.5에서 일반 셀 및 병합 셀 Ground Truth의 위치 검출 재현율을 별도로 산출한 결과, TATR Grid와 TATR Spanning은 각각 4.0%와 2.2%로 동일하였다. OpenCV Primitive는 각각 8.0%와 0.0%, OpenCV Restored는 각각 8.0%와 8.9%로 계산되었다. 해당 지표는 Ground Truth 셀 유형별 위치 매칭 비율이며, 예측 셀의 유형 분류 정확도를 의미하지 않는다.
+IoU 0.5 기준 OpenCV Primitive의 Precision, Recall 및 F1은 각각 27.3%, 66.3%, 38.7%였으며, OpenCV Restored는 각각 81.4%, 73.7%, 77.3%였다. 같은 임계값에서 OpenCV Primitive의 General GT Localization Recall과 Merged GT Localization Recall은 각각 92.0%(46/50), 37.8%(17/45)였고, OpenCV Restored는 각각 86.0%(43/50), 60.0%(27/45)였다. 이 두 유형별 재현율은 Ground Truth 셀의 위치 매칭 비율로, 예측 셀 유형의 분류 정확도를 의미하지 않는다.
 
-평가 입력에 대한 시각적 검토 및 좌표 변환 검사를 수행하였으나, OpenCV의 과거 예측 결과에 기록된 회전각(-1.061°)과 현재 파이프라인에서 계산된 회전각(0.0°) 사이에 차이가 확인되었다. 또한 현재 파이프라인의 재실행에서는 행 및 열 경계가 검출되지 않아 과거 구조 복원 결과를 재현하지 못하였다. 따라서 본 절의 정량 수치는 좌표계 검증이 완료되지 않은 평가군을 포함하는 잠정 결과로 제시하며, 이를 근거로 모델 간 최종 성능 순위를 확정하지 않는다.
+OpenCV 평가에서는 과거 실행 보고서에 기록된 Affine Matrix를 이용하여 정렬 이미지 좌표를 원본 이미지 좌표로 역변환하였다. 변환된 정식 Prediction 파일로 수행한 평가 결과는 별도의 Affine 감사 평가 결과와 일치하였으며, 5개 평가군과 3개 IoU 임계값으로 구성된 15개 평가 조합에서 TP와 FN의 합은 모두 95개였다. 다만 현재 OpenCV 파이프라인의 재실행에서는 표선 검출 단계에서 실패하여 과거 Prediction의 생성 과정을 완전히 재현하지 못하였다.
+
+이상의 정량 결과는 단일 계약서 이미지의 두 표 영역 및 지정된 예측 필터링 조건에서 관찰된 결과이며, 다른 문서나 데이터셋에서의 일반적인 성능을 의미하지 않는다.
 
 #### 논문 Discussion 초안 — 구조 복원 오류 및 평가 한계 (RQ2)
 
-본 실험에서 관찰된 구조 복원 성능은 IoU 임계값에 따라 차이를 보였다. 특히 일부 평가군에서는 IoU 0.3에서 매칭된 셀이 존재하였으나, IoU 0.5와 0.7에서는 F1이 크게 감소하였다. 이는 낮은 IoU 임계값에서 위치 매칭이 성립하더라도, 보다 엄격한 경계 일치 조건에서는 해당 매칭이 유지되지 않을 수 있음을 보여준다. 다만 이러한 감소가 셀 경계 검출, 병합 영역 재구성 또는 좌표 변환 중 어느 요인에 주로 기인하는지는 현재 실험만으로 구분하기 어렵다.
+본 실험에서 관찰된 구조 복원 성능은 IoU 임계값에 따라 차이를 보였다. PP-Structure와 TATR는 IoU 0.3에서 일부 셀이 매칭되었으나, IoU 0.5와 0.7에서 F1이 크게 감소하였다. 이는 낮은 IoU 임계값에서 위치 매칭이 성립하더라도, 보다 엄격한 경계 일치 조건에서는 해당 매칭이 유지되지 않을 수 있음을 보여준다. 반면 OpenCV 기반 평가군에서는 상대적으로 높은 임계값에서도 매칭된 셀이 관찰되었다. 다만 이러한 차이가 셀 경계 검출, 병합 영역 재구성 또는 모델별 예측 방식 중 어느 요인에 주로 기인하는지는 현재 실험만으로 구분하기 어렵다.
 
 TATR Grid와 Spanning Reconstruction은 지정된 평가 영역에서 동일한 위치 검출 지표를 보였다. 따라서 본 실험 조건에서는 Spanning Reconstruction 적용에 따른 정량적 개선이 확인되지 않았다. 그러나 이러한 관찰을 근거로 해당 처리 방식이 일반적으로 효과가 없다고 판단할 수는 없다. 구조 복원 효과를 해석할 때에는 원본 예측 결과의 구성과 평가 대상 영역을 함께 고려해야 한다.
 
-OpenCV 기반 구조 복원 결과에서는 Primitive Grid와 Restored Cell 사이에 정량 지표의 차이가 관찰되었다. 그러나 과거 예측 파일에 기록된 회전각과 현재 파이프라인에서 산출된 회전각이 일치하지 않았으며, 과거 예측 결과의 재현에도 실패하였다. 이에 따라 관찰된 차이를 병합 셀 재구성 처리의 독립적인 성능 향상 효과로 확정하기는 어렵다. 현재 파이프라인의 실패는 구조 복원 이전의 표선 검출 단계에서 발생한 실행 결과로서, 기존 예측 파일을 대상으로 산출한 위치 검출 성능과 구분하여 해석해야 한다.
+OpenCV 기반 평가에서는 Primitive Grid와 Restored Cell 사이에 뚜렷한 정량 지표 차이가 관찰되었다. IoU 0.5에서 Primitive Grid의 Precision, Recall 및 F1은 각각 27.3%, 66.3%, 38.7%였으며, Restored Cell은 각각 81.4%, 73.7%, 77.3%였다. Primitive Grid는 평가 영역에서 231개의 BBox를 예측한 반면, Restored Cell은 86개를 예측하였다. 이러한 결과는 본 이미지의 평가 조건에서 두 출력 방식의 예측 개수 및 위치 매칭 특성이 달랐음을 보여준다. 그러나 이를 병합 셀 재구성 처리만의 독립적인 성능 향상 효과로 확정하기는 어렵다.
+
+OpenCV의 좌표계 검증 과정에서는 과거 실행 기록에 포함된 Affine Matrix를 확인하였고, 해당 행렬을 역변환하여 공통 Ground Truth 좌표계에서 정량 평가를 재실행하였다. 초기 평가에서 사용한 단순 회전각 기반 역변환은 과거 정렬 과정의 캔버스 확장 및 이동 보정을 반영하지 못하였으며, 보정 후 평가 지표가 크게 변경되었다. 이는 구조 복원 성능 비교에서 예측 BBox의 좌표계 정합성이 중요한 평가 전제임을 보여준다. 다만 과거 Prediction을 현재 OpenCV 파이프라인에서 처음부터 동일하게 생성하는 데에는 실패하였다. 따라서 좌표 변환 및 정량 평가의 재현과 전체 구조 복원 파이프라인의 실행 재현성은 구분하여 해석해야 한다.
 
 또한 본 평가의 Ground Truth는 단일 계약서 이미지 내 두 표 영역의 95개 셀로 제한되며, 예측 BBox의 중심점을 기준으로 평가 대상을 선택하였다. 따라서 측정된 Precision, Recall 및 F1은 해당 이미지와 영역 선택 규칙에 조건부로 적용된다. 특히 표 영역을 크게 벗어나거나 영역 경계와 중첩되는 예측의 처리 방식은 평가 결과에 영향을 줄 수 있으므로, 이를 전체 문서 또는 다른 계약서 유형에 대한 일반적 성능으로 확대 해석하지 않는다.
 
+General GT Localization Recall과 Merged GT Localization Recall은 각각의 Ground Truth 부분집합에 속한 셀 중 IoU 기준으로 위치 매칭된 비율이다. 따라서 이 지표를 예측 셀의 유형 분류 정확도나 병합 관계 자체의 정확한 복원율로 해석할 수 없다. 병합 관계의 정확성을 별도로 판단하려면 해당 관계를 직접 평가하는 기준이 추가로 필요하다.
+
 본 연구의 전체 분석 체계에서 표 구조 복원 오류는 후속 ROI 설정 및 문자 인식 단계의 입력에 영향을 줄 수 있는 잠재적 요인이다. 그러나 본 RQ2의 위치 검출 지표만으로 구조 복원 오류가 최종 Field Accuracy에 미친 영향의 크기나 인과관계를 확정할 수는 없다. 해당 관계는 동일한 데이터와 Ground Truth를 기준으로 수행하는 ROI, 문자 인식 및 필드 추출 단계의 평가 결과와 연계하여 분석해야 한다.
 
-따라서 본 실험의 의의는 특정 구조 복원 방식의 일반적인 우수성을 주장하는 데 있지 않으며, 동일한 평가 기준에서 관찰된 구조 복원 결과와 재현성·좌표계·평가 범위의 한계를 구분함으로써 단계별 오류 분석에 필요한 근거를 확보하는 데 있다.
+따라서 본 실험의 의의는 특정 구조 복원 방식의 일반적인 우수성을 주장하는 데 있지 않으며, 동일한 평가 기준에서 관찰된 구조 복원 결과와 좌표계 처리, 재현성 및 평가 범위의 한계를 구분함으로써 단계별 오류 분석에 필요한 근거를 확보하는 데 있다.
 
 #### RQ2 구조 복원 평가의 최종 감사 판정
 
 동일 계약서 이미지의 두 표 영역에 구축한 95개 셀 Ground Truth를 기준으로, 5개 구조 복원 평가군에 대해 IoU 임계값 0.3, 0.5 및 0.7에서 정량 지표를 산출하였다. 총 15개 평가 조합에서 TP와 FN의 합은 모두 95개로 일치하였으며, TP·FP·FN에 기반한 Precision, Recall 및 F1 계산의 내부 일관성을 확인하였다.
 
-PP-Structure와 TATR의 예측 결과는 공통 이미지 좌표계에서 시각적으로 점검하였으며, OpenCV의 경우 기록된 회전각을 기반으로 좌표 역변환을 수행하였다. 그러나 OpenCV 예측 파일의 과거 생성 과정이 재현되지 않아 해당 좌표 변환의 전제 조건을 독립적으로 입증하지 못하였다.
+PP-Structure와 TATR의 예측 결과는 공통 GT 좌표계에서 시각적으로 점검하였다. OpenCV의 경우 `f352da0` 커밋에서 과거 정렬 이미지와 예측 파일의 존재를 확인하였으며, 현재 평가에 사용한 원본 `cells.json`과 과거 예측 파일의 Git Blob 해시가 일치함을 검증하였다. 다만 해당 정렬 이미지의 실제 회전 변환 행렬은 확인되지 않았으므로, 기록된 회전각 `-1.061°`를 이용한 역변환이 공통 GT 좌표계와 완전히 정합한다고 단정할 수 없다. 또한 현재 파이프라인의 재실행에서는 과거 예측 결과를 재현하지 못하였다.
 
 이에 따라 본 연구의 구조 복원 정량 결과는 단일 이미지, 지정된 두 표 영역 및 예측 영역 필터링 규칙에 종속된 잠정 평가 결과로 분류한다. 특히 OpenCV의 정량 수치는 좌표계 검증 미완료 상태에서 계산된 값으로, 다른 평가군에 대한 확정적 성능 우위의 근거로 사용하지 않는다.
 

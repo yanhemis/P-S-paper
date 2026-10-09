@@ -1,89 +1,181 @@
+# 표 구조 복원 평가 좌표계 감사 기록 (RQ2)
 
-# Structure Evaluation Coordinate Audit
+## 1. 공통 Ground Truth 및 평가 조건
 
-## Common Ground Truth
-- Image: sample.jpg
-- EXIF Orientation: 6
-- Evaluation image size: 3000 x 4000
-- Exhaustive GT: 95 cells
-- Upper table: 32 cells
-- Lower table: 63 cells
-- GT bbox bounds check: PASS
+본 평가는 동일한 계약서 이미지 `sample.jpg`를 대상으로 수행하였다.
 
-## OpenCV Predictions
-- Original source files:
-  - cells.json
-  - cells_primitive.json
-- Recorded image: sample_aligned.png
-- Recorded rotation: -1.061 degrees
-- Current TestReult.py rotation: 0.0 degrees
-- Historical image Git hash: MATCH
-- Historical JSON metadata: CONFIRMED
-- Original alignment generation history: UNVERIFIED
+- 원본 이미지의 EXIF Orientation: 6
+- 평가 좌표계: EXIF 방향을 반영한 3000 × 4000 이미지
+- 공통 Exhaustive GT: 총 95개 셀
+  - 상단 표: 32개
+  - 하단 표: 63개
+- GT BBox의 이미지 범위 검사: 통과
+- 평가 대상: GT로 정의한 두 표 영역
+- 예측 선택 기준: 예측 BBox의 중심점이 평가 영역 내부에 포함되는 경우
+- 매칭 방식: IoU 기반 1:1 Greedy Matching
+- IoU 임계값: 0.3, 0.5, 0.7
 
-## Coordinate Conversion
-- cells_original.json: inverse-rotation candidate
-- cells_primitive_original.json: inverse-rotation candidate
-- Overlay inspection: COMPLETED
-- Coordinate-system verification: PENDING
+## 2. 과거 OpenCV 예측 파일의 출처 확인
 
-## Evaluation Status
-- 95 GT cells: CONFIRMED
-- IoU thresholds: 0.3, 0.5, 0.7
-- metrics_audit_draft.json: GENERATED
-- OpenCV performance numbers: PROVISIONAL
-- Final Structure Recovery comparison: NOT FINALIZED
+구조 복원 평가에 사용한 원본 예측 파일은 다음과 같다.
 
-## Interpretation
-The OpenCV prediction files contain a recorded
-rotation of -1.061 degrees, whereas the current
-pipeline reports 0.0 degrees on the available image.
+- `cells.json`: 병합 복원 후 셀 86개
+- `cells_primitive.json`: Primitive Grid 셀 231개
 
-The original prediction generation process has
-not been fully reconstructed.
+Git 이력에서 다음 자료를 확인하였다.
 
-Therefore, coordinate-converted OpenCV results
-must not yet be treated as finalized performance.
+- 과거 실행 커밋: `f352da0`
+- 과거 예측 파일: `output/sample/cells.json`
+- 과거 정렬 이미지: `output/sample/sample_aligned.png`
+- 과거 실행 보고서: `output/sample/report.json`
+- 실행 보고서의 로컬 보존 파일: `opencv_historical_report.json`
 
-## OpenCV Reproduction Audit
+기존 `5_Evaluation/cells.json`과 과거 커밋의 `output/sample/cells.json`은 Git Blob 해시가 일치하였다. 따라서 Restored 예측 파일의 출처와 동일성을 확인하였다.
 
-- Input image: sample.jpg
-- Input size: 3000 x 4000
-- Current pipeline rotation: 0.0 degrees
-- Historical JSON rotation: -1.061 degrees
-- Detected row boundaries: 0
-- Detected column boundaries: 0
-- Reproduction status: EXECUTION_FAILED
-- Failure stage: Grid extraction
-- Root cause: UNCONFIRMED
-- Existing cells.json: Preserved
-- Existing cells_primitive.json: Preserved
-- Final coordinate verification: PENDING
+또한 과거 정렬 이미지와 실행 보고서가 Git 이력에 존재함을 확인하였다. 다만 해당 자료의 존재만으로 현재 환경에서 과거 구조 복원 파이프라인 전체를 다시 실행할 수 있음이 입증되는 것은 아니다.
 
-### Interpretation
-The current OpenCV pipeline failed to reproduce
-the historical structure prediction output.
+## 3. 과거 Affine Matrix 확인
 
-This is a pipeline reproduction failure,
-not a measured structure recovery performance failure.
+과거 실행 보고서에는 다음 정보가 기록되어 있다.
 
-Historical OpenCV results remain provisional
-until their coordinate transformation is verified.
+- 원본 이미지 크기: 3000 × 4000
+- 정렬 이미지 크기: 3074 × 4055
+- EXIF 방향 보정: 적용
+- 기록된 회전각: -1.061°
+- 과거 실행 상태: `ok`
 
-## Inverse Rotation Code Review
+실행 보고서에 기록된 Affine Matrix는 다음과 같다.
 
-- Reviewed script: `make_original.py`
-- EXIF orientation handling: CONFIRMED
-- Rotation center: Image center
-- Transformation: Inverse of `cv2.getRotationMatrix2D`
-- Bounding-box conversion: Transform four corners, then calculate enclosing axis-aligned bbox
-- Mathematical transformation: CONDITIONALLY VALID
-- Historical alignment procedure: UNVERIFIED
-- Original `sample_aligned.png`: NOT AVAILABLE
-- OpenCV coordinate-system verification: INCOMPLETE
+```text
+[[0.999829, -0.018515, 74.287824],
+ [0.018515,  0.999829,  0.069831]]
+```
 
-### Audit Conclusion
+과거 정렬 과정에서는 이미지를 회전하는 동시에 출력 캔버스를 확장하고 이동 보정을 적용하였다.
 
-The inverse-rotation procedure is mathematically consistent with the assumption that the historical OpenCV predictions were generated from an image rotated by -1.061 degrees about its center. However, the original alignment procedure could not be independently verified, and the current pipeline did not reproduce the historical predictions.
+초기 좌표 변환은 회전각만 이용해 역변환 행렬을 생성했기 때문에 이러한 캔버스 확장 및 이동 보정을 반영하지 못하였다. 따라서 초기 변환 결과는 과거 실제 좌표 변환의 정확한 역변환으로 볼 수 없다.
 
-Consequently, the converted OpenCV prediction files are treated as coordinate-alignment candidates rather than fully verified evaluation inputs. The corresponding quantitative results remain provisional and are not used to establish a definitive model ranking.
+이 문제를 수정하기 위해 과거 실행 보고서의 Affine Matrix를 직접 사용하였다.
+
+## 4. Affine 기반 좌표 변환 및 검증
+
+좌표 변환 스크립트는 `make_original.py`이다.
+
+정식 평가 입력 파일은 다음과 같다.
+
+- `cells_original.json`: Restored 예측 86개
+- `cells_primitive_original.json`: Primitive 예측 231개
+
+좌표 변환 과정은 다음과 같다.
+
+1. EXIF 방향이 반영된 원본 이미지 크기를 확인한다.
+2. `opencv_historical_report.json`에서 과거 Affine Matrix를 읽는다.
+3. 원본 이미지명, 정렬 이미지명, 이미지 크기 및 회전각 정보를 대조한다.
+4. `cv2.invertAffineTransform`으로 역변환 행렬을 계산한다.
+5. 각 예측 BBox의 네 꼭짓점에 역변환을 적용한다.
+6. 변환된 네 꼭짓점을 포함하는 축 정렬 BBox를 생성한다.
+7. 좌표를 원본 이미지 크기인 3000 × 4000 범위로 제한한다.
+
+변환 결과는 다음과 같다.
+
+- Restored 변환 셀 수: 86개
+- Primitive 변환 셀 수: 231개
+- 이미지 좌표 범위 오류: 0건
+- Restored Overlay 시각 점검: 완료
+- 시각 점검에서 뚜렷한 전체 좌표 이동 또는 회전 오차: 관찰되지 않음
+
+과거 실행 보고서에는 Affine Matrix 계수가 유한한 소수점 정밀도로 저장되어 있다. 또한 Overlay 점검은 전체적인 위치 정합성을 확인하는 절차이며, 모든 개별 셀 경계가 GT와 정확히 일치함을 보증하지 않는다.
+
+**좌표 변환 판정: 과거 Affine Matrix 적용 및 평가 완료**
+
+## 5. 정량 평가 재현 결과
+
+수정된 OpenCV 정식 평가 입력 파일을 사용하여 PP-Structure 및 TATR와 동일한 공통 GT와 Evaluator로 재평가하였다.
+
+| 평가군 | F1 @ IoU 0.3 | F1 @ IoU 0.5 | F1 @ IoU 0.7 |
+|---|---:|---:|---:|
+| PP-Structure | 5.9% | 0.0% | 0.0% |
+| TATR Grid Only | 26.0% | 3.0% | 0.0% |
+| TATR + Spanning Reconstruction | 26.0% | 3.0% | 0.0% |
+| OpenCV Primitive Grid | 49.7% | 38.7% | 25.8% |
+| OpenCV + Cell Reconstruction | 88.4% | 77.3% | 65.2% |
+
+IoU 0.5에서 OpenCV의 세부 결과는 다음과 같다.
+
+| 평가군 | TP | FP | FN | Precision | Recall | F1 |
+|---|---:|---:|---:|---:|---:|---:|
+| OpenCV Primitive | 63 | 168 | 32 | 27.3% | 66.3% | 38.7% |
+| OpenCV Restored | 70 | 16 | 25 | 81.4% | 73.7% | 77.3% |
+
+재평가 결과에 대한 검증 사항은 다음과 같다.
+
+- 5개 평가군 모두 실행 상태 `OK`
+- 15개 평가 조합 모두 `TP + FN = 95`
+- 각 조합의 `TP + FP`가 평가 영역 내 예측 수와 일치
+- 정식 OpenCV 입력 파일을 사용한 재평가 결과가 별도 Affine 감사 평가 결과와 일치
+
+최신 정량 평가 결과는 `metrics_affine_audit.json`에 저장되어 있다.
+
+기존 `metrics_audit_draft.json`은 Affine 보정 이전의 부정확한 좌표 변환을 바탕으로 계산된 결과를 포함한다. 따라서 최종 OpenCV 성능 지표의 근거로 사용하지 않는다.
+
+**정량 평가 판정: Affine 기반 정식 입력에서 결과 재현 완료**
+
+## 6. 현재 OpenCV 파이프라인 재실행 감사
+
+과거 예측 파일의 좌표 변환 및 정량 평가와 별개로, 현재 환경에서 기존 OpenCV 파이프라인의 재실행을 시도하였다.
+
+관찰 결과는 다음과 같다.
+
+- 입력 이미지 크기: 3000 × 4000
+- 현재 파이프라인 회전각: 0.0°
+- 과거 기록된 회전각: -1.061°
+- 검출된 행 경계: 0개
+- 검출된 열 경계: 0개
+- 실패 단계: Grid extraction
+- 과거 예측 결과 재현: 실패
+- 근본 원인: 미확인
+
+이는 **현재 파이프라인의 실행 재현 실패**이며, 과거 예측 파일 자체의 구조 복원 성능이 0이라는 뜻은 아니다.
+
+과거 원본 예측 파일은 보존되어 있으며, 해당 파일을 이용한 좌표 변환과 정량 평가는 별도로 수행하였다.
+
+## 7. 결과 해석 및 한계
+
+초기 OpenCV 평가에서는 회전각만을 이용한 역변환을 적용하였으나, 과거 실행 기록을 확인한 결과 실제 정렬 과정에는 캔버스 확장과 이동 보정이 포함되어 있었다.
+
+이후 기록된 Affine Matrix를 적용하여 좌표를 다시 변환하였고, 정량 평가 결과가 크게 변경되었다. 이러한 관찰은 예측 BBox와 GT의 좌표계 정합성이 구조 복원 평가에서 중요한 전제임을 보여준다.
+
+다만 다음과 같은 한계가 있다.
+
+- 단일 계약서 이미지의 두 표 영역만 평가하였다.
+- 예측 BBox 중심점의 평가 영역 포함 여부에 따라 평가 대상이 결정된다.
+- General 및 Merged GT Localization Recall은 각 GT 부분집합의 위치 매칭 비율이며, 셀 유형 분류 정확도가 아니다.
+- OpenCV Primitive와 Restored의 성능 차이를 병합 셀 재구성 처리만의 독립적인 인과 효과로 단정할 수 없다.
+- 현재 파이프라인의 전체 실행 재현은 완료되지 않았다.
+- RQ2의 위치 검출 지표만으로 최종 Field Accuracy에 대한 영향이나 인과관계를 판단할 수 없다.
+
+따라서 본 결과를 다른 계약서나 전체 문서 유형에 대한 구조 복원 방식의 일반적인 성능 순위로 확대 해석하지 않는다.
+
+## 8. 최종 감사 결론
+
+Git 이력으로 과거 OpenCV 예측 파일의 출처를 확인하였고, 과거 실행 보고서에서 실제 Affine Matrix를 확보하였다.
+
+해당 행렬을 사용하여 OpenCV 예측 BBox를 공통 GT 좌표계로 변환하였으며, Restored 결과의 Overlay를 점검하고 두 OpenCV 평가군을 정량 재평가하였다.
+
+정식 평가 입력을 이용한 재실행에서 Affine 감사 평가와 동일한 수치가 산출되었다.
+
+최종 판정은 다음과 같다.
+
+| 감사 항목 | 판정 |
+|---|---|
+| 과거 예측 파일 출처 | 확인 완료 |
+| 과거 Affine Matrix | 확보 완료 |
+| Affine 기반 좌표 변환 | 적용 완료 |
+| Restored Overlay 점검 | 완료 |
+| 정식 입력 기반 정량 평가 재현 | 완료 |
+| 현재 파이프라인 전체 실행 재현 | 실패 |
+| 다른 계약서에 대한 일반화 가능성 | 검증되지 않음 |
+
+**최종 결론:** 본 평가 조건에서 Affine 보정 후 산출한 구조 복원 지표는 보고할 수 있다. 다만 현재 파이프라인의 전체 실행 재현 실패와 단일 이미지 기반 평가라는 한계를 함께 명시해야 한다.
+
+기존 `evaluation_input_manifest.txt`에는 수정 전 좌표 변환 파일의 해시가 포함되어 있을 수 있으므로, 제출 전에 최종 입력 파일 기준으로 SHA-256 기록을 갱신해야 한다.
