@@ -1,0 +1,3937 @@
+{
+  "image": "sample.jpg",
+  "source_image": "sample.jpg",
+  "method": "opencv_grid_merge",
+  "rotation_deg": -1.061,
+  "cells": [
+    {
+      "id": 0,
+      "table": 0,
+      "bbox": [
+        294,
+        617,
+        537,
+        742
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "table": 0,
+      "bbox": [
+        534,
+        613,
+        739,
+        737
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "table": 0,
+      "bbox": [
+        736,
+        609,
+        1001,
+        733
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "table": 0,
+      "bbox": [
+        998,
+        602,
+        1348,
+        729
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "table": 0,
+      "bbox": [
+        1345,
+        599,
+        1542,
+        722
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "table": 0,
+      "bbox": [
+        1539,
+        596,
+        1670,
+        719
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "table": 0,
+      "bbox": [
+        1667,
+        595,
+        1731,
+        716
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "table": 0,
+      "bbox": [
+        1728,
+        593,
+        1857,
+        715
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "table": 0,
+      "bbox": [
+        1854,
+        588,
+        2102,
+        713
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "table": 0,
+      "bbox": [
+        2098,
+        585,
+        2262,
+        708
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "table": 0,
+      "bbox": [
+        2258,
+        577,
+        2702,
+        705
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          10
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "table": 0,
+      "bbox": [
+        296,
+        736,
+        538,
+        801
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "table": 0,
+      "bbox": [
+        536,
+        732,
+        740,
+        796
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 13,
+      "table": 0,
+      "bbox": [
+        738,
+        728,
+        1002,
+        792
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 14,
+      "table": 0,
+      "bbox": [
+        1000,
+        721,
+        1349,
+        788
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 15,
+      "table": 0,
+      "bbox": [
+        1347,
+        718,
+        1543,
+        781
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 16,
+      "table": 0,
+      "bbox": [
+        1541,
+        715,
+        1671,
+        778
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 17,
+      "table": 0,
+      "bbox": [
+        1669,
+        714,
+        1732,
+        775
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 18,
+      "table": 0,
+      "bbox": [
+        1730,
+        712,
+        1858,
+        774
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 19,
+      "table": 0,
+      "bbox": [
+        1856,
+        707,
+        2103,
+        772
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 20,
+      "table": 0,
+      "bbox": [
+        2101,
+        704,
+        2263,
+        767
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 21,
+      "table": 0,
+      "bbox": [
+        2261,
+        696,
+        2703,
+        764
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          10
+        ]
+      ]
+    },
+    {
+      "id": 22,
+      "table": 0,
+      "bbox": [
+        297,
+        795,
+        540,
+        908
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 23,
+      "table": 0,
+      "bbox": [
+        537,
+        791,
+        742,
+        903
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 24,
+      "table": 0,
+      "bbox": [
+        739,
+        787,
+        1004,
+        899
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 25,
+      "table": 0,
+      "bbox": [
+        1001,
+        780,
+        1351,
+        895
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 26,
+      "table": 0,
+      "bbox": [
+        1348,
+        777,
+        1545,
+        888
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 27,
+      "table": 0,
+      "bbox": [
+        1542,
+        774,
+        1673,
+        884
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 28,
+      "table": 0,
+      "bbox": [
+        1670,
+        773,
+        1734,
+        882
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 29,
+      "table": 0,
+      "bbox": [
+        1731,
+        771,
+        1860,
+        881
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 30,
+      "table": 0,
+      "bbox": [
+        1857,
+        766,
+        2105,
+        879
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 31,
+      "table": 0,
+      "bbox": [
+        2102,
+        763,
+        2265,
+        874
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 32,
+      "table": 0,
+      "bbox": [
+        2262,
+        755,
+        2705,
+        871
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          10
+        ]
+      ]
+    },
+    {
+      "id": 33,
+      "table": 0,
+      "bbox": [
+        299,
+        902,
+        541,
+        982
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 34,
+      "table": 0,
+      "bbox": [
+        539,
+        898,
+        743,
+        977
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 35,
+      "table": 0,
+      "bbox": [
+        741,
+        894,
+        1005,
+        973
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 36,
+      "table": 0,
+      "bbox": [
+        1003,
+        887,
+        1352,
+        968
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 37,
+      "table": 0,
+      "bbox": [
+        1350,
+        883,
+        1546,
+        962
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 38,
+      "table": 0,
+      "bbox": [
+        1544,
+        881,
+        1674,
+        958
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 39,
+      "table": 0,
+      "bbox": [
+        1672,
+        880,
+        1735,
+        956
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 40,
+      "table": 0,
+      "bbox": [
+        1733,
+        878,
+        1861,
+        955
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 41,
+      "table": 0,
+      "bbox": [
+        1859,
+        873,
+        2106,
+        953
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 42,
+      "table": 0,
+      "bbox": [
+        2104,
+        870,
+        2266,
+        948
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 43,
+      "table": 0,
+      "bbox": [
+        2264,
+        862,
+        2706,
+        945
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          10
+        ]
+      ]
+    },
+    {
+      "id": 44,
+      "table": 0,
+      "bbox": [
+        300,
+        976,
+        543,
+        1043
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 45,
+      "table": 0,
+      "bbox": [
+        540,
+        972,
+        744,
+        1038
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 46,
+      "table": 0,
+      "bbox": [
+        742,
+        967,
+        1006,
+        1034
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 47,
+      "table": 0,
+      "bbox": [
+        1004,
+        961,
+        1353,
+        1029
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 48,
+      "table": 0,
+      "bbox": [
+        1351,
+        957,
+        1547,
+        1023
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 49,
+      "table": 0,
+      "bbox": [
+        1545,
+        955,
+        1675,
+        1019
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 50,
+      "table": 0,
+      "bbox": [
+        1673,
+        954,
+        1736,
+        1017
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 51,
+      "table": 0,
+      "bbox": [
+        1734,
+        952,
+        1862,
+        1016
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 52,
+      "table": 0,
+      "bbox": [
+        1860,
+        947,
+        2107,
+        1014
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 53,
+      "table": 0,
+      "bbox": [
+        2105,
+        944,
+        2267,
+        1009
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 54,
+      "table": 0,
+      "bbox": [
+        2265,
+        936,
+        2707,
+        1006
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          10
+        ]
+      ]
+    },
+    {
+      "id": 55,
+      "table": 0,
+      "bbox": [
+        302,
+        1037,
+        545,
+        1150
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 56,
+      "table": 0,
+      "bbox": [
+        542,
+        1033,
+        746,
+        1146
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 57,
+      "table": 0,
+      "bbox": [
+        743,
+        1028,
+        1008,
+        1142
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 58,
+      "table": 0,
+      "bbox": [
+        1005,
+        1022,
+        1355,
+        1137
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 59,
+      "table": 0,
+      "bbox": [
+        1352,
+        1018,
+        1549,
+        1131
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 60,
+      "table": 0,
+      "bbox": [
+        1546,
+        1016,
+        1677,
+        1127
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 61,
+      "table": 0,
+      "bbox": [
+        1674,
+        1015,
+        1738,
+        1125
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 62,
+      "table": 0,
+      "bbox": [
+        1735,
+        1013,
+        1864,
+        1124
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 63,
+      "table": 0,
+      "bbox": [
+        1861,
+        1008,
+        2109,
+        1122
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 64,
+      "table": 0,
+      "bbox": [
+        2106,
+        1005,
+        2269,
+        1117
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 65,
+      "table": 0,
+      "bbox": [
+        2266,
+        997,
+        2709,
+        1114
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          10
+        ]
+      ]
+    },
+    {
+      "id": 66,
+      "table": 0,
+      "bbox": [
+        304,
+        1145,
+        546,
+        1211
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 67,
+      "table": 0,
+      "bbox": [
+        544,
+        1141,
+        748,
+        1207
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 68,
+      "table": 0,
+      "bbox": [
+        745,
+        1136,
+        1010,
+        1203
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 69,
+      "table": 0,
+      "bbox": [
+        1007,
+        1130,
+        1357,
+        1198
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 70,
+      "table": 0,
+      "bbox": [
+        1354,
+        1126,
+        1550,
+        1192
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 71,
+      "table": 0,
+      "bbox": [
+        1548,
+        1124,
+        1678,
+        1188
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 72,
+      "table": 0,
+      "bbox": [
+        1676,
+        1123,
+        1739,
+        1186
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 73,
+      "table": 0,
+      "bbox": [
+        1737,
+        1121,
+        1865,
+        1185
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 74,
+      "table": 0,
+      "bbox": [
+        1863,
+        1116,
+        2110,
+        1183
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 75,
+      "table": 0,
+      "bbox": [
+        2108,
+        1113,
+        2270,
+        1178
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 76,
+      "table": 0,
+      "bbox": [
+        2268,
+        1105,
+        2710,
+        1175
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          10
+        ]
+      ]
+    },
+    {
+      "id": 77,
+      "table": 0,
+      "bbox": [
+        305,
+        1206,
+        547,
+        1271
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 78,
+      "table": 0,
+      "bbox": [
+        545,
+        1202,
+        749,
+        1267
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 79,
+      "table": 0,
+      "bbox": [
+        747,
+        1197,
+        1011,
+        1263
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 80,
+      "table": 0,
+      "bbox": [
+        1009,
+        1191,
+        1358,
+        1258
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 81,
+      "table": 0,
+      "bbox": [
+        1356,
+        1187,
+        1552,
+        1252
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 82,
+      "table": 0,
+      "bbox": [
+        1549,
+        1185,
+        1680,
+        1248
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 83,
+      "table": 0,
+      "bbox": [
+        1677,
+        1184,
+        1741,
+        1246
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 84,
+      "table": 0,
+      "bbox": [
+        1738,
+        1182,
+        1867,
+        1245
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 85,
+      "table": 0,
+      "bbox": [
+        1864,
+        1177,
+        2111,
+        1243
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 86,
+      "table": 0,
+      "bbox": [
+        2109,
+        1174,
+        2271,
+        1238
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 87,
+      "table": 0,
+      "bbox": [
+        2269,
+        1166,
+        2711,
+        1235
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          10
+        ]
+      ]
+    },
+    {
+      "id": 88,
+      "table": 0,
+      "bbox": [
+        306,
+        1266,
+        548,
+        1333
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 89,
+      "table": 0,
+      "bbox": [
+        546,
+        1262,
+        750,
+        1329
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 90,
+      "table": 0,
+      "bbox": [
+        748,
+        1257,
+        1012,
+        1325
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 91,
+      "table": 0,
+      "bbox": [
+        1010,
+        1251,
+        1359,
+        1320
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 92,
+      "table": 0,
+      "bbox": [
+        1357,
+        1247,
+        1553,
+        1314
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 93,
+      "table": 0,
+      "bbox": [
+        1551,
+        1245,
+        1681,
+        1310
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 94,
+      "table": 0,
+      "bbox": [
+        1679,
+        1244,
+        1742,
+        1308
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 95,
+      "table": 0,
+      "bbox": [
+        1740,
+        1242,
+        1868,
+        1307
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 96,
+      "table": 0,
+      "bbox": [
+        1866,
+        1237,
+        2113,
+        1305
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 97,
+      "table": 0,
+      "bbox": [
+        2110,
+        1234,
+        2273,
+        1300
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 98,
+      "table": 0,
+      "bbox": [
+        2270,
+        1226,
+        2713,
+        1297
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          10
+        ]
+      ]
+    },
+    {
+      "id": 99,
+      "table": 0,
+      "bbox": [
+        307,
+        1328,
+        549,
+        1395
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 100,
+      "table": 0,
+      "bbox": [
+        547,
+        1324,
+        751,
+        1391
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 101,
+      "table": 0,
+      "bbox": [
+        749,
+        1319,
+        1013,
+        1387
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 102,
+      "table": 0,
+      "bbox": [
+        1011,
+        1313,
+        1360,
+        1382
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 103,
+      "table": 0,
+      "bbox": [
+        1358,
+        1309,
+        1554,
+        1376
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 104,
+      "table": 0,
+      "bbox": [
+        1552,
+        1307,
+        1682,
+        1372
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 105,
+      "table": 0,
+      "bbox": [
+        1680,
+        1306,
+        1743,
+        1370
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 106,
+      "table": 0,
+      "bbox": [
+        1741,
+        1304,
+        1869,
+        1369
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 107,
+      "table": 0,
+      "bbox": [
+        1867,
+        1299,
+        2114,
+        1367
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 108,
+      "table": 0,
+      "bbox": [
+        2112,
+        1296,
+        2274,
+        1362
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 109,
+      "table": 0,
+      "bbox": [
+        2272,
+        1288,
+        2714,
+        1359
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          10
+        ]
+      ]
+    },
+    {
+      "id": 110,
+      "table": 0,
+      "bbox": [
+        308,
+        1390,
+        550,
+        1457
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 111,
+      "table": 0,
+      "bbox": [
+        548,
+        1386,
+        752,
+        1453
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 112,
+      "table": 0,
+      "bbox": [
+        750,
+        1381,
+        1014,
+        1449
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 113,
+      "table": 0,
+      "bbox": [
+        1012,
+        1375,
+        1361,
+        1444
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 114,
+      "table": 0,
+      "bbox": [
+        1359,
+        1371,
+        1555,
+        1438
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 115,
+      "table": 0,
+      "bbox": [
+        1553,
+        1369,
+        1683,
+        1434
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 116,
+      "table": 0,
+      "bbox": [
+        1681,
+        1368,
+        1744,
+        1432
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 117,
+      "table": 0,
+      "bbox": [
+        1742,
+        1366,
+        1870,
+        1431
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 118,
+      "table": 0,
+      "bbox": [
+        1868,
+        1361,
+        2115,
+        1429
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 119,
+      "table": 0,
+      "bbox": [
+        2113,
+        1358,
+        2275,
+        1424
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 120,
+      "table": 0,
+      "bbox": [
+        2273,
+        1350,
+        2715,
+        1421
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          10
+        ]
+      ]
+    },
+    {
+      "id": 121,
+      "table": 1,
+      "bbox": [
+        289,
+        3050,
+        382,
+        3120
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 122,
+      "table": 1,
+      "bbox": [
+        380,
+        3044,
+        724,
+        3118
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 123,
+      "table": 1,
+      "bbox": [
+        722,
+        3040,
+        962,
+        3112
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 124,
+      "table": 1,
+      "bbox": [
+        960,
+        3029,
+        1518,
+        3108
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 125,
+      "table": 1,
+      "bbox": [
+        1516,
+        3025,
+        1759,
+        3097
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 126,
+      "table": 1,
+      "bbox": [
+        1757,
+        3023,
+        1886,
+        3093
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 127,
+      "table": 1,
+      "bbox": [
+        1884,
+        3018,
+        2127,
+        3091
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 128,
+      "table": 1,
+      "bbox": [
+        2124,
+        3015,
+        2270,
+        3086
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 129,
+      "table": 1,
+      "bbox": [
+        2267,
+        3010,
+        2584,
+        3083
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 130,
+      "table": 1,
+      "bbox": [
+        2581,
+        3006,
+        2807,
+        3078
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 131,
+      "table": 1,
+      "bbox": [
+        290,
+        3117,
+        383,
+        3188
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 132,
+      "table": 1,
+      "bbox": [
+        381,
+        3111,
+        725,
+        3186
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 133,
+      "table": 1,
+      "bbox": [
+        723,
+        3107,
+        963,
+        3180
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 134,
+      "table": 1,
+      "bbox": [
+        961,
+        3096,
+        1519,
+        3176
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 135,
+      "table": 1,
+      "bbox": [
+        1517,
+        3092,
+        1760,
+        3165
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 136,
+      "table": 1,
+      "bbox": [
+        1758,
+        3090,
+        1887,
+        3161
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 137,
+      "table": 1,
+      "bbox": [
+        1885,
+        3085,
+        2128,
+        3159
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 138,
+      "table": 1,
+      "bbox": [
+        2126,
+        3082,
+        2271,
+        3154
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 139,
+      "table": 1,
+      "bbox": [
+        2269,
+        3077,
+        2585,
+        3151
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 140,
+      "table": 1,
+      "bbox": [
+        2583,
+        3072,
+        2808,
+        3146
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 141,
+      "table": 1,
+      "bbox": [
+        291,
+        3185,
+        385,
+        3257
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 142,
+      "table": 1,
+      "bbox": [
+        382,
+        3179,
+        726,
+        3255
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 143,
+      "table": 1,
+      "bbox": [
+        724,
+        3175,
+        964,
+        3249
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 144,
+      "table": 1,
+      "bbox": [
+        962,
+        3164,
+        1520,
+        3245
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 145,
+      "table": 1,
+      "bbox": [
+        1518,
+        3160,
+        1761,
+        3234
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 146,
+      "table": 1,
+      "bbox": [
+        1759,
+        3158,
+        1888,
+        3230
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 147,
+      "table": 1,
+      "bbox": [
+        1886,
+        3153,
+        2129,
+        3228
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 148,
+      "table": 1,
+      "bbox": [
+        2127,
+        3150,
+        2272,
+        3223
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 149,
+      "table": 1,
+      "bbox": [
+        2270,
+        3145,
+        2586,
+        3220
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 150,
+      "table": 1,
+      "bbox": [
+        2584,
+        3140,
+        2809,
+        3215
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 151,
+      "table": 1,
+      "bbox": [
+        293,
+        3254,
+        386,
+        3322
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 152,
+      "table": 1,
+      "bbox": [
+        384,
+        3248,
+        728,
+        3320
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 153,
+      "table": 1,
+      "bbox": [
+        725,
+        3244,
+        966,
+        3314
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 154,
+      "table": 1,
+      "bbox": [
+        963,
+        3233,
+        1522,
+        3310
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 155,
+      "table": 1,
+      "bbox": [
+        1519,
+        3229,
+        1763,
+        3299
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 156,
+      "table": 1,
+      "bbox": [
+        1760,
+        3227,
+        1889,
+        3295
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 157,
+      "table": 1,
+      "bbox": [
+        1887,
+        3222,
+        2130,
+        3293
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 158,
+      "table": 1,
+      "bbox": [
+        2128,
+        3219,
+        2273,
+        3288
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 159,
+      "table": 1,
+      "bbox": [
+        2271,
+        3214,
+        2587,
+        3285
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 160,
+      "table": 1,
+      "bbox": [
+        2585,
+        3209,
+        2810,
+        3280
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          3,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 161,
+      "table": 1,
+      "bbox": [
+        294,
+        3319,
+        387,
+        3387
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 162,
+      "table": 1,
+      "bbox": [
+        385,
+        3313,
+        729,
+        3385
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 163,
+      "table": 1,
+      "bbox": [
+        727,
+        3309,
+        967,
+        3379
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 164,
+      "table": 1,
+      "bbox": [
+        965,
+        3298,
+        1523,
+        3375
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 165,
+      "table": 1,
+      "bbox": [
+        1521,
+        3294,
+        1764,
+        3364
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 166,
+      "table": 1,
+      "bbox": [
+        1762,
+        3292,
+        1891,
+        3360
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 167,
+      "table": 1,
+      "bbox": [
+        1888,
+        3287,
+        2132,
+        3358
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 168,
+      "table": 1,
+      "bbox": [
+        2129,
+        3284,
+        2275,
+        3353
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 169,
+      "table": 1,
+      "bbox": [
+        2272,
+        3279,
+        2589,
+        3350
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 170,
+      "table": 1,
+      "bbox": [
+        2586,
+        3274,
+        2812,
+        3345
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          4,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 171,
+      "table": 1,
+      "bbox": [
+        295,
+        3384,
+        388,
+        3452
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 172,
+      "table": 1,
+      "bbox": [
+        386,
+        3378,
+        730,
+        3450
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 173,
+      "table": 1,
+      "bbox": [
+        728,
+        3374,
+        968,
+        3444
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 174,
+      "table": 1,
+      "bbox": [
+        966,
+        3363,
+        1524,
+        3440
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 175,
+      "table": 1,
+      "bbox": [
+        1522,
+        3359,
+        1765,
+        3429
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 176,
+      "table": 1,
+      "bbox": [
+        1763,
+        3357,
+        1892,
+        3425
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 177,
+      "table": 1,
+      "bbox": [
+        1890,
+        3352,
+        2133,
+        3422
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 178,
+      "table": 1,
+      "bbox": [
+        2131,
+        3349,
+        2276,
+        3418
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 179,
+      "table": 1,
+      "bbox": [
+        2274,
+        3344,
+        2590,
+        3415
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 180,
+      "table": 1,
+      "bbox": [
+        2588,
+        3339,
+        2813,
+        3410
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          5,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 181,
+      "table": 1,
+      "bbox": [
+        296,
+        3449,
+        389,
+        3519
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 182,
+      "table": 1,
+      "bbox": [
+        387,
+        3443,
+        731,
+        3517
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 183,
+      "table": 1,
+      "bbox": [
+        729,
+        3439,
+        969,
+        3511
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 184,
+      "table": 1,
+      "bbox": [
+        967,
+        3428,
+        1525,
+        3507
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 185,
+      "table": 1,
+      "bbox": [
+        1523,
+        3424,
+        1766,
+        3496
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 186,
+      "table": 1,
+      "bbox": [
+        1764,
+        3421,
+        1893,
+        3492
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 187,
+      "table": 1,
+      "bbox": [
+        1891,
+        3417,
+        2134,
+        3489
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 188,
+      "table": 1,
+      "bbox": [
+        2132,
+        3414,
+        2277,
+        3485
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 189,
+      "table": 1,
+      "bbox": [
+        2275,
+        3409,
+        2591,
+        3482
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 190,
+      "table": 1,
+      "bbox": [
+        2589,
+        3404,
+        2814,
+        3477
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          6,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 191,
+      "table": 1,
+      "bbox": [
+        297,
+        3516,
+        391,
+        3584
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 192,
+      "table": 1,
+      "bbox": [
+        388,
+        3510,
+        733,
+        3582
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 193,
+      "table": 1,
+      "bbox": [
+        730,
+        3506,
+        971,
+        3576
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 194,
+      "table": 1,
+      "bbox": [
+        968,
+        3495,
+        1526,
+        3572
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 195,
+      "table": 1,
+      "bbox": [
+        1524,
+        3491,
+        1767,
+        3561
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 196,
+      "table": 1,
+      "bbox": [
+        1765,
+        3488,
+        1894,
+        3557
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 197,
+      "table": 1,
+      "bbox": [
+        1892,
+        3484,
+        2135,
+        3554
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 198,
+      "table": 1,
+      "bbox": [
+        2133,
+        3481,
+        2278,
+        3550
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 199,
+      "table": 1,
+      "bbox": [
+        2276,
+        3476,
+        2592,
+        3547
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 200,
+      "table": 1,
+      "bbox": [
+        2590,
+        3471,
+        2815,
+        3542
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          7,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 201,
+      "table": 1,
+      "bbox": [
+        299,
+        3581,
+        392,
+        3650
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 202,
+      "table": 1,
+      "bbox": [
+        390,
+        3575,
+        734,
+        3648
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 203,
+      "table": 1,
+      "bbox": [
+        732,
+        3571,
+        972,
+        3642
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 204,
+      "table": 1,
+      "bbox": [
+        970,
+        3560,
+        1528,
+        3638
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 205,
+      "table": 1,
+      "bbox": [
+        1525,
+        3556,
+        1769,
+        3627
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 206,
+      "table": 1,
+      "bbox": [
+        1766,
+        3553,
+        1896,
+        3623
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 207,
+      "table": 1,
+      "bbox": [
+        1893,
+        3549,
+        2137,
+        3620
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 208,
+      "table": 1,
+      "bbox": [
+        2134,
+        3546,
+        2279,
+        3616
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 209,
+      "table": 1,
+      "bbox": [
+        2277,
+        3541,
+        2593,
+        3613
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 210,
+      "table": 1,
+      "bbox": [
+        2591,
+        3536,
+        2816,
+        3608
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          8,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 211,
+      "table": 1,
+      "bbox": [
+        300,
+        3647,
+        393,
+        3718
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 212,
+      "table": 1,
+      "bbox": [
+        391,
+        3641,
+        735,
+        3716
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 213,
+      "table": 1,
+      "bbox": [
+        733,
+        3637,
+        973,
+        3710
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 214,
+      "table": 1,
+      "bbox": [
+        971,
+        3626,
+        1529,
+        3706
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 215,
+      "table": 1,
+      "bbox": [
+        1527,
+        3622,
+        1770,
+        3695
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 216,
+      "table": 1,
+      "bbox": [
+        1768,
+        3619,
+        1897,
+        3691
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 217,
+      "table": 1,
+      "bbox": [
+        1895,
+        3615,
+        2138,
+        3688
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 218,
+      "table": 1,
+      "bbox": [
+        2136,
+        3612,
+        2281,
+        3684
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 219,
+      "table": 1,
+      "bbox": [
+        2278,
+        3607,
+        2595,
+        3681
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 220,
+      "table": 1,
+      "bbox": [
+        2592,
+        3602,
+        2818,
+        3676
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          9,
+          9
+        ]
+      ]
+    },
+    {
+      "id": 221,
+      "table": 1,
+      "bbox": [
+        301,
+        3715,
+        394,
+        3787
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 222,
+      "table": 1,
+      "bbox": [
+        392,
+        3709,
+        736,
+        3785
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 223,
+      "table": 1,
+      "bbox": [
+        734,
+        3705,
+        974,
+        3779
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 224,
+      "table": 1,
+      "bbox": [
+        972,
+        3694,
+        1530,
+        3775
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 225,
+      "table": 1,
+      "bbox": [
+        1528,
+        3690,
+        1771,
+        3764
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 226,
+      "table": 1,
+      "bbox": [
+        1769,
+        3687,
+        1898,
+        3760
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          5
+        ]
+      ]
+    },
+    {
+      "id": 227,
+      "table": 1,
+      "bbox": [
+        1896,
+        3683,
+        2139,
+        3757
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          6
+        ]
+      ]
+    },
+    {
+      "id": 228,
+      "table": 1,
+      "bbox": [
+        2137,
+        3680,
+        2282,
+        3753
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          7
+        ]
+      ]
+    },
+    {
+      "id": 229,
+      "table": 1,
+      "bbox": [
+        2280,
+        3675,
+        2596,
+        3750
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 230,
+      "table": 1,
+      "bbox": [
+        2594,
+        3670,
+        2819,
+        3745
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          10,
+          9
+        ]
+      ]
+    }
+  ],
+  "coordinate_system": "original_candidate",
+  "transform_note": "Inverse rotation; overlay validation pending"
+}

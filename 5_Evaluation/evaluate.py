@@ -73,10 +73,14 @@ def evaluate_model(model_name, gt_data, pred_boxes, iou_thresholds, eval_mode="P
         else:
             print("  - ⚠️ Partial GT 모드이므로 전체 FP 및 Precision은 산출하지 않습니다.")
 
+
         model_metrics[str(thresh)] = {
-            "general_recall": g_recall,
-            "merged_recall": m_recall,
-            "overall": overall_stats if eval_mode == "EXHAUSTIVE" else "N/A (Partial Mode)"
+            "precision": precision if eval_mode == "EXHAUSTIVE" else None,
+            "recall": recall if eval_mode == "EXHAUSTIVE" else None,
+            "f1": f1 if eval_mode == "EXHAUSTIVE" else None,
+            "general_gt_localization_recall": g_recall,
+            "merged_gt_localization_recall": m_recall,
+            "overall": overall_stats if eval_mode == "EXHAUSTIVE" else None
         }
     
     return model_metrics
@@ -85,34 +89,44 @@ if __name__ == "__main__":
     # --- 설정 영역 ---
     EVAL_MODE = "EXHAUSTIVE" 
     gt_path = 'sample.jpg_gt.json' 
-    metrics_output_path = 'metrics.json'
+    metrics_output_path = 'metrics_audit_draft.json'
     
     # 💡 [Priority 2] TATR Ablation 모델을 모두 평가 목록에 추가!
     models_to_evaluate = {
         "1. PP-Structure (Paddle 2.8.1)": "../1_PaddleOCR-PP-Structure/output/sample/res_0.txt",
         "2. TATR (Grid Only Ablation)": "../2_TATR/tatr_result_grid.json",
         "3. TATR (+ Spanning Recon)": "../2_TATR/tatr_result_spanning.json",
-        "4. OpenCV (Grid Only Ablation)": "cells_primitive.json",  # 기본 격자
-        "5. OpenCV (+ Spanning Recon)": "cells.json"               # 최종 완성본
+        "4. OpenCV (Grid Only Ablation)": "cells_primitive_original.json",
+        "5. OpenCV (+ Spanning Recon)": "cells_original.json"
     }
     # ----------------
 
-    if os.path.exists(gt_path):
-        with open(gt_path, 'r', encoding='utf-8') as f:
-            gt_data = json.load(f)
-    elif os.path.exists('gt_sample.json'):
-        with open('gt_sample.json', 'r', encoding='utf-8') as f:
-            gt_data = json.load(f)
-    else:
-        gt_data = []
-        print("❌ 정답지 파일이 없습니다. 라벨링을 먼저 진행하세요.")
-        exit()
+    if not os.path.exists(gt_path):
+        raise FileNotFoundError(
+            f"95개 Exhaustive GT 파일 없음: {gt_path}"
+        )
+
+    with open(gt_path, "r", encoding="utf-8") as f:
+        gt_data = json.load(f)
+
+    if len(gt_data) != 95:
+        raise ValueError(
+            f"GT 개수 불일치: {len(gt_data)}개 (기대: 95개)"
+        )
+
+    if any(cell.get("image_id") != "sample.jpg" for cell in gt_data):
+        raise ValueError("GT image_id 불일치")
+
+    print(f"공통 Exhaustive GT 확인: {len(gt_data)}개")
+
 
     all_results = {}
 
     for model_name, result_path in models_to_evaluate.items():
         pred_boxes = []
+        parse_status = "FILE_MISSING"
         if os.path.exists(result_path):
+            parse_status = "PARSE_FAILED"
             with open(result_path, 'r', encoding='utf-8') as f:
                 content = f.read()
                 try:
@@ -133,17 +147,80 @@ if __name__ == "__main__":
                     # 구버전 호환용 (단순 좌표 리스트)
                     elif isinstance(data, list):
                         pred_boxes = data
+                    else:
+                        raise ValueError("지원하지 않는 JSON 구조")
+
+                    parse_status = "OK"
+
                 except Exception as e:
                     print(f"❌ {model_name} 파싱 에러: {e}")
-                    
-        if pred_boxes:
+
+        # TATR: EXIF 적용 전 좌표 -> 공통 GT 좌표
+        if pred_boxes and model_name.startswith(
+            ("2. TATR", "3. TATR")
+        ):
+            raw_h = 3000  # 확인된 원본 파일의 EXIF 적용 전 높이
+            pred_boxes = [
+                [raw_h - y2, x1, raw_h - y1, x2]
+                for x1, y1, x2, y2 in pred_boxes
+            ]
+
+            if any(
+                not (0 <= b[0] < b[2] <= 3000 and
+                     0 <= b[1] < b[3] <= 4000)
+                for b in pred_boxes
+            ):
+                raise ValueError(
+                    f"{model_name}: 좌표 변환 후 범위 오류"
+                )
+
+            print(
+                f"✅ {model_name}: "
+                f"원본 GT 좌표계로 변환 ({len(pred_boxes)}개)"
+            )
+        # 공통 평가 영역: 95개 GT가 라벨링된 두 표
+        eval_regions = [
+            [261, 576, 2692, 1427],
+            [256, 2980, 2789, 3776]
+        ]
+
+        def in_eval_region(box):
+            cx = (box[0] + box[2]) / 2
+            cy = (box[1] + box[3]) / 2
+
+            return any(
+                x1 <= cx <= x2 and y1 <= cy <= y2
+                for x1, y1, x2, y2 in eval_regions
+            )
+
+        original_count = len(pred_boxes)
+        pred_boxes = [
+            box for box in pred_boxes
+            if in_eval_region(box)
+        ]
+
+        print(
+            f"{model_name}: 전체 {original_count}개, "
+            f"평가 영역 {len(pred_boxes)}개, "
+            f"영역 외부 {original_count - len(pred_boxes)}개"
+        )         
+
+
+        if parse_status == "OK":
             all_results[model_name] = evaluate_model(
-                model_name, gt_data, pred_boxes, 
-                iou_thresholds=[0.3, 0.5, 0.7], 
+                model_name, gt_data, pred_boxes,
+                iou_thresholds=[0.3, 0.5, 0.7],
                 eval_mode=EVAL_MODE
             )
+            all_results[model_name]["status"] = "OK"
+            all_results[model_name]["prediction_path"] = result_path
         else:
-            print(f"❌ {model_name} 예측 결과를 찾을 수 없습니다.")
+            print(f"평가 불가: {model_name} ({parse_status})")
+            all_results[model_name] = {
+                "status": parse_status,
+                "prediction_path": result_path
+            }
+
 
     with open(metrics_output_path, 'w', encoding='utf-8') as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
