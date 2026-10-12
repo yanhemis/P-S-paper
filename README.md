@@ -173,3 +173,5 @@ Morphology 방식은 표의 수평·수직 구조선을 직접 추출할 수 있
 평가된 조건 내에서는 Contour 70/30 설정이 가장 높은 검출 성능을 기록하였으며, 이를 구조 복원 단계의 입력 검출 후보로 선정하였다.
 
 본 결과는 최종 Field Accuracy를 직접 설명하는 지표가 아니라, 구조 입력 방식의 선정 근거 및 오류 분석을 제공하는 보조 실험 결과로 활용된다.
+
+<img width="1032" height="2464" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/9609d1f4-1db7-4aa7-9721-126eef68a4e7" />
