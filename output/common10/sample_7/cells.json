@@ -1,0 +1,14 @@
+{
+  "image": "sample_7_aligned.png",
+  "source_image": "sample_7.JPG",
+  "method": "opencv_grid_merge",
+  "rotation_deg": -1.381,
+  "cells": [
+    {"id": 0, "table": 0, "bbox": [500, 443, 2715, 551], "type": "merged", "primitive_cells": [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [0, 8], [0, 9], [0, 10]]},
+    {"id": 1, "table": 0, "bbox": [500, 551, 715, 794], "type": "general", "primitive_cells": [[1, 0]]},
+    {"id": 2, "table": 0, "bbox": [715, 551, 890, 794], "type": "general", "primitive_cells": [[1, 1]]},
+    {"id": 3, "table": 0, "bbox": [890, 551, 2715, 794], "type": "merged", "primitive_cells": [[1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8], [1, 9], [1, 10]]},
+    {"id": 4, "table": 0, "bbox": [500, 794, 2715, 892], "type": "merged", "primitive_cells": [[2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6], [2, 7], [2, 8], [2, 9], [2, 10]]},
+    {"id": 5, "table": 0, "bbox": [500, 892, 2715, 1178], "type": "merged", "primitive_cells": [[3, 0], [3, 1], [3, 2], [3, 3], [3, 4], [3, 5], [3, 6], [3, 7], [3, 8], [3, 9], [3, 10]]}
+  ]
+}

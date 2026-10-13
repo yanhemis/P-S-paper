@@ -1,0 +1,432 @@
+{
+  "source_image": "sample_5.JPG",
+  "image": "sample_5_aligned.png",
+  "method": "opencv_grid_merge",
+  "status": "check",
+  "source_size": [
+    3024,
+    4032
+  ],
+  "image_size": [
+    3068,
+    4065
+  ],
+  "scale": 2.546,
+  "exif_transposed": true,
+  "rotation_deg": 0.623,
+  "deskew": {
+    "estimated_deg": 0.6227556872063218,
+    "residual_deg": 0.0,
+    "affine": [
+      [
+        0.999941,
+        0.010869,
+        0.177562
+      ],
+      [
+        -0.010869,
+        0.999941,
+        33.052894
+      ]
+    ]
+  },
+  "counts": {
+    "tables": 1,
+    "primitive_cells": 10,
+    "cells": 1,
+    "general": 0,
+    "merged": 1,
+    "merge_h": 1,
+    "merge_v": 0,
+    "merge_block": 0,
+    "border_damage": 0,
+    "line_detection_failure": 0,
+    "missing_boundary_misjudge": 0,
+    "over_merge": 1,
+    "under_merge": 0,
+    "irregular_component": 0,
+    "deskew_failure": 0,
+    "validation_error": 0
+  },
+  "tables": [
+    {
+      "table": 0,
+      "bbox": [
+        558,
+        893,
+        2662,
+        1284
+      ],
+      "grid": [
+        1,
+        10
+      ],
+      "rows": [
+        893,
+        1284
+      ],
+      "cols": [
+        558,
+        940,
+        1163,
+        1456,
+        1618,
+        1732,
+        1784,
+        1896,
+        2110,
+        2253,
+        2662
+      ],
+      "merge_types": {
+        "h": 1,
+        "v": 0,
+        "block": 0
+      },
+      "border_damage": [],
+      "restored_boundaries": []
+    }
+  ],
+  "failures": [
+    {
+      "type": "over_merge",
+      "table": 0,
+      "cell_ids": [
+        0
+      ],
+      "detail": "표 전체가 셀 1개로 합쳐짐"
+    }
+  ],
+  "cells_detail": [
+    {
+      "id": 0,
+      "table": 0,
+      "bbox": [
+        558,
+        893,
+        2662,
+        1284
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ]
+      ],
+      "irregular": false
+    }
+  ],
+  "boundaries": [
+    {
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "side": "left",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 1,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 1,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 1,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 2,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 2,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 2,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 3,
+      "side": "right",
+      "ok": false,
+      "score": 0.076
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 3,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 3,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 4,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 4,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 4,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 5,
+      "side": "right",
+      "ok": false,
+      "score": 0.063
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 5,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 5,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 6,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 6,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 6,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 7,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 7,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 7,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 8,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 8,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 8,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 9,
+      "side": "right",
+      "ok": true,
+      "score": 0.932
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 9,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 9,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    }
+  ],
+  "params": {
+    "ref_diag": 2000,
+    "deskew_angle_limit": 10.0,
+    "deskew_min_angle": 0.3,
+    "deskew_residual_max": 0.3,
+    "block_size_base": 15,
+    "binarize_C": 10,
+    "line_open_base": 30,
+    "line_open_ratio": null,
+    "close_ratio": 0.01,
+    "anchor_h_ratio": 0.15,
+    "anchor_v_ratio": 0.03,
+    "table_min_w_ratio": 0.1,
+    "table_min_h_ratio": 0.02,
+    "table_join_base": 3,
+    "gap_thresh_base": 10,
+    "strip_half_width_base": 2,
+    "corner_margin_base": 2,
+    "presence_ratio": 0.5,
+    "suspicious_score_min": 0.15,
+    "weak_score_max": 0.8,
+    "max_merged_area_ratio": 0.3,
+    "hidden_line_ratio": 0.8
+  },
+  "process_sec": 2.528,
+  "total_sec": 6.079
+}

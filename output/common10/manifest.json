@@ -1,0 +1,540 @@
+{
+  "method": "opencv_grid_merge",
+  "input": "tail 브랜치 sample_data_jpg/sample_1~10.JPG",
+  "params": {
+    "ref_diag": 2000,
+    "deskew_angle_limit": 10.0,
+    "deskew_min_angle": 0.3,
+    "deskew_residual_max": 0.3,
+    "block_size_base": 15,
+    "binarize_C": 10,
+    "line_open_base": 30,
+    "line_open_ratio": null,
+    "close_ratio": 0.01,
+    "anchor_h_ratio": 0.15,
+    "anchor_v_ratio": 0.03,
+    "table_min_w_ratio": 0.1,
+    "table_min_h_ratio": 0.02,
+    "table_join_base": 3,
+    "gap_thresh_base": 10,
+    "strip_half_width_base": 2,
+    "corner_margin_base": 2,
+    "presence_ratio": 0.5,
+    "suspicious_score_min": 0.15,
+    "weak_score_max": 0.8,
+    "max_merged_area_ratio": 0.3,
+    "hidden_line_ratio": 0.8
+  },
+  "status_count": {
+    "ok": 1,
+    "check": 9,
+    "grid_fail": 0,
+    "error": 0
+  },
+  "images": [
+    {
+      "source_image": "sample_1.JPG",
+      "folder": "sample_1",
+      "status": "ok",
+      "tables": 2,
+      "grid": [
+        [
+          11,
+          11
+        ],
+        [
+          11,
+          13
+        ]
+      ],
+      "cells": 92,
+      "merged": 48,
+      "failure_counts": {},
+      "original": {
+        "cells": "sample_1/cells_original.json",
+        "image": "sample_1.JPG",
+        "size": [
+          3024,
+          4032
+        ],
+        "note": "EXIF 회전 적용 후 원본 이미지 좌표"
+      },
+      "aligned": {
+        "cells": "sample_1/cells.json",
+        "image": "sample_1/sample_1_aligned.png",
+        "size": [
+          3024,
+          4032
+        ],
+        "rotation_deg": 0.0,
+        "affine_original_to_aligned": null,
+        "note": "기울기 보정본 좌표 (aligned 이미지에서 img[y1:y2, x1:x2] 로 자름)"
+      },
+      "report": "sample_1/report.json",
+      "preview": "_preview/sample_1_final.jpg"
+    },
+    {
+      "source_image": "sample_2.JPG",
+      "folder": "sample_2",
+      "status": "check",
+      "tables": 2,
+      "grid": [
+        [
+          11,
+          11
+        ],
+        [
+          11,
+          15
+        ]
+      ],
+      "cells": 95,
+      "merged": 53,
+      "failure_counts": {
+        "missing_boundary_misjudge": 1
+      },
+      "original": {
+        "cells": "sample_2/cells_original.json",
+        "image": "sample_2.JPG",
+        "size": [
+          3024,
+          4032
+        ],
+        "note": "EXIF 회전 적용 후 원본 이미지 좌표"
+      },
+      "aligned": {
+        "cells": "sample_2/cells.json",
+        "image": "sample_2/sample_2_aligned.png",
+        "size": [
+          3024,
+          4032
+        ],
+        "rotation_deg": 0.0,
+        "affine_original_to_aligned": null,
+        "note": "기울기 보정본 좌표 (aligned 이미지에서 img[y1:y2, x1:x2] 로 자름)"
+      },
+      "report": "sample_2/report.json",
+      "preview": "_preview/sample_2_final.jpg"
+    },
+    {
+      "source_image": "sample_3.JPG",
+      "folder": "sample_3",
+      "status": "check",
+      "tables": 2,
+      "grid": [
+        [
+          4,
+          10
+        ],
+        [
+          3,
+          11
+        ]
+      ],
+      "cells": 18,
+      "merged": 10,
+      "failure_counts": {
+        "line_detection_failure": 2,
+        "missing_boundary_misjudge": 10,
+        "over_merge": 4,
+        "under_merge": 4,
+        "irregular_component": 1,
+        "deskew_failure": 1
+      },
+      "original": {
+        "cells": "sample_3/cells_original.json",
+        "image": "sample_3.JPG",
+        "size": [
+          3024,
+          4032
+        ],
+        "note": "EXIF 회전 적용 후 원본 이미지 좌표"
+      },
+      "aligned": {
+        "cells": "sample_3/cells.json",
+        "image": "sample_3/sample_3_aligned.png",
+        "size": [
+          3203,
+          4165
+        ],
+        "rotation_deg": 2.585,
+        "affine_original_to_aligned": [
+          [
+            0.998982,
+            0.045105,
+            0.108031
+          ],
+          [
+            -0.045105,
+            0.998982,
+            136.749821
+          ]
+        ],
+        "note": "기울기 보정본 좌표 (aligned 이미지에서 img[y1:y2, x1:x2] 로 자름)"
+      },
+      "report": "sample_3/report.json",
+      "preview": "_preview/sample_3_final.jpg"
+    },
+    {
+      "source_image": "sample_4.JPG",
+      "folder": "sample_4",
+      "status": "check",
+      "tables": 2,
+      "grid": [
+        [
+          11,
+          11
+        ],
+        [
+          8,
+          9
+        ]
+      ],
+      "cells": 73,
+      "merged": 31,
+      "failure_counts": {
+        "missing_boundary_misjudge": 7,
+        "under_merge": 4
+      },
+      "original": {
+        "cells": "sample_4/cells_original.json",
+        "image": "sample_4.JPG",
+        "size": [
+          3024,
+          4032
+        ],
+        "note": "EXIF 회전 적용 후 원본 이미지 좌표"
+      },
+      "aligned": {
+        "cells": "sample_4/cells.json",
+        "image": "sample_4/sample_4_aligned.png",
+        "size": [
+          3024,
+          4032
+        ],
+        "rotation_deg": 0.0,
+        "affine_original_to_aligned": null,
+        "note": "기울기 보정본 좌표 (aligned 이미지에서 img[y1:y2, x1:x2] 로 자름)"
+      },
+      "report": "sample_4/report.json",
+      "preview": "_preview/sample_4_final.jpg"
+    },
+    {
+      "source_image": "sample_5.JPG",
+      "folder": "sample_5",
+      "status": "check",
+      "tables": 1,
+      "grid": [
+        [
+          1,
+          10
+        ]
+      ],
+      "cells": 1,
+      "merged": 1,
+      "failure_counts": {
+        "over_merge": 1
+      },
+      "original": {
+        "cells": "sample_5/cells_original.json",
+        "image": "sample_5.JPG",
+        "size": [
+          3024,
+          4032
+        ],
+        "note": "EXIF 회전 적용 후 원본 이미지 좌표"
+      },
+      "aligned": {
+        "cells": "sample_5/cells.json",
+        "image": "sample_5/sample_5_aligned.png",
+        "size": [
+          3068,
+          4065
+        ],
+        "rotation_deg": 0.623,
+        "affine_original_to_aligned": [
+          [
+            0.999941,
+            0.010869,
+            0.177562
+          ],
+          [
+            -0.010869,
+            0.999941,
+            33.052894
+          ]
+        ],
+        "note": "기울기 보정본 좌표 (aligned 이미지에서 img[y1:y2, x1:x2] 로 자름)"
+      },
+      "report": "sample_5/report.json",
+      "preview": "_preview/sample_5_final.jpg"
+    },
+    {
+      "source_image": "sample_6.JPG",
+      "folder": "sample_6",
+      "status": "check",
+      "tables": 2,
+      "grid": [
+        [
+          3,
+          11
+        ],
+        [
+          10,
+          14
+        ]
+      ],
+      "cells": 64,
+      "merged": 35,
+      "failure_counts": {
+        "line_detection_failure": 1,
+        "missing_boundary_misjudge": 14,
+        "over_merge": 2,
+        "under_merge": 7,
+        "deskew_failure": 1
+      },
+      "original": {
+        "cells": "sample_6/cells_original.json",
+        "image": "sample_6.JPG",
+        "size": [
+          3024,
+          4032
+        ],
+        "note": "EXIF 회전 적용 후 원본 이미지 좌표"
+      },
+      "aligned": {
+        "cells": "sample_6/cells.json",
+        "image": "sample_6/sample_6_aligned.png",
+        "size": [
+          3052,
+          4053
+        ],
+        "rotation_deg": 0.398,
+        "affine_original_to_aligned": [
+          [
+            0.999976,
+            0.006944,
+            0.036795
+          ],
+          [
+            -0.006944,
+            0.999976,
+            21.048356
+          ]
+        ],
+        "note": "기울기 보정본 좌표 (aligned 이미지에서 img[y1:y2, x1:x2] 로 자름)"
+      },
+      "report": "sample_6/report.json",
+      "preview": "_preview/sample_6_final.jpg"
+    },
+    {
+      "source_image": "sample_7.JPG",
+      "folder": "sample_7",
+      "status": "check",
+      "tables": 1,
+      "grid": [
+        [
+          4,
+          11
+        ]
+      ],
+      "cells": 6,
+      "merged": 4,
+      "failure_counts": {
+        "line_detection_failure": 1,
+        "missing_boundary_misjudge": 9,
+        "over_merge": 1,
+        "under_merge": 1,
+        "deskew_failure": 1
+      },
+      "original": {
+        "cells": "sample_7/cells_original.json",
+        "image": "sample_7.JPG",
+        "size": [
+          3024,
+          4032
+        ],
+        "note": "EXIF 회전 적용 후 원본 이미지 좌표"
+      },
+      "aligned": {
+        "cells": "sample_7/cells.json",
+        "image": "sample_7/sample_7_aligned.png",
+        "size": [
+          3121,
+          4104
+        ],
+        "rotation_deg": -1.381,
+        "affine_original_to_aligned": [
+          [
+            0.99971,
+            -0.024093,
+            97.510155
+          ],
+          [
+            0.024093,
+            0.99971,
+            0.156752
+          ]
+        ],
+        "note": "기울기 보정본 좌표 (aligned 이미지에서 img[y1:y2, x1:x2] 로 자름)"
+      },
+      "report": "sample_7/report.json",
+      "preview": "_preview/sample_7_final.jpg"
+    },
+    {
+      "source_image": "sample_8.JPG",
+      "folder": "sample_8",
+      "status": "check",
+      "tables": 2,
+      "grid": [
+        [
+          1,
+          11
+        ],
+        [
+          11,
+          14
+        ]
+      ],
+      "cells": 65,
+      "merged": 37,
+      "failure_counts": {
+        "missing_boundary_misjudge": 11,
+        "over_merge": 1,
+        "under_merge": 2,
+        "deskew_failure": 1
+      },
+      "original": {
+        "cells": "sample_8/cells_original.json",
+        "image": "sample_8.JPG",
+        "size": [
+          3024,
+          4032
+        ],
+        "note": "EXIF 회전 적용 후 원본 이미지 좌표"
+      },
+      "aligned": {
+        "cells": "sample_8/cells.json",
+        "image": "sample_8/sample_8_aligned.png",
+        "size": [
+          3099,
+          4088
+        ],
+        "rotation_deg": 1.067,
+        "affine_original_to_aligned": [
+          [
+            0.999826,
+            0.01863,
+            0.203724
+          ],
+          [
+            -0.01863,
+            0.999826,
+            56.518919
+          ]
+        ],
+        "note": "기울기 보정본 좌표 (aligned 이미지에서 img[y1:y2, x1:x2] 로 자름)"
+      },
+      "report": "sample_8/report.json",
+      "preview": "_preview/sample_8_final.jpg"
+    },
+    {
+      "source_image": "sample_9.JPG",
+      "folder": "sample_9",
+      "status": "check",
+      "tables": 2,
+      "grid": [
+        [
+          2,
+          11
+        ],
+        [
+          3,
+          15
+        ]
+      ],
+      "cells": 19,
+      "merged": 11,
+      "failure_counts": {
+        "line_detection_failure": 3,
+        "missing_boundary_misjudge": 12,
+        "over_merge": 2,
+        "under_merge": 6
+      },
+      "original": {
+        "cells": "sample_9/cells_original.json",
+        "image": "sample_9.JPG",
+        "size": [
+          3024,
+          4032
+        ],
+        "note": "EXIF 회전 적용 후 원본 이미지 좌표"
+      },
+      "aligned": {
+        "cells": "sample_9/cells.json",
+        "image": "sample_9/sample_9_aligned.png",
+        "size": [
+          3024,
+          4032
+        ],
+        "rotation_deg": 0.0,
+        "affine_original_to_aligned": null,
+        "note": "기울기 보정본 좌표 (aligned 이미지에서 img[y1:y2, x1:x2] 로 자름)"
+      },
+      "report": "sample_9/report.json",
+      "preview": "_preview/sample_9_final.jpg"
+    },
+    {
+      "source_image": "sample_10.JPG",
+      "folder": "sample_10",
+      "status": "check",
+      "tables": 1,
+      "grid": [
+        [
+          2,
+          5
+        ]
+      ],
+      "cells": 3,
+      "merged": 2,
+      "failure_counts": {
+        "missing_boundary_misjudge": 3,
+        "over_merge": 1,
+        "under_merge": 1
+      },
+      "original": {
+        "cells": "sample_10/cells_original.json",
+        "image": "sample_10.JPG",
+        "size": [
+          3024,
+          4032
+        ],
+        "note": "EXIF 회전 적용 후 원본 이미지 좌표"
+      },
+      "aligned": {
+        "cells": "sample_10/cells.json",
+        "image": "sample_10/sample_10_aligned.png",
+        "size": [
+          3185,
+          4151
+        ],
+        "rotation_deg": 2.318,
+        "affine_original_to_aligned": [
+          [
+            0.999182,
+            0.040438,
+            0.212977
+          ],
+          [
+            -0.040438,
+            0.999182,
+            122.291861
+          ]
+        ],
+        "note": "기울기 보정본 좌표 (aligned 이미지에서 img[y1:y2, x1:x2] 로 자름)"
+      },
+      "report": "sample_10/report.json",
+      "preview": "_preview/sample_10_final.jpg"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+__pycache__/
+
+# 공통 10장 결과 중 큰 이미지 (run_common10.py 를 다시 실행하면 같은 파일이 생성됨)
+output/common10/*/vis/
+output/common10/*/*_aligned.png
+output/common10/*/roi/

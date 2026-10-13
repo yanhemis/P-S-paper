@@ -5,6 +5,7 @@
 결과는 다른 담당자(평가, OCR, 통합)가 그대로 읽을 수 있는 `cells.json`으로 저장합니다.
 
 - 메인 코드: `Task_0930.py`
+- 공통 10장 일괄 실행: `Task_10_Renewal.py` (결과 정리: `docs/07_common10_results.md`)
 - 이전 버전: `TestResult.py` (보관용, 아래 "이전 버전" 참고)
 
 ## 처리 흐름
@@ -19,8 +20,12 @@
 P-S-paper/
 ├─ Task_0930.py          메인 코드
 ├─ TestResult.py         이전 버전 (보관용)
+├─ Task_10_Renewal.py    공통 10장 일괄 실행 (run_batch 호출 + manifest 정리)
+├─ tail_roi.py           공통 10장 셀 → tail 실험 C 입력 변환
 ├─ Test_image_file/      입력 이미지 (sample.jpg)
+├─ data/common10/        공통 10장 (tail sample_data_jpg/sample_1~10.JPG) + tail GT ROI 사본
 ├─ output/<이미지명>/    실행 결과
+├─ output/common10/      공통 10장 결과
 └─ docs/                 성공·실패 사례 문서
 ```
 
@@ -38,6 +43,8 @@ python -m pip install opencv-python numpy pillow matplotlib
 |---|---|
 | 한 장 처리 (`Test_image_file/sample.jpg`, 그림 표시) | `python Task_0930.py` |
 | 폴더 전체 일괄 처리 → `output/summary.csv`, `output/failure_cases.csv` | `python -c "import Task_0930 as t; t.run_batch()"` |
+| 공통 10장 일괄 처리 + tail 전달 파일 + 담당 조건별 최종 결과 출력 (한 번에) | `python Task_10_Renewal.py` |
+| (따로 실행할 때만) tail 실험 C 입력만 다시 생성 | `python tail_roi.py` |
 | 셀 크롭 이미지까지 저장 (`output/<이미지명>/roi/`) | `python -c "import Task_0930 as t; t.run_pipeline(show=False, save_roi=True)"` |
 | 선 추출 커널 비교 (이전 코드 0.4 vs 현재) | `python -c "import Task_0930 as t; t.compare_line_settings()"` |
 | 파라미터를 바꿔서 실행 (예: line_open_base 24) | `python -c "import Task_0930 as t; t.run_pipeline(show=False, params={'line_open_base': 24})"` |
@@ -96,6 +103,16 @@ python -m pip install opencv-python numpy pillow matplotlib
 
 - 평가: 공통 evaluator `evaluate.py` + `sample.jpg_gt.json` (GT 95셀)
 - 사례 정리: `docs/02_success_cases.md`, `docs/03_failure_cases.md`
+
+## 공통 10장 결과 (tail sample_1~10, 파라미터 변경 없음)
+| 구분 | 이미지 |
+|---|---|
+| 성공 (상·하단 표 모두 복원) | sample_1, sample_2 |
+| 부분 (표 하나만 정상) | sample_4, sample_6, sample_8 |
+| 실패 (과다 병합 / 표 누락) | sample_3, sample_5, sample_7, sample_9, sample_10 |
+- 자동 status: ok 1 / check 9 / grid_fail 0 / error 0 (표가 하나라도 남으면 check — `tables` 도 같이 확인)
+- 주요 실패 원인: 촬영 원근·종이 휨으로 가로선 투영이 겹쳐 여러 행이 하나로 합쳐짐
+- 상세: `docs/07_common10_results.md` / tail 전달: `docs/08_handoff_tail_common10.md` / B 전달: `docs/06_handoff_B_io_spec.md` 10절
 
 ## 알려진 한계
 - 한 행 높이보다 짧은 세로 경계는 선 추출에서 지워져 라벨·값 칸이 합쳐질 수 있음 (`line_open_base` 조정 검토 중)

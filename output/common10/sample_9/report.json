@@ -1,0 +1,2201 @@
+{
+  "source_image": "sample_9.JPG",
+  "image": "sample_9_aligned.png",
+  "method": "opencv_grid_merge",
+  "status": "check",
+  "source_size": [
+    3024,
+    4032
+  ],
+  "image_size": [
+    3024,
+    4032
+  ],
+  "scale": 2.52,
+  "exif_transposed": true,
+  "rotation_deg": 0.0,
+  "deskew": {
+    "estimated_deg": -0.27286497151354894,
+    "residual_deg": null,
+    "affine": null
+  },
+  "counts": {
+    "tables": 2,
+    "primitive_cells": 67,
+    "cells": 19,
+    "general": 8,
+    "merged": 11,
+    "merge_h": 9,
+    "merge_v": 2,
+    "merge_block": 0,
+    "border_damage": 0,
+    "line_detection_failure": 3,
+    "missing_boundary_misjudge": 12,
+    "over_merge": 2,
+    "under_merge": 6,
+    "irregular_component": 0,
+    "deskew_failure": 0,
+    "validation_error": 0
+  },
+  "tables": [
+    {
+      "table": 0,
+      "bbox": [
+        440,
+        462,
+        2659,
+        1237
+      ],
+      "grid": [
+        2,
+        11
+      ],
+      "rows": [
+        462,
+        814,
+        1237
+      ],
+      "cols": [
+        440,
+        641,
+        841,
+        1076,
+        1388,
+        1562,
+        1681,
+        1738,
+        1855,
+        2082,
+        2231,
+        2659
+      ],
+      "merge_types": {
+        "h": 2,
+        "v": 0,
+        "block": 0
+      },
+      "border_damage": [],
+      "restored_boundaries": []
+    },
+    {
+      "table": 1,
+      "bbox": [
+        293,
+        2761,
+        2789,
+        3514
+      ],
+      "grid": [
+        3,
+        15
+      ],
+      "rows": [
+        2761,
+        2821,
+        2890,
+        3514
+      ],
+      "cols": [
+        293,
+        385,
+        708,
+        838,
+        923,
+        1094,
+        1220,
+        1474,
+        1715,
+        1843,
+        2084,
+        2227,
+        2385,
+        2512,
+        2550,
+        2789
+      ],
+      "merge_types": {
+        "h": 7,
+        "v": 2,
+        "block": 0
+      },
+      "border_damage": [],
+      "restored_boundaries": []
+    }
+  ],
+  "failures": [
+    {
+      "type": "under_merge",
+      "table": 0,
+      "cell_ids": [
+        0,
+        1
+      ],
+      "detail": "primitive (0,0) right 선 커버리지 0.60 인 약한 경계로 분리됨"
+    },
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 0,
+      "cell_ids": [
+        1
+      ],
+      "detail": "primitive (0,1) right 선 커버리지 0.46 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 0,
+      "cell_ids": [
+        1
+      ],
+      "detail": "primitive (0,2) right 선 커버리지 0.29 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 0,
+      "cell_ids": [
+        1
+      ],
+      "detail": "primitive (0,3) right 선 커버리지 0.30 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 0,
+      "cell_ids": [
+        1
+      ],
+      "detail": "primitive (0,4) right 선 커버리지 0.26 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 0,
+      "cell_ids": [
+        1
+      ],
+      "detail": "primitive (0,5) right 선 커버리지 0.30 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 0,
+      "cell_ids": [
+        1
+      ],
+      "detail": "primitive (0,6) right 선 커버리지 0.27 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 0,
+      "cell_ids": [
+        1
+      ],
+      "detail": "primitive (0,7) right 선 커버리지 0.30 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 0,
+      "cell_ids": [
+        1
+      ],
+      "detail": "primitive (0,8) right 선 커버리지 0.30 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 0,
+      "cell_ids": [
+        1
+      ],
+      "detail": "primitive (0,9) right 선 커버리지 0.30 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "under_merge",
+      "table": 0,
+      "cell_ids": [
+        2,
+        3
+      ],
+      "detail": "primitive (1,0) right 선 커버리지 0.78 인 약한 경계로 분리됨"
+    },
+    {
+      "type": "over_merge",
+      "table": 0,
+      "cell_ids": [
+        1
+      ],
+      "detail": "병합 셀이 표 면적의 41%"
+    },
+    {
+      "type": "over_merge",
+      "table": 0,
+      "cell_ids": [
+        3
+      ],
+      "detail": "병합 셀이 표 면적의 50%"
+    },
+    {
+      "type": "under_merge",
+      "table": 1,
+      "cell_ids": [
+        12,
+        13
+      ],
+      "detail": "primitive (1,10) right 선 커버리지 0.76 인 약한 경계로 분리됨"
+    },
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 1,
+      "cell_ids": [
+        15
+      ],
+      "detail": "primitive (2,3) right 선 커버리지 0.24 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 1,
+      "cell_ids": [
+        16
+      ],
+      "detail": "primitive (2,7) right 선 커버리지 0.37 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "under_merge",
+      "table": 1,
+      "cell_ids": [
+        16,
+        17
+      ],
+      "detail": "primitive (2,8) right 선 커버리지 0.54 인 약한 경계로 분리됨"
+    },
+    {
+      "type": "under_merge",
+      "table": 1,
+      "cell_ids": [
+        17,
+        18
+      ],
+      "detail": "primitive (2,9) right 선 커버리지 0.61 인 약한 경계로 분리됨"
+    },
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 1,
+      "cell_ids": [
+        18
+      ],
+      "detail": "primitive (2,10) right 선 커버리지 0.39 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "under_merge",
+      "table": 1,
+      "cell_ids": [
+        7,
+        18
+      ],
+      "detail": "primitive (2,13) right 선 커버리지 0.50 인 약한 경계로 분리됨"
+    },
+    {
+      "type": "line_detection_failure",
+      "table": 1,
+      "cell_ids": [
+        15
+      ],
+      "detail": "셀 안에 세로선(셀 높이의 100%)이 있는데 grid 에서 빠짐"
+    },
+    {
+      "type": "line_detection_failure",
+      "table": 1,
+      "cell_ids": [
+        16
+      ],
+      "detail": "셀 안에 세로선(셀 높이의 100%)이 있는데 grid 에서 빠짐"
+    },
+    {
+      "type": "line_detection_failure",
+      "table": 1,
+      "cell_ids": [
+        18
+      ],
+      "detail": "셀 안에 세로선(셀 높이의 100%)이 있는데 grid 에서 빠짐"
+    }
+  ],
+  "cells_detail": [
+    {
+      "id": 0,
+      "table": 0,
+      "bbox": [
+        440,
+        462,
+        641,
+        814
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          0
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 1,
+      "table": 0,
+      "bbox": [
+        641,
+        462,
+        2659,
+        814
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 2,
+      "table": 0,
+      "bbox": [
+        440,
+        814,
+        641,
+        1237
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          0
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 3,
+      "table": 0,
+      "bbox": [
+        641,
+        814,
+        2659,
+        1237
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          10
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 4,
+      "table": 1,
+      "bbox": [
+        293,
+        2761,
+        385,
+        3514
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 5,
+      "table": 1,
+      "bbox": [
+        385,
+        2761,
+        708,
+        2821
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          1
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 6,
+      "table": 1,
+      "bbox": [
+        708,
+        2761,
+        2550,
+        2821
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          10
+        ],
+        [
+          0,
+          11
+        ],
+        [
+          0,
+          12
+        ],
+        [
+          0,
+          13
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 7,
+      "table": 1,
+      "bbox": [
+        2550,
+        2761,
+        2789,
+        3514
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          0,
+          14
+        ],
+        [
+          1,
+          14
+        ],
+        [
+          2,
+          14
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 8,
+      "table": 1,
+      "bbox": [
+        385,
+        2821,
+        708,
+        2890
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          1
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 9,
+      "table": 1,
+      "bbox": [
+        708,
+        2821,
+        1474,
+        2890
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 10,
+      "table": 1,
+      "bbox": [
+        1474,
+        2821,
+        1715,
+        2890
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          7
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 11,
+      "table": 1,
+      "bbox": [
+        1715,
+        2821,
+        2084,
+        2890
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 12,
+      "table": 1,
+      "bbox": [
+        2084,
+        2821,
+        2227,
+        2890
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          10
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 13,
+      "table": 1,
+      "bbox": [
+        2227,
+        2821,
+        2550,
+        2890
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          1,
+          11
+        ],
+        [
+          1,
+          12
+        ],
+        [
+          1,
+          13
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 14,
+      "table": 1,
+      "bbox": [
+        385,
+        2890,
+        708,
+        3514
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          1
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 15,
+      "table": 1,
+      "bbox": [
+        708,
+        2890,
+        1474,
+        3514
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 16,
+      "table": 1,
+      "bbox": [
+        1474,
+        2890,
+        1843,
+        3514
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 17,
+      "table": 1,
+      "bbox": [
+        1843,
+        2890,
+        2084,
+        3514
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          2,
+          9
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 18,
+      "table": 1,
+      "bbox": [
+        2084,
+        2890,
+        2550,
+        3514
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          2,
+          10
+        ],
+        [
+          2,
+          11
+        ],
+        [
+          2,
+          12
+        ],
+        [
+          2,
+          13
+        ]
+      ],
+      "irregular": false
+    }
+  ],
+  "boundaries": [
+    {
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "side": "right",
+      "ok": true,
+      "score": 0.596
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "side": "left",
+      "ok": true,
+      "score": 0.904
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "side": "top",
+      "ok": true,
+      "score": 0.916
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 1,
+      "side": "right",
+      "ok": false,
+      "score": 0.456
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 1,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 1,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 2,
+      "side": "right",
+      "ok": false,
+      "score": 0.292
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 2,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 2,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 3,
+      "side": "right",
+      "ok": false,
+      "score": 0.295
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 3,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 3,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 4,
+      "side": "right",
+      "ok": false,
+      "score": 0.263
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 4,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 4,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 5,
+      "side": "right",
+      "ok": false,
+      "score": 0.295
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 5,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 5,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 6,
+      "side": "right",
+      "ok": false,
+      "score": 0.275
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 6,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 6,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 7,
+      "side": "right",
+      "ok": false,
+      "score": 0.298
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 7,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 7,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 8,
+      "side": "right",
+      "ok": false,
+      "score": 0.298
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 8,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 8,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 9,
+      "side": "right",
+      "ok": false,
+      "score": 0.301
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 9,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 9,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 10,
+      "side": "right",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 10,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 10,
+      "side": "top",
+      "ok": true,
+      "score": 0.976
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 0,
+      "side": "right",
+      "ok": true,
+      "score": 0.782
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 0,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 0,
+      "side": "left",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 1,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 1,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 2,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 2,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 3,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 3,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 4,
+      "side": "right",
+      "ok": false,
+      "score": 0.075
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 4,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 5,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 5,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 6,
+      "side": "right",
+      "ok": false,
+      "score": 0.063
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 6,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 7,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 7,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 8,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 8,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 9,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 9,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 10,
+      "side": "right",
+      "ok": true,
+      "score": 0.932
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 10,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 0,
+      "side": "right",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 0,
+      "side": "bottom",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 0,
+      "side": "left",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 0,
+      "side": "top",
+      "ok": true,
+      "score": 0.805
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 1,
+      "side": "right",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 1,
+      "side": "bottom",
+      "ok": true,
+      "score": 0.971
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 1,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 2,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 2,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 2,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 3,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 3,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 3,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 4,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 4,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 4,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 5,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 5,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 5,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 6,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 6,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 6,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 7,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 7,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 7,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 8,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 8,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 8,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 9,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 9,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 9,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 10,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 10,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 10,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 11,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 11,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 11,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 12,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 12,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 12,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 13,
+      "side": "right",
+      "ok": true,
+      "score": 0.84
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 13,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 13,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 14,
+      "side": "right",
+      "ok": true,
+      "score": 0.78
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 14,
+      "side": "bottom",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 0,
+      "col": 14,
+      "side": "top",
+      "ok": true,
+      "score": 0.961
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 0,
+      "side": "right",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 0,
+      "side": "bottom",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 0,
+      "side": "left",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 1,
+      "side": "right",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 1,
+      "side": "bottom",
+      "ok": true,
+      "score": 0.984
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 2,
+      "side": "right",
+      "ok": false,
+      "score": 0.017
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 2,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 3,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 3,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 4,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 4,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 5,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 5,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 6,
+      "side": "right",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 6,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 7,
+      "side": "right",
+      "ok": true,
+      "score": 0.966
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 7,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 8,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 8,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 9,
+      "side": "right",
+      "ok": true,
+      "score": 0.814
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 9,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 10,
+      "side": "right",
+      "ok": true,
+      "score": 0.763
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 10,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 11,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 11,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 12,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 12,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 13,
+      "side": "right",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 13,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 14,
+      "side": "right",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 1,
+      "col": 14,
+      "side": "bottom",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 0,
+      "side": "right",
+      "ok": true,
+      "score": 0.987
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 0,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 0,
+      "side": "left",
+      "ok": true,
+      "score": 0.984
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 1,
+      "side": "right",
+      "ok": true,
+      "score": 0.985
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 1,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 2,
+      "side": "right",
+      "ok": false,
+      "score": 0.106
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 2,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 3,
+      "side": "right",
+      "ok": false,
+      "score": 0.241
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 3,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 4,
+      "side": "right",
+      "ok": false,
+      "score": 0.125
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 4,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 5,
+      "side": "right",
+      "ok": false,
+      "score": 0.125
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 5,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 6,
+      "side": "right",
+      "ok": true,
+      "score": 0.901
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 6,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 7,
+      "side": "right",
+      "ok": false,
+      "score": 0.371
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 7,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 8,
+      "side": "right",
+      "ok": true,
+      "score": 0.536
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 8,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 9,
+      "side": "right",
+      "ok": true,
+      "score": 0.607
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 9,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 10,
+      "side": "right",
+      "ok": false,
+      "score": 0.389
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 10,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 11,
+      "side": "right",
+      "ok": false,
+      "score": 0.129
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 11,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 12,
+      "side": "right",
+      "ok": false,
+      "score": 0.129
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 12,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 13,
+      "side": "right",
+      "ok": true,
+      "score": 0.503
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 13,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 14,
+      "side": "right",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 1,
+      "row": 2,
+      "col": 14,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    }
+  ],
+  "params": {
+    "ref_diag": 2000,
+    "deskew_angle_limit": 10.0,
+    "deskew_min_angle": 0.3,
+    "deskew_residual_max": 0.3,
+    "block_size_base": 15,
+    "binarize_C": 10,
+    "line_open_base": 30,
+    "line_open_ratio": null,
+    "close_ratio": 0.01,
+    "anchor_h_ratio": 0.15,
+    "anchor_v_ratio": 0.03,
+    "table_min_w_ratio": 0.1,
+    "table_min_h_ratio": 0.02,
+    "table_join_base": 3,
+    "gap_thresh_base": 10,
+    "strip_half_width_base": 2,
+    "corner_margin_base": 2,
+    "presence_ratio": 0.5,
+    "suspicious_score_min": 0.15,
+    "weak_score_max": 0.8,
+    "max_merged_area_ratio": 0.3,
+    "hidden_line_ratio": 0.8
+  },
+  "process_sec": 1.651,
+  "total_sec": 4.885
+}

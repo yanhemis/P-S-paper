@@ -1,0 +1,117 @@
+﻿image,type,label,table,cell_ids,detail
+sample_10.JPG,under_merge,미병합 의심,0,0 1,"primitive (0,0) right 선 커버리지 0.72 인 약한 경계로 분리됨"
+sample_10.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,1) right 선 커버리지 0.43 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_10.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,2) right 선 커버리지 0.37 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_10.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,3) right 선 커버리지 0.36 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_10.JPG,over_merge,과다 병합 의심,0,1,병합 셀이 표 면적의 74%
+sample_2.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,77,"primitive (8,4) right 선 커버리지 0.17 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_3.JPG,under_merge,미병합 의심,0,0 1,"primitive (0,0) right 선 커버리지 0.64 인 약한 경계로 분리됨"
+sample_3.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,1) right 선 커버리지 0.40 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_3.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,2) right 선 커버리지 0.24 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_3.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,3) right 선 커버리지 0.25 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_3.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,4) right 선 커버리지 0.32 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_3.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,5) right 선 커버리지 0.25 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_3.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,6) right 선 커버리지 0.32 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_3.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,7) right 선 커버리지 0.25 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_3.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,8) right 선 커버리지 0.25 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_3.JPG,over_merge,과다 병합 의심,0,1,병합 셀이 표 면적의 52%
+sample_3.JPG,over_merge,과다 병합 의심,0,3,병합 셀이 표 면적의 39%
+sample_3.JPG,irregular_component,비직사각형 component,0,2 3,"primitive [[1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8], [1, 9], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6], [2, 7], [2, 8], [2, 9], [3, 1], [3, 2], [3, 3], [3, 4], [3, 5], [3, 6], [3, 7], [3, 8], [3, 9]] 가 비직사각형으로 연결 → 경계 ['(1,1) bottom', '(1,0) right'] 를 되살려 직사각형으로 복구"
+sample_3.JPG,over_merge,과다 병합 의심,1,6,"primitive (0,1) bottom 경계선(커버리지 0.96)이 병합 셀 안에 있음"
+sample_3.JPG,over_merge,과다 병합 의심,1,6,"primitive (1,1) bottom 경계선(커버리지 0.97)이 병합 셀 안에 있음"
+sample_3.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,15,"primitive (2,5) right 선 커버리지 0.36 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_3.JPG,under_merge,미병합 의심,1,15 16,"primitive (2,6) right 선 커버리지 0.54 인 약한 경계로 분리됨"
+sample_3.JPG,under_merge,미병합 의심,1,16 17,"primitive (2,7) right 선 커버리지 0.53 인 약한 경계로 분리됨"
+sample_3.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,17,"primitive (2,8) right 선 커버리지 0.38 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_3.JPG,under_merge,미병합 의심,1,8 17,"primitive (2,9) right 선 커버리지 0.63 인 약한 경계로 분리됨"
+sample_3.JPG,line_detection_failure,선 검출 실패,1,15,셀 안에 세로선(셀 높이의 100%)이 있는데 grid 에서 빠짐
+sample_3.JPG,line_detection_failure,선 검출 실패,1,17,셀 안에 세로선(셀 높이의 100%)이 있는데 grid 에서 빠짐
+sample_3.JPG,deskew_failure,기울기 보정 실패,,,2.59도 보정 후에도 -1.12도 기울어 있음
+sample_4.JPG,under_merge,미병합 의심,1,34 35,"primitive (0,7) right 선 커버리지 0.70 인 약한 경계로 분리됨"
+sample_4.JPG,under_merge,미병합 의심,1,40 41,"primitive (1,6) right 선 커버리지 0.76 인 약한 경계로 분리됨"
+sample_4.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,50,"primitive (3,3) right 선 커버리지 0.19 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_4.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,50,"primitive (3,5) right 선 커버리지 0.33 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_4.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,50,"primitive (3,6) right 선 커버리지 0.37 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_4.JPG,under_merge,미병합 의심,1,55 56,"primitive (4,5) right 선 커버리지 0.77 인 약한 경계로 분리됨"
+sample_4.JPG,under_merge,미병합 의심,1,56 57,"primitive (4,6) right 선 커버리지 0.72 인 약한 경계로 분리됨"
+sample_4.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,67,"primitive (6,3) right 선 커버리지 0.19 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_4.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,68,"primitive (6,5) right 선 커버리지 0.31 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_4.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,68,"primitive (6,6) right 선 커버리지 0.38 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_4.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,68,"primitive (6,7) right 선 커버리지 0.46 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_5.JPG,over_merge,과다 병합 의심,0,0,표 전체가 셀 1개로 합쳐짐
+sample_6.JPG,under_merge,미병합 의심,0,2 3,"primitive (1,1) right 선 커버리지 0.77 인 약한 경계로 분리됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,2) right 선 커버리지 0.49 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,3) right 선 커버리지 0.48 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,4) right 선 커버리지 0.45 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,5) right 선 커버리지 0.50 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,6) right 선 커버리지 0.47 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,7) right 선 커버리지 0.50 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,8) right 선 커버리지 0.50 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,9) right 선 커버리지 0.49 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,4,"primitive (2,0) right 선 커버리지 0.40 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,4,"primitive (2,4) right 선 커버리지 0.21 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,4,"primitive (2,6) right 선 커버리지 0.17 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,over_merge,과다 병합 의심,0,3,병합 셀이 표 면적의 37%
+sample_6.JPG,over_merge,과다 병합 의심,0,4,병합 셀이 표 면적의 32%
+sample_6.JPG,line_detection_failure,선 검출 실패,0,3,셀 안에 세로선(셀 높이의 100%)이 있는데 grid 에서 빠짐
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,43,"primitive (6,10) right 선 커버리지 0.15 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,43,"primitive (6,12) right 선 커버리지 0.21 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,45,"primitive (7,3) right 선 커버리지 0.18 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_6.JPG,under_merge,미병합 의심,1,55 56,"primitive (9,3) right 선 커버리지 0.56 인 약한 경계로 분리됨"
+sample_6.JPG,under_merge,미병합 의심,1,56 57,"primitive (9,4) right 선 커버리지 0.52 인 약한 경계로 분리됨"
+sample_6.JPG,under_merge,미병합 의심,1,57 58,"primitive (9,5) right 선 커버리지 0.52 인 약한 경계로 분리됨"
+sample_6.JPG,under_merge,미병합 의심,1,60 61,"primitive (9,9) right 선 커버리지 0.55 인 약한 경계로 분리됨"
+sample_6.JPG,under_merge,미병합 의심,1,61 62,"primitive (9,11) right 선 커버리지 0.54 인 약한 경계로 분리됨"
+sample_6.JPG,under_merge,미병합 의심,1,62 63,"primitive (9,12) right 선 커버리지 0.55 인 약한 경계로 분리됨"
+sample_6.JPG,deskew_failure,기울기 보정 실패,,,0.40도 보정 후에도 -0.48도 기울어 있음
+sample_7.JPG,under_merge,미병합 의심,0,2 3,"primitive (1,1) right 선 커버리지 0.53 인 약한 경계로 분리됨"
+sample_7.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,2) right 선 커버리지 0.42 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_7.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,3) right 선 커버리지 0.44 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_7.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,4) right 선 커버리지 0.45 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_7.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,5) right 선 커버리지 0.42 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_7.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,6) right 선 커버리지 0.48 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_7.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,7) right 선 커버리지 0.42 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_7.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,8) right 선 커버리지 0.42 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_7.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,3,"primitive (1,9) right 선 커버리지 0.44 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_7.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,4,"primitive (2,0) right 선 커버리지 0.18 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_7.JPG,over_merge,과다 병합 의심,0,5,병합 셀이 표 면적의 39%
+sample_7.JPG,line_detection_failure,선 검출 실패,0,3,셀 안에 세로선(셀 높이의 100%)이 있는데 grid 에서 빠짐
+sample_7.JPG,deskew_failure,기울기 보정 실패,,,-1.38도 보정 후에도 0.77도 기울어 있음
+sample_8.JPG,under_merge,미병합 의심,0,0 1,"primitive (0,0) right 선 커버리지 0.66 인 약한 경계로 분리됨"
+sample_8.JPG,under_merge,미병합 의심,0,1 2,"primitive (0,1) right 선 커버리지 0.51 인 약한 경계로 분리됨"
+sample_8.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,2,"primitive (0,2) right 선 커버리지 0.32 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_8.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,2,"primitive (0,3) right 선 커버리지 0.34 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_8.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,2,"primitive (0,4) right 선 커버리지 0.31 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_8.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,2,"primitive (0,5) right 선 커버리지 0.34 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_8.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,2,"primitive (0,6) right 선 커버리지 0.33 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_8.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,2,"primitive (0,7) right 선 커버리지 0.34 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_8.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,2,"primitive (0,8) right 선 커버리지 0.34 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_8.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,2,"primitive (0,9) right 선 커버리지 0.34 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_8.JPG,over_merge,과다 병합 의심,0,2,병합 셀이 표 면적의 82%
+sample_8.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,40,"primitive (6,12) right 선 커버리지 0.19 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_8.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,64,"primitive (10,11) right 선 커버리지 0.22 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_8.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,64,"primitive (10,12) right 선 커버리지 0.27 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_8.JPG,deskew_failure,기울기 보정 실패,,,1.07도 보정 후에도 -0.86도 기울어 있음
+sample_9.JPG,under_merge,미병합 의심,0,0 1,"primitive (0,0) right 선 커버리지 0.60 인 약한 경계로 분리됨"
+sample_9.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,1) right 선 커버리지 0.46 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_9.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,2) right 선 커버리지 0.29 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_9.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,3) right 선 커버리지 0.30 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_9.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,4) right 선 커버리지 0.26 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_9.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,5) right 선 커버리지 0.30 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_9.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,6) right 선 커버리지 0.27 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_9.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,7) right 선 커버리지 0.30 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_9.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,8) right 선 커버리지 0.30 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_9.JPG,missing_boundary_misjudge,경계 누락 오판 의심,0,1,"primitive (0,9) right 선 커버리지 0.30 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_9.JPG,under_merge,미병합 의심,0,2 3,"primitive (1,0) right 선 커버리지 0.78 인 약한 경계로 분리됨"
+sample_9.JPG,over_merge,과다 병합 의심,0,1,병합 셀이 표 면적의 41%
+sample_9.JPG,over_merge,과다 병합 의심,0,3,병합 셀이 표 면적의 50%
+sample_9.JPG,under_merge,미병합 의심,1,12 13,"primitive (1,10) right 선 커버리지 0.76 인 약한 경계로 분리됨"
+sample_9.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,15,"primitive (2,3) right 선 커버리지 0.24 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_9.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,16,"primitive (2,7) right 선 커버리지 0.37 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_9.JPG,under_merge,미병합 의심,1,16 17,"primitive (2,8) right 선 커버리지 0.54 인 약한 경계로 분리됨"
+sample_9.JPG,under_merge,미병합 의심,1,17 18,"primitive (2,9) right 선 커버리지 0.61 인 약한 경계로 분리됨"
+sample_9.JPG,missing_boundary_misjudge,경계 누락 오판 의심,1,18,"primitive (2,10) right 선 커버리지 0.39 (기준 0.5) → 경계 없음 판정으로 병합됨"
+sample_9.JPG,under_merge,미병합 의심,1,7 18,"primitive (2,13) right 선 커버리지 0.50 인 약한 경계로 분리됨"
+sample_9.JPG,line_detection_failure,선 검출 실패,1,15,셀 안에 세로선(셀 높이의 100%)이 있는데 grid 에서 빠짐
+sample_9.JPG,line_detection_failure,선 검출 실패,1,16,셀 안에 세로선(셀 높이의 100%)이 있는데 grid 에서 빠짐
+sample_9.JPG,line_detection_failure,선 검출 실패,1,18,셀 안에 세로선(셀 높이의 100%)이 있는데 grid 에서 빠짐

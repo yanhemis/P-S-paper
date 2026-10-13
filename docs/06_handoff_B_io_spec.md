@@ -69,3 +69,43 @@ r["skew"]["affine"]    # 원본 → 보정본 좌표 변환 행렬 (2x3), 보정
 ## 9. 주의
 - cells.json 키와 형식은 고정. 바뀌면 미리 공지
 - 파라미터를 바꾸면 셀 id 순서가 달라질 수 있음
+
+## 10. 공통 10장 결과 (End-to-End 입력용)
+
+- 실행: `python Task_10_Renewal.py` → `output/common10/` (Task_0930.py 그대로, `run_batch()` 사용)
+- 이미지 1장의 흐름
+
+```text
+data/common10/sample_N.JPG
+ -> output/common10/sample_N/cells_original.json   (원본 좌표, EXIF 회전 적용 후 3024x4032)
+ -> output/common10/sample_N/report.json           (status, failures, 처리 시간)
+ -> (선택) output/common10/sample_N/cells.json + sample_N_aligned.png   (보정본 좌표)
+```
+
+- 10장 목록과 좌표 정보는 `output/common10/manifest.json` 한 파일에서 읽는다.
+
+```json
+{
+  "status_count": {"ok": 1, "check": 9, "grid_fail": 0, "error": 0},
+  "images": [
+    {
+      "source_image": "sample_1.JPG", "status": "ok", "tables": 2, "cells": 92,
+      "original": {"cells": "sample_1/cells_original.json", "image": "sample_1.JPG", "size": [3024, 4032]},
+      "aligned": {"cells": "sample_1/cells.json", "image": "sample_1/sample_1_aligned.png", "size": [3024, 4032],
+                  "rotation_deg": 0.0, "affine_original_to_aligned": null},
+      "report": "sample_1/report.json"
+    }
+  ]
+}
+```
+
+- 통합 시 판단 기준
+  | 조건 | 처리 |
+  |---|---|
+  | `status == "error"` 또는 `"grid_fail"` | 셀 없음 → 그 이미지는 구조 기반 ROI 사용 불가 |
+  | `tables < 2` (이 계약서 양식 기준) | 표 누락 → 빠진 표의 필드는 사용 불가. **status 가 check 로 나오므로 별도 확인 필요** |
+  | `status == "check"` | 결과는 있으나 `report.json` 의 `failures` 확인 (부분 성공 포함) |
+  | `status == "ok"` | 그대로 사용 |
+- `affine_original_to_aligned` 가 `null` 이면 원본과 보정본 좌표가 같다 (EXIF 회전만 적용).
+- aligned 이미지는 git 에 없으므로 필요하면 `Task_10_Renewal.py` 를 실행해서 만든다.
+- 이미지별 결과·사례: `docs/07_common10_results.md`, `docs/02_success_cases.md`, `docs/03_failure_cases.md`

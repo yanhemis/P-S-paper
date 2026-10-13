@@ -1,0 +1,11 @@
+﻿image,folder,status,rotation_deg,tables,grid,primitive_cells,cells,general,merged,merge_h,merge_v,merge_block,border_damage,line_detection_failure,missing_boundary_misjudge,over_merge,under_merge,irregular_component,deskew_failure,validation_error,process_sec
+sample_1.JPG,sample_1,ok,0.0,2,11x11 / 11x13,264,92,44,48,43,5,0,0,0,0,0,0,0,0,0,1.726
+sample_10.JPG,sample_10,check,2.32,1,2x5,10,3,1,2,2,0,0,0,0,3,1,1,0,0,0,1.222
+sample_2.JPG,sample_2,check,0.0,2,11x11 / 11x15,286,95,42,53,48,5,0,0,0,1,0,0,0,0,0,1.004
+sample_3.JPG,sample_3,check,2.59,2,4x10 / 3x11,73,18,8,10,7,1,2,1,2,10,4,4,1,1,0,1.564
+sample_4.JPG,sample_4,check,0.0,2,11x11 / 8x9,193,73,42,31,26,5,0,0,0,7,0,4,0,0,0,0.981
+sample_5.JPG,sample_5,check,0.62,1,1x10,10,1,0,1,1,0,0,0,0,0,1,0,0,0,0,2.528
+sample_6.JPG,sample_6,check,0.4,2,3x11 / 10x14,173,64,29,35,30,5,0,0,1,14,2,7,0,1,0,1.733
+sample_7.JPG,sample_7,check,-1.38,1,4x11,44,6,2,4,4,0,0,1,1,9,1,1,0,1,0,1.489
+sample_8.JPG,sample_8,check,1.07,2,1x11 / 11x14,165,65,28,37,32,5,0,0,0,11,1,2,0,1,0,3.863
+sample_9.JPG,sample_9,check,0.0,2,2x11 / 3x15,67,19,8,11,9,2,0,0,3,12,2,6,0,0,0,1.651

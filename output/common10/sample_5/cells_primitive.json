@@ -1,0 +1,18 @@
+{
+  "image": "sample_5_aligned.png",
+  "source_image": "sample_5.JPG",
+  "method": "opencv_grid_merge",
+  "rotation_deg": 0.623,
+  "cells": [
+    {"id": 0, "table": 0, "bbox": [558, 893, 940, 1284], "type": "general", "primitive_cells": [[0, 0]]},
+    {"id": 1, "table": 0, "bbox": [940, 893, 1163, 1284], "type": "general", "primitive_cells": [[0, 1]]},
+    {"id": 2, "table": 0, "bbox": [1163, 893, 1456, 1284], "type": "general", "primitive_cells": [[0, 2]]},
+    {"id": 3, "table": 0, "bbox": [1456, 893, 1618, 1284], "type": "general", "primitive_cells": [[0, 3]]},
+    {"id": 4, "table": 0, "bbox": [1618, 893, 1732, 1284], "type": "general", "primitive_cells": [[0, 4]]},
+    {"id": 5, "table": 0, "bbox": [1732, 893, 1784, 1284], "type": "general", "primitive_cells": [[0, 5]]},
+    {"id": 6, "table": 0, "bbox": [1784, 893, 1896, 1284], "type": "general", "primitive_cells": [[0, 6]]},
+    {"id": 7, "table": 0, "bbox": [1896, 893, 2110, 1284], "type": "general", "primitive_cells": [[0, 7]]},
+    {"id": 8, "table": 0, "bbox": [2110, 893, 2253, 1284], "type": "general", "primitive_cells": [[0, 8]]},
+    {"id": 9, "table": 0, "bbox": [2253, 893, 2662, 1284], "type": "general", "primitive_cells": [[0, 9]]}
+  ]
+}
