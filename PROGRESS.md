@@ -3,18 +3,21 @@
 > 배정: [plan.md](plan.md) · 결과·요청사항 전체: [README.md](README.md) · 상세 이력: git `492916d` 이전 PROGRESS.md
 > 규칙: tail 밖 폴더는 읽기만 한다.
 
-## 현재 상태 (2026-10-05)
+## 현재 상태 (2026-10-16)
 
 - ✅ 조기 체크, 데이터 10장, 정답(텍스트·ROI), 실험 A·B, 평가, 사례, 입출력 규격, requirements
 - ✅ H1 1차 분석 (인쇄 글자 비교 + 원본/전처리 비교), 사진 GPS 제거, 결과 json에 실행 환경 기록
-- 🔶 실험 C: sample.jpg 1장으로 파이프라인만 연결. 10장은 팀원 ROI 대기
+- ✅ 실험 C(E4): `bang_` 공통 10장 ROI로 실행. Detected ROI **13/49** (여유 25%), 10/49 (여유 0). 실패 36건 중 ROI 없음 27 / 혼입 4 / 인식 5 → 병목은 ROI 누락
+- ✅ 10/08 재배정 반영: [plan.md](plan.md)를 E0~E5 / P0~P4 표 기준으로 재작성
+- ✅ Recognition 잔여 오류 분류: GT ROI에서도 18/49 실패(소재지 10, 이름 4, 금액 4) → `results/eval/recognition_errors.md`
+- 🔶 E5(taegu Anchor): 10장 미수신, 공통 sample PoC만 유지
 - H5 결과: Full OCR **29/49**, GT ROI OCR **31/49** (CER 0.141 → 0.117)
 - H1 결과: 품질이 좋은 7장은 인쇄 한글 재현율 0.97~0.99. 떨어진 3장은 거리(#10), 접힘(#7), 가장자리(#4)로 설명됨. **원근 보정만으로 손글씨 Field Accuracy도 31/49** (ROI 재인식과 같음) → ROI 이득의 일부는 해상도 효과일 수 있음
 
 ## 남은 작업
 
 - [ ] 팀원 요청 전달 (README 5절: bang_·taegu·dahye·heewon·추가 인원 B, 기한 10-05~07)
-- [ ] 실험 C 10장: `convert_teammate.py` → `roi_ocr.py --pad 0` → `evaluate_fields.py --detected`
+- [ ] E5: taegu 10장 ROI 수신 시 실행
 - [ ] 이전 커밋에 남은 GPS 원본 사진 처리 결정 (히스토리 재작성은 팀 합의 필요, README 2-6절)
 - [ ] 촬영 조건 매핑 확인 (`sample_5/6`, `sample_8/9`) → H1 표에 계획 조건 열 추가
 - [ ] (선택) ROI 후처리, 잔금·계약기간 필드
@@ -26,6 +29,8 @@
 - **10-03** 10장 완료, 정답 구축, 실험 B, 평가, README·규격 문서, 팀원 결과 확인, 여유 비율 민감도(영향 없음), 실험 C 연결
 - **10-04** 팀 담당 정리 (taegu ≠ 추가 인원 B, 공통 evaluator = dahye), requirements.txt
 - **10-05** issue 문서 대조 → GPS 제거, 실행 환경 기록, H1 분석 (`scripts/h1_quality.py`, `results/h1/`)
+
+- **10-16** 재배정(10/08) 반영, E4 실행·평가, plan/README/PROGRESS 갱신
 
 ## 기억할 것
 

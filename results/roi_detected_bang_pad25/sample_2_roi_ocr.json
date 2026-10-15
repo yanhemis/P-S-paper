@@ -1,0 +1,163 @@
+{
+  "image_id": "sample_2.JPG",
+  "roi_source": "/Users/tail/P-S-paper/bang_/output/common10/handoff_tail/detected_roi_cells.json",
+  "pad_ratio": 0.25,
+  "runtime_sec": 2.0369524160050787,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1025.3
+  },
+  "fields": {
+    "address": {
+      "text": "서열독별시 관악구 관악로 210 지하102",
+      "confidence": 0.8620715141296387,
+      "runtime_sec": 0.4869497919571586,
+      "items": [
+        {
+          "text": "서열독별시",
+          "confidence": 0.7165335416793823,
+          "bbox": [
+            105,
+            51,
+            315,
+            110
+          ]
+        },
+        {
+          "text": "관악구 관악로 210",
+          "confidence": 0.946494996547699,
+          "bbox": [
+            409,
+            44,
+            925,
+            105
+          ]
+        },
+        {
+          "text": "지하102",
+          "confidence": 0.9231860041618347,
+          "bbox": [
+            1016,
+            37,
+            1249,
+            107
+          ]
+        }
+      ]
+    },
+    "deposit_num": {
+      "text": "일천만 원정(w 10.ㅇ00.000",
+      "confidence": 0.8493234515190125,
+      "runtime_sec": 0.2276936660055071,
+      "items": [
+        {
+          "text": "일천만 원정(w 10.ㅇ00.000",
+          "confidence": 0.8493234515190125,
+          "bbox": [
+            1020,
+            49,
+            1801,
+            103
+          ]
+        }
+      ]
+    },
+    "deposit_kor": {
+      "text": "일천만 원정(w 10.ㅇ00.000",
+      "confidence": 0.8493234515190125,
+      "runtime_sec": 0.2238485409761779,
+      "items": [
+        {
+          "text": "일천만 원정(w 10.ㅇ00.000",
+          "confidence": 0.8493234515190125,
+          "bbox": [
+            1020,
+            49,
+            1801,
+            103
+          ]
+        }
+      ]
+    },
+    "down_payment": {
+      "text": "금 일벽만 원정은 계약시에 지급하고 영수함. 영수자( 정미경 인)",
+      "confidence": 0.9686222871144613,
+      "runtime_sec": 0.8945892080082558,
+      "items": [
+        {
+          "text": "금",
+          "confidence": 0.9942358136177063,
+          "bbox": [
+            58,
+            67,
+            95,
+            103
+          ]
+        },
+        {
+          "text": "일벽만 원정은 계약시에 지급하고 영수함. 영수자(",
+          "confidence": 0.9854633808135986,
+          "bbox": [
+            601,
+            44,
+            1582,
+            108
+          ]
+        },
+        {
+          "text": "정미경 인)",
+          "confidence": 0.9261676669120789,
+          "bbox": [
+            1710,
+            46,
+            2001,
+            108
+          ]
+        }
+      ]
+    },
+    "lessor_name": {
+      "text": "정미경",
+      "confidence": 0.9731915593147278,
+      "runtime_sec": 0.10251500003505498,
+      "items": [
+        {
+          "text": "정미경",
+          "confidence": 0.9731915593147278,
+          "bbox": [
+            92,
+            55,
+            275,
+            135
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "오준혁",
+      "confidence": 0.9808843731880188,
+      "runtime_sec": 0.1013562090229243,
+      "items": [
+        {
+          "text": "오준혁",
+          "confidence": 0.9808843731880188,
+          "bbox": [
+            94,
+            48,
+            258,
+            124
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "image_id": "sample_6.JPG",
+  "roi_source": "/Users/tail/P-S-paper/bang_/output/common10/handoff_tail/detected_roi_cells.json",
+  "pad_ratio": 0.25,
+  "runtime_sec": 1.4849140419391915,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1067.3
+  },
+  "fields": {
+    "address": {
+      "text": "임대인과 임차인 쌍방은 아래 표시 부동산에 관하여 다음 계약내용과 같이 임대차계약을 체결한다. 1.부동산의 표시 T u건과여 0시1 대학로 99,목천 빌라 201i",
+      "confidence": 0.83990820816585,
+      "runtime_sec": 1.2835662919678725,
+      "items": [
+        {
+          "text": "임대인과 임차인 쌍방은 아래 표시 부동산에 관하여 다음 계약내용과 같이 임대차계약을 체결한다.",
+          "confidence": 0.9181087017059326,
+          "bbox": [
+            63,
+            26,
+            1715,
+            130
+          ]
+        },
+        {
+          "text": "1.부동산의 표시",
+          "confidence": 0.9582598209381104,
+          "bbox": [
+            68,
+            120,
+            324,
+            160
+          ]
+        },
+        {
+          "text": "T",
+          "confidence": 0.9723542332649231,
+          "bbox": [
+            140,
+            185,
+            168,
+            203
+          ]
+        },
+        {
+          "text": "u건과여",
+          "confidence": 0.8186266422271729,
+          "bbox": [
+            313,
+            176,
+            508,
+            204
+          ]
+        },
+        {
+          "text": "0시1",
+          "confidence": 0.6292434334754944,
+          "bbox": [
+            555,
+            168,
+            647,
+            206
+          ]
+        },
+        {
+          "text": "대학로 99,목천 빌라",
+          "confidence": 0.8715720176696777,
+          "bbox": [
+            717,
+            151,
+            1170,
+            206
+          ]
+        },
+        {
+          "text": "201i",
+          "confidence": 0.7111926078796387,
+          "bbox": [
+            1228,
+            139,
+            1357,
+            193
+          ]
+        }
+      ]
+    },
+    "lessor_name": {
+      "text": "3모식",
+      "confidence": 0.6793932914733887,
+      "runtime_sec": 0.10073129198281094,
+      "items": [
+        {
+          "text": "3모식",
+          "confidence": 0.6793932914733887,
+          "bbox": [
+            81,
+            49,
+            231,
+            127
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "안다은",
+      "confidence": 0.9309315085411072,
+      "runtime_sec": 0.10061645798850805,
+      "items": [
+        {
+          "text": "안다은",
+          "confidence": 0.9309315085411072,
+          "bbox": [
+            94,
+            59,
+            241,
+            127
+          ]
+        }
+      ]
+    }
+  }
+}

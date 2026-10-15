@@ -1,0 +1,193 @@
+{
+  "image_id": "sample_1.JPG",
+  "roi_source": "/Users/tail/P-S-paper/bang_/output/common10/handoff_tail/detected_roi_cells.json",
+  "pad_ratio": 0.25,
+  "runtime_sec": 2.9819284990080632,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1025.3
+  },
+  "fields": {
+    "address": {
+      "text": "서오특별시 마포구 월드컵3 45일 12, 3이3",
+      "confidence": 0.7750284671783447,
+      "runtime_sec": 0.698739041981753,
+      "items": [
+        {
+          "text": "서오특별시",
+          "confidence": 0.6929169297218323,
+          "bbox": [
+            63,
+            46,
+            264,
+            102
+          ]
+        },
+        {
+          "text": "마포구",
+          "confidence": 0.8004379272460938,
+          "bbox": [
+            322,
+            52,
+            425,
+            99
+          ]
+        },
+        {
+          "text": "월드컵3 45일 12, 3이3",
+          "confidence": 0.8317305445671082,
+          "bbox": [
+            433,
+            42,
+            1077,
+            102
+          ]
+        }
+      ]
+    },
+    "deposit_num": {
+      "text": "일억팔천만 원정(W 180,000.000 '",
+      "confidence": 0.6002843230962753,
+      "runtime_sec": 0.4842798329773359,
+      "items": [
+        {
+          "text": "일억팔천만 원정(W 180,000.000",
+          "confidence": 0.9459241628646851,
+          "bbox": [
+            860,
+            40,
+            1677,
+            112
+          ]
+        },
+        {
+          "text": "'",
+          "confidence": 0.2546444833278656,
+          "bbox": [
+            1655,
+            48,
+            1786,
+            101
+          ]
+        }
+      ]
+    },
+    "deposit_kor": {
+      "text": "일억팔천만 원정(W 180,000.000 '",
+      "confidence": 0.6002843230962753,
+      "runtime_sec": 0.48679883300792426,
+      "items": [
+        {
+          "text": "일억팔천만 원정(W 180,000.000",
+          "confidence": 0.9459241628646851,
+          "bbox": [
+            860,
+            40,
+            1677,
+            112
+          ]
+        },
+        {
+          "text": "'",
+          "confidence": 0.2546444833278656,
+          "bbox": [
+            1655,
+            48,
+            1786,
+            101
+          ]
+        }
+      ]
+    },
+    "down_payment": {
+      "text": "일천팔백만 원정은 계약시에 지급하고 영수함. 영수자( 박정훈 인)",
+      "confidence": 0.9744336754083633,
+      "runtime_sec": 1.1145447500166483,
+      "items": [
+        {
+          "text": "일천팔백만",
+          "confidence": 0.9854183197021484,
+          "bbox": [
+            416,
+            48,
+            659,
+            101
+          ]
+        },
+        {
+          "text": "원정은 계약시에 지급하고 영수함. 영수자(",
+          "confidence": 0.9648389220237732,
+          "bbox": [
+            747,
+            46,
+            1509,
+            94
+          ]
+        },
+        {
+          "text": "박정훈",
+          "confidence": 0.9555497169494629,
+          "bbox": [
+            1601,
+            36,
+            1751,
+            95
+          ]
+        },
+        {
+          "text": "인)",
+          "confidence": 0.9919277429580688,
+          "bbox": [
+            1828,
+            43,
+            1910,
+            94
+          ]
+        }
+      ]
+    },
+    "lessor_name": {
+      "text": "박정훈",
+      "confidence": 0.88906329870224,
+      "runtime_sec": 0.09819241601508111,
+      "items": [
+        {
+          "text": "박정훈",
+          "confidence": 0.88906329870224,
+          "bbox": [
+            94,
+            25,
+            249,
+            101
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "이서연",
+      "confidence": 0.8549940586090088,
+      "runtime_sec": 0.09937362500932068,
+      "items": [
+        {
+          "text": "이서연",
+          "confidence": 0.8549940586090088,
+          "bbox": [
+            99,
+            37,
+            260,
+            108
+          ]
+        }
+      ]
+    }
+  }
+}

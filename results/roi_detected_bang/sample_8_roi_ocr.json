@@ -1,0 +1,55 @@
+{
+  "image_id": "sample_8.JPG",
+  "roi_source": "/Users/tail/P-S-paper/bang_/output/common10/handoff_tail/detected_roi_cells.json",
+  "pad_ratio": 0.0,
+  "runtime_sec": 0.19432158302515745,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1074.8
+  },
+  "fields": {
+    "lessor_name": {
+      "text": "남궁순옥",
+      "confidence": 0.7338173389434814,
+      "runtime_sec": 0.09821716602891684,
+      "items": [
+        {
+          "text": "남궁순옥",
+          "confidence": 0.7338173389434814,
+          "bbox": [
+            66,
+            29,
+            333,
+            109
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "특고진성",
+      "confidence": 0.8022778034210205,
+      "runtime_sec": 0.09610441699624062,
+      "items": [
+        {
+          "text": "특고진성",
+          "confidence": 0.8022778034210205,
+          "bbox": [
+            24,
+            30,
+            254,
+            115
+          ]
+        }
+      ]
+    }
+  }
+}

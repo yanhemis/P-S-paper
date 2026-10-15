@@ -1,0 +1,82 @@
+{
+  "image_id": "sample_6.JPG",
+  "roi_source": "/Users/tail/P-S-paper/bang_/output/common10/handoff_tail/detected_roi_cells.json",
+  "pad_ratio": 0.0,
+  "runtime_sec": 1.1709859590046108,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1074.8
+  },
+  "fields": {
+    "address": {
+      "text": "임대인과 임차인 쌍방은 아래 표시 부동산에 관하여 다음 계약내용과 같이 임내사게 1.부동산의표시",
+      "confidence": 0.9719147086143494,
+      "runtime_sec": 0.9742625000071712,
+      "items": [
+        {
+          "text": "임대인과 임차인 쌍방은 아래 표시 부동산에 관하여 다음 계약내용과 같이 임내사게",
+          "confidence": 0.9444452524185181,
+          "bbox": [
+            65,
+            19,
+            1464,
+            95
+          ]
+        },
+        {
+          "text": "1.부동산의표시",
+          "confidence": 0.9993841648101807,
+          "bbox": [
+            68,
+            92,
+            322,
+            131
+          ]
+        }
+      ]
+    },
+    "lessor_name": {
+      "text": "창모식",
+      "confidence": 0.6307499408721924,
+      "runtime_sec": 0.09760870900936425,
+      "items": [
+        {
+          "text": "창모식",
+          "confidence": 0.6307499408721924,
+          "bbox": [
+            85,
+            32,
+            229,
+            106
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "안다은",
+      "confidence": 0.9657461643218994,
+      "runtime_sec": 0.09911474998807535,
+      "items": [
+        {
+          "text": "안다은",
+          "confidence": 0.9657461643218994,
+          "bbox": [
+            92,
+            41,
+            240,
+            104
+          ]
+        }
+      ]
+    }
+  }
+}

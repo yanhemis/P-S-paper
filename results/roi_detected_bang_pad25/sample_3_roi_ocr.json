@@ -1,0 +1,38 @@
+{
+  "image_id": "sample_3.JPG",
+  "roi_source": "/Users/tail/P-S-paper/bang_/output/common10/handoff_tail/detected_roi_cells.json",
+  "pad_ratio": 0.25,
+  "runtime_sec": 0.1084752079914324,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1044.2
+  },
+  "fields": {
+    "lessor_name": {
+      "text": "강태식",
+      "confidence": 0.9934889674186707,
+      "runtime_sec": 0.1084752079914324,
+      "items": [
+        {
+          "text": "강태식",
+          "confidence": 0.9934889674186707,
+          "bbox": [
+            70,
+            62,
+            251,
+            134
+          ]
+        }
+      ]
+    }
+  }
+}

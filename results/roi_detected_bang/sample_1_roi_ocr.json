@@ -1,0 +1,173 @@
+{
+  "image_id": "sample_1.JPG",
+  "roi_source": "/Users/tail/P-S-paper/bang_/output/common10/handoff_tail/detected_roi_cells.json",
+  "pad_ratio": 0.0,
+  "runtime_sec": 2.987309042015113,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1009.7
+  },
+  "fields": {
+    "address": {
+      "text": "시특별시 마포구 월드컵3 45길 12, 3이로",
+      "confidence": 0.8542723059654236,
+      "runtime_sec": 0.33713045803597197,
+      "items": [
+        {
+          "text": "시특별시 마포구 월드컵3 45길 12, 3이로",
+          "confidence": 0.8542723059654236,
+          "bbox": [
+            54,
+            27,
+            1077,
+            90
+          ]
+        }
+      ]
+    },
+    "deposit_num": {
+      "text": "금 일억팔천만 원정(W 180,000.000 ’ )",
+      "confidence": 0.8461947043736776,
+      "runtime_sec": 0.7861222920473665,
+      "items": [
+        {
+          "text": "금",
+          "confidence": 0.9944191575050354,
+          "bbox": [
+            37,
+            42,
+            90,
+            90
+          ]
+        },
+        {
+          "text": "일억팔천만 원정(W 180,000.000",
+          "confidence": 0.9543805718421936,
+          "bbox": [
+            867,
+            31,
+            1671,
+            87
+          ]
+        },
+        {
+          "text": "’ )",
+          "confidence": 0.5897843837738037,
+          "bbox": [
+            1650,
+            33,
+            1812,
+            85
+          ]
+        }
+      ]
+    },
+    "deposit_kor": {
+      "text": "금 일억팔천만 원정(W 180,000.000 ’ )",
+      "confidence": 0.8461947043736776,
+      "runtime_sec": 0.7811295000137761,
+      "items": [
+        {
+          "text": "금",
+          "confidence": 0.9944191575050354,
+          "bbox": [
+            37,
+            42,
+            90,
+            90
+          ]
+        },
+        {
+          "text": "일억팔천만 원정(W 180,000.000",
+          "confidence": 0.9543805718421936,
+          "bbox": [
+            867,
+            31,
+            1671,
+            87
+          ]
+        },
+        {
+          "text": "’ )",
+          "confidence": 0.5897843837738037,
+          "bbox": [
+            1650,
+            33,
+            1812,
+            85
+          ]
+        }
+      ]
+    },
+    "down_payment": {
+      "text": "금 일천 팔 백만 원정은 계약시에 지급하고 영수함. 영수자( 박정훈 인)",
+      "confidence": 0.9729641079902649,
+      "runtime_sec": 0.8927586249774322,
+      "items": [
+        {
+          "text": "금",
+          "confidence": 0.9958445429801941,
+          "bbox": [
+            35,
+            39,
+            87,
+            85
+          ]
+        },
+        {
+          "text": "일천 팔 백만 원정은 계약시에 지급하고 영수함. 영수자( 박정훈 인)",
+          "confidence": 0.9500836730003357,
+          "bbox": [
+            409,
+            26,
+            1920,
+            88
+          ]
+        }
+      ]
+    },
+    "lessor_name": {
+      "text": "박정훈",
+      "confidence": 0.98007732629776,
+      "runtime_sec": 0.09413549996679649,
+      "items": [
+        {
+          "text": "박정훈",
+          "confidence": 0.98007732629776,
+          "bbox": [
+            93,
+            27,
+            249,
+            87
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "이서연",
+      "confidence": 0.9613639712333679,
+      "runtime_sec": 0.09603266697376966,
+      "items": [
+        {
+          "text": "이서연",
+          "confidence": 0.9613639712333679,
+          "bbox": [
+            30,
+            20,
+            260,
+            103
+          ]
+        }
+      ]
+    }
+  }
+}

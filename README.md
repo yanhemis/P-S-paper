@@ -1,8 +1,8 @@
 # tail — OCR / ROI 재인식 / Field Accuracy
 
 > 담당 질문: **전체 페이지 OCR보다 핵심 필드 ROI를 잘라 다시 OCR했을 때 문자 인식과 Field Accuracy가 좋아지는가?** (H1, H5)
-> 배정 문서: [`plan.md`](plan.md) · 상세 작업 기록: [`PROGRESS.md`](PROGRESS.md) · 최종 마감 2026-10-07
-> 마지막 업데이트: 2026-10-03
+> 배정 문서: [`plan.md`](plan.md) · 상세 작업 기록: [`PROGRESS.md`](PROGRESS.md) · 내부 마감 2026-10-11 (10/08 재배정: 이미지 품질 + OCR + 최종 Field Accuracy, E0~E5 단계 비교)
+> 마지막 업데이트: 2026-10-16
 
 ---
 
@@ -20,7 +20,8 @@
 | OCR 입출력 규격 문서 | ✅ 작성 완료 (전달 필요) |
 | H1 — 이미지 품질 영향 (인쇄 글자 비교 + 원본/전처리 비교) | ✅ 1차 분석 완료 (2-4절) |
 | 개인정보 — 사진 GPS 위치정보 제거 | ✅ 현재 파일은 제거 완료 (이전 커밋에는 남아 있음, 2-6절) |
-| **실험 C — 실제 검출 ROI OCR** | 🔶 파이프라인은 연결 완료 (공통 `sample.jpg` 1장, taegu ROI). **10장은 팀원 ROI 결과 대기** (아래 5절) |
+| **실험 C / E4 — 실제 검출 ROI OCR** | ✅ `bang_` 공통 10장 ROI로 실행 완료 (2-3절). Field Accuracy 13/49 — ROI가 전달되지 않은 필드가 대부분 |
+| **E5 — Anchor ROI OCR (taegu)** | 🔶 10장 ROI 미수신. 공통 `sample.jpg` 1장 PoC만 유지 (2-3절 아래) |
 
 ---
 
@@ -52,7 +53,7 @@
 >
 > → **부분적으로 그렇다.** 정답 ROI로 잘라 재인식하면, 전체 페이지에서 여러 칸이 한 박스로 합쳐지는 오류는 해결된다(Field Accuracy 59.2% → 63.3%, CER 0.141 → 0.117).
 > 하지만 손글씨 글자 자체의 오인식(소재지 0/10, 한글 금액 2/10)은 ROI로 해결되지 않는다. 남은 오류의 대부분은 **위치가 아니라 인식 모델의 문제**다.
-> 이 결과는 정답 ROI 기준의 상한선이다. 자동 검출 ROI에서도 개선이 유지되는지는 실험 C로 확인할 예정이다.
+> 이 결과는 정답 ROI 기준의 상한선이다. 자동 검출 ROI(`bang_`)로는 13/49로 크게 떨어졌고(2-3절), 원인은 ROI 정확도보다 **ROI 누락**이다.
 >
 > **추가로 확인된 점 (H1 분석)**: ROI를 자르지 않고 페이지 전체를 **원근 보정만 해서** 전체 OCR을 돌려도 Field Accuracy가 31/49로, GT ROI OCR과 같았다.
 > ROI 재인식의 이득 중 일부는 "칸을 특정한 효과"가 아니라 **문서를 크게(고해상도로) 보는 효과**일 수 있다. 논문에서 H5를 주장할 때 이 대조군을 같이 보고해야 한다.
@@ -80,7 +81,26 @@
 3. 박스 글자의 **50% 이상이 ROI 안이면 박스 전체를** 그 필드에 넣는다. 글자 폭이 일정하다는 가정 때문에 경계 글자가 잘리는 것을 막기 위해서다
 4. 모은 글자를 ROI의 가로 방향 순서로 이어 붙인다
 
-### 2-3. 실험 C 중간 결과 — 공통 `sample.jpg` 1장, taegu anchor ROI
+### 2-3. 실험 C / E4 — `bang_` 자동 검출 ROI, 공통 10장 (2026-10-16)
+
+입력: `bang_/output/common10/handoff_tail/detected_roi_cells.json` (60필드 중 25개만 전달, 나머지는 구조 복원 실패로 누락). 같은 OCR 조건(`PP-OCRv5_mobile`, 1536)으로 실행.
+
+| 파이프라인 | Field Accuracy | 평균 CER | sec/image |
+|---|---|---|---|
+| P0 Full OCR (원본) | 29/49 (59.2%) | 0.141 | 29.32 |
+| P1 Full OCR (원근 보정) | 31/49 (63.3%) | 0.120 | 31.13 |
+| P2 GT ROI OCR | 31/49 (63.3%) | 0.117 | 0.93 |
+| P3 Detected ROI, 여유 25% | 13/49 (26.5%) | 0.985 | 0.95 |
+| P3 Detected ROI, 여유 0 | 10/49 (20.4%) | 1.020 | 0.90 |
+
+- 실패 36건(여유 25%): **ROI 없음 27** · ROI 혼입/경계(GT ROI는 성공) 4 · 인식 오류(GT ROI도 실패) 5
+- ROI가 전달된 22개 필드만 보면 Full 15 / GT ROI 15 / Detected 13 → **병목은 ROI 정확도보다 커버리지**. sample_5·7·10은 전달 0개
+- 계약금 칸은 한 행 전체(`…지급하고 영수함. 영수자 …인`)가 들어와 CER이 커짐 → 필드 단위 후처리 필요
+- **조건 주의**: 필드↔셀 대응은 GT ROI 기준으로 골랐으므로 Anchor로 필드를 찾는 성능은 미포함. ROI sec/image에 셀 검출 시간은 없음
+- 오류 4종 통합 표(이미지 품질 / 구조·ROI / crop 혼입 / 인식): [`plan.md` 3-1절](plan.md)
+- 결과: `results/eval/detected_bang_pad25/`, `detected_bang_pad0/` · GT ROI 잔여 오류 분류: [`recognition_errors.md`](results/eval/recognition_errors.md)
+
+#### E5 PoC — 공통 `sample.jpg` 1장, taegu anchor ROI
 
 팀원 결과가 아직 공통 `sample.jpg` 1장뿐이라, 파이프라인 연결 확인용으로만 돌렸다. **1장이라 수치 자체는 의미가 거의 없다.**
 (정답은 `taegu/field_gt.json`을 변환해 썼다. 보증금은 한글 금액만 있어서 전체 합계는 4필드다.)
@@ -358,7 +378,9 @@ B가 tail에게서 받기로 한 것은 "OCR/ROI 재인식 모듈과 결과 포�
 ## 6. 남은 작업 (tail)
 
 - [x] 실험 C 파이프라인 연결 확인 (sample.jpg 1장, taegu ROI)
-- [ ] 실험 C 10장 실행 및 A/B/C 비교표 (팀원 ROI 수신 후 바로 가능)
+- [x] 실험 C(E4) 10장 실행 및 A/B/C 비교표 (`bang_` ROI, 2026-10-16)
+- [ ] E5: taegu 10장 ROI 수신 시 실행 (미수신이면 PoC로 축소 명시)
+- [x] Recognition 잔여 오류 유형 정리 → [`results/eval/recognition_errors.md`](results/eval/recognition_errors.md) (GT ROI에서도 18/49 실패, 소재지 10건)
 - [x] H1 1차 분석 (인쇄 글자 비교, 원본/전처리 비교)
 - [ ] 촬영 조건 매핑 확인 → H1 표에 계획 조건 열 추가
 - [ ] 이전 커밋에 남은 GPS 원본 사진 처리 결정 (2-6절)

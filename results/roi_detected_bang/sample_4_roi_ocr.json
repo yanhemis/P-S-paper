@@ -1,0 +1,153 @@
+{
+  "image_id": "sample_4.JPG",
+  "roi_source": "/Users/tail/P-S-paper/bang_/output/common10/handoff_tail/detected_roi_cells.json",
+  "pad_ratio": 0.0,
+  "runtime_sec": 2.0139252499793656,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1039.3
+  },
+  "fields": {
+    "address": {
+      "text": "부산광역시 해운배구 신팀중양3 19.1S8",
+      "confidence": 0.794685959815979,
+      "runtime_sec": 0.2573667920078151,
+      "items": [
+        {
+          "text": "부산광역시 해운배구 신팀중양3 19.1S8",
+          "confidence": 0.794685959815979,
+          "bbox": [
+            30,
+            26,
+            1203,
+            95
+          ]
+        }
+      ]
+    },
+    "deposit_num": {
+      "text": "금 삼천만 원정(W 30,000,000",
+      "confidence": 0.9331734776496887,
+      "runtime_sec": 0.4051691250060685,
+      "items": [
+        {
+          "text": "금",
+          "confidence": 0.984348475933075,
+          "bbox": [
+            43,
+            36,
+            98,
+            90
+          ]
+        },
+        {
+          "text": "삼천만 원정(W 30,000,000",
+          "confidence": 0.8819984793663025,
+          "bbox": [
+            926,
+            26,
+            1600,
+            93
+          ]
+        }
+      ]
+    },
+    "deposit_kor": {
+      "text": "금 삼천만 원정(W 30,000,000",
+      "confidence": 0.9331734776496887,
+      "runtime_sec": 0.4082114999764599,
+      "items": [
+        {
+          "text": "금",
+          "confidence": 0.984348475933075,
+          "bbox": [
+            43,
+            36,
+            98,
+            90
+          ]
+        },
+        {
+          "text": "삼천만 원정(W 30,000,000",
+          "confidence": 0.8819984793663025,
+          "bbox": [
+            926,
+            26,
+            1600,
+            93
+          ]
+        }
+      ]
+    },
+    "down_payment": {
+      "text": "금 삼백 만 원정은 계약시에 지급하고 영수함. 영수자( 밀영숙 인)",
+      "confidence": 0.7589656412601471,
+      "runtime_sec": 0.7549859170103446,
+      "items": [
+        {
+          "text": "금",
+          "confidence": 0.580973207950592,
+          "bbox": [
+            44,
+            32,
+            98,
+            88
+          ]
+        },
+        {
+          "text": "삼백 만 원정은 계약시에 지급하고 영수함. 영수자( 밀영숙 인)",
+          "confidence": 0.9369580745697021,
+          "bbox": [
+            545,
+            29,
+            1874,
+            91
+          ]
+        }
+      ]
+    },
+    "lessor_name": {
+      "text": "",
+      "confidence": 0.0,
+      "runtime_sec": 0.09225404099561274,
+      "items": [
+        {
+          "text": "",
+          "confidence": 0.0,
+          "bbox": [
+            109,
+            52,
+            227,
+            99
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "unㅇ",
+      "confidence": 0.36629176139831543,
+      "runtime_sec": 0.09593787498306483,
+      "items": [
+        {
+          "text": "unㅇ",
+          "confidence": 0.36629176139831543,
+          "bbox": [
+            68,
+            42,
+            317,
+            98
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "image_id": "sample_4.JPG",
+  "roi_source": "/Users/tail/P-S-paper/bang_/output/common10/handoff_tail/detected_roi_cells.json",
+  "pad_ratio": 0.25,
+  "runtime_sec": 2.595791707979515,
+  "meta": {
+    "det_model": "PP-OCRv5_mobile_det",
+    "rec_model": "korean_PP-OCRv5_mobile_rec",
+    "text_det_limit_side_len": 1536,
+    "text_det_limit_type": "max",
+    "paddleocr": "3.7.0",
+    "paddlepaddle": "3.3.1",
+    "opencv": "4.10.0",
+    "python": "3.11.16",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "device": "CPU",
+    "process_peak_rss_mb": 1061.6
+  },
+  "fields": {
+    "address": {
+      "text": "부산광역시 해운배구 센팀중양3 19. 1508",
+      "confidence": 0.7788727283477783,
+      "runtime_sec": 0.2757117499713786,
+      "items": [
+        {
+          "text": "부산광역시 해운배구 센팀중양3 19. 1508",
+          "confidence": 0.7788727283477783,
+          "bbox": [
+            44,
+            39,
+            1207,
+            113
+          ]
+        }
+      ]
+    },
+    "deposit_num": {
+      "text": "금 삼천만 원정(W 30,000,000 ",
+      "confidence": 0.6270049214363098,
+      "runtime_sec": 0.5891402090201154,
+      "items": [
+        {
+          "text": "금",
+          "confidence": 0.9982307553291321,
+          "bbox": [
+            56,
+            63,
+            90,
+            98
+          ]
+        },
+        {
+          "text": "삼천만 원정(W 30,000,000",
+          "confidence": 0.8827840089797974,
+          "bbox": [
+            921,
+            45,
+            1605,
+            113
+          ]
+        },
+        {
+          "text": "",
+          "confidence": 0.0,
+          "bbox": [
+            1589,
+            52,
+            1843,
+            108
+          ]
+        }
+      ]
+    },
+    "deposit_kor": {
+      "text": "금 삼천만 원정(W 30,000,000 ",
+      "confidence": 0.6270049214363098,
+      "runtime_sec": 0.5850148749887012,
+      "items": [
+        {
+          "text": "금",
+          "confidence": 0.9982307553291321,
+          "bbox": [
+            56,
+            63,
+            90,
+            98
+          ]
+        },
+        {
+          "text": "삼천만 원정(W 30,000,000",
+          "confidence": 0.8827840089797974,
+          "bbox": [
+            921,
+            45,
+            1605,
+            113
+          ]
+        },
+        {
+          "text": "",
+          "confidence": 0.0,
+          "bbox": [
+            1589,
+            52,
+            1843,
+            108
+          ]
+        }
+      ]
+    },
+    "down_payment": {
+      "text": "금 삼백 만 원정은 계약시에 지급하고 영수함. 영수자( 밀영숙  인)",
+      "confidence": 0.9627148111661276,
+      "runtime_sec": 0.9489837500150315,
+      "items": [
+        {
+          "text": "금",
+          "confidence": 0.9983708262443542,
+          "bbox": [
+            55,
+            59,
+            87,
+            98
+          ]
+        },
+        {
+          "text": "삼백 만 원정은 계약시에 지급하고 영수함. 영수자( 밀영숙 ",
+          "confidence": 0.8961243033409119,
+          "bbox": [
+            544,
+            38,
+            1808,
+            111
+          ]
+        },
+        {
+          "text": "인)",
+          "confidence": 0.9936493039131165,
+          "bbox": [
+            1781,
+            48,
+            1869,
+            101
+          ]
+        }
+      ]
+    },
+    "lessor_name": {
+      "text": "문영숙",
+      "confidence": 0.800512969493866,
+      "runtime_sec": 0.09801029099617153,
+      "items": [
+        {
+          "text": "문영숙",
+          "confidence": 0.800512969493866,
+          "bbox": [
+            85,
+            73,
+            231,
+            132
+          ]
+        }
+      ]
+    },
+    "lessee_name": {
+      "text": "배현우",
+      "confidence": 0.9372592568397522,
+      "runtime_sec": 0.09893083298811689,
+      "items": [
+        {
+          "text": "배현우",
+          "confidence": 0.9372592568397522,
+          "bbox": [
+            91,
+            67,
+            248,
+            128
+          ]
+        }
+      ]
+    }
+  }
+}
