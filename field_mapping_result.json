@@ -59,10 +59,10 @@
         1177
       ],
       "value_roi": [
-        483,
-        1083,
-        1671,
-        1224
+        1214,
+        1064,
+        1382,
+        1197
       ],
       "anchor_method": "split_anchor"
     },
@@ -76,13 +76,13 @@
         1239
       ],
       "value_roi": [
-        482,
-        1141,
-        1664,
-        1288
+        727,
+        1127,
+        979,
+        1276
       ],
       "anchor_method": "split_anchor"
     }
   },
-  "processing_time_sec": 0.0008930999993026489
+  "processing_time_sec": 0.0011441999959060922
 }

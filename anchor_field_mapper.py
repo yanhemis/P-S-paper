@@ -326,6 +326,20 @@ def extract_amount(target):
 
     value = candidates[0]["text"] if candidates else None
 
+        # 선택된 OCR 값의 bbox를 기준으로 금액 ROI 보정
+    if candidates:
+        vx1, vy1, vx2, vy2 = candidates[0]["bbox"]
+
+        # OCR 글자 높이를 기준으로 여유 공간 설정
+        margin = max(10, int((vy2 - vy1) * 0.5))
+
+        roi = [
+            max(ax2, vx1 - margin),
+            vy1 - margin,
+            vx2 + margin,
+            vy2 + margin
+        ]
+
     return {
         "value": value,
         "anchor_found": True,
