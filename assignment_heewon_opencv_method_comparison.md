@@ -1,36 +1,40 @@
-# heewon 최종 작업 — 구조 입력 방식 보조 실험 및 오류 유형 정리
+# heewon 현재 작업 — 정상/통제 촬영 데이터 수집
 
-> 재설정일: 2026-10-08
-> 내부 마감: 2026-10-10
+> 재설정일: 2026-10-21
+> 상세 기준: `03_team_execution_plan_20261021.md`, `04_data_collection_gt_protocol.md`
 
-## 담당 목표
-
-Morphological Opening vs Contour 비교를 **새로 확장하지 않고**, 현재 결과를 구조 복원 단계의 보조 근거와 실패 유형 분석으로 정리한다.
+## 목표
+기존 구조 실험 확장 대신, 논문 RQ1과 최종 평가에 사용할 **정상 기준 + 통제된 반복 촬영 데이터**를 만든다.
 
 ## 해야 할 일
+- [ ] 연구용/가상 계약서 준비
+- [ ] 가능하면 2개 이상의 서로 다른 `document_group_id` 확보
+- [ ] 각 문서 그룹에 최소 1장 baseline 촬영
+- [ ] 동일 문서를 perspective/distance 등 조건만 바꿔 반복 촬영
+- [ ] 촬영 후 crop/filter/밝기/원근 보정 금지
+- [ ] 원본 파일 유지
+- [ ] 목표: 신규 usable 5~6장
+- [ ] 각 이미지의 `document_group_id`, condition, notes를 manifest에 기록
 
-- [ ] 기존 Morphology / Contour 결과표 정리
-- [ ] 각 방식의 best setting 명시
-- [ ] kernel/filter sensitivity 핵심 결과 요약
-- [ ] 끊어진 선, 흐린 선, 표선-글자 간섭 등 실패 유형 정리
-- [ ] 가능하면 best setting의 bbox를 machine-readable JSON으로 export
-- [ ] JSON export가 즉시 어렵다면 기존 수치/시각화만 논문 보조 실험으로 정리
-- [ ] 현재 실제 구현 기준 Pipeline / Sequence 흐름 그림 현행화
+## baseline 기준
+- 정면에 가깝게 촬영
+- 문서 전체 포함
+- 초점 양호
+- 조명 양호
+- 큰 그림자/가장자리 누락 없음
 
-## 논문에서의 위치
+## 파일명 예
+```text
+docA_baseline_01.jpg
+docA_perspective_01.jpg
+docA_distance_far_01.jpg
+docB_baseline_01.jpg
+```
 
-이 담당 결과는 최종 Field Accuracy의 직접 핵심 비교라기보다,
+## 전달물
+- 원본 이미지
+- 촬영 조건 기록
+- `document_group_id`
+- 촬영 중 문제/비고
 
-> OpenCV 구조 복원에서 어떤 입력 검출 방식이 선택되었고 어떤 실패 유형이 있었는가
-
-를 설명하는 보조 실험으로 사용한다.
-
-## 하지 않을 것
-
-- 새로운 검출 방법 추가
-- 새로운 Cell Detector 학습
-- 대규모 파라미터 탐색 재실행
-
-## 완료 기준
-
-현재 보유한 결과가 논문 Method/Discussion에서 재사용 가능한 표·그림·오류 유형으로 정리되어 있어야 한다.
+최종 GT와 split은 추가 인원 B가 관리한다.
