@@ -1,47 +1,26 @@
-# taegu 최종 작업 — Field ROI Localization
+# taegu 현재 작업 — Anchor Field ROI + 최소 End-to-End
 
-> 재설정일: 2026-10-08
-> 내부 마감: 2026-10-10
+> 재설정일: 2026-10-21
+> 상세 기준: `03_team_execution_plan_20261021.md`
 
-## 담당 목표
-
-Anchor-ROI를 새로운 핵심 기법으로 확장하기보다, **자동 필드 ROI가 실제 OCR 입력으로 어느 정도 유효한지**를 검증한다.
+## 목표
+핵심 5필드 Anchor ROI 규칙을 development 데이터에서 고정하고, 입력 이미지가 `final_fields.json`까지 이어지는 최소 실행 경로를 만든다.
 
 ## 핵심 필드
-
-- 소재지
-- 보증금
-- 계약금
-- 임대인 성명
-- 임차인 성명
+- `address`
+- `deposit`
+- `contract_amount`
+- `lessor_name`
+- `lessee_name`
 
 ## 해야 할 일
-
-- [ ] 현재 Anchor 규칙 고정
-- [ ] 가능하면 공통 10장에 필드 ROI 생성
-- [ ] ROI별 field key / bbox / method 저장
-- [ ] ROI Coverage Rate 계산
-- [ ] 가능하면 GT ROI와 IoU 계산
-- [ ] 금액 ROI의 행 간 혼입 문제를 최소 수정 범위에서 보정
-- [ ] 대표 성공/실패 사례 정리
-- [ ] `tail`에게 Detected/Anchor ROI OCR 입력 전달
-
-## 일정 판단
-
-10/10까지 10장 결과가 확보되면 정량 비교에 포함한다.
-
-확보되지 않으면 Anchor-ROI는 다음 수준으로 축소한다.
-
-> 공통 sample 기반 PoC + 실패 사례 분석
-
-이 경우 논문에서 H6를 강한 결론으로 사용하지 않는다.
-
-## 하지 않을 것
-
-- 새 Anchor 알고리즘 대규모 재설계
-- 전체 표 구조 복원 재구현
-- OCR 모델 자체 수정
+- [ ] Anchor 규칙은 development 데이터에서만 보완
+- [ ] ROI별 `field`, `bbox`, `method`, 가능하면 `confidence` 저장
+- [ ] ROI bbox를 이미지 경계 안으로 clipping
+- [ ] 금액 후보는 위치와 금액 형식을 함께 확인
+- [ ] 실패 이유 기록: `ANCHOR_NOT_FOUND`, `WRONG_ANCHOR`, `MIXED_ROWS`, `ROI_TOO_LARGE`, `ROI_TOO_SMALL`, `OCR_FAILURE`
+- [ ] 기존 OCR과 연결해 `input -> ROI -> OCR -> normalization -> final_fields.json` 최소 경로 완성
+- [ ] 코드 동결 후 holdout_test에는 새 예외 규칙 추가 금지
 
 ## 완료 기준
-
-자동 ROI가 어느 필드에서 성공/실패했는지, 그리고 그 ROI를 OCR 단계에 그대로 넘길 수 있는지 판단할 수 있어야 한다.
+모든 이미지 성공이 목표가 아니다. 필드별 성공/실패와 Coverage를 남기고, 충분한 정량 결과가 없으면 P4는 PoC로 유지한다.
