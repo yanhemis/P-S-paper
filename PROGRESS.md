@@ -3,12 +3,16 @@
 > 배정: [plan.md](plan.md) · 결과·요청사항 전체: [README.md](README.md) · 상세 이력: git `492916d` 이전 PROGRESS.md
 > 규칙: tail 밖 폴더는 읽기만 한다.
 
-## 현재 상태 (2026-10-16)
+## 현재 역할 (2026-10-21 재배정)
+
+**난이도 촬영 / 이미지 품질 메타데이터** (신규 usable 5~8장). OCR 비교(E0~E4)는 완료, 수치 확정은 dahye 인수 → [docs/handoff_dahye_E0_E4.md](docs/handoff_dahye_E0_E4.md). 할 일은 [plan.md](plan.md).
+
+## OCR 실험 상태 (2026-10-16, 완료분)
 
 - ✅ 조기 체크, 데이터 10장, 정답(텍스트·ROI), 실험 A·B, 평가, 사례, 입출력 규격, requirements
 - ✅ H1 1차 분석 (인쇄 글자 비교 + 원본/전처리 비교), 사진 GPS 제거, 결과 json에 실행 환경 기록
 - ✅ 실험 C(E4): `bang_` 공통 10장 ROI로 실행. Detected ROI **13/49** (여유 25%), 10/49 (여유 0). 실패 36건 중 ROI 없음 27 / 혼입 4 / 인식 5 → 병목은 ROI 누락
-- ✅ 10/08 재배정 반영: [plan.md](plan.md)를 E0~E5 / P0~P4 표 기준으로 재작성
+- ✅ 10/08 재배정 반영: 10/08 배정 문서를 docs/plan_20261008_ocr_experiments.md로 보관
 - ✅ Recognition 잔여 오류 분류: GT ROI에서도 18/49 실패(소재지 10, 이름 4, 금액 4) → `results/eval/recognition_errors.md`
 - 🔶 E5(taegu Anchor): 10장 미수신, 공통 sample PoC만 유지
 - H5 결과: Full OCR **29/49**, GT ROI OCR **31/49** (CER 0.141 → 0.117)
@@ -16,8 +20,9 @@
 
 ## 남은 작업
 
-- [ ] 팀원 요청 전달 (README 5절: bang_·taegu·dahye·heewon·추가 인원 B, 기한 10-05~07)
-- [ ] E5: taegu 10장 ROI 수신 시 실행
+- [ ] heewon과 문서 그룹·촬영 조건 합의 → 난이도 촬영 5~8장 (perspective/distance/lighting/fold_or_crop)
+- [ ] 이미지별 메타데이터 기록, GPS 제거, 추가 인원 B에게 전달
+- [ ] dahye에게 인계 문서 전달 (E5는 taegu/dahye 흐름)
 - [ ] 이전 커밋에 남은 GPS 원본 사진 처리 결정 (히스토리 재작성은 팀 합의 필요, README 2-6절)
 - [ ] 촬영 조건 매핑 확인 (`sample_5/6`, `sample_8/9`) → H1 표에 계획 조건 열 추가
 - [ ] (선택) ROI 후처리, 잔금·계약기간 필드
@@ -30,6 +35,7 @@
 - **10-04** 팀 담당 정리 (taegu ≠ 추가 인원 B, 공통 evaluator = dahye), requirements.txt
 - **10-05** issue 문서 대조 → GPS 제거, 실행 환경 기록, H1 분석 (`scripts/h1_quality.py`, `results/h1/`)
 
+- **10-29** 10/21 재배정 반영: plan.md 재작성, dahye 인계 문서 작성
 - **10-16** 재배정(10/08) 반영, E4 실행·평가, plan/README/PROGRESS 갱신
 
 ## 기억할 것

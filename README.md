@@ -1,8 +1,8 @@
 # tail — OCR / ROI 재인식 / Field Accuracy
 
 > 담당 질문: **전체 페이지 OCR보다 핵심 필드 ROI를 잘라 다시 OCR했을 때 문자 인식과 Field Accuracy가 좋아지는가?** (H1, H5)
-> 배정 문서: [`plan.md`](plan.md) · 상세 작업 기록: [`PROGRESS.md`](PROGRESS.md) · 내부 마감 2026-10-11 (10/08 재배정: 이미지 품질 + OCR + 최종 Field Accuracy, E0~E5 단계 비교)
-> 마지막 업데이트: 2026-10-16
+> 배정 문서: [`plan.md`](plan.md) · 상세 작업 기록: [`PROGRESS.md`](PROGRESS.md) · **현재 역할(2026-10-21 재배정): 난이도 촬영 / 이미지 품질 메타데이터** — 이 문서는 그 이전에 수행한 OCR 실험(E0~E4)의 결과 기록이다. 최종 수치 확정은 dahye, 인계: [`docs/handoff_dahye_E0_E4.md`](docs/handoff_dahye_E0_E4.md)
+> 마지막 업데이트: 2026-10-29
 
 ---
 
@@ -97,7 +97,7 @@
 - ROI가 전달된 22개 필드만 보면 Full 15 / GT ROI 15 / Detected 13 → **병목은 ROI 정확도보다 커버리지**. sample_5·7·10은 전달 0개
 - 계약금 칸은 한 행 전체(`…지급하고 영수함. 영수자 …인`)가 들어와 CER이 커짐 → 필드 단위 후처리 필요
 - **조건 주의**: 필드↔셀 대응은 GT ROI 기준으로 골랐으므로 Anchor로 필드를 찾는 성능은 미포함. ROI sec/image에 셀 검출 시간은 없음
-- 오류 4종 통합 표(이미지 품질 / 구조·ROI / crop 혼입 / 인식): [`plan.md` 3-1절](plan.md)
+- 오류 4종 통합 표(이미지 품질 / 구조·ROI / crop 혼입 / 인식): [`docs/plan_20261008_ocr_experiments.md` 3-1절](docs/plan_20261008_ocr_experiments.md)
 - 결과: `results/eval/detected_bang_pad25/`, `detected_bang_pad0/` · GT ROI 잔여 오류 분류: [`recognition_errors.md`](results/eval/recognition_errors.md)
 
 #### E5 PoC — 공통 `sample.jpg` 1장, taegu anchor ROI
@@ -190,7 +190,7 @@
 ```text
 tail/
 ├── README.md                  # 이 문서
-├── plan.md                    # 담당 배정 문서 (체크박스로 진행 표시)
+├── plan.md                    # 현재 담당(10/21: 난이도 촬영·메타데이터). 이전 OCR 배정은 docs/plan_20261008_ocr_experiments.md
 ├── PROGRESS.md                # 작업 진행 요약 (상세 이력은 git 히스토리)
 ├── requirements.txt           # 실행 의존성 (추가 인원 B 전달용)
 ├── question.md                # 팀에 묻고 싶은 질문 (전세/월세, 양식 차이, 여러 장 촬영, 데이터 규모, 브랜치 운영)
