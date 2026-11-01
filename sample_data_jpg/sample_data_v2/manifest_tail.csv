@@ -1,0 +1,7 @@
+image_id,document_group_id,filename,condition,perspective_direction,perspective_level,distance_level,lighting,fold,crop,usable,split,notes
+tail_001,docA,docA_perspective_01.jpg,perspective,left,strong,normal,bright,no,no,yes,,"사선 약 25~30도 추정(가이드 10~20도 초과 가능). 방향 추정. 세로 사진(EXIF 90 CW). 기입자 tail"
+tail_002,docA,docA_distance_01.jpg,distance,none,none,far,bright,no,no,yes,,"문서가 프레임 가로 약 58%. 정면. 세로 사진(EXIF 90 CW). 기입자 tail"
+tail_003,docB,docB_lighting_01.jpg,lighting,none,none,normal,low,no,no,yes,,"전체적으로 어두움 노이즈 있음. 원본은 문서가 90도 돌아간 상태(EXIF 정상), oriented/ 에 방향 보정 사본. 확대하면 판독 가능. 기입자 tail"
+tail_004,docB,docB_fold_01.jpg,fold,none,none,normal,bright,yes,no,yes,,"문서 중앙 세로 접힘 1회. 표 선이 꺾임. 원본은 문서가 90도 돌아간 상태(EXIF 정상), oriented/ 에 방향 보정 사본. 기입자 tail"
+tail_005,docC,docC_perspective_01.jpg,perspective,unknown,moderate,normal,bright,no,no,yes,,"90도 회전 + 사선. 방향 확인 필요. 다른 사람이 기입(필체 다름). 지운 흔적 있음"
+tail_006,docC,docC_lighting_01.jpg,lighting,none,none,normal,low,no,no,yes,,"어두움 노이즈 있음. 원본은 문서가 90도 돌아간 상태(EXIF 정상), oriented/ 에 방향 보정 사본. 다른 사람이 기입(필체 다름)"

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "source": "sample_data_jpg/fake_contract_data.md",
+    "source": "sample_data_jpg/sample_data_v1/fake_contract_data.md",
     "note": "이미지에 실제 기입된 내용으로 세트를 매칭함 (파일 번호와 세트 번호가 다른 장: sample_5=#6, sample_6=#5, sample_8=#9, sample_9=#8). null = 미기입(평가 제외).",
     "fields": {
       "address": "소재지",

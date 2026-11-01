@@ -34,7 +34,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from ocr_baseline import get_ocr, run_meta  # noqa: E402  실험 A와 동일한 모델/설정 사용
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_IMAGE_DIR = ROOT / "sample_data_jpg"
+DEFAULT_IMAGE_DIR = ROOT / "sample_data_jpg" / "sample_data_v1"
 
 # 손글씨가 칸 위아래 선을 넘는 경우가 많아서 칸 높이 대비 위아래로 여유를 준다.
 PAD_RATIO = 0.25

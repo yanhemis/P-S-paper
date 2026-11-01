@@ -201,11 +201,17 @@ tail/
 │   ├── 계약서_양식_비교_법무부표준계약서_vs_부동산임대차계약서.md
 │   └── shooting_conditions.md            # 10장 촬영 조건 조합표 (H1 검증용)
 │
-├── sample_data_jpg/           # 입력 이미지
-│   ├── sample_1 ~ sample_10.JPG          # 자체 촬영본 (가짜 정보 손글씨 기입, 4032×3024)
-│   ├── sample_empty.JPG                  # 빈 양식 촬영본
+├── sample_data_jpg/           # 입력 이미지 (sample_data_v1: 기존 10장, sample_data_v2: 신규 촬영 6장)
 │   ├── sample.jpg                        # 팀 공통 샘플 (dahye/bang_/taegu와 동일 파일)
-│   └── fake_contract_data.md             # 세트 #1~#10 가짜 기입 데이터 (= 정답 원본)
+│   ├── sample_data_v1/                   # 기존 10장 (실험 A~C, H1에 사용)
+│   │   ├── sample_1 ~ sample_10.JPG      # 자체 촬영본 (가짜 정보 손글씨 기입, 4032×3024)
+│   │   ├── sample_empty.JPG              # 빈 양식 촬영본
+│   │   └── fake_contract_data.md         # 세트 #1~#10 가짜 기입 데이터 (= 정답 원본)
+│   └── sample_data_v2/                   # 10/21 재배정 신규 난이도 촬영 6장 (docA~C)
+│       ├── docX_<조건>_01.jpg            # 원본(무보정, GPS 제거). 일부는 문서가 90° 돌아감
+│       ├── oriented/                     # EXIF 방향만 바로잡은 사본
+│       ├── manifest_tail.csv             # 촬영 조건 메타데이터
+│       └── fake_contract_data_v2.md      # 실제 기입 내용(GT 초안) + 촬영 결과
 │
 ├── scripts/
 │   ├── ocr_baseline.py        # 실험 A: 전체 페이지 OCR → results/<stem>_ocr.json, _vis.png
@@ -248,10 +254,10 @@ tail/
 conda activate tail
 
 # 실험 A — 전체 페이지 OCR (장당 약 30초)
-python scripts/ocr_baseline.py sample_data_jpg/sample_{1..10}.JPG
+python scripts/ocr_baseline.py sample_data_jpg/sample_data_v1/sample_{1..10}.JPG
 
 # GT ROI 생성 (이미 gt/gt_roi.json 있음. 새 이미지를 추가할 때만 실행하고 gt/check/로 반드시 육안 검수)
-python scripts/make_gt_roi.py sample_data_jpg/sample_{1..10}.JPG
+python scripts/make_gt_roi.py sample_data_jpg/sample_data_v1/sample_{1..10}.JPG
 
 # 실험 B — GT ROI OCR
 python scripts/roi_ocr.py gt/gt_roi.json results/roi_gt
@@ -266,7 +272,7 @@ python scripts/evaluate_fields.py                                  # A vs B
 python scripts/evaluate_fields.py --detected results/roi_detected  # A vs B vs C
 
 # H1 (순서대로, 자세한 옵션은 scripts/h1_quality.py 상단 주석)
-python scripts/h1_quality.py prepare sample_data_jpg/sample_{1..10}.JPG
+python scripts/h1_quality.py prepare sample_data_jpg/sample_data_v1/sample_{1..10}.JPG
 python scripts/ocr_baseline.py results/h1/images/clahe/*.jpg --out-dir results/h1/ocr/clahe --no-vis
 python scripts/ocr_baseline.py results/h1/images/rectified/*.jpg --out-dir results/h1/ocr/rectified --no-vis
 python scripts/h1_quality.py printed results original photo
@@ -317,7 +323,7 @@ tail 최종 마감 **2026-10-07**에서 거꾸로 잡았다. 실험 C 실행 자
 
 ### `bang_` (OpenCV Cell/ROI 검출)
 
-1. **우리 10장에 셀 검출 실행 요청**: `tail/sample_data_jpg/sample_1.JPG ~ sample_10.JPG`
+1. **우리 10장에 셀 검출 실행 요청**: `tail/sample_data_jpg/sample_data_v1/sample_1.JPG ~ sample_10.JPG`
    - 현재 `bang_/output/`에는 공통 `sample.jpg` 결과만 있어서 실험 C를 돌릴 수 없다
 2. **좌표계**: 원본 좌표(EXIF 회전 적용 후)로 주면 가장 좋다. 정렬(deskew) 이미지 좌표로 줄 경우 이미지별 `report.json`(affine 포함)을 함께 달라
    - `sample.jpg` 결과를 affine 역변환해 원본에 겹쳐 본 결과, 표 선에는 정확히 맞았다 → [`results/eval/teammate_roi_check_sample_top.jpg`](results/eval/teammate_roi_check_sample_top.jpg)

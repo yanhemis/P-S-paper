@@ -7,7 +7,7 @@ H1 검증 - "Text bbox는 한국어 자체보다 이미지 품질의 영향을 �
 
 사용법:
     # 1) 호모그래피, 품질 지표, 전처리 이미지(CLAHE / 원근 보정) 생성
-    python h1_quality.py prepare sample_data_jpg/sample_{1..10}.JPG
+    python h1_quality.py prepare sample_data_jpg/sample_data_v1/sample_{1..10}.JPG
 
     # 2) 전처리 이미지 전체 OCR (ocr_baseline.py)
     python ocr_baseline.py results/h1/images/clahe/*.jpg --out-dir results/h1/ocr/clahe --no-vis
@@ -289,7 +289,7 @@ def cmd_report():
     # 검출 입력 해상도: 검출 모델은 이미지 긴 변을 DET_LIMIT_SIDE_LEN(1536)으로 줄여서 본다.
     # 문서가 프레임에서 작을수록(멀리서 촬영) 검출 단계에서 글자가 더 작아진다.
     for s_ in stems:
-        h, w = cv2.imread(str(ROOT / "sample_data_jpg" / f"{s_}.JPG"), cv2.IMREAD_REDUCED_GRAYSCALE_8).shape
+        h, w = cv2.imread(str(ROOT / "sample_data_jpg" / "sample_data_v1" / f"{s_}.JPG"), cv2.IMREAD_REDUCED_GRAYSCALE_8).shape
         long_side = max(h, w) * 8
         q[f"{s_}.JPG"]["det_input_dpi"] = q[f"{s_}.JPG"]["effective_dpi"] * min(1.0, DET_LIMIT_SIDE_LEN / long_side)
     L = ["# H1 — 이미지 품질과 인쇄 글자 / 손글씨 인식\n"]
