@@ -1,6 +1,6 @@
 # tail → dahye 인계: E0 / E1 / E3 / E4 OCR 결과 (2026-10-29)
 
-`issue/03_team_execution_plan_20261021.md` 의 "기존 tail E0/E1/E3/E4 결과를 평가 기준의 출발점으로 인수" 항목용.
+`issue/05_current_team_tasks_20261101.md` 4절(최종 평가 총괄)과 `03_team_execution_plan_20261021.md`의 "기존 tail E0/E1/E3/E4 결과를 평가 기준의 출발점으로 인수" 항목용.
 수치 원본은 모두 이 저장소(`tail/`)의 json이며, 이 문서는 위치와 주의점만 정리한다.
 
 ## 1. 결과 요약 (기존 공통 10장, 평가 필드 49개)
