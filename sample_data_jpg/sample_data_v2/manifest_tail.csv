@@ -5,3 +5,6 @@ tail_003,docB,docB_lighting_01.jpg,lighting,none,none,normal,low,no,no,yes,,"전
 tail_004,docB,docB_fold_01.jpg,fold,none,none,normal,bright,yes,no,yes,,"문서 중앙 세로 접힘 1회. 표 선이 꺾임. 원본은 문서가 90도 돌아간 상태(EXIF 정상), oriented/ 에 방향 보정 사본. 기입자 tail"
 tail_005,docC,docC_perspective_01.jpg,perspective,left,moderate,normal,bright,no,no,yes,,"90도 회전 + 사선(왼쪽에서 촬영, 기입자 확인). 다른 사람이 기입(필체 다름). 지운 흔적 있음"
 tail_006,docC,docC_lighting_01.jpg,lighting,none,none,normal,low,no,no,yes,,"어두움 노이즈 있음. 원본은 문서가 90도 돌아간 상태(EXIF 정상), oriented/ 에 방향 보정 사본. 다른 사람이 기입(필체 다름)"
+tail_007,docA,docA_baseline_01.jpg,baseline,none,none,normal,bright,no,no,yes,,"정면에 가깝게 문서 전체 포함 기준 촬영(약한 기울기). 세로 사진(EXIF 90 CW). 기입자 tail."
+tail_008,docB,docB_baseline_01.jpg,baseline,none,none,normal,bright,no,no,yes,,"정면에 가깝게 문서 전체 포함 기준 촬영(약한 기울기). 세로 사진(EXIF 90 CW). 기입자 tail."
+tail_009,docC,docC_baseline_01.jpg,baseline,none,none,normal,bright,no,no,yes,,"정면에 가깝게 문서 전체 포함 기준 촬영(약한 기울기). 세로 사진(EXIF 90 CW). 다른 사람이 기입(필체 다름)."

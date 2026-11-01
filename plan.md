@@ -36,7 +36,7 @@
 - [ ] 촬영 조건 매핑 확인 (`sample_5/6`, `sample_8/9`) → 기존 10장 H1 표에 계획 조건 열 추가 (선택)
 
 ### 진행 상황 (2026-11-01)
-- [x] 신규 촬영 6장 완료: docA(사선·거리), docB(저조도·접힘), docC(사선·저조도). 무보정 원본, GPS 제거 → `sample_data_jpg/sample_data_v2/`
+- [x] 신규 촬영 9장 완료: 난이도 6장 docA(사선·거리), docB(저조도·접힘), docC(사선·저조도) + 기준(baseline) 3장. 무보정 원본, GPS 제거 → `sample_data_jpg/sample_data_v2/`
 - [x] 메타데이터 `manifest_tail.csv`, 기입 내용(GT 초안) `fake_contract_data_v2.md`, 방향 보정 사본 `oriented/`
 - [ ] 기입자 확인(docA 이름, docB 날짜, docC 이름), docA 사선 각도 재판단, 추가 인원 B 전달
 

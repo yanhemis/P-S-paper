@@ -201,7 +201,7 @@ tail/
 │   ├── 계약서_양식_비교_법무부표준계약서_vs_부동산임대차계약서.md
 │   └── shooting_conditions.md            # 10장 촬영 조건 조합표 (H1 검증용)
 │
-├── sample_data_jpg/           # 입력 이미지 (sample_data_v1: 기존 10장, sample_data_v2: 신규 촬영 6장)
+├── sample_data_jpg/           # 입력 이미지 (sample_data_v1: 기존 10장, sample_data_v2: 신규 촬영 9장(기준 3 + 난이도 6))
 │   ├── sample.jpg                        # 팀 공통 샘플 (dahye/bang_/taegu와 동일 파일)
 │   ├── sample_data_v1/                   # 기존 10장 (실험 A~C, H1에 사용)
 │   │   ├── sample_1 ~ sample_10.JPG      # 자체 촬영본 (가짜 정보 손글씨 기입, 4032×3024)

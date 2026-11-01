@@ -1,7 +1,7 @@
 # 신규 촬영 데이터 v2 — 기입 내용(GT 초안) 및 촬영 메타데이터
 
 > 작성: 2026-11-01 · 담당: tail (난이도 촬영 / 이미지 품질 메타데이터)
-> 양식: 기존과 같은 `contractForm/**부동산임대차계약서_양식.pdf` 1페이지, 3문서(docA~C), 사진 6장
+> 양식: 기존과 같은 `contractForm/**부동산임대차계약서_양식.pdf` 1페이지, 3문서(docA~C), 사진 9장
 > 모든 인명·번지·전화·주민번호·등록번호는 가상 데이터. ★ = 핵심 5필드(GT 대상)
 > 메타데이터 표(csv): [`manifest_tail.csv`](manifest_tail.csv)
 
@@ -12,16 +12,21 @@
 - 사진 6장은 **무보정 원본**이다 (GPS만 제거. 방향 정보 EXIF는 유지). 원본 백업은 작업 폴더(scratchpad)에만 있고 repo에 없다.
 - docB~docC 사진 4장은 **문서가 90° 돌아간 채** 촬영됐고 EXIF 방향이 "정상(Horizontal)"이었다. 루트 폴더의 원본은 그대로 두고, **`oriented/` 폴더에 방향만 바로잡은 사본**을 만들었다 (픽셀은 건드리지 않고 EXIF 방향 태그만 `Rotate 90 CW`로 설정, 6장 전부 정방향 확인). 평가·표시에는 `oriented/`를 쓰고, 원본 보존이 필요하면 루트 파일을 쓴다. 좌표는 EXIF 회전 적용 후 기준(tail 규격과 동일)이다.
 
-## 2. 촬영 결과 (6장, 전부 usable 후보)
+## 2. 촬영 결과 (9장, 전부 usable 후보)
 
 | 파일 | 문서 | 조건 | 수준 / 방향 | 상태 | 메모 |
 |---|---|---|---|---|---|
+| `docA_baseline_01.jpg` | docA | baseline | 정면에 가까움 | usable | 기준 촬영, 문서 전체 포함, 밝음 (세로 사진) |
+| `docB_baseline_01.jpg` | docB | baseline | 정면에 가까움 | usable | 기준 촬영 (세로 사진) |
+| `docC_baseline_01.jpg` | docC | baseline | 정면에 가까움 | usable | 기준 촬영. **docC는 다른 필기자** (세로 사진) |
 | `docA_perspective_01.jpg` | docA | perspective | 강함(육안 약 25~30° 추정) / left(추정) | usable | 가이드(10~20°)보다 큼. 상단으로 갈수록 글자가 작아짐. 오른쪽 위에 펜·스탠드 입사. 세로 사진(EXIF 90° CW) |
 | `docA_distance_01.jpg` | docA | distance | far (문서가 프레임 가로 약 58%) | usable | 정면, 밝음. 글자는 확대하면 판독 가능. 세로 사진 |
 | `docB_lighting_01.jpg` | docB | lighting | low (전체적으로 어두움) | usable(확대 필요) | 노이즈 있음. 문서가 90° 회전된 상태, 약한 기울기 |
 | `docB_fold_01.jpg` | docB | fold | 접힘 1회 (문서 중앙을 세로로 가로지르는 선, 표 선이 꺾임) | usable | 밝음. 90° 회전, 가장자리 누락 없음 |
 | `docC_perspective_01.jpg` | docC | perspective | moderate(추정) / left(기입자 확인) | usable | 90° 회전 + 사선. 왼쪽 위 펜 입사. **docC는 다른 필기자** |
 | `docC_lighting_01.jpg` | docC | lighting | low (어두움) | usable(확대 필요) | 노이즈 있음, 거의 정면, 90° 회전. **다른 필기자** |
+
+baseline 3장은 처음에 `original_JPG/` 폴더에 넣어 둔 "그냥 찍은 사진"이며 GPS 제거 후 위 파일명으로 정리했다 (문서 3개 각 1장). 정면 기준이라 `oriented/`에도 같은 파일을 두었다.
 
 공통: 스마트폰 기본 카메라, 4032×3024, 무보정. `usable`은 모두 `yes`지만 lighting 2장은 확대해야 읽힌다 (실패 가능성이 높은 조건이므로 정상 포함).
 
