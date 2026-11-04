@@ -1,0 +1,374 @@
+{
+  "image_id": "sample.jpg",
+  "pipeline": "P4 anchor ROI -> original image crop -> second-pass OCR -> conservative normalization",
+  "normalization_note": "NFC/whitespace only; team-wide comparison must use Dahye's common evaluator",
+  "first_pass_source": "cached_ocr",
+  "total_sec": 11.9423,
+  "fields": {
+    "address": {
+      "prediction": "서울특별시 강남구 테헤란로 123,4 401",
+      "normalized_prediction": "서울특별시 강남구 테헤란로 123,4 401",
+      "raw_reocr_prediction": "테헤란로 123,4 401 서울특별시 강남구 (대지권의 목적인 CO0 m",
+      "confidence": 0.9417166113853455,
+      "ocr_tokens": [
+        {
+          "text": "테헤란로",
+          "score": 0.9965852499008179,
+          "bbox_in_crop": [
+            423,
+            17,
+            634,
+            81
+          ]
+        },
+        {
+          "text": "123,4 401",
+          "score": 0.9417166113853455,
+          "bbox_in_crop": [
+            642,
+            11,
+            983,
+            78
+          ]
+        },
+        {
+          "text": "서울특별시",
+          "score": 0.9570302963256836,
+          "bbox_in_crop": [
+            46,
+            27,
+            245,
+            89
+          ]
+        },
+        {
+          "text": "강남구",
+          "score": 0.9909322261810303,
+          "bbox_in_crop": [
+            267,
+            24,
+            408,
+            85
+          ]
+        },
+        {
+          "text": "(대지권의",
+          "score": 0.9998590350151062,
+          "bbox_in_crop": [
+            507,
+            85,
+            678,
+            126
+          ]
+        },
+        {
+          "text": "목적인",
+          "score": 0.999399721622467,
+          "bbox_in_crop": [
+            691,
+            81,
+            809,
+            124
+          ]
+        },
+        {
+          "text": "CO0",
+          "score": 0.6268815994262695,
+          "bbox_in_crop": [
+            868,
+            92,
+            954,
+            126
+          ]
+        },
+        {
+          "text": "m",
+          "score": 0.9915251135826111,
+          "bbox_in_crop": [
+            1012,
+            103,
+            1045,
+            126
+          ]
+        }
+      ],
+      "selected_tokens": [
+        {
+          "text": "서울특별시",
+          "score": 0.9570302963256836,
+          "bbox_in_crop": [
+            46,
+            27,
+            245,
+            89
+          ]
+        },
+        {
+          "text": "강남구",
+          "score": 0.9909322261810303,
+          "bbox_in_crop": [
+            267,
+            24,
+            408,
+            85
+          ]
+        },
+        {
+          "text": "테헤란로",
+          "score": 0.9965852499008179,
+          "bbox_in_crop": [
+            423,
+            17,
+            634,
+            81
+          ]
+        },
+        {
+          "text": "123,4 401",
+          "score": 0.9417166113853455,
+          "bbox_in_crop": [
+            642,
+            11,
+            983,
+            78
+          ]
+        }
+      ],
+      "selection_info": {
+        "method": "anchor_row_and_field_format_v1",
+        "raw_token_count": 8,
+        "expected_row_center_y_in_crop": 63.5,
+        "allowed_row_center_distance": 41.25,
+        "near_row_token_count": 4,
+        "selected_token_count": 4,
+        "discarded_token_count": 4
+      },
+      "failure_reason": "OCR_FAILURE",
+      "failure_review_note": "GT-based classification is provisional; OCR_FAILURE may include value-selection errors"
+    },
+    "deposit": {
+      "prediction": "일억",
+      "normalized_prediction": "일억",
+      "raw_reocr_prediction": "따라 임 일억 원정은",
+      "confidence": 0.9900655746459961,
+      "ocr_tokens": [
+        {
+          "text": "따라",
+          "score": 0.9999644160270691,
+          "bbox_in_crop": [
+            23,
+            0,
+            103,
+            38
+          ]
+        },
+        {
+          "text": "임",
+          "score": 0.9976921081542969,
+          "bbox_in_crop": [
+            118,
+            0,
+            163,
+            34
+          ]
+        },
+        {
+          "text": "일억",
+          "score": 0.9900655746459961,
+          "bbox_in_crop": [
+            36,
+            45,
+            132,
+            107
+          ]
+        },
+        {
+          "text": "원정은",
+          "score": 0.9916021823883057,
+          "bbox_in_crop": [
+            42,
+            120,
+            154,
+            149
+          ]
+        }
+      ],
+      "selected_tokens": [
+        {
+          "text": "일억",
+          "score": 0.9900655746459961,
+          "bbox_in_crop": [
+            36,
+            45,
+            132,
+            107
+          ]
+        }
+      ],
+      "selection_info": {
+        "method": "anchor_row_and_field_format_v1",
+        "raw_token_count": 4,
+        "expected_row_center_y_in_crop": 97.5,
+        "allowed_row_center_distance": 35.25,
+        "near_row_token_count": 1,
+        "selected_token_count": 1,
+        "discarded_token_count": 3
+      },
+      "failure_reason": null,
+      "failure_review_note": null
+    },
+    "contract_amount": {
+      "prediction": "일천만",
+      "normalized_prediction": "일천만",
+      "raw_reocr_prediction": "일천만 사천2",
+      "confidence": 0.9920384287834167,
+      "ocr_tokens": [
+        {
+          "text": "일천만",
+          "score": 0.9920384287834167,
+          "bbox_in_crop": [
+            40,
+            49,
+            213,
+            121
+          ]
+        },
+        {
+          "text": "사천2",
+          "score": 0.7708423733711243,
+          "bbox_in_crop": [
+            104,
+            111,
+            260,
+            165
+          ]
+        }
+      ],
+      "selected_tokens": [
+        {
+          "text": "일천만",
+          "score": 0.9920384287834167,
+          "bbox_in_crop": [
+            40,
+            49,
+            213,
+            121
+          ]
+        }
+      ],
+      "selection_info": {
+        "method": "anchor_row_and_field_format_v1",
+        "raw_token_count": 2,
+        "expected_row_center_y_in_crop": 95.5,
+        "allowed_row_center_distance": 36.75,
+        "near_row_token_count": 1,
+        "selected_token_count": 1,
+        "discarded_token_count": 1
+      },
+      "failure_reason": null,
+      "failure_review_note": null
+    },
+    "lessor_name": {
+      "prediction": "고결",
+      "normalized_prediction": "고결",
+      "raw_reocr_prediction": "고결 (인)",
+      "confidence": 0.8947733640670776,
+      "ocr_tokens": [
+        {
+          "text": "고결",
+          "score": 0.8947733640670776,
+          "bbox_in_crop": [
+            34,
+            26,
+            149,
+            101
+          ]
+        },
+        {
+          "text": "(인)",
+          "score": 0.9945750832557678,
+          "bbox_in_crop": [
+            396,
+            33,
+            472,
+            83
+          ]
+        }
+      ],
+      "selected_tokens": [
+        {
+          "text": "고결",
+          "score": 0.8947733640670776,
+          "bbox_in_crop": [
+            34,
+            26,
+            149,
+            101
+          ]
+        }
+      ],
+      "selection_info": {
+        "method": "anchor_row_and_field_format_v1",
+        "raw_token_count": 2,
+        "expected_row_center_y_in_crop": 68.0,
+        "allowed_row_center_distance": 45.0,
+        "near_row_token_count": 2,
+        "selected_token_count": 1,
+        "discarded_token_count": 1
+      },
+      "failure_reason": null,
+      "failure_review_note": null
+    },
+    "lessee_name": {
+      "prediction": "김영수",
+      "normalized_prediction": "김영수",
+      "raw_reocr_prediction": "김영수 (인)",
+      "confidence": 0.9948828816413879,
+      "ocr_tokens": [
+        {
+          "text": "김영수",
+          "score": 0.9948828816413879,
+          "bbox_in_crop": [
+            33,
+            26,
+            174,
+            100
+          ]
+        },
+        {
+          "text": "(인)",
+          "score": 0.9990284442901611,
+          "bbox_in_crop": [
+            402,
+            33,
+            476,
+            81
+          ]
+        }
+      ],
+      "selected_tokens": [
+        {
+          "text": "김영수",
+          "score": 0.9948828816413879,
+          "bbox_in_crop": [
+            33,
+            26,
+            174,
+            100
+          ]
+        }
+      ],
+      "selection_info": {
+        "method": "anchor_row_and_field_format_v1",
+        "raw_token_count": 2,
+        "expected_row_center_y_in_crop": 66.0,
+        "allowed_row_center_distance": 43.5,
+        "near_row_token_count": 2,
+        "selected_token_count": 1,
+        "discarded_token_count": 1
+      },
+      "failure_reason": null,
+      "failure_review_note": null
+    }
+  }
+}

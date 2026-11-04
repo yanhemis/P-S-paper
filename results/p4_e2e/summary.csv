@@ -1,0 +1,6 @@
+﻿image_id,field,roi_found,prediction,normalized_prediction,failure_reason,gt_raw_text,field_exact_match_raw,roi_gt_coverage,full_image_ocr_sec,roi_reocr_sec,total_sec
+sample.jpg,address,True,"서울특별시 강남구 테헤란로 123,4 401","서울특별시 강남구 테헤란로 123,4 401",OCR_FAILURE,"서울특별시 강남구 테헤란로 123, 4층 401",False,1.000000,0.0018,4.8146,11.9423
+sample.jpg,deposit,True,일억,일억,,일억,True,1.000000,0.0018,1.4735,11.9423
+sample.jpg,contract_amount,True,일천만,일천만,,일천만,True,1.000000,0.0018,1.2998,11.9423
+sample.jpg,lessor_name,True,고결,고결,,고결,True,1.000000,0.0018,1.9802,11.9423
+sample.jpg,lessee_name,True,김영수,김영수,,김영수,True,1.000000,0.0018,2.0016,11.9423
