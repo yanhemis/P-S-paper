@@ -87,6 +87,7 @@ P4는 아직 공통 10장 및 신규 데이터 전체에 대한 평가가 아니
 | [공통 필드 평가 감사](common10_field_eval_audit.md) | 평가 대상과 분모 일치성 |
 | [정규화 재현성 감사](common10_normalization_audit.md) | 기존 정규화 결과 검증 |
 | [P4 기존 PoC 감사](p4_anchor_poc_audit.md) | 기존 단일 이미지 PoC 근거 |
+| [P4 최신 End-to-End 평가 감사](p4_e2e_sample_audit.md) | ROI 생성 5/5, 원문 정확도 4/5, 주소 문자 누락 및 실행 시간 검증 |
 | [금액 정규화 검증 보고서](amount_normalization_audit.md) | 숫자 정규화 및 계약금 재평가 |
 | [금액 정규화 코드](../../scripts/eval_gatekeeper/amount_normalizer.py) | 평가용 금액 변환 구현 |
 
