@@ -60,6 +60,11 @@ def normalize_amount(text):
             if unit >= last_big:
                 return None
             chunk = section + (pending if pending is not None else 0)
+
+            # 앞선 큰 단위 뒤에 금액 없이 다른 큰 단위가 나오면 거부
+            if chunk == 0 and total > 0:
+                return None
+
             total += (chunk if chunk else 1) * unit
             section = 0
             pending = None
@@ -81,6 +86,12 @@ if __name__ == "__main__":
         "1백만": "1000000",
         "금 오백만원정": "5000000",
         "1,800만원": "18000000",
+        "십이만": "120000",
+        "이억삼천만원": "230000000",
+        "1억2천만원": "120000000",
+        "금 1,200,000원정": "1200000",
+        "일억만": None,
+        "이천만계약시": None,
         "소십만": None,
         "일벽만": None,
         "이전오백만": None,

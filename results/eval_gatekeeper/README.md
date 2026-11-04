@@ -65,7 +65,8 @@ P4는 아직 공통 10장 및 신규 데이터 전체에 대한 평가가 아니
 
 검증 결과:
 
-- 정규화 단위 테스트: **14/14 통과**
+- 정규화 단위 테스트: **20/20 통과**
+- 추가 예외 검증: **7/7 통과** (일부 사례는 단위 테스트와 중복)
 - 기존 계약금 GT 변환: **9/9 성공**
 - 계약금 숫자 기준 정확도:
   - P0: **6/9**
@@ -84,12 +85,15 @@ P4는 아직 공통 10장 및 신규 데이터 전체에 대한 평가가 아니
 | [공통 10장 최종 비교표](common10_final_comparison.md) | P0~P3 성능 비교 및 해석상 한계 |
 | [최종 평가 프로토콜 초안](final_evaluation_protocol.md) | 필드, 정규화, 분모, ROI 및 holdout 평가 규칙 |
 | [P3 ROI 감사](p3_roi_audit_common10.md) | ROI 누락 및 필드별 실패 검증 |
+| [P3 실패 유형 상세 분석](p3_failure_breakdown_common10.md) | 49개 필드 중 빈 예측 27건, 정답 13건, 비어 있지 않은 오답 9건 분석 |
 | [공통 필드 평가 감사](common10_field_eval_audit.md) | 평가 대상과 분모 일치성 |
 | [정규화 재현성 감사](common10_normalization_audit.md) | 기존 정규화 결과 검증 |
 | [P4 기존 PoC 감사](p4_anchor_poc_audit.md) | 기존 단일 이미지 PoC 근거 |
 | [P4 최신 End-to-End 평가 감사](p4_e2e_sample_audit.md) | ROI 생성 5/5, 원문 정확도 4/5, 주소 문자 누락 및 실행 시간 검증 |
 | [금액 정규화 검증 보고서](amount_normalization_audit.md) | 숫자 정규화 및 계약금 재평가 |
 | [금액 정규화 코드](../../scripts/eval_gatekeeper/amount_normalizer.py) | 평가용 금액 변환 구현 |
+| [공통 평가기 코드](../../scripts/eval_gatekeeper/common_evaluator.py) | P0~P3 공통 10장 재평가, 금액 전처리 및 누락 예측 처리 (DRAFT) |
+| [공통 평가기 자동 테스트](../../scripts/eval_gatekeeper/test_common_evaluator.py) | 평가 분모, 필드·이미지 누락, 금액 파싱 및 중복 예측 검증 (5개 테스트 통과) |
 
 기존 RQ2 구조 복원 평가 및 연구 기록은 저장소 루트의 `README.md`에서 별도로 확인할 수 있다.
 
