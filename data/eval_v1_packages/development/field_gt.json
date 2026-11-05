@@ -1,0 +1,573 @@
+{
+  "common_001": {
+    "document_group_id": "common_doc01",
+    "fields": {
+      "address": {
+        "raw_text": "????? ??? ???? 45? 12, 301?",
+        "normalized": "????? ??? ???? 45? 12, 301?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "?????",
+        "normalized": "180000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "?????",
+        "normalized": "18000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "common_002": {
+    "document_group_id": "common_doc02",
+    "fields": {
+      "address": {
+        "raw_text": "????? ??? ??? 210, ?? 102?",
+        "normalized": "????? ??? ??? 210, ?? 102?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "???",
+        "normalized": "10000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "???",
+        "normalized": "1000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "common_003": {
+    "document_group_id": "common_doc03",
+    "fields": {
+      "address": {
+        "raw_text": "??? ??? ??? ??? 256?? 33, 1204? 803?",
+        "normalized": "??? ??? ??? ??? 256?? 33, 1204? 803?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "?? ???",
+        "normalized": "250000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "?????",
+        "normalized": "25000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "common_004": {
+    "document_group_id": "common_doc04",
+    "fields": {
+      "address": {
+        "raw_text": "????? ???? ????? 79, 1508?",
+        "normalized": "????? ???? ????? 79, 1508?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "???",
+        "normalized": "30000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "???",
+        "normalized": "3000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "common_005": {
+    "document_group_id": "common_doc05",
+    "fields": {
+      "address": {
+        "raw_text": "????? ??? ???? 283, 302?",
+        "normalized": "????? ??? ???? 283, 302?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "???",
+        "normalized": "5000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "???",
+        "normalized": "500000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "common_006": {
+    "document_group_id": "common_doc06",
+    "fields": {
+      "address": {
+        "raw_text": "????? ??? ??? 99, ???? 201?",
+        "normalized": "????? ??? ??? 99, ???? 201?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "?? ???",
+        "normalized": "320000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "?? ???",
+        "normalized": "32000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "common_007": {
+    "document_group_id": "common_doc07",
+    "fields": {
+      "address": {
+        "raw_text": "????? ?? ????? 123, 5? 502?",
+        "normalized": "????? ?? ????? 123, 5? 502?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "?? ?????",
+        "normalized": "145000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "",
+        "normalized": "",
+        "bbox": null,
+        "status": "not_present"
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "common_008": {
+    "document_group_id": "common_doc08",
+    "fields": {
+      "address": {
+        "raw_text": "??? ??? ??? ????? 145, 2301? 1502?",
+        "normalized": "??? ??? ??? ????? 145, 2301? 1502?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "?????",
+        "normalized": "410000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "?????",
+        "normalized": "41000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "????",
+        "normalized": "????",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "????",
+        "normalized": "????",
+        "bbox": null
+      }
+    }
+  },
+  "common_009": {
+    "document_group_id": "common_doc09",
+    "fields": {
+      "address": {
+        "raw_text": "????? ??? ???? 115, 1103?",
+        "normalized": "????? ??? ???? 115, 1103?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "???",
+        "normalized": "50000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "???",
+        "normalized": "5000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "common_010": {
+    "document_group_id": "common_doc10",
+    "fields": {
+      "address": {
+        "raw_text": "????? ??? ????? 2350, 405?",
+        "normalized": "????? ??? ????? 2350, 405?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "???",
+        "normalized": "20000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "???",
+        "normalized": "2000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "heewon_001": {
+    "document_group_id": "heewon_docA",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 노원구 가상길 123, 201호",
+        "normalized": "서울특별시 노원구 가상길 123, 201호",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "일억",
+        "normalized": "100000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "일천만",
+        "normalized": "10000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "김민수",
+        "normalized": "김민수",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "이서연",
+        "normalized": "이서연",
+        "bbox": null
+      }
+    }
+  },
+  "heewon_002": {
+    "document_group_id": "heewon_docA",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 노원구 가상길 123, 201호",
+        "normalized": "서울특별시 노원구 가상길 123, 201호",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "일억",
+        "normalized": "100000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "일천만",
+        "normalized": "10000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "김민수",
+        "normalized": "김민수",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "이서연",
+        "normalized": "이서연",
+        "bbox": null
+      }
+    }
+  },
+  "heewon_003": {
+    "document_group_id": "heewon_docA",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 노원구 가상길 123, 201호",
+        "normalized": "서울특별시 노원구 가상길 123, 201호",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "일억",
+        "normalized": "100000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "일천만",
+        "normalized": "10000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "김민수",
+        "normalized": "김민수",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "이서연",
+        "normalized": "이서연",
+        "bbox": null
+      }
+    }
+  },
+  "heewon_004": {
+    "document_group_id": "heewon_docB",
+    "fields": {
+      "address": {
+        "raw_text": "????? ??? ??? 45",
+        "normalized": "????? ??? ??? 45",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "???",
+        "normalized": "80000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "???",
+        "normalized": "8000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "heewon_005": {
+    "document_group_id": "heewon_docB",
+    "fields": {
+      "address": {
+        "raw_text": "????? ??? ??? 45",
+        "normalized": "????? ??? ??? 45",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "???",
+        "normalized": "80000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "???",
+        "normalized": "8000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "heewon_006": {
+    "document_group_id": "heewon_docB",
+    "fields": {
+      "address": {
+        "raw_text": "????? ??? ??? 45",
+        "normalized": "????? ??? ??? 45",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "???",
+        "normalized": "80000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "???",
+        "normalized": "8000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "tail_001": {
+    "document_group_id": "tail_docA",
+    "fields": {
+      "address": {
+        "raw_text": "????? ??? ????? 163, 702?",
+        "normalized": "????? ??? ????? 163, 702?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "?????",
+        "normalized": "270000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "?????",
+        "normalized": "27000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "tail_002": {
+    "document_group_id": "tail_docA",
+    "fields": {
+      "address": {
+        "raw_text": "????? ??? ????? 163, 702?",
+        "normalized": "????? ??? ????? 163, 702?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "?????",
+        "normalized": "270000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "?????",
+        "normalized": "27000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  },
+  "tail_007": {
+    "document_group_id": "tail_docA",
+    "fields": {
+      "address": {
+        "raw_text": "????? ??? ????? 163, 702?",
+        "normalized": "????? ??? ????? 163, 702?",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "?????",
+        "normalized": "270000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "?????",
+        "normalized": "27000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": null
+      }
+    }
+  }
+}

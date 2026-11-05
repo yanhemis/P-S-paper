@@ -1,0 +1,20 @@
+image_id,document_group_id,filename,condition,perspective_direction,perspective_level,distance_level,lighting,fold,crop,usable,split,notes
+common_001,common_doc01,images/existing/sample_1.JPG,unknown,,,,,,,yes,development,기존 공통 데이터; 문서 그룹 확인 필요
+common_002,common_doc02,images/existing/sample_2.JPG,unknown,,,,,,,yes,development,기존 공통 데이터; 문서 그룹 확인 필요
+common_003,common_doc03,images/existing/sample_3.JPG,unknown,,,,,,,yes,development,기존 공통 데이터; 문서 그룹 확인 필요
+common_004,common_doc04,images/existing/sample_4.JPG,unknown,,,,,,,yes,development,기존 공통 데이터; 문서 그룹 확인 필요
+common_005,common_doc05,images/existing/sample_5.JPG,unknown,,,,,,,yes,development,기존 공통 데이터; 문서 그룹 확인 필요
+common_006,common_doc06,images/existing/sample_6.JPG,unknown,,,,,,,yes,development,기존 공통 데이터; 문서 그룹 확인 필요
+common_007,common_doc07,images/existing/sample_7.JPG,unknown,,,,,,,yes,development,기존 공통 데이터; 문서 그룹 확인 필요
+common_008,common_doc08,images/existing/sample_8.JPG,unknown,,,,,,,yes,development,기존 공통 데이터; 문서 그룹 확인 필요
+common_009,common_doc09,images/existing/sample_9.JPG,unknown,,,,,,,yes,development,기존 공통 데이터; 문서 그룹 확인 필요
+common_010,common_doc10,images/existing/sample_10.JPG,unknown,,,,,,,yes,development,기존 공통 데이터; 문서 그룹 확인 필요
+heewon_001,heewon_docA,images/heewon/docA_Baseline.jpg,baseline,,,,,,,yes,development,희원님 README 기준; 세부 조건 검수 필요
+heewon_002,heewon_docA,images/heewon/docA_distance_far.jpg,distance,,,,,,,yes,development,희원님 README 기준; 세부 조건 검수 필요
+heewon_003,heewon_docA,images/heewon/docA_perspective.jpg,perspective,,,,,,,yes,development,희원님 README 기준; 세부 조건 검수 필요
+heewon_004,heewon_docB,images/heewon/docB_Baseline.jpg,baseline,,,,,,,yes,development,희원님 README 기준; 세부 조건 검수 필요
+heewon_005,heewon_docB,images/heewon/docB_perspective.jpg,perspective,,,,,,,yes,development,희원님 README 기준; 세부 조건 검수 필요
+heewon_006,heewon_docB,images/heewon/docB_perspective_02.jpg,perspective,,,,,,,yes,development,희원님 README 기준; 세부 조건 검수 필요
+tail_001,tail_docA,images/tail/docA_perspective_01.jpg,perspective,left,strong,normal,bright,no,no,yes,development,사선 약 25~30도 추정(가이드 10~20도 초과 가능). 방향 추정. 세로 사진(EXIF 90 CW). 기입자 tail
+tail_002,tail_docA,images/tail/docA_distance_01.jpg,distance,none,none,far,bright,no,no,yes,development,문서가 프레임 가로 약 58%. 정면. 세로 사진(EXIF 90 CW). 기입자 tail
+tail_007,tail_docA,images/tail/docA_baseline_01.jpg,baseline,none,none,normal,bright,no,no,yes,development,정면에 가깝게 문서 전체 포함 기준 촬영(약한 기울기). 세로 사진(EXIF 90 CW). 기입자 tail.
