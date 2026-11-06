@@ -1,0 +1,12 @@
+{
+  "image": "docB_perspective_02.jpg",
+  "source_image": "docB_perspective_02.jpg",
+  "method": "opencv_grid_merge",
+  "rotation_deg": 0.0,
+  "cells": [
+    {"id": 0, "table": 0, "bbox": [2007, 462, 2160, 976], "type": "general", "primitive_cells": [[0, 0]]},
+    {"id": 1, "table": 0, "bbox": [2159, 438, 2601, 952], "type": "general", "primitive_cells": [[0, 1]]},
+    {"id": 2, "table": 0, "bbox": [2036, 975, 2189, 1219], "type": "general", "primitive_cells": [[1, 0]]},
+    {"id": 3, "table": 0, "bbox": [2188, 951, 2630, 1195], "type": "general", "primitive_cells": [[1, 1]]}
+  ]
+}

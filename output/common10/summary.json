@@ -1,0 +1,72 @@
+[
+  {
+    "image_id": "sample_1",
+    "target_fields": 5,
+    "detected_fields": 5,
+    "roi_coverage": 1.0,
+    "failure_reason": ""
+  },
+  {
+    "image_id": "sample_2",
+    "target_fields": 5,
+    "detected_fields": 5,
+    "roi_coverage": 1.0,
+    "failure_reason": ""
+  },
+  {
+    "image_id": "sample_3",
+    "target_fields": 5,
+    "detected_fields": 1,
+    "roi_coverage": 0.2,
+    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessee_name:ROW_MERGE"
+  },
+  {
+    "image_id": "sample_4",
+    "target_fields": 5,
+    "detected_fields": 5,
+    "roi_coverage": 1.0,
+    "failure_reason": ""
+  },
+  {
+    "image_id": "sample_5",
+    "target_fields": 5,
+    "detected_fields": 0,
+    "roi_coverage": 0.0,
+    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING"
+  },
+  {
+    "image_id": "sample_6",
+    "target_fields": 5,
+    "detected_fields": 2,
+    "roi_coverage": 0.4,
+    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE"
+  },
+  {
+    "image_id": "sample_7",
+    "target_fields": 4,
+    "detected_fields": 0,
+    "roi_coverage": 0.0,
+    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING"
+  },
+  {
+    "image_id": "sample_8",
+    "target_fields": 5,
+    "detected_fields": 2,
+    "roi_coverage": 0.4,
+    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE"
+  },
+  {
+    "image_id": "sample_9",
+    "target_fields": 5,
+    "detected_fields": 1,
+    "roi_coverage": 0.2,
+    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessee_name:ROW_MERGE"
+  },
+  {
+    "image_id": "sample_10",
+    "target_fields": 5,
+    "detected_fields": 0,
+    "roi_coverage": 0.0,
+    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING"
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "image": "sample_5.JPG",
+  "source_image": "sample_5.JPG",
+  "method": "opencv_grid_merge",
+  "rotation_deg": 0.0,
+  "cells": [
+    {"id": 0, "table": 0, "bbox": [546, 877, 2650, 1268], "type": "merged", "primitive_cells": [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], [0, 8], [0, 9]]}
+  ]
+}

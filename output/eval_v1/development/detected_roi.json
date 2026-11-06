@@ -1,0 +1,989 @@
+{
+  "common_001": {
+    "image_id": "common_001",
+    "source_image": "images/existing/sample_1.JPG",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {
+      "address": {
+        "quad": [
+          [
+            607,
+            594
+          ],
+          [
+            2675,
+            594
+          ],
+          [
+            2675,
+            650
+          ],
+          [
+            607,
+            650
+          ]
+        ],
+        "cell_id": 2
+      },
+      "deposit": {
+        "quad": [
+          [
+            607,
+            986
+          ],
+          [
+            2675,
+            986
+          ],
+          [
+            2675,
+            1047
+          ],
+          [
+            607,
+            1047
+          ]
+        ],
+        "cell_id": 23
+      },
+      "contract_amount": {
+        "quad": [
+          [
+            607,
+            1047
+          ],
+          [
+            2675,
+            1047
+          ],
+          [
+            2675,
+            1102
+          ],
+          [
+            607,
+            1102
+          ]
+        ],
+        "cell_id": 25
+      },
+      "lessor_name": {
+        "quad": [
+          [
+            2268,
+            2946
+          ],
+          [
+            2584,
+            2946
+          ],
+          [
+            2584,
+            3015
+          ],
+          [
+            2268,
+            3015
+          ]
+        ],
+        "cell_id": 41
+      },
+      "lessee_name": {
+        "quad": [
+          [
+            2268,
+            3152
+          ],
+          [
+            2584,
+            3152
+          ],
+          [
+            2584,
+            3224
+          ],
+          [
+            2268,
+            3224
+          ]
+        ],
+        "cell_id": 58
+      }
+    }
+  },
+  "common_002": {
+    "image_id": "common_002",
+    "source_image": "images/existing/sample_2.JPG",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {
+      "address": {
+        "quad": [
+          [
+            549,
+            497
+          ],
+          [
+            2720,
+            497
+          ],
+          [
+            2720,
+            554
+          ],
+          [
+            549,
+            554
+          ]
+        ],
+        "cell_id": 2
+      },
+      "deposit": {
+        "quad": [
+          [
+            549,
+            904
+          ],
+          [
+            2720,
+            904
+          ],
+          [
+            2720,
+            966
+          ],
+          [
+            549,
+            966
+          ]
+        ],
+        "cell_id": 23
+      },
+      "contract_amount": {
+        "quad": [
+          [
+            549,
+            966
+          ],
+          [
+            2720,
+            966
+          ],
+          [
+            2720,
+            1028
+          ],
+          [
+            549,
+            1028
+          ]
+        ],
+        "cell_id": 25
+      },
+      "lessor_name": {
+        "quad": [
+          [
+            2277,
+            2944
+          ],
+          [
+            2605,
+            2944
+          ],
+          [
+            2605,
+            3018
+          ],
+          [
+            2277,
+            3018
+          ]
+        ],
+        "cell_id": 41
+      },
+      "lessee_name": {
+        "quad": [
+          [
+            2277,
+            3165
+          ],
+          [
+            2605,
+            3165
+          ],
+          [
+            2605,
+            3238
+          ],
+          [
+            2277,
+            3238
+          ]
+        ],
+        "cell_id": 58
+      }
+    }
+  },
+  "common_003": {
+    "image_id": "common_003",
+    "source_image": "images/existing/sample_3.JPG",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {
+      "lessor_name": {
+        "quad": [
+          [
+            2218,
+            2896
+          ],
+          [
+            2552,
+            2911
+          ],
+          [
+            2549,
+            2987
+          ],
+          [
+            2214,
+            2972
+          ]
+        ],
+        "cell_id": 13
+      }
+    }
+  },
+  "common_004": {
+    "image_id": "common_004",
+    "source_image": "images/existing/sample_4.JPG",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {
+      "address": {
+        "quad": [
+          [
+            652,
+            554
+          ],
+          [
+            2686,
+            554
+          ],
+          [
+            2686,
+            615
+          ],
+          [
+            652,
+            615
+          ]
+        ],
+        "cell_id": 2
+      },
+      "deposit": {
+        "quad": [
+          [
+            652,
+            970
+          ],
+          [
+            2686,
+            970
+          ],
+          [
+            2686,
+            1032
+          ],
+          [
+            652,
+            1032
+          ]
+        ],
+        "cell_id": 23
+      },
+      "contract_amount": {
+        "quad": [
+          [
+            652,
+            1032
+          ],
+          [
+            2686,
+            1032
+          ],
+          [
+            2686,
+            1091
+          ],
+          [
+            652,
+            1091
+          ]
+        ],
+        "cell_id": 25
+      },
+      "lessor_name": {
+        "quad": [
+          [
+            2208,
+            2835
+          ],
+          [
+            2505,
+            2835
+          ],
+          [
+            2505,
+            2900
+          ],
+          [
+            2208,
+            2900
+          ]
+        ],
+        "cell_id": 41
+      },
+      "lessee_name": {
+        "quad": [
+          [
+            2208,
+            3027
+          ],
+          [
+            2505,
+            3027
+          ],
+          [
+            2505,
+            3090
+          ],
+          [
+            2208,
+            3090
+          ]
+        ],
+        "cell_id": 57
+      }
+    }
+  },
+  "common_005": {
+    "image_id": "common_005",
+    "source_image": "images/existing/sample_5.JPG",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {}
+  },
+  "common_006": {
+    "image_id": "common_006",
+    "source_image": "images/existing/sample_6.JPG",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {
+      "lessor_name": {
+        "quad": [
+          [
+            2239,
+            2917
+          ],
+          [
+            2567,
+            2919
+          ],
+          [
+            2566,
+            2992
+          ],
+          [
+            2238,
+            2990
+          ]
+        ],
+        "cell_id": 14
+      },
+      "lessee_name": {
+        "quad": [
+          [
+            2237,
+            3135
+          ],
+          [
+            2565,
+            3137
+          ],
+          [
+            2565,
+            3209
+          ],
+          [
+            2237,
+            3207
+          ]
+        ],
+        "cell_id": 31
+      }
+    }
+  },
+  "common_007": {
+    "image_id": "common_007",
+    "source_image": "images/existing/sample_7.JPG",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {}
+  },
+  "common_008": {
+    "image_id": "common_008",
+    "source_image": "images/existing/sample_8.JPG",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {
+      "lessor_name": {
+        "quad": [
+          [
+            2242,
+            2943
+          ],
+          [
+            2569,
+            2949
+          ],
+          [
+            2568,
+            3020
+          ],
+          [
+            2241,
+            3014
+          ]
+        ],
+        "cell_id": 12
+      },
+      "lessee_name": {
+        "quad": [
+          [
+            2238,
+            3153
+          ],
+          [
+            2565,
+            3159
+          ],
+          [
+            2564,
+            3230
+          ],
+          [
+            2237,
+            3224
+          ]
+        ],
+        "cell_id": 29
+      }
+    }
+  },
+  "common_009": {
+    "image_id": "common_009",
+    "source_image": "images/existing/sample_9.JPG",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {
+      "lessor_name": {
+        "quad": [
+          [
+            2227,
+            2821
+          ],
+          [
+            2550,
+            2821
+          ],
+          [
+            2550,
+            2890
+          ],
+          [
+            2227,
+            2890
+          ]
+        ],
+        "cell_id": 13
+      }
+    }
+  },
+  "common_010": {
+    "image_id": "common_010",
+    "source_image": "images/existing/sample_10.JPG",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {}
+  },
+  "heewon_001": {
+    "image_id": "heewon_001",
+    "source_image": "images/heewon/docA_Baseline.jpg",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {
+      "address": {
+        "quad": [
+          [
+            588,
+            688
+          ],
+          [
+            2655,
+            688
+          ],
+          [
+            2655,
+            752
+          ],
+          [
+            588,
+            752
+          ]
+        ],
+        "cell_id": 2
+      },
+      "deposit": {
+        "quad": [
+          [
+            588,
+            1121
+          ],
+          [
+            2655,
+            1121
+          ],
+          [
+            2655,
+            1184
+          ],
+          [
+            588,
+            1184
+          ]
+        ],
+        "cell_id": 23
+      },
+      "contract_amount": {
+        "quad": [
+          [
+            588,
+            1184
+          ],
+          [
+            2655,
+            1184
+          ],
+          [
+            2655,
+            1245
+          ],
+          [
+            588,
+            1245
+          ]
+        ],
+        "cell_id": 25
+      },
+      "lessor_name": {
+        "quad": [
+          [
+            2136,
+            2932
+          ],
+          [
+            2417,
+            2932
+          ],
+          [
+            2417,
+            2994
+          ],
+          [
+            2136,
+            2994
+          ]
+        ],
+        "cell_id": 57
+      },
+      "lessee_name": {
+        "quad": [
+          [
+            2136,
+            3114
+          ],
+          [
+            2417,
+            3114
+          ],
+          [
+            2417,
+            3173
+          ],
+          [
+            2136,
+            3173
+          ]
+        ],
+        "cell_id": 73
+      }
+    }
+  },
+  "heewon_002": {
+    "image_id": "heewon_002",
+    "source_image": "images/heewon/docA_distance_far.jpg",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {
+      "address": {
+        "quad": [
+          [
+            850,
+            957
+          ],
+          [
+            2409,
+            927
+          ],
+          [
+            2410,
+            969
+          ],
+          [
+            851,
+            999
+          ]
+        ],
+        "cell_id": 2
+      },
+      "deposit": {
+        "quad": [
+          [
+            856,
+            1244
+          ],
+          [
+            2415,
+            1214
+          ],
+          [
+            2415,
+            1258
+          ],
+          [
+            857,
+            1288
+          ]
+        ],
+        "cell_id": 22
+      },
+      "contract_amount": {
+        "quad": [
+          [
+            857,
+            1288
+          ],
+          [
+            2415,
+            1258
+          ],
+          [
+            2416,
+            1300
+          ],
+          [
+            858,
+            1330
+          ]
+        ],
+        "cell_id": 24
+      },
+      "lessee_name": {
+        "quad": [
+          [
+            2047,
+            2840
+          ],
+          [
+            2406,
+            2833
+          ],
+          [
+            2407,
+            2887
+          ],
+          [
+            2048,
+            2894
+          ]
+        ],
+        "cell_id": 54
+      }
+    }
+  },
+  "heewon_003": {
+    "image_id": "heewon_003",
+    "source_image": "images/heewon/docA_perspective.jpg",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {}
+  },
+  "heewon_004": {
+    "image_id": "heewon_004",
+    "source_image": "images/heewon/docB_Baseline.jpg",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {
+      "lessor_name": {
+        "quad": [
+          [
+            3049,
+            4373
+          ],
+          [
+            3476,
+            4386
+          ],
+          [
+            3473,
+            4480
+          ],
+          [
+            3046,
+            4467
+          ]
+        ],
+        "cell_id": 25
+      },
+      "lessee_name": {
+        "quad": [
+          [
+            3040,
+            4647
+          ],
+          [
+            3467,
+            4661
+          ],
+          [
+            3464,
+            4752
+          ],
+          [
+            3038,
+            4738
+          ]
+        ],
+        "cell_id": 41
+      }
+    }
+  },
+  "heewon_005": {
+    "image_id": "heewon_005",
+    "source_image": "images/heewon/docB_perspective.jpg",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {}
+  },
+  "heewon_006": {
+    "image_id": "heewon_006",
+    "source_image": "images/heewon/docB_perspective_02.jpg",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {}
+  },
+  "tail_001": {
+    "image_id": "tail_001",
+    "source_image": "images/tail/docA_perspective_01.jpg",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {}
+  },
+  "tail_002": {
+    "image_id": "tail_002",
+    "source_image": "images/tail/docA_distance_01.jpg",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {
+      "address": {
+        "quad": [
+          [
+            868,
+            1157
+          ],
+          [
+            2237,
+            1157
+          ],
+          [
+            2237,
+            1196
+          ],
+          [
+            868,
+            1196
+          ]
+        ],
+        "cell_id": 2
+      },
+      "deposit": {
+        "quad": [
+          [
+            868,
+            1424
+          ],
+          [
+            2237,
+            1424
+          ],
+          [
+            2237,
+            1465
+          ],
+          [
+            868,
+            1465
+          ]
+        ],
+        "cell_id": 17
+      },
+      "contract_amount": {
+        "quad": [
+          [
+            868,
+            1465
+          ],
+          [
+            2237,
+            1465
+          ],
+          [
+            2237,
+            1503
+          ],
+          [
+            868,
+            1503
+          ]
+        ],
+        "cell_id": 19
+      },
+      "lessee_name": {
+        "quad": [
+          [
+            1955,
+            2827
+          ],
+          [
+            2300,
+            2827
+          ],
+          [
+            2300,
+            2871
+          ],
+          [
+            1955,
+            2871
+          ]
+        ],
+        "cell_id": 46
+      }
+    }
+  },
+  "tail_007": {
+    "image_id": "tail_007",
+    "source_image": "images/tail/docA_baseline_01.jpg",
+    "source": "bang_ opencv_grid_merge + field_roi (reference sample_1.JPG)",
+    "fields": {
+      "address": {
+        "quad": [
+          [
+            331,
+            488
+          ],
+          [
+            2733,
+            488
+          ],
+          [
+            2733,
+            549
+          ],
+          [
+            331,
+            549
+          ]
+        ],
+        "cell_id": 1
+      },
+      "deposit": {
+        "quad": [
+          [
+            554,
+            902
+          ],
+          [
+            2733,
+            902
+          ],
+          [
+            2733,
+            965
+          ],
+          [
+            554,
+            965
+          ]
+        ],
+        "cell_id": 21
+      },
+      "contract_amount": {
+        "quad": [
+          [
+            554,
+            965
+          ],
+          [
+            2733,
+            965
+          ],
+          [
+            2733,
+            1026
+          ],
+          [
+            554,
+            1026
+          ]
+        ],
+        "cell_id": 23
+      },
+      "lessor_name": {
+        "quad": [
+          [
+            2286,
+            2939
+          ],
+          [
+            2614,
+            2939
+          ],
+          [
+            2614,
+            3013
+          ],
+          [
+            2286,
+            3013
+          ]
+        ],
+        "cell_id": 38
+      },
+      "lessee_name": {
+        "quad": [
+          [
+            2286,
+            3159
+          ],
+          [
+            2614,
+            3159
+          ],
+          [
+            2614,
+            3231
+          ],
+          [
+            2286,
+            3231
+          ]
+        ],
+        "cell_id": 55
+      }
+    }
+  }
+}

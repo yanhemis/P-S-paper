@@ -1,0 +1,306 @@
+{
+  "source_image": "docB_perspective_02.jpg",
+  "image": "heewon_006_aligned.png",
+  "method": "opencv_grid_merge",
+  "status": "check",
+  "source_size": [
+    3024,
+    4032
+  ],
+  "image_size": [
+    3331,
+    4257
+  ],
+  "scale": 2.703,
+  "exif_transposed": true,
+  "rotation_deg": -4.497,
+  "deskew": {
+    "estimated_deg": -4.4971516146677715,
+    "residual_deg": 1.7438293449024513,
+    "affine": [
+      [
+        0.996921,
+        -0.07841,
+        316.228719
+      ],
+      [
+        0.07841,
+        0.996921,
+        0.151577
+      ]
+    ]
+  },
+  "counts": {
+    "tables": 1,
+    "primitive_cells": 4,
+    "cells": 2,
+    "general": 0,
+    "merged": 2,
+    "merge_h": 2,
+    "merge_v": 0,
+    "merge_block": 0,
+    "border_damage": 2,
+    "line_detection_failure": 1,
+    "missing_boundary_misjudge": 1,
+    "over_merge": 2,
+    "under_merge": 0,
+    "irregular_component": 0,
+    "deskew_failure": 1,
+    "validation_error": 0
+  },
+  "tables": [
+    {
+      "table": 0,
+      "bbox": [
+        2260,
+        623,
+        2855,
+        1381
+      ],
+      "grid": [
+        2,
+        2
+      ],
+      "rows": [
+        623,
+        1137,
+        1381
+      ],
+      "cols": [
+        2260,
+        2413,
+        2855
+      ],
+      "merge_types": {
+        "h": 2,
+        "v": 0,
+        "block": 0
+      },
+      "border_damage": [
+        {
+          "row": 0,
+          "col": 0,
+          "side": "left",
+          "score": 0.177
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "side": "left",
+          "score": 0.0
+        }
+      ],
+      "restored_boundaries": []
+    }
+  ],
+  "failures": [
+    {
+      "type": "missing_boundary_misjudge",
+      "table": 0,
+      "cell_ids": [
+        0
+      ],
+      "detail": "primitive (0,0) right 선 커버리지 0.18 (기준 0.5) → 경계 없음 판정으로 병합됨"
+    },
+    {
+      "type": "over_merge",
+      "table": 0,
+      "cell_ids": [
+        0
+      ],
+      "detail": "병합 셀이 표 면적의 68%"
+    },
+    {
+      "type": "over_merge",
+      "table": 0,
+      "cell_ids": [
+        1
+      ],
+      "detail": "병합 셀이 표 면적의 32%"
+    },
+    {
+      "type": "line_detection_failure",
+      "table": 0,
+      "cell_ids": [
+        0
+      ],
+      "detail": "셀 안에 세로선(셀 높이의 100%)이 있는데 grid 에서 빠짐"
+    },
+    {
+      "type": "deskew_failure",
+      "table": null,
+      "cell_ids": [],
+      "detail": "-4.50도 보정 후에도 1.74도 기울어 있음"
+    }
+  ],
+  "cells_detail": [
+    {
+      "id": 0,
+      "table": 0,
+      "bbox": [
+        2260,
+        623,
+        2855,
+        1137
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "irregular": false
+    },
+    {
+      "id": 1,
+      "table": 0,
+      "bbox": [
+        2260,
+        1137,
+        2855,
+        1381
+      ],
+      "type": "merged",
+      "primitive_cells": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "irregular": false
+    }
+  ],
+  "boundaries": [
+    {
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "side": "right",
+      "ok": false,
+      "score": 0.185
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "side": "left",
+      "ok": false,
+      "score": 0.177
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 0,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 1,
+      "side": "right",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 1,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 0,
+      "col": 1,
+      "side": "top",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 0,
+      "side": "right",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 0,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 0,
+      "side": "left",
+      "ok": false,
+      "score": 0.0
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 1,
+      "side": "right",
+      "ok": true,
+      "score": 0.953
+    },
+    {
+      "table": 0,
+      "row": 1,
+      "col": 1,
+      "side": "bottom",
+      "ok": true,
+      "score": 1.0
+    }
+  ],
+  "params": {
+    "ref_diag": 2000,
+    "deskew_angle_limit": 10.0,
+    "deskew_min_angle": 0.3,
+    "deskew_residual_max": 0.3,
+    "block_size_base": 15,
+    "binarize_C": 10,
+    "line_open_base": 30,
+    "line_open_ratio": null,
+    "close_ratio": 0.01,
+    "anchor_h_ratio": 0.15,
+    "anchor_v_ratio": 0.03,
+    "table_min_w_ratio": 0.1,
+    "table_min_h_ratio": 0.02,
+    "table_join_base": 3,
+    "gap_thresh_base": 10,
+    "strip_half_width_base": 2,
+    "corner_margin_base": 2,
+    "presence_ratio": 0.5,
+    "suspicious_score_min": 0.15,
+    "weak_score_max": 0.8,
+    "max_merged_area_ratio": 0.3,
+    "hidden_line_ratio": 0.8
+  },
+  "process_sec": 1.435,
+  "total_sec": 3.917
+}

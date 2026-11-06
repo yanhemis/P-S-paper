@@ -1,0 +1,76 @@
+{
+  "image": "heewon_006_aligned.png",
+  "source_image": "docB_perspective_02.jpg",
+  "method": "opencv_grid_merge",
+  "rotation_deg": -4.497,
+  "cells": [
+    {
+      "id": 0,
+      "table": 0,
+      "bbox": [
+        2260,
+        623,
+        2413,
+        1137
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "table": 0,
+      "bbox": [
+        2413,
+        623,
+        2855,
+        1137
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "table": 0,
+      "bbox": [
+        2260,
+        1137,
+        2413,
+        1381
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "table": 0,
+      "bbox": [
+        2413,
+        1137,
+        2855,
+        1381
+      ],
+      "type": "general",
+      "primitive_cells": [
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

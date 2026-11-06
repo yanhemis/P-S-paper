@@ -1,0 +1,50 @@
+﻿image_id,field,detected,failure_reason,cell_id,bbox_original,size_ratio_wh,gt_cover
+sample_1,address,True,,2,607 594 2675 650,1.0 1.0,0.875
+sample_1,deposit,True,,23,607 986 2675 1047,1.0 1.0,0.91
+sample_1,contract_amount,True,,25,607 1047 2675 1102,1.0 1.0,0.873
+sample_1,lessor_name,True,,41,2268 2946 2584 3015,1.0 1.0,0.727
+sample_1,lessee_name,True,,58,2268 3152 2584 3224,1.0 1.0,0.825
+sample_2,address,True,,2,549 497 2720 554,1.01 0.98,0.851
+sample_2,deposit,True,,23,549 904 2720 966,1.01 0.98,0.899
+sample_2,contract_amount,True,,25,549 966 2720 1028,1.01 1.08,0.937
+sample_2,lessor_name,True,,41,2277 2944 2605 3018,0.99 1.02,0.937
+sample_2,lessee_name,True,,58,2277 3165 2605 3238,0.99 0.97,0.963
+sample_3,address,False,ROW_MERGE,1,670 422 2749 941,1.02 7.76,1.0
+sample_3,deposit,False,ROW_MERGE,3,656 848 2730 1256,1.02 5.26,1.0
+sample_3,contract_amount,False,ROW_MERGE,3,656 848 2730 1256,1.02 5.83,1.0
+sample_3,lessor_name,True,,13,2214 2896 2552 2987,1.06 1.1,0.818
+sample_3,lessee_name,False,ROW_MERGE,17,2029 2965 2549 3615,1.55 8.69,1.0
+sample_4,address,True,,2,652 554 2686 615,1.01 1.11,0.754
+sample_4,deposit,True,,23,652 970 2686 1032,1.01 1.04,1.0
+sample_4,contract_amount,True,,25,652 1032 2686 1091,1.01 1.1,0.983
+sample_4,lessor_name,True,,41,2208 2835 2505 2900,1.01 1.02,0.804
+sample_4,lessee_name,True,,57,2208 3027 2505 3090,1.01 0.94,0.829
+sample_5,address,False,ROW_MERGE,0,544 866 2652 1280,1.11 7.65,0.0
+sample_5,deposit,False,ROW_MERGE,0,544 866 2652 1280,1.11 7.02,1.0
+sample_5,contract_amount,False,ROW_MERGE,0,544 866 2652 1280,1.11 7.78,1.0
+sample_5,lessor_name,False,TABLE_MISSING,,,,
+sample_5,lessee_name,False,TABLE_MISSING,,,,
+sample_6,address,False,ROW_MERGE,0,363 461 2679 592,1.11 2.03,0.588
+sample_6,deposit,False,ROW_MERGE,3,783 578 2678 816,0.91 3.65,0.0
+sample_6,contract_amount,False,ROW_MERGE,4,360 799 2676 977,1.11 2.91,0.0
+sample_6,lessor_name,True,,14,2238 2917 2567 2992,1.01 1.03,0.902
+sample_6,lessee_name,True,,31,2237 3135 2565 3209,1.01 0.97,0.834
+sample_7,address,False,ROW_MERGE,3,806 488 2636 775,0.92 4.51,0.836
+sample_7,deposit,False,ROW_MERGE,5,424 829 2645 1168,1.11 4.88,1.0
+sample_7,lessor_name,False,TABLE_MISSING,,,,
+sample_7,lessee_name,False,TABLE_MISSING,,,,
+sample_8,address,False,ROW_MERGE,2,839 534 2705 891,0.91 5.83,0.911
+sample_8,deposit,False,ROW_MERGE,2,839 534 2705 891,0.91 5.36,0.0
+sample_8,contract_amount,False,ROW_MERGE,2,839 534 2705 891,0.91 5.94,0.0
+sample_8,lessor_name,True,,12,2241 2943 2569 3020,1.04 1.03,0.956
+sample_8,lessee_name,True,,29,2237 3153 2565 3230,1.04 0.99,0.971
+sample_9,address,False,ROW_MERGE,1,641 462 2659 814,1.01 6.53,1.0
+sample_9,deposit,False,ROW_MERGE,3,641 814 2659 1237,1.01 7.2,1.0
+sample_9,contract_amount,False,ROW_MERGE,3,641 814 2659 1237,1.01 7.99,1.0
+sample_9,lessor_name,True,,13,2227 2821 2550 2890,1.04 1.01,0.723
+sample_9,lessee_name,False,ROW_MERGE,18,2084 2890 2550 3514,1.49 8.78,0.997
+sample_10,address,False,ROW_MERGE,1,919 718 2370 1049,1.0 7.02,1.0
+sample_10,deposit,False,ROW_MERGE,1,919 718 2370 1049,1.0 6.44,0.0
+sample_10,contract_amount,False,ROW_MERGE,1,919 718 2370 1049,1.0 7.15,0.0
+sample_10,lessor_name,False,TABLE_MISSING,,,,
+sample_10,lessee_name,False,TABLE_MISSING,,,,

@@ -1,0 +1,77 @@
+{
+  "source_image": "docA_perspective.jpg",
+  "image": "heewon_003_aligned.png",
+  "method": "opencv_grid_merge",
+  "status": "grid_fail",
+  "source_size": [
+    3024,
+    4032
+  ],
+  "image_size": [
+    3024,
+    4032
+  ],
+  "scale": 2.52,
+  "exif_transposed": true,
+  "rotation_deg": 0.0,
+  "deskew": {
+    "estimated_deg": null,
+    "residual_deg": null,
+    "affine": null
+  },
+  "counts": {
+    "tables": 0,
+    "primitive_cells": 0,
+    "cells": 0,
+    "general": 0,
+    "merged": 0,
+    "merge_h": 0,
+    "merge_v": 0,
+    "merge_block": 0,
+    "border_damage": 0,
+    "line_detection_failure": 1,
+    "missing_boundary_misjudge": 0,
+    "over_merge": 0,
+    "under_merge": 0,
+    "irregular_component": 0,
+    "deskew_failure": 0,
+    "validation_error": 0
+  },
+  "tables": [],
+  "failures": [
+    {
+      "type": "line_detection_failure",
+      "table": null,
+      "cell_ids": [],
+      "detail": "표 영역/grid 를 만들지 못함 — vis/0_lines.png 에서 선이 남는지 확인"
+    }
+  ],
+  "cells_detail": [],
+  "boundaries": [],
+  "params": {
+    "ref_diag": 2000,
+    "deskew_angle_limit": 10.0,
+    "deskew_min_angle": 0.3,
+    "deskew_residual_max": 0.3,
+    "block_size_base": 15,
+    "binarize_C": 10,
+    "line_open_base": 30,
+    "line_open_ratio": null,
+    "close_ratio": 0.01,
+    "anchor_h_ratio": 0.15,
+    "anchor_v_ratio": 0.03,
+    "table_min_w_ratio": 0.1,
+    "table_min_h_ratio": 0.02,
+    "table_join_base": 3,
+    "gap_thresh_base": 10,
+    "strip_half_width_base": 2,
+    "corner_margin_base": 2,
+    "presence_ratio": 0.5,
+    "suspicious_score_min": 0.15,
+    "weak_score_max": 0.8,
+    "max_merged_area_ratio": 0.3,
+    "hidden_line_ratio": 0.8
+  },
+  "process_sec": 0.847,
+  "total_sec": 1.84
+}

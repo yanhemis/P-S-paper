@@ -1,0 +1,11 @@
+{
+  "image": "sample_10.JPG",
+  "source_image": "sample_10.JPG",
+  "method": "opencv_grid_merge",
+  "rotation_deg": 0.0,
+  "cells": [
+    {"id": 0, "table": 0, "bbox": [766, 715, 925, 988], "type": "general", "primitive_cells": [[0, 0]]},
+    {"id": 1, "table": 0, "bbox": [924, 747, 2365, 1020], "type": "merged", "primitive_cells": [[0, 1], [0, 2], [0, 3], [0, 4]]},
+    {"id": 2, "table": 0, "bbox": [759, 1017, 2359, 1077], "type": "merged", "primitive_cells": [[1, 0], [1, 1], [1, 2], [1, 3], [1, 4]]}
+  ]
+}

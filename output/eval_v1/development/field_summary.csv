@@ -1,0 +1,20 @@
+﻿image_id,document_group_id,condition,usable,status,tables,target_fields,detected_fields,roi_coverage,detected_list,failure_reason,gt_bbox_fields,gt_cover_mean
+common_001,common_doc01,unknown,yes,ok,2,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,5,0.842
+common_002,common_doc02,unknown,yes,check,2,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,5,0.917
+common_003,common_doc03,unknown,yes,check,2,5,1,0.2,lessor_name,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessee_name:ROW_MERGE,5,0.818
+common_004,common_doc04,unknown,yes,check,2,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,5,0.874
+common_005,common_doc05,unknown,yes,check,1,5,0,0.0,,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,5,
+common_006,common_doc06,unknown,yes,check,2,5,2,0.4,lessor_name lessee_name,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE,5,0.868
+common_007,common_doc07,unknown,yes,check,1,4,0,0.0,,address:ROW_MERGE; deposit:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,4,
+common_008,common_doc08,unknown,yes,check,2,5,2,0.4,lessor_name lessee_name,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE,5,0.964
+common_009,common_doc09,unknown,yes,check,2,5,1,0.2,lessor_name,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessee_name:ROW_MERGE,5,0.723
+common_010,common_doc10,unknown,yes,check,1,5,0,0.0,,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,5,
+heewon_001,heewon_docA,baseline,yes,check,4,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,0,
+heewon_002,heewon_docA,distance,yes,check,2,5,4,0.8,address deposit contract_amount lessee_name,lessor_name:CELL_MERGE,0,
+heewon_003,heewon_docA,perspective,yes,grid_fail,0,5,0,0.0,,address:TABLE_MISSING; deposit:TABLE_MISSING; contract_amount:TABLE_MISSING; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,0,
+heewon_004,heewon_docB,baseline,yes,check,2,5,2,0.4,lessor_name lessee_name,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE,0,
+heewon_005,heewon_docB,perspective,yes,grid_fail,0,5,0,0.0,,address:TABLE_MISSING; deposit:TABLE_MISSING; contract_amount:TABLE_MISSING; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,0,
+heewon_006,heewon_docB,perspective,yes,check,1,5,0,0.0,,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,0,
+tail_001,tail_docA,perspective,yes,grid_fail,0,5,0,0.0,,address:TABLE_MISSING; deposit:TABLE_MISSING; contract_amount:TABLE_MISSING; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,0,
+tail_002,tail_docA,distance,yes,check,2,5,4,0.8,address deposit contract_amount lessee_name,lessor_name:COLUMN_MERGE,0,
+tail_007,tail_docA,baseline,yes,check,2,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,0,

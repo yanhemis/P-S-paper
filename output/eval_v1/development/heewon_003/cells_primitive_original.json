@@ -1,0 +1,8 @@
+{
+  "image": "docA_perspective.jpg",
+  "source_image": "docA_perspective.jpg",
+  "method": "opencv_grid_merge",
+  "rotation_deg": 0.0,
+  "cells": [
+  ]
+}

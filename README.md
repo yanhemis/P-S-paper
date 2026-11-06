@@ -5,7 +5,8 @@
 결과는 다른 담당자(평가, OCR, 통합)가 그대로 읽을 수 있는 `cells.json`으로 저장합니다.
 
 - 메인 코드: `Task_0930.py`
-- 공통 10장 일괄 실행: `Task_10_Renewal.py` (결과 정리: `docs/07_common10_results.md`)
+- 일괄 실행 (공통 10장 / Dataset v1.0): `Task_10_Renewal.py` + 5필드 ROI·실패 유형: `field_roi.py`
+  (11/01 팀 지시 대응·전달 문서: `docs/09_detected_roi_v1.md`, 공통 10장 정리: `docs/07_common10_results.md`)
 - 이전 버전: `TestResult.py` (보관용, 아래 "이전 버전" 참고)
 
 ## 처리 흐름
@@ -20,21 +21,31 @@
 P-S-paper/
 ├─ Task_0930.py          메인 코드
 ├─ TestResult.py         이전 버전 (보관용)
-├─ Task_10_Renewal.py    공통 10장 일괄 실행 (run_batch 호출 + manifest 정리)
+├─ Task_10_Renewal.py    일괄 실행 (공통 10장 / development / holdout_test) + 조건별 최종 결과 출력
+├─ field_roi.py          핵심 5필드 → 셀 대응, 실패 유형(TABLE_MISSING 등) 분류
+├─ frozen_params.json    고정한 파라미터·코드 해시·환경·commit·실행 명령
+├─ requirements_frozen.txt  결과가 재현되는 라이브러리 버전
 ├─ tail_roi.py           공통 10장 셀 → tail 실험 C 입력 변환
 ├─ Test_image_file/      입력 이미지 (sample.jpg)
 ├─ data/common10/        공통 10장 (tail sample_data_jpg/sample_1~10.JPG) + tail GT ROI 사본
+├─ data/eval_v1_packages/  Dataset v1.0 패키지 (dataset-v1 브랜치에서 받음, git 제외)
 ├─ output/<이미지명>/    실행 결과
 ├─ output/common10/      공통 10장 결과
+├─ output/eval_v1/       Dataset v1.0 결과 (<split>/<image_id>/)
 └─ docs/                 성공·실패 사례 문서
 ```
 
 ## 설치
 ```
-python -m pip install opencv-python numpy pillow matplotlib
+python -m pip install -r requirements_frozen.txt
 ```
-- Anaconda (base)에는 numpy, pillow, matplotlib가 이미 있으므로 `opencv-python`만 설치하면 됨
+- 라이브러리 버전이 다르면 셀 결과도 달라지므로 위 버전을 그대로 사용 (`python Task_10_Renewal.py --check-repro` 로 확인)
 - venv를 쓰다가 `No module named 'cv2'`가 나오면, venv가 켜진 상태에서 위 명령으로 다시 설치
+
+Dataset v1.0 패키지 받기 (development)
+```
+git archive origin/dataset-v1 data/eval_v1_packages/development | tar -x
+```
 
 ## 실행
 프로젝트 폴더에서 실행합니다.
@@ -43,7 +54,12 @@ python -m pip install opencv-python numpy pillow matplotlib
 |---|---|
 | 한 장 처리 (`Test_image_file/sample.jpg`, 그림 표시) | `python Task_0930.py` |
 | 폴더 전체 일괄 처리 → `output/summary.csv`, `output/failure_cases.csv` | `python -c "import Task_0930 as t; t.run_batch()"` |
-| 공통 10장 일괄 처리 + tail 전달 파일 + 담당 조건별 최종 결과 출력 (한 번에) | `python Task_10_Renewal.py` |
+| 공통 10장: 기존 결과 보존 + 5필드 ROI 요약 + 조건별 최종 결과 출력 | `python Task_10_Renewal.py` |
+| 공통 10장 재현 확인 (임시 폴더에 실행 후 기존 결과와 비교) | `python Task_10_Renewal.py --check-repro` |
+| 공통 10장 파이프라인까지 다시 실행 (기존 결과 덮어씀) | `python Task_10_Renewal.py --rerun` |
+| Dataset v1.0 development 일괄 실행 | `python Task_10_Renewal.py --dataset development` |
+| 파라미터·코드·환경 동결 기록 (코드 commit 후) | `python Task_10_Renewal.py --freeze` |
+| holdout_test 1회 실행 (동결 확인, 재실행 거부) | `python Task_10_Renewal.py --dataset holdout_test` |
 | (따로 실행할 때만) tail 실험 C 입력만 다시 생성 | `python tail_roi.py` |
 | 셀 크롭 이미지까지 저장 (`output/<이미지명>/roi/`) | `python -c "import Task_0930 as t; t.run_pipeline(show=False, save_roi=True)"` |
 | 선 추출 커널 비교 (이전 코드 0.4 vs 현재) | `python -c "import Task_0930 as t; t.compare_line_settings()"` |

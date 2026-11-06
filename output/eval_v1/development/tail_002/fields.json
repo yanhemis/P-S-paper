@@ -1,0 +1,190 @@
+{
+  "image_id": "tail_002",
+  "source_image": "images/tail/docA_distance_01.jpg",
+  "coordinate": "original (EXIF 회전 적용 후)",
+  "reference": "sample_1.JPG",
+  "not_present": [],
+  "fields": {
+    "address": {
+      "cell_id": 2,
+      "quad": [
+        [
+          868,
+          1157
+        ],
+        [
+          2237,
+          1157
+        ],
+        [
+          2237,
+          1196
+        ],
+        [
+          868,
+          1196
+        ]
+      ],
+      "bbox": [
+        868,
+        1157,
+        2237,
+        1196
+      ],
+      "failure": null,
+      "size_ratio": [
+        1.0,
+        1.06
+      ],
+      "gt_cover": null
+    },
+    "deposit": {
+      "cell_id": 17,
+      "quad": [
+        [
+          868,
+          1424
+        ],
+        [
+          2237,
+          1424
+        ],
+        [
+          2237,
+          1465
+        ],
+        [
+          868,
+          1465
+        ]
+      ],
+      "bbox": [
+        868,
+        1424,
+        2237,
+        1465
+      ],
+      "failure": null,
+      "size_ratio": [
+        1.0,
+        1.02
+      ],
+      "gt_cover": null
+    },
+    "contract_amount": {
+      "cell_id": 19,
+      "quad": [
+        [
+          868,
+          1465
+        ],
+        [
+          2237,
+          1465
+        ],
+        [
+          2237,
+          1503
+        ],
+        [
+          868,
+          1503
+        ]
+      ],
+      "bbox": [
+        868,
+        1465,
+        2237,
+        1503
+      ],
+      "failure": null,
+      "size_ratio": [
+        1.0,
+        1.05
+      ],
+      "gt_cover": null
+    },
+    "lessor_name": {
+      "cell_id": 33,
+      "quad": [
+        [
+          1861,
+          2691
+        ],
+        [
+          2300,
+          2691
+        ],
+        [
+          2300,
+          2737
+        ],
+        [
+          1861,
+          2737
+        ]
+      ],
+      "bbox": [
+        1861,
+        2691,
+        2300,
+        2737
+      ],
+      "failure": "COLUMN_MERGE",
+      "size_ratio": [
+        2.17,
+        1.04
+      ],
+      "gt_cover": null
+    },
+    "lessee_name": {
+      "cell_id": 46,
+      "quad": [
+        [
+          1955,
+          2827
+        ],
+        [
+          2300,
+          2827
+        ],
+        [
+          2300,
+          2871
+        ],
+        [
+          1955,
+          2871
+        ]
+      ],
+      "bbox": [
+        1955,
+        2827,
+        2300,
+        2871
+      ],
+      "failure": null,
+      "size_ratio": [
+        1.7,
+        0.95
+      ],
+      "gt_cover": null
+    }
+  },
+  "targets": [
+    "address",
+    "deposit",
+    "contract_amount",
+    "lessor_name",
+    "lessee_name"
+  ],
+  "detected": [
+    "address",
+    "deposit",
+    "contract_amount",
+    "lessee_name"
+  ],
+  "failures": {
+    "lessor_name": "COLUMN_MERGE"
+  }
+}

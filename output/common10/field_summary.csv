@@ -1,0 +1,11 @@
+﻿image_id,document_group_id,condition,usable,status,tables,target_fields,detected_fields,roi_coverage,detected_list,failure_reason,gt_bbox_fields,gt_cover_mean
+sample_1,common10,,yes,ok,2,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,5,0.842
+sample_2,common10,,yes,check,2,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,5,0.917
+sample_3,common10,,yes,check,2,5,1,0.2,lessor_name,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessee_name:ROW_MERGE,5,0.818
+sample_4,common10,,yes,check,2,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,5,0.874
+sample_5,common10,,yes,check,1,5,0,0.0,,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,5,
+sample_6,common10,,yes,check,2,5,2,0.4,lessor_name lessee_name,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE,5,0.868
+sample_7,common10,,yes,check,1,4,0,0.0,,address:ROW_MERGE; deposit:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,4,
+sample_8,common10,,yes,check,2,5,2,0.4,lessor_name lessee_name,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE,5,0.964
+sample_9,common10,,yes,check,2,5,1,0.2,lessor_name,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessee_name:ROW_MERGE,5,0.723
+sample_10,common10,,yes,check,1,5,0,0.0,,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,5,
