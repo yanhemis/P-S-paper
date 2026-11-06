@@ -1,573 +1,193 @@
+
 {
   "common_001": {
     "document_group_id": "common_doc01",
     "fields": {
-      "address": {
-        "raw_text": "????? ??? ???? 45? 12, 301?",
-        "normalized": "????? ??? ???? 45? 12, 301?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "?????",
-        "normalized": "180000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "?????",
-        "normalized": "18000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "서울특별시 마포구 월드컵로 45길 12, 301호", "normalized": "서울특별시 마포구 월드컵로 45길 12, 301호", "bbox": null},
+      "deposit": {"raw_text": "일억팔천만", "normalized": "180000000", "bbox": null},
+      "contract_amount": {"raw_text": "일천팔백만", "normalized": "18000000", "bbox": null},
+      "lessor_name": {"raw_text": "박정훈", "normalized": "박정훈", "bbox": null},
+      "lessee_name": {"raw_text": "이서연", "normalized": "이서연", "bbox": null}
     }
   },
   "common_002": {
     "document_group_id": "common_doc02",
     "fields": {
-      "address": {
-        "raw_text": "????? ??? ??? 210, ?? 102?",
-        "normalized": "????? ??? ??? 210, ?? 102?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "???",
-        "normalized": "10000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "???",
-        "normalized": "1000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "서울특별시 관악구 관악로 210, 지하 102호", "normalized": "서울특별시 관악구 관악로 210, 지하 102호", "bbox": null},
+      "deposit": {"raw_text": "일천만", "normalized": "10000000", "bbox": null},
+      "contract_amount": {"raw_text": "일백만", "normalized": "1000000", "bbox": null},
+      "lessor_name": {"raw_text": "정미경", "normalized": "정미경", "bbox": null},
+      "lessee_name": {"raw_text": "오준혁", "normalized": "오준혁", "bbox": null}
     }
   },
   "common_003": {
     "document_group_id": "common_doc03",
     "fields": {
-      "address": {
-        "raw_text": "??? ??? ??? ??? 256?? 33, 1204? 803?",
-        "normalized": "??? ??? ??? ??? 256?? 33, 1204? 803?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "?? ???",
-        "normalized": "250000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "?????",
-        "normalized": "25000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "경기도 성남시 분당구 판교로 256번길 33, 1204동 803호", "normalized": "경기도 성남시 분당구 판교로 256번길 33, 1204동 803호", "bbox": null},
+      "deposit": {"raw_text": "이억 오천만", "normalized": "250000000", "bbox": null},
+      "contract_amount": {"raw_text": "이천오백만", "normalized": "25000000", "bbox": null},
+      "lessor_name": {"raw_text": "강태식", "normalized": "강태식", "bbox": null},
+      "lessee_name": {"raw_text": "신유진", "normalized": "신유진", "bbox": null}
     }
   },
   "common_004": {
     "document_group_id": "common_doc04",
     "fields": {
-      "address": {
-        "raw_text": "????? ???? ????? 79, 1508?",
-        "normalized": "????? ???? ????? 79, 1508?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "???",
-        "normalized": "30000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "???",
-        "normalized": "3000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "부산광역시 해운대구 센텀중앙로 79, 1508호", "normalized": "부산광역시 해운대구 센텀중앙로 79, 1508호", "bbox": null},
+      "deposit": {"raw_text": "삼천만", "normalized": "30000000", "bbox": null},
+      "contract_amount": {"raw_text": "삼백만", "normalized": "3000000", "bbox": null},
+      "lessor_name": {"raw_text": "문영숙", "normalized": "문영숙", "bbox": null},
+      "lessee_name": {"raw_text": "배현우", "normalized": "배현우", "bbox": null}
     }
   },
   "common_005": {
     "document_group_id": "common_doc05",
     "fields": {
-      "address": {
-        "raw_text": "????? ??? ???? 283, 302?",
-        "normalized": "????? ??? ???? 283, 302?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "???",
-        "normalized": "5000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "???",
-        "normalized": "500000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "인천광역시 부평구 부평대로 283, 302호", "normalized": "인천광역시 부평구 부평대로 283, 302호", "bbox": null},
+      "deposit": {"raw_text": "오백만", "normalized": "5000000", "bbox": null},
+      "contract_amount": {"raw_text": "오십만", "normalized": "500000", "bbox": null},
+      "lessor_name": {"raw_text": "서동철", "normalized": "서동철", "bbox": null},
+      "lessee_name": {"raw_text": "권나연", "normalized": "권나연", "bbox": null}
     }
   },
   "common_006": {
     "document_group_id": "common_doc06",
     "fields": {
-      "address": {
-        "raw_text": "????? ??? ??? 99, ???? 201?",
-        "normalized": "????? ??? ??? 99, ???? 201?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "?? ???",
-        "normalized": "320000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "?? ???",
-        "normalized": "32000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "대전광역시 유성구 대학로 99, 우정빌라 201호", "normalized": "대전광역시 유성구 대학로 99, 우정빌라 201호", "bbox": null},
+      "deposit": {"raw_text": "삼억 이천만", "normalized": "320000000", "bbox": null},
+      "contract_amount": {"raw_text": "삼천 이백만", "normalized": "32000000", "bbox": null},
+      "lessor_name": {"raw_text": "황보석", "normalized": "황보석", "bbox": null},
+      "lessee_name": {"raw_text": "안다은", "normalized": "안다은", "bbox": null}
     }
   },
   "common_007": {
     "document_group_id": "common_doc07",
     "fields": {
-      "address": {
-        "raw_text": "????? ?? ????? 123, 5? 502?",
-        "normalized": "????? ?? ????? 123, 5? 502?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "?? ?????",
-        "normalized": "145000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "",
-        "normalized": "",
-        "bbox": null,
-        "status": "not_present"
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "광주광역시 북구 첨단과기로 123, 5동 502호", "normalized": "광주광역시 북구 첨단과기로 123, 5동 502호", "bbox": null},
+      "deposit": {"raw_text": "일억 사천오백만", "normalized": "145000000", "bbox": null},
+      "contract_amount": {"raw_text": "", "normalized": "", "bbox": null, "status": "not_present"},
+      "lessor_name": {"raw_text": "노경자", "normalized": "노경자", "bbox": null},
+      "lessee_name": {"raw_text": "표진우", "normalized": "표진우", "bbox": null}
     }
   },
   "common_008": {
     "document_group_id": "common_doc08",
     "fields": {
-      "address": {
-        "raw_text": "??? ??? ??? ????? 145, 2301? 1502?",
-        "normalized": "??? ??? ??? ????? 145, 2301? 1502?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "?????",
-        "normalized": "410000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "?????",
-        "normalized": "41000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "????",
-        "normalized": "????",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "????",
-        "normalized": "????",
-        "bbox": null
-      }
+      "address": {"raw_text": "경기도 수원시 영통구 광교중앙로 145, 2301동 1502호", "normalized": "경기도 수원시 영통구 광교중앙로 145, 2301동 1502호", "bbox": null},
+      "deposit": {"raw_text": "사억일천만", "normalized": "410000000", "bbox": null},
+      "contract_amount": {"raw_text": "사천일백만", "normalized": "41000000", "bbox": null},
+      "lessor_name": {"raw_text": "남궁순옥", "normalized": "남궁순옥", "bbox": null},
+      "lessee_name": {"raw_text": "독고진성", "normalized": "독고진성", "bbox": null}
     }
   },
   "common_009": {
     "document_group_id": "common_doc09",
     "fields": {
-      "address": {
-        "raw_text": "????? ??? ???? 115, 1103?",
-        "normalized": "????? ??? ???? 115, 1103?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "???",
-        "normalized": "50000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "???",
-        "normalized": "5000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "서울특별시 성동구 왕십리로 115, 1103호", "normalized": "서울특별시 성동구 왕십리로 115, 1103호", "bbox": null},
+      "deposit": {"raw_text": "오천만", "normalized": "50000000", "bbox": null},
+      "contract_amount": {"raw_text": "오백만", "normalized": "5000000", "bbox": null},
+      "lessor_name": {"raw_text": "도상현", "normalized": "도상현", "bbox": null},
+      "lessee_name": {"raw_text": "마수빈", "normalized": "마수빈", "bbox": null}
     }
   },
   "common_010": {
     "document_group_id": "common_doc10",
     "fields": {
-      "address": {
-        "raw_text": "????? ??? ????? 2350, 405?",
-        "normalized": "????? ??? ????? 2350, 405?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "???",
-        "normalized": "20000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "???",
-        "normalized": "2000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "대구광역시 수성구 달구별대로 2350, 405호", "normalized": "대구광역시 수성구 달구별대로 2350, 405호", "bbox": null},
+      "deposit": {"raw_text": "이천만", "normalized": "20000000", "bbox": null},
+      "contract_amount": {"raw_text": "이백만", "normalized": "2000000", "bbox": null},
+      "lessor_name": {"raw_text": "채원석", "normalized": "채원석", "bbox": null},
+      "lessee_name": {"raw_text": "봄하늘", "normalized": "봄하늘", "bbox": null}
     }
   },
   "heewon_001": {
     "document_group_id": "heewon_docA",
     "fields": {
-      "address": {
-        "raw_text": "서울특별시 노원구 가상길 123, 201호",
-        "normalized": "서울특별시 노원구 가상길 123, 201호",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "일억",
-        "normalized": "100000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "일천만",
-        "normalized": "10000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "김민수",
-        "normalized": "김민수",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "이서연",
-        "normalized": "이서연",
-        "bbox": null
-      }
+      "address": {"raw_text": "서울특별시 노원구 가상길 123, 201호", "normalized": "서울특별시 노원구 가상길 123, 201호", "bbox": null},
+      "deposit": {"raw_text": "일억", "normalized": "100000000", "bbox": null},
+      "contract_amount": {"raw_text": "일천만", "normalized": "10000000", "bbox": null},
+      "lessor_name": {"raw_text": "김민수", "normalized": "김민수", "bbox": null},
+      "lessee_name": {"raw_text": "이서연", "normalized": "이서연", "bbox": null}
     }
   },
   "heewon_002": {
     "document_group_id": "heewon_docA",
     "fields": {
-      "address": {
-        "raw_text": "서울특별시 노원구 가상길 123, 201호",
-        "normalized": "서울특별시 노원구 가상길 123, 201호",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "일억",
-        "normalized": "100000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "일천만",
-        "normalized": "10000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "김민수",
-        "normalized": "김민수",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "이서연",
-        "normalized": "이서연",
-        "bbox": null
-      }
+      "address": {"raw_text": "서울특별시 노원구 가상길 123, 201호", "normalized": "서울특별시 노원구 가상길 123, 201호", "bbox": null},
+      "deposit": {"raw_text": "일억", "normalized": "100000000", "bbox": null},
+      "contract_amount": {"raw_text": "일천만", "normalized": "10000000", "bbox": null},
+      "lessor_name": {"raw_text": "김민수", "normalized": "김민수", "bbox": null},
+      "lessee_name": {"raw_text": "이서연", "normalized": "이서연", "bbox": null}
     }
   },
   "heewon_003": {
     "document_group_id": "heewon_docA",
     "fields": {
-      "address": {
-        "raw_text": "서울특별시 노원구 가상길 123, 201호",
-        "normalized": "서울특별시 노원구 가상길 123, 201호",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "일억",
-        "normalized": "100000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "일천만",
-        "normalized": "10000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "김민수",
-        "normalized": "김민수",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "이서연",
-        "normalized": "이서연",
-        "bbox": null
-      }
+      "address": {"raw_text": "서울특별시 노원구 가상길 123, 201호", "normalized": "서울특별시 노원구 가상길 123, 201호", "bbox": null},
+      "deposit": {"raw_text": "일억", "normalized": "100000000", "bbox": null},
+      "contract_amount": {"raw_text": "일천만", "normalized": "10000000", "bbox": null},
+      "lessor_name": {"raw_text": "김민수", "normalized": "김민수", "bbox": null},
+      "lessee_name": {"raw_text": "이서연", "normalized": "이서연", "bbox": null}
     }
   },
   "heewon_004": {
     "document_group_id": "heewon_docB",
     "fields": {
-      "address": {
-        "raw_text": "????? ??? ??? 45",
-        "normalized": "????? ??? ??? 45",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "???",
-        "normalized": "80000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "???",
-        "normalized": "8000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "서울특별시 강북구 예시로 45", "normalized": "서울특별시 강북구 예시로 45", "bbox": null},
+      "deposit": {"raw_text": "팔천만", "normalized": "80000000", "bbox": null},
+      "contract_amount": {"raw_text": "팔백만", "normalized": "8000000", "bbox": null},
+      "lessor_name": {"raw_text": "박지훈", "normalized": "박지훈", "bbox": null},
+      "lessee_name": {"raw_text": "최유진", "normalized": "최유진", "bbox": null}
     }
   },
   "heewon_005": {
     "document_group_id": "heewon_docB",
     "fields": {
-      "address": {
-        "raw_text": "????? ??? ??? 45",
-        "normalized": "????? ??? ??? 45",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "???",
-        "normalized": "80000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "???",
-        "normalized": "8000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "서울특별시 강북구 예시로 45", "normalized": "서울특별시 강북구 예시로 45", "bbox": null},
+      "deposit": {"raw_text": "팔천만", "normalized": "80000000", "bbox": null},
+      "contract_amount": {"raw_text": "팔백만", "normalized": "8000000", "bbox": null},
+      "lessor_name": {"raw_text": "박지훈", "normalized": "박지훈", "bbox": null},
+      "lessee_name": {"raw_text": "최유진", "normalized": "최유진", "bbox": null}
     }
   },
   "heewon_006": {
     "document_group_id": "heewon_docB",
     "fields": {
-      "address": {
-        "raw_text": "????? ??? ??? 45",
-        "normalized": "????? ??? ??? 45",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "???",
-        "normalized": "80000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "???",
-        "normalized": "8000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "서울특별시 강북구 예시로 45", "normalized": "서울특별시 강북구 예시로 45", "bbox": null},
+      "deposit": {"raw_text": "팔천만", "normalized": "80000000", "bbox": null},
+      "contract_amount": {"raw_text": "팔백만", "normalized": "8000000", "bbox": null},
+      "lessor_name": {"raw_text": "박지훈", "normalized": "박지훈", "bbox": null},
+      "lessee_name": {"raw_text": "최유진", "normalized": "최유진", "bbox": null}
     }
   },
   "tail_001": {
     "document_group_id": "tail_docA",
     "fields": {
-      "address": {
-        "raw_text": "????? ??? ????? 163, 702?",
-        "normalized": "????? ??? ????? 163, 702?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "?????",
-        "normalized": "270000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "?????",
-        "normalized": "27000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "서울특별시 강서구 마곡중앙로 163, 702호", "normalized": "서울특별시 강서구 마곡중앙로 163, 702호", "bbox": null},
+      "deposit": {"raw_text": "이억칠천만", "normalized": "270000000", "bbox": null},
+      "contract_amount": {"raw_text": "이천칠백만", "normalized": "27000000", "bbox": null},
+      "lessor_name": {"raw_text": "장영숙", "normalized": "장영숙", "bbox": null},
+      "lessee_name": {"raw_text": "한도윤", "normalized": "한도윤", "bbox": null}
     }
   },
   "tail_002": {
     "document_group_id": "tail_docA",
     "fields": {
-      "address": {
-        "raw_text": "????? ??? ????? 163, 702?",
-        "normalized": "????? ??? ????? 163, 702?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "?????",
-        "normalized": "270000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "?????",
-        "normalized": "27000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "서울특별시 강서구 마곡중앙로 163, 702호", "normalized": "서울특별시 강서구 마곡중앙로 163, 702호", "bbox": null},
+      "deposit": {"raw_text": "이억칠천만", "normalized": "270000000", "bbox": null},
+      "contract_amount": {"raw_text": "이천칠백만", "normalized": "27000000", "bbox": null},
+      "lessor_name": {"raw_text": "장영숙", "normalized": "장영숙", "bbox": null},
+      "lessee_name": {"raw_text": "한도윤", "normalized": "한도윤", "bbox": null}
     }
   },
   "tail_007": {
     "document_group_id": "tail_docA",
     "fields": {
-      "address": {
-        "raw_text": "????? ??? ????? 163, 702?",
-        "normalized": "????? ??? ????? 163, 702?",
-        "bbox": null
-      },
-      "deposit": {
-        "raw_text": "?????",
-        "normalized": "270000000",
-        "bbox": null
-      },
-      "contract_amount": {
-        "raw_text": "?????",
-        "normalized": "27000000",
-        "bbox": null
-      },
-      "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      },
-      "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
-        "bbox": null
-      }
+      "address": {"raw_text": "서울특별시 강서구 마곡중앙로 163, 702호", "normalized": "서울특별시 강서구 마곡중앙로 163, 702호", "bbox": null},
+      "deposit": {"raw_text": "이억칠천만", "normalized": "270000000", "bbox": null},
+      "contract_amount": {"raw_text": "이천칠백만", "normalized": "27000000", "bbox": null},
+      "lessor_name": {"raw_text": "장영숙", "normalized": "장영숙", "bbox": null},
+      "lessee_name": {"raw_text": "한도윤", "normalized": "한도윤", "bbox": null}
     }
   }
 }
