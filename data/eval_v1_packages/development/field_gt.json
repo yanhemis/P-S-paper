@@ -278,8 +278,8 @@
     "document_group_id": "common_doc06",
     "fields": {
       "address": {
-        "raw_text": "대전광역시 유성구 대학로 99, 우정빌라 201호",
-        "normalized": "대전광역시 유성구 대학로 99, 우정빌라 201호",
+        "raw_text": "대전광역시 유성구 대학로 99, 옥천빌라 201호",
+        "normalized": "대전광역시 유성구 대학로 99, 옥천빌라 201호",
         "bbox": [
           607,
           525,
@@ -333,8 +333,8 @@
     "document_group_id": "common_doc07",
     "fields": {
       "address": {
-        "raw_text": "광주광역시 북구 첨단과기로 123, 5동 502호",
-        "normalized": "광주광역시 북구 첨단과기로 123, 5동 502호",
+        "raw_text": "광주광역시 북구 첨단과기로 123, 5층 502호",
+        "normalized": "광주광역시 북구 첨단과기로 123, 5층 502호",
         "bbox": [
           630,
           526,
@@ -494,8 +494,8 @@
     "document_group_id": "common_doc10",
     "fields": {
       "address": {
-        "raw_text": "대구광역시 수성구 달구별대로 2350, 405호",
-        "normalized": "대구광역시 수성구 달구별대로 2350, 405호",
+        "raw_text": "대구광역시 수성구 달구벌대로 2350, 405호",
+        "normalized": "대구광역시 수성구 달구벌대로 2350, 405호",
         "bbox": [
           932,
           800,
@@ -534,8 +534,8 @@
         ]
       },
       "lessee_name": {
-        "raw_text": "봄하늘",
-        "normalized": "봄하늘",
+        "raw_text": "봉하늘",
+        "normalized": "봉하늘",
         "bbox": [
           1944,
           2570,
