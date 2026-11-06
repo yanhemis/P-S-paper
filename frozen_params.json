@@ -1,0 +1,63 @@
+{
+  "frozen_at": "2026-11-06 14:49:31",
+  "method": "opencv_grid_merge",
+  "params": {
+    "ref_diag": 2000,
+    "deskew_angle_limit": 10.0,
+    "deskew_min_angle": 0.3,
+    "deskew_residual_max": 0.3,
+    "block_size_base": 15,
+    "binarize_C": 10,
+    "line_open_base": 30,
+    "line_open_ratio": null,
+    "close_ratio": 0.01,
+    "anchor_h_ratio": 0.15,
+    "anchor_v_ratio": 0.03,
+    "table_min_w_ratio": 0.1,
+    "table_min_h_ratio": 0.02,
+    "table_join_base": 3,
+    "gap_thresh_base": 10,
+    "strip_half_width_base": 2,
+    "corner_margin_base": 2,
+    "presence_ratio": 0.5,
+    "suspicious_score_min": 0.15,
+    "weak_score_max": 0.8,
+    "max_merged_area_ratio": 0.3,
+    "hidden_line_ratio": 0.8
+  },
+  "reference": {
+    "image": "sample_1.JPG",
+    "cells": {
+      "address": 2,
+      "deposit": 23,
+      "contract_amount": 25,
+      "lessor_name": 41,
+      "lessee_name": 58
+    }
+  },
+  "field_roi": {
+    "table_match_tol": 0.15,
+    "merge_ratio": 1.8,
+    "gt_min_cover": 0.5
+  },
+  "code_sha256": {
+    "Task_0930.py": "8830ca21eacddeeea56a21a2791645dca02d060a01565c58fda25b007f0b4ebc",
+    "field_roi.py": "8b939da1f806ab054321c29eb5a1d4f84bf80b65f149dcca2ecc212d5e30d46b",
+    "Task_10_Renewal.py": "64e5e85cc87a9c3a84263a1f4e7f18a3cb82952affea5a7412ade87947346e89"
+  },
+  "environment": {
+    "python": "3.13.9",
+    "opencv": "5.0.0",
+    "numpy": "2.3.5",
+    "pillow": "12.0.0"
+  },
+  "git": {
+    "commit": "11af31690af17dd4087a013d86c3c210c5329897",
+    "code_files_modified": false
+  },
+  "commands": {
+    "common10": "python Task_10_Renewal.py",
+    "development": "python Task_10_Renewal.py --dataset development",
+    "holdout_test": "python Task_10_Renewal.py --dataset holdout_test"
+  }
+}
