@@ -1,11 +1,11 @@
 ﻿image_id,field,detected,failure_reason,cell_id,bbox_original,size_ratio_wh,gt_cover
 common_001,address,True,,2,607 594 2675 650,1.0 1.0,0.875
-common_001,deposit,True,,23,607 986 2675 1047,1.0 1.0,0.91
+common_001,deposit,True,,23,607 986 2675 1047,1.0 1.0,0.938
 common_001,contract_amount,True,,25,607 1047 2675 1102,1.0 1.0,0.873
 common_001,lessor_name,True,,41,2268 2946 2584 3015,1.0 1.0,0.727
 common_001,lessee_name,True,,58,2268 3152 2584 3224,1.0 1.0,0.825
 common_002,address,True,,2,549 497 2720 554,1.01 0.98,0.851
-common_002,deposit,True,,23,549 904 2720 966,1.01 0.98,0.899
+common_002,deposit,True,,23,549 904 2720 966,1.01 0.98,0.908
 common_002,contract_amount,True,,25,549 966 2720 1028,1.01 1.08,0.937
 common_002,lessor_name,True,,41,2277 2944 2605 3018,0.99 1.02,0.937
 common_002,lessee_name,True,,58,2277 3165 2605 3238,0.99 0.97,0.963

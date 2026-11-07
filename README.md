@@ -1,87 +1,141 @@
-# 계약서 표 셀 검출 + 병합 셀 복원 (bang_)
+# OpenCV 구조 복원 / Detected ROI (bang_)
 
-임대차계약서 이미지에서 표선을 검출해 셀 격자(primitive grid)를 만들고,
-경계선이 없는 칸을 Union-Find로 묶어 병합 셀(merged cell)까지 복원하는 OpenCV 기반 파이프라인입니다.
-결과는 다른 담당자(평가, OCR, 통합)가 그대로 읽을 수 있는 `cells.json`으로 저장합니다.
+임대차계약서 사진에서 표선을 찾아 셀 격자를 만들고, 병합 셀을 복원한 뒤, 핵심 5필드의 ROI를 평가 입력으로 전달합니다.
 
-- 메인 코드: `Task_0930.py`
-- 일괄 실행 (공통 10장 / Dataset v1.0): `Task_10_Renewal.py` + 5필드 ROI·실패 유형: `field_roi.py`
-  (11/01 팀 지시 대응·전달 문서: `docs/09_detected_roi_v1.md`, 공통 10장 정리: `docs/07_common10_results.md`)
-- 이전 버전: `TestResult.py` (보관용, 아래 "이전 버전" 참고)
+| 항목 | 내용 |
+|---|---|
+| 담당 범위 | OpenCV 구조 복원, Detected ROI 공급 (P3 평가 입력) |
+| 평가 필드 | `address`, `deposit`, `contract_amount`, `lessor_name`, `lessee_name` |
+| 현재 상태 | development 실행 완료, 코드 동결 완료, holdout_test 공개 대기 |
+| 동결 기준 | commit `11af316`, 상세 기록은 `frozen_params.json` |
+| 코드별 진행·결과 | [`docs/10_code_progress_results.md`](docs/10_code_progress_results.md) |
+| 전달 문서 | [`docs/09_detected_roi_v1.md`](docs/09_detected_roi_v1.md) |
+
+## 수행한 과제
+
+| 시기 | 과제 | 결과물 |
+|---|---|---|
+| 09/14 | 기울기 보정, 해상도 비례 파라미터, Union-Find 병합 셀 복원 구현 | `TestResult.py` (보관용) |
+| 09/28 | 셀 검출·병합 복원 파이프라인 재구성, sample.jpg 결과 생성 | `Task_0930.py` |
+| 10/04 | 추가 인원 A에게 ROI OCR용 셀 결과 전달 | `1004_A에게_줄파일/`, `docs/05_handoff_A_roi.md` |
+| 10/05 | 추가 인원 B에게 입출력 명세 전달, 원본 좌표 출력 추가, 성공·실패 사례 정리 | `1005_B에게_줄파일/`, `docs/02`, `docs/03`, `docs/06` |
+| 10/13 | 공통 10장 일괄 실행, tail 실험 C 입력 전달 | `Task_10_Renewal.py`, `tail_roi.py`, `output/common10/`, `docs/07`, `docs/08` |
+| 11/06 | 5필드 ROI·실패 유형 분류, 공통 10장 재현 확인, development 19장 실행, 코드·환경 동결 | `field_roi.py`, `output/eval_v1/development/`, `frozen_params.json`, `docs/09` |
+
+## 결과
+
+### sample.jpg 셀 검출 (공통 평가, GT 95셀)
+
+| 방법 | F1 @ IoU 0.3 | F1 @ IoU 0.5 | F1 @ IoU 0.7 |
+|---|---:|---:|---:|
+| Primitive Grid | 49.7% | 38.7% | 25.8% |
+| Grid + Cell Reconstruction | 88.4% | 77.3% | 65.2% |
+
+수치는 `dahye_cell_DetectionSurvey` 브랜치의 공통 평가(`5_Evaluation/metrics_affine_audit.json`) 기준입니다. 이전 README의 F1 86.2%는 셀 중심만 역변환한 좌표로 잰 자체 측정값입니다. 차이는 [코드별 진행·결과](docs/10_code_progress_results.md)에 정리했습니다. 단일 이미지 결과이므로 일반화할 수 없습니다.
+
+사례 분석은 [성공 사례](docs/02_success_cases.md)와 [실패 사례](docs/03_failure_cases.md)에 있습니다.
+
+### Dataset v1.0 development: 핵심 5필드 ROI Coverage
+
+| 묶음 | 이미지 | 5필드 | ROI Coverage |
+|---|---:|---:|---:|
+| 공통 10장 (common_001~010) | 10 | 21/49 | 42.9% |
+| 신규 development | 9 | 20/45 | 44.4% |
+| **전체** | **19** | **41/94** | **43.6%** |
+
+신규 9장의 조건별 결과는 다음과 같습니다. 문서 그룹은 3개이므로 이미지 수를 독립 문서 수로 해석하면 안 됩니다.
+
+| 조건 | 이미지 | 5필드 |
+|---|---:|---:|
+| baseline | 3 | 12/15 |
+| distance | 2 | 8/10 |
+| perspective | 4 | 0/20 |
+
+실패 53건의 유형은 `ROW_MERGE` 28, `TABLE_MISSING` 23, `COLUMN_MERGE` 1, `CELL_MERGE` 1입니다.
+
+- 분모 94는 GT가 `not_present`인 common_007의 `contract_amount`를 제외한 값입니다.
+- ROI Coverage는 ROI 생성 비율입니다. GT bbox가 없는 신규 9장은 위치 정합을 보증하지 않으며, `WRONG_MAPPING`과 `COORDINATE_ERROR`도 자동 판정하지 못합니다.
+- 이미지별 결과는 `output/eval_v1/development/summary.json`에 있습니다.
 
 ## 처리 흐름
-1. 이미지 로드 (휴대폰 회전 정보 자동 반영) → 기울기 보정 (HoughLinesP)
+
+1. 이미지 로드(EXIF 회전 반영) 후 기울기 보정 (HoughLinesP)
 2. 이진화 (CLAHE + adaptive threshold, 해상도 비례 파라미터)
-3. 수평/수직선 추출 → 끊어진 선 잇기 → 표 영역 분리 (한 페이지 여러 표 지원)
-4. 셀 경계 판정 → Union-Find 병합 → 비직사각형 병합 복구
-5. 자동 검증 (실패 유형 분류) → cells.json + 시각화 + 리포트 저장
+3. 수평·수직선 추출, 끊어진 선 연결, 표 영역 분리
+4. 셀 경계 판정, Union-Find 병합, 비직사각형 병합 복구
+5. 자동 검증과 결과 저장 (`cells.json`, 시각화, 리포트)
+6. 기준 양식의 상대 위치로 5필드 셀 선택, 실패 유형 기록
 
 ## 폴더 구조
-```
+
+```text
 P-S-paper/
-├─ Task_0930.py          메인 코드
-├─ TestResult.py         이전 버전 (보관용)
-├─ Task_10_Renewal.py    일괄 실행 (공통 10장 / development / holdout_test) + 조건별 최종 결과 출력
-├─ field_roi.py          핵심 5필드 → 셀 대응, 실패 유형(TABLE_MISSING 등) 분류
-├─ frozen_params.json    고정한 파라미터·코드 해시·환경·commit·실행 명령
+├─ Task_0930.py             구조 복원 메인 코드
+├─ Task_10_Renewal.py       일괄 실행, 재현 확인, 동결, 결과 요약
+├─ field_roi.py             5필드 → 셀 대응, 실패 유형 분류
+├─ tail_roi.py              공통 10장 셀 → tail 실험 C 입력 변환
+├─ TestResult.py            이전 버전 (보관용)
+├─ frozen_params.json       동결한 파라미터, 코드 해시, 환경, commit
 ├─ requirements_frozen.txt  결과가 재현되는 라이브러리 버전
-├─ tail_roi.py           공통 10장 셀 → tail 실험 C 입력 변환
-├─ Test_image_file/      입력 이미지 (sample.jpg)
-├─ data/common10/        공통 10장 (tail sample_data_jpg/sample_1~10.JPG) + tail GT ROI 사본
-├─ data/eval_v1_packages/  Dataset v1.0 패키지 (dataset-v1 브랜치에서 받음, git 제외)
-├─ output/<이미지명>/    실행 결과
-├─ output/common10/      공통 10장 결과
-├─ output/eval_v1/       Dataset v1.0 결과 (<split>/<image_id>/)
-└─ docs/                 성공·실패 사례 문서
+├─ data/common10/           공통 10장 + tail GT ROI 사본
+├─ data/eval_v1_packages/   Dataset v1.0 패키지 (git 제외)
+├─ output/common10/         공통 10장 결과
+├─ output/eval_v1/          Dataset v1.0 결과
+├─ 1004_A에게_줄파일/        10/04 전달물
+├─ 1005_B에게_줄파일/        10/05 전달물
+└─ docs/                    사례 분석, 전달 문서
 ```
 
 ## 설치
-```
+
+```bash
 python -m pip install -r requirements_frozen.txt
 ```
-- 라이브러리 버전이 다르면 셀 결과도 달라지므로 위 버전을 그대로 사용 (`python Task_10_Renewal.py --check-repro` 로 확인)
-- venv를 쓰다가 `No module named 'cv2'`가 나오면, venv가 켜진 상태에서 위 명령으로 다시 설치
 
-Dataset v1.0 패키지 받기 (development)
-```
+라이브러리 버전이 다르면 셀 결과도 달라지므로 Python 3.13.9와 위 파일의 버전을 그대로 사용합니다.
+
+Dataset v1.0 development 패키지는 `dataset-v1` 브랜치에서 받습니다.
+
+```bash
 git archive origin/dataset-v1 data/eval_v1_packages/development | tar -x
 ```
 
 ## 실행
+
 프로젝트 폴더에서 실행합니다.
 
 | 목적 | 명령 |
 |---|---|
-| 한 장 처리 (`Test_image_file/sample.jpg`, 그림 표시) | `python Task_0930.py` |
-| 폴더 전체 일괄 처리 → `output/summary.csv`, `output/failure_cases.csv` | `python -c "import Task_0930 as t; t.run_batch()"` |
-| 공통 10장: 기존 결과 보존 + 5필드 ROI 요약 + 조건별 최종 결과 출력 | `python Task_10_Renewal.py` |
-| 공통 10장 재현 확인 (임시 폴더에 실행 후 기존 결과와 비교) | `python Task_10_Renewal.py --check-repro` |
-| 공통 10장 파이프라인까지 다시 실행 (기존 결과 덮어씀) | `python Task_10_Renewal.py --rerun` |
-| Dataset v1.0 development 일괄 실행 | `python Task_10_Renewal.py --dataset development` |
-| 파라미터·코드·환경 동결 기록 (코드 commit 후) | `python Task_10_Renewal.py --freeze` |
-| holdout_test 1회 실행 (동결 확인, 재실행 거부) | `python Task_10_Renewal.py --dataset holdout_test` |
-| (따로 실행할 때만) tail 실험 C 입력만 다시 생성 | `python tail_roi.py` |
-| 셀 크롭 이미지까지 저장 (`output/<이미지명>/roi/`) | `python -c "import Task_0930 as t; t.run_pipeline(show=False, save_roi=True)"` |
-| 선 추출 커널 비교 (이전 코드 0.4 vs 현재) | `python -c "import Task_0930 as t; t.compare_line_settings()"` |
-| 파라미터를 바꿔서 실행 (예: line_open_base 24) | `python -c "import Task_0930 as t; t.run_pipeline(show=False, params={'line_open_base': 24})"` |
+| 공통 10장 재현 확인 (기존 결과 유지) | `python Task_10_Renewal.py --check-repro` |
+| 공통 10장 5필드 요약 | `python Task_10_Renewal.py` |
+| 공통 10장 다시 실행 (기존 결과 덮어씀) | `python Task_10_Renewal.py --rerun` |
+| development 일괄 실행 | `python Task_10_Renewal.py --dataset development` |
+| 코드 commit 후 동결 기록 | `python Task_10_Renewal.py --freeze` |
+| holdout_test 1회 실행 | `python Task_10_Renewal.py --dataset holdout_test` |
 
-`python Task_0930.py` 실행 시 그림 창을 모두 닫아야 결과 요약이 출력됩니다.
+`holdout_test`는 코드·파라미터·환경이 동결 기록과 다르거나, 이미 실행했거나, development와 `document_group_id`가 겹치면 실행되지 않습니다.
 
-## 출력 (`output/<이미지명>/`)
+## 출력
+
+`output/common10/`과 `output/eval_v1/<split>/`의 구조는 같습니다.
+
 | 파일 | 내용 | 좌표 기준 |
 |---|---|---|
-| `cells.json` | 최종 셀 (general / merged) | 보정본 `<이미지명>_aligned.png` |
-| `cells_primitive.json` | 병합 전 격자 셀 (비교용) | 보정본 |
-| `cells_original.json` | `cells.json`과 같은 셀 | 원본 이미지 |
-| `cells_primitive_original.json` | `cells_primitive.json`과 같은 셀 | 원본 이미지 |
-| `<이미지명>_aligned.png` | 기울기 보정한 이미지 (보정했을 때만 생성) | - |
-| `report.json` | 검증 결과, 실패 사례, 경계 점수, 파라미터, 처리 시간 | - |
-| `vis/0~4_*.png` | 선 추출 / primitive grid / 경계 판정 / 최종 셀 / 단계 비교 그림 | - |
+| `<image_id>/cells_original.json` | 최종 셀. 원본 GT와 비교할 때 사용 | 원본 |
+| `<image_id>/cells.json` | 최종 셀. aligned OCR에 사용 | 보정본 |
+| `<image_id>/<image_id>_aligned.png` | 보정본 이미지 (git 제외, 다시 실행하면 생성) | - |
+| `<image_id>/report.json` | status, 실패 사례, 파라미터, 처리 시간 | - |
+| `<image_id>/fields.json` | 5필드 ROI, 필드별 실패 유형 | 원본 |
+| `summary.json` | 전달용 요약: `image_id`, `target_fields`, `detected_fields`, `roi_coverage`, `failure_reason` | - |
+| `field_summary.csv` | `summary.json` + 문서 그룹, 조건, status, 표 수, GT bbox 수 | - |
+| `field_results.csv` | 필드 단위 상세 | 원본 |
+| `detected_roi.json` | 5필드 ROI 모음 (quad) | 원본 |
+| `run_info.json` | 명령, 파라미터, 코드 해시, 환경, commit (`--dataset`, `--rerun` 실행 시 생성) | - |
 
-- GT가 원본 이미지 위에 그려졌다면 `cells_original.json`으로 평가
-- OCR용으로 셀을 잘라 쓸 때는 `cells.json` + `<이미지명>_aligned.png` 사용
+`output/common10/summary.csv`는 `run_batch()`가 만드는 구조 복원 요약이므로, 5필드 요약은 `summary.json`을 사용합니다.
 
-## cells.json 형식 (고정)
+### cells.json 형식
+
 ```json
 {
   "image": "sample_aligned.png",
@@ -89,53 +143,32 @@ git archive origin/dataset-v1 data/eval_v1_packages/development | tar -x
   "method": "opencv_grid_merge",
   "rotation_deg": -1.061,
   "cells": [
-    {"id": 0, "table": 0, "bbox": [x1, y1, x2, y2], "type": "merged", "primitive_cells": [[0, 0], [0, 1]]}
+    {"id": 0, "table": 0, "bbox": [0, 0, 100, 50], "type": "merged", "primitive_cells": [[0, 0], [0, 1]]}
   ]
 }
 ```
-- `bbox`: 정수 픽셀 `[왼쪽, 위, 오른쪽, 아래]`, 셀끼리 겹치지 않음
-- `type`: `general`(격자 1칸) / `merged`(격자 2칸 이상)
-- `table`: 페이지 안 표 번호 (위→아래), `primitive_cells`의 `[행, 열]`은 그 표 안 좌표
-- 정렬: 표 순서 → 위→아래 → 왼→오른쪽, `id`는 그 순서대로 0부터
 
-## 주요 파라미터 (`Task_0930.py`의 `PARAMS`)
-| 파라미터 | 값 | 의미 |
-|---|---|---|
-| `ref_diag` | 2000 | 해상도 스케일 기준 (이미지 대각선 2000px일 때 스케일 1.0) |
-| `deskew_min_angle` | 0.3 | 이보다 작은 기울기(도)는 보정하지 않음 |
-| `line_open_base` | 30 | 글자 획 제거용 선 추출 커널 (x 스케일). 한 행 높이보다 길면 짧은 세로 경계가 사라짐 |
-| `close_ratio` | 0.01 | 끊어진 선을 잇는 길이 (이미지 폭/높이 대비) |
-| `anchor_h_ratio` / `anchor_v_ratio` | 0.15 / 0.03 | 표로 인정할 긴 선의 최소 길이 (폭/높이 대비) |
-| `gap_thresh_base` | 10 | 같은 선으로 묶는 간격 (x 스케일) |
-| `presence_ratio` | 0.5 | 경계선이 이 비율 넘게 이어져 있으면 "경계 있음" |
-| `max_merged_area_ratio` | 0.3 | 병합 셀이 표 면적의 이 비율을 넘으면 과다 병합 의심 |
-| `hidden_line_ratio` | 0.8 | 셀 안을 이 비율 이상 가로지르는 선이 있으면 선 검출 실패로 기록 |
+- `bbox`: 정수 픽셀 `[왼쪽, 위, 오른쪽, 아래]`
+- `type`: `general`(격자 1칸) 또는 `merged`(격자 2칸 이상)
+- `table`: 페이지 안의 표 번호 (위에서 아래 순)
+- `primitive_cells`: 그 표 안의 `[행, 열]`
 
-## 현재 결과 (sample.jpg, IoU 0.5)
-| 방법 | Precision | Recall | F1 |
-|---|---|---|---|
-| Grid only (`cells_primitive_original.json`) | 28.1% | 68.4% | 39.9% |
-| Grid + Spanning Recon (`cells_original.json`) | 90.7% | 82.1% | 86.2% |
+## 실패 유형
 
-- 평가: 공통 evaluator `evaluate.py` + `sample.jpg_gt.json` (GT 95셀)
-- 사례 정리: `docs/02_success_cases.md`, `docs/03_failure_cases.md`
-
-## 공통 10장 결과 (tail sample_1~10, 파라미터 변경 없음)
-| 구분 | 이미지 |
+| 유형 | 판정 |
 |---|---|
-| 성공 (상·하단 표 모두 복원) | sample_1, sample_2 |
-| 부분 (표 하나만 정상) | sample_4, sample_6, sample_8 |
-| 실패 (과다 병합 / 표 누락) | sample_3, sample_5, sample_7, sample_9, sample_10 |
-- 자동 status: ok 1 / check 9 / grid_fail 0 / error 0 (표가 하나라도 남으면 check — `tables` 도 같이 확인)
-- 주요 실패 원인: 촬영 원근·종이 휨으로 가로선 투영이 겹쳐 여러 행이 하나로 합쳐짐
-- 상세: `docs/07_common10_results.md` / tail 전달: `docs/08_handoff_tail_common10.md` / B 전달: `docs/06_handoff_B_io_spec.md` 10절
+| `TABLE_MISSING` | 필드가 있어야 할 표를 못 찾음, 또는 그 위치에 셀이 없음 |
+| `ROW_MERGE` | 셀 높이 > 기준 셀 높이 × 1.8 |
+| `COLUMN_MERGE` | 셀 폭 > 기준 셀 폭 × 1.8 |
+| `CELL_MERGE` | 높이와 폭 모두 초과 |
+| `WRONG_MAPPING` | 고른 셀은 GT bbox를 50% 이상 못 덮는데 다른 셀이 덮음 (GT bbox 필요) |
+| `COORDINATE_ERROR` | GT bbox를 50% 이상 덮는 셀이 없음 (GT bbox 필요) |
+| `RUN_ERROR` | 파이프라인 실행 실패 |
 
 ## 알려진 한계
-- 한 행 높이보다 짧은 세로 경계는 선 추출에서 지워져 라벨·값 칸이 합쳐질 수 있음 (`line_open_base` 조정 검토 중)
-- 원근 왜곡(사다리꼴 촬영)은 보정하지 않음 → 가장자리 열 bbox가 조금 어긋날 수 있음
-- 선이 없는 표(borderless)는 지원하지 않음
 
-## 이전 버전 (`TestResult.py`)
-- 기울기 보정 → 이진화 → 표선 검출 → Union-Find 병합 → `cells.json` 저장 (`python TestResult.py`)
-- 선 추출 커널이 이미지 높이의 40%라, sample.jpg 같은 촬영본에서는 표선이 모두 지워져 "표선 검출 실패"가 발생
-- 현재는 `Task_0930.py`를 사용
+- 원근 왜곡은 보정하지 않습니다. perspective 조건 4장은 모두 5필드 ROI를 만들지 못했습니다.
+- 촬영 원근이나 종이 휨이 있으면 가로선 투영이 겹쳐 여러 행이 하나로 합쳐질 수 있습니다.
+- 한 행 높이보다 짧은 세로 경계는 선 추출에서 지워져 라벨 칸과 값 칸이 합쳐질 수 있습니다.
+- 선이 없는 표는 지원하지 않습니다.
+- 필드 위치는 기준 양식의 상대 위치로 고르므로, 같은 양식의 계약서를 전제로 합니다.

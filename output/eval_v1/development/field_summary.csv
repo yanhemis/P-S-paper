@@ -1,6 +1,6 @@
 ﻿image_id,document_group_id,condition,usable,status,tables,target_fields,detected_fields,roi_coverage,detected_list,failure_reason,gt_bbox_fields,gt_cover_mean
-common_001,common_doc01,unknown,yes,ok,2,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,5,0.842
-common_002,common_doc02,unknown,yes,check,2,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,5,0.917
+common_001,common_doc01,unknown,yes,ok,2,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,5,0.848
+common_002,common_doc02,unknown,yes,check,2,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,5,0.919
 common_003,common_doc03,unknown,yes,check,2,5,1,0.2,lessor_name,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessee_name:ROW_MERGE,5,0.818
 common_004,common_doc04,unknown,yes,check,2,5,5,1.0,address deposit contract_amount lessor_name lessee_name,,5,0.874
 common_005,common_doc05,unknown,yes,check,1,5,0,0.0,,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,5,

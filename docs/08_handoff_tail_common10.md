@@ -62,7 +62,7 @@
 ## 6. 다시 만들기
 
 ```bash
-python Task_10_Renewal.py      # output/common10/ 전체 재생성
+python Task_10_Renewal.py --rerun      # output/common10/ 전체 재생성
 python tail_roi.py     # handoff_tail/ 재생성 (data/common10/tail_gt_roi.json = tail gt/gt_roi.json 사본)
 ```
 

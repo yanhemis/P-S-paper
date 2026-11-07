@@ -24,7 +24,7 @@
 | sample_10 | check | 1 | 2x5 | 3 (2) | 2.32° | **실패** — 원거리 촬영, 상단 표 일부만 검출, 하단 표 누락 |
 
 - 요약: 성공 2 / 부분 3 / 실패 5. 자동 status 는 ok 1 / check 9 / grid_fail 0 / error 0
-- 처리 시간: 이미지당 0.8~1.4초 (`report.json` 의 `process_sec`)
+- 처리 시간: 이미지당 약 1.0~3.9초 (`report.json` 의 `process_sec`, 실행 시 부하에 따라 달라짐)
 - 실패 상세(유형·셀 id·근거)는 `output/common10/failure_cases.csv` 와 각 `report.json` 의 `failures` 에 그대로 기록됨
 
 ## 2. 자동 status 해석 시 주의
@@ -46,7 +46,7 @@
 - 원본 → 보정본 변환 행렬: `manifest.json` 의 `aligned.affine_original_to_aligned` (2x3, 회전 0° 이면 `null` = 좌표 동일)
 - `cells_original.json` 의 bbox 는 셀 중심만 원본으로 되돌린 축 정렬 박스라, 원본에서 기울어진 셀과는 회전량만큼 모서리가 어긋난다
   (예: 폭 1000px 셀, 2.5° 회전 → 양 끝 높이 차 약 44px). 정확한 4점이 필요하면 `tail_roi.py` 의 `aligned_to_original_quad()` 를 쓴다.
-- aligned 이미지와 `vis/` 는 용량(장당 약 90MB)이 커서 git 에 올리지 않았다. `python Task_10_Renewal.py` 를 실행하면 같은 파일이 다시 생성된다.
+- aligned 이미지와 `vis/` 는 용량(장당 약 90MB)이 커서 git 에 올리지 않았다. `python Task_10_Renewal.py --rerun` 을 실행하면 같은 파일이 다시 생성된다.
 
 ## 4. 폴더 구조
 

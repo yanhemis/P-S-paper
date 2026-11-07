@@ -289,7 +289,7 @@
         48,
         49
       ],
-      "detail": "primitive [[3, 2], [3, 3], [3, 4], [3, 5], [3, 6], [3, 7], [4, 7], [5, 7]] 가 비직사각형으로 연결 → 경계 ['(3,2) right', '(3,4) right', '(3,5) right', '(3,6) right', '(3,3) right'] 를 되살려 직사각형으로 복구"
+      "detail": "primitive [[3, 2], [3, 3], [3, 4], [3, 5], [3, 6], [3, 7], [4, 7], [5, 7]] 가 비직사각형으로 연결 → 경계 ['(3,4) right', '(3,5) right', '(3,6) right', '(3,3) right', '(3,2) right'] 를 되살려 직사각형으로 복구"
     }
   ],
   "cells_detail": [
@@ -5734,6 +5734,6 @@
     "max_merged_area_ratio": 0.3,
     "hidden_line_ratio": 0.8
   },
-  "process_sec": 1.124,
-  "total_sec": 3.487
+  "process_sec": 1.03,
+  "total_sec": 3.185
 }

@@ -7605,6 +7605,6 @@
     "max_merged_area_ratio": 0.3,
     "hidden_line_ratio": 0.8
   },
-  "process_sec": 0.93,
-  "total_sec": 3.737
+  "process_sec": 0.82,
+  "total_sec": 3.354
 }

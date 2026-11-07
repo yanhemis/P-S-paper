@@ -10,7 +10,7 @@
 | 구조 복원 코드 | `Task_0930.py` — commit `8143969` 이후 변경 없음, `PARAMS` 변경 없음, method `opencv_grid_merge` |
 | 필드 대응 | `field_roi.py` — 기준 이미지 sample_1, 셀 id: address 2 / deposit 23 / contract_amount 25 / lessor_name 41 / lessee_name 58 |
 | 실행 환경 | `requirements_frozen.txt` — Python 3.13.9, opencv-python 5.0.0.93, numpy 2.3.5, pillow 12.0.0 |
-| 데이터 | `dataset-v1` 브랜치 `a225c52`, `data/eval_v1_packages/development/` |
+| 데이터 | `dataset-v1` 브랜치 `285b05b`, `data/eval_v1_packages/development/` |
 | 기록 | 실행마다 `run_info.json`, 동결 시 `frozen_params.json` |
 
 ```bash
@@ -74,7 +74,7 @@ output/eval_v1/holdout_test/       holdout_test (미실행)
 | `COORDINATE_ERROR` | GT bbox 필요: GT 를 50% 이상 덮는 셀이 없음 |
 | `RUN_ERROR` | 파이프라인 실행 실패 (성능 실패와 구분) |
 
-GT bbox 출처: Dataset v1.0 의 `bbox` 는 현재 전부 `null` 이다. common_001~010 은 파일이 같은 tail GT ROI 를 쓰고, 신규 9장은 `WRONG_MAPPING` / `COORDINATE_ERROR` 를 자동 판정하지 못한다.
+GT bbox: Dataset v1.0 은 common_001~010 의 49개 필드에만 `bbox` 가 있다. 신규 9장은 `null` 이라 `WRONG_MAPPING` / `COORDINATE_ERROR` 를 자동 판정하지 못한다.
 
 ## 4. 결과
 
@@ -125,7 +125,6 @@ development 의 common_001~010 `cells_original.json` 은 공통 10장 결과와 
 
 ## 5. 전달 시 확인이 필요한 사항
 
-- `field_gt.json` (`dataset-v1` `a225c52`): 한글이 `?` 문자로 저장되어 있다. ROI 계산에는 쓰지 않지만 텍스트 평가 전에 복구가 필요하다.
 - 신규 9장 GT `bbox` 가 없으면 기하 ROI Coverage 와 `WRONG_MAPPING` / `COORDINATE_ERROR` 를 계산할 수 없다.
 
 ## 6. 하지 않은 것
