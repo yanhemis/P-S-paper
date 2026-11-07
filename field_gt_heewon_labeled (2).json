@@ -1,0 +1,968 @@
+{
+  "common_001": {
+    "document_group_id": "common_doc01",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 마포구 월드컵로 45길 12, 301호",
+        "normalized": "서울특별시 마포구 월드컵로 45길 12, 301호",
+        "bbox": [
+          610,
+          589,
+          2658,
+          653
+        ]
+      },
+      "deposit": {
+        "raw_text": "일억팔천만",
+        "normalized": "180000000",
+        "bbox": [
+          670,
+          987,
+          1725,
+          1051
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "일천팔백만",
+        "normalized": "18000000",
+        "bbox": [
+          668,
+          1047,
+          1319,
+          1110
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "박정훈",
+        "normalized": "박정훈",
+        "bbox": [
+          2267,
+          2926,
+          2584,
+          3000
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "이서연",
+        "normalized": "이서연",
+        "bbox": [
+          2269,
+          3140,
+          2587,
+          3212
+        ]
+      }
+    }
+  },
+  "common_002": {
+    "document_group_id": "common_doc02",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 관악구 관악로 210, 지하 102호",
+        "normalized": "서울특별시 관악구 관악로 210, 지하 102호",
+        "bbox": [
+          567,
+          494,
+          2693,
+          561
+        ]
+      },
+      "deposit": {
+        "raw_text": "일천만",
+        "normalized": "10000000",
+        "bbox": [
+          625,
+          907,
+          1722,
+          972
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "일백만",
+        "normalized": "1000000",
+        "bbox": [
+          623,
+          969,
+          1297,
+          1032
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "정미경",
+        "normalized": "정미경",
+        "bbox": [
+          2270,
+          2946,
+          2606,
+          3021
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "오준혁",
+        "normalized": "오준혁",
+        "bbox": [
+          2273,
+          3167,
+          2609,
+          3239
+        ]
+      }
+    }
+  },
+  "common_003": {
+    "document_group_id": "common_doc03",
+    "fields": {
+      "address": {
+        "raw_text": "경기도 성남시 분당구 판교로 256번길 33, 1204동 803호",
+        "normalized": "경기도 성남시 분당구 판교로 256번길 33, 1204동 803호",
+        "bbox": [
+          716,
+          540,
+          2734,
+          628
+        ]
+      },
+      "deposit": {
+        "raw_text": "이억 오천만",
+        "normalized": "250000000",
+        "bbox": [
+          733,
+          941,
+          1750,
+          1002
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "이천오백만",
+        "normalized": "25000000",
+        "bbox": [
+          728,
+          998,
+          1348,
+          1056
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "강태식",
+        "normalized": "강태식",
+        "bbox": [
+          2205,
+          2908,
+          2542,
+          3002
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "신유진",
+        "normalized": "신유진",
+        "bbox": [
+          2200,
+          3132,
+          2538,
+          3226
+        ]
+      }
+    }
+  },
+  "common_004": {
+    "document_group_id": "common_doc04",
+    "fields": {
+      "address": {
+        "raw_text": "부산광역시 해운대구 센텀중앙로 79, 1508호",
+        "normalized": "부산광역시 해운대구 센텀중앙로 79, 1508호",
+        "bbox": [
+          661,
+          569,
+          2682,
+          630
+        ]
+      },
+      "deposit": {
+        "raw_text": "삼천만",
+        "normalized": "30000000",
+        "bbox": [
+          720,
+          971,
+          1744,
+          1032
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "삼백만",
+        "normalized": "3000000",
+        "bbox": [
+          719,
+          1031,
+          1346,
+          1090
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "문영숙",
+        "normalized": "문영숙",
+        "bbox": [
+          2197,
+          2844,
+          2489,
+          2911
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "배현우",
+        "normalized": "배현우",
+        "bbox": [
+          2197,
+          3034,
+          2489,
+          3099
+        ]
+      }
+    }
+  },
+  "common_005": {
+    "document_group_id": "common_doc05",
+    "fields": {
+      "address": {
+        "raw_text": "인천광역시 부평구 부평대로 283, 302호",
+        "normalized": "인천광역시 부평구 부평대로 283, 302호",
+        "bbox": [
+          779,
+          634,
+          2626,
+          730
+        ]
+      },
+      "deposit": {
+        "raw_text": "오백만",
+        "normalized": "5000000",
+        "bbox": [
+          802,
+          996,
+          1747,
+          1059
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "오십만",
+        "normalized": "500000",
+        "bbox": [
+          798,
+          1052,
+          1375,
+          1111
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "서동철",
+        "normalized": "서동철",
+        "bbox": [
+          2201,
+          2798,
+          2515,
+          2879
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "권나연",
+        "normalized": "권나연",
+        "bbox": [
+          2203,
+          3004,
+          2521,
+          3085
+        ]
+      }
+    }
+  },
+  "common_006": {
+    "document_group_id": "common_doc06",
+    "fields": {
+      "address": {
+        "raw_text": "대전광역시 유성구 대학로 99, 옥천빌라 201호",
+        "normalized": "대전광역시 유성구 대학로 99, 옥천빌라 201호",
+        "bbox": [
+          607,
+          525,
+          2647,
+          639
+        ]
+      },
+      "deposit": {
+        "raw_text": "삼억 이천만",
+        "normalized": "320000000",
+        "bbox": [
+          649,
+          940,
+          1694,
+          1020
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "삼천 이백만",
+        "normalized": "32000000",
+        "bbox": [
+          649,
+          1007,
+          1286,
+          1078
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "황보석",
+        "normalized": "황보석",
+        "bbox": [
+          2230,
+          2919,
+          2567,
+          2998
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "안다은",
+        "normalized": "안다은",
+        "bbox": [
+          2232,
+          3142,
+          2570,
+          3220
+        ]
+      }
+    }
+  },
+  "common_007": {
+    "document_group_id": "common_doc07",
+    "fields": {
+      "address": {
+        "raw_text": "광주광역시 북구 첨단과기로 123, 5층 502호",
+        "normalized": "광주광역시 북구 첨단과기로 123, 5층 502호",
+        "bbox": [
+          630,
+          526,
+          1700,
+          590
+        ]
+      },
+      "deposit": {
+        "raw_text": "일억 사천오백만",
+        "normalized": "145000000",
+        "bbox": [
+          1330,
+          878,
+          1700,
+          928
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "",
+        "normalized": "",
+        "bbox": null,
+        "status": "not_present"
+      },
+      "lessor_name": {
+        "raw_text": "노경자",
+        "normalized": "노경자",
+        "bbox": [
+          2201,
+          2760,
+          2531,
+          2836
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "표진우",
+        "normalized": "표진우",
+        "bbox": [
+          2207,
+          2975,
+          2540,
+          3051
+        ]
+      }
+    }
+  },
+  "common_008": {
+    "document_group_id": "common_doc08",
+    "fields": {
+      "address": {
+        "raw_text": "경기도 수원시 영통구 광교중앙로 145, 2301동 1502호",
+        "normalized": "경기도 수원시 영통구 광교중앙로 145, 2301동 1502호",
+        "bbox": [
+          660,
+          596,
+          2678,
+          693
+        ]
+      },
+      "deposit": {
+        "raw_text": "사억일천만",
+        "normalized": "410000000",
+        "bbox": [
+          706,
+          1001,
+          1731,
+          1073
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "사천일백만",
+        "normalized": "41000000",
+        "bbox": [
+          704,
+          1063,
+          1331,
+          1128
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "남궁순옥",
+        "normalized": "남궁순옥",
+        "bbox": [
+          2235,
+          2941,
+          2559,
+          3019
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "독고진성",
+        "normalized": "독고진성",
+        "bbox": [
+          2239,
+          3155,
+          2566,
+          3232
+        ]
+      }
+    }
+  },
+  "common_009": {
+    "document_group_id": "common_doc09",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 성동구 왕십리로 115, 1103호",
+        "normalized": "서울특별시 성동구 왕십리로 115, 1103호",
+        "bbox": [
+          668,
+          545,
+          2637,
+          658
+        ]
+      },
+      "deposit": {
+        "raw_text": "오천만",
+        "normalized": "50000000",
+        "bbox": [
+          713,
+          946,
+          1712,
+          1023
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "오백만",
+        "normalized": "5000000",
+        "bbox": [
+          709,
+          1007,
+          1320,
+          1077
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "도상현",
+        "normalized": "도상현",
+        "bbox": [
+          2228,
+          2834,
+          2556,
+          2910
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "마수빈",
+        "normalized": "마수빈",
+        "bbox": [
+          2225,
+          3051,
+          2551,
+          3126
+        ]
+      }
+    }
+  },
+  "common_010": {
+    "document_group_id": "common_doc10",
+    "fields": {
+      "address": {
+        "raw_text": "대구광역시 수성구 달구벌대로 2350, 405호",
+        "normalized": "대구광역시 수성구 달구벌대로 2350, 405호",
+        "bbox": [
+          932,
+          800,
+          2360,
+          850
+        ]
+      },
+      "deposit": {
+        "raw_text": "이천만",
+        "normalized": "20000000",
+        "bbox": [
+          952,
+          1066,
+          1673,
+          1117
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "이백만",
+        "normalized": "2000000",
+        "bbox": [
+          948,
+          1105,
+          1389,
+          1152
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "채원석",
+        "normalized": "채원석",
+        "bbox": [
+          1949,
+          2427,
+          2174,
+          2488
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "봉하늘",
+        "normalized": "봉하늘",
+        "bbox": [
+          1944,
+          2570,
+          2173,
+          2631
+        ]
+      }
+    }
+  },
+  "heewon_001": {
+    "document_group_id": "heewon_docA",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 노원구 가상길 123, 201호",
+        "normalized": "서울특별시 노원구 가상길 123, 201호",
+        "bbox": [
+          587,
+          677,
+          1327,
+          744
+        ]
+      },
+      "deposit": {
+        "raw_text": "일억",
+        "normalized": "100000000",
+        "bbox": [
+          881,
+          1115,
+          1019,
+          1174
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "일천만",
+        "normalized": "10000000",
+        "bbox": [
+          863,
+          1172,
+          1014,
+          1236
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "김민수",
+        "normalized": "김민수",
+        "bbox": [
+          2152,
+          2937,
+          2313,
+          2995
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "이서연",
+        "normalized": "이서연",
+        "bbox": [
+          2164,
+          3121,
+          2321,
+          3182
+        ]
+      }
+    }
+  },
+  "heewon_002": {
+    "document_group_id": "heewon_docA",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 노원구 가상길 123, 201호",
+        "normalized": "서울특별시 노원구 가상길 123, 201호",
+        "bbox": [
+          871,
+          963,
+          1416,
+          985
+        ]
+      },
+      "deposit": {
+        "raw_text": "일억",
+        "normalized": "100000000",
+        "bbox": [
+          1075,
+          1239,
+          1162,
+          1282
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "일천만",
+        "normalized": "10000000",
+        "bbox": [
+          1049,
+          1290,
+          1173,
+          1322
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "김민수",
+        "normalized": "김민수",
+        "bbox": [
+          2160,
+          2680,
+          2302,
+          2720
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "이서연",
+        "normalized": "이서연",
+        "bbox": [
+          2178,
+          2840,
+          2320,
+          2883
+        ]
+      }
+    }
+  },
+  "heewon_003": {
+    "document_group_id": "heewon_docA",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 노원구 가상길 123, 201호",
+        "normalized": "서울특별시 노원구 가상길 123, 201호",
+        "bbox": [
+          1445,
+          603,
+          1913,
+          868
+        ]
+      },
+      "deposit": {
+        "raw_text": "일억",
+        "normalized": "100000000",
+        "bbox": [
+          1452,
+          949,
+          1536,
+          1025
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "일천만",
+        "normalized": "10000000",
+        "bbox": [
+          1409,
+          981,
+          1510,
+          1065
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "김민수",
+        "normalized": "김민수",
+        "bbox": [
+          1637,
+          2753,
+          1742,
+          2848
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "이서연",
+        "normalized": "이서연",
+        "bbox": [
+          1565,
+          2906,
+          1674,
+          3004
+        ]
+      }
+    }
+  },
+  "heewon_004": {
+    "document_group_id": "heewon_docB",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 강북구 예시로 45",
+        "normalized": "서울특별시 강북구 예시로 45",
+        "bbox": [
+          730,
+          915,
+          1589,
+          1008
+        ]
+      },
+      "deposit": {
+        "raw_text": "팔천만",
+        "normalized": "80000000",
+        "bbox": [
+          987,
+          1565,
+          1219,
+          1652
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "팔백만",
+        "normalized": "8000000",
+        "bbox": [
+          1003,
+          1663,
+          1245,
+          1750
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "박지훈",
+        "normalized": "박지훈",
+        "bbox": [
+          3060,
+          4371,
+          3260,
+          4468
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "최유진",
+        "normalized": "최유진",
+        "bbox": [
+          3065,
+          4643,
+          3312,
+          4741
+        ]
+      }
+    }
+  },
+  "heewon_005": {
+    "document_group_id": "heewon_docB",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 강북구 예시로 45",
+        "normalized": "서울특별시 강북구 예시로 45",
+        "bbox": [
+          1336,
+          610,
+          1735,
+          792
+        ]
+      },
+      "deposit": {
+        "raw_text": "팔천만",
+        "normalized": "80000000",
+        "bbox": [
+          1307,
+          912,
+          1423,
+          999
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "팔백만",
+        "normalized": "8000000",
+        "bbox": [
+          1300,
+          963,
+          1412,
+          1042
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "박지훈",
+        "normalized": "박지훈",
+        "bbox": [
+          1801,
+          2811,
+          1917,
+          2920
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "최유진",
+        "normalized": "최유진",
+        "bbox": [
+          1753,
+          2989,
+          1877,
+          3087
+        ]
+      }
+    }
+  },
+  "heewon_006": {
+    "document_group_id": "heewon_docB",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 강북구 예시로 45",
+        "normalized": "서울특별시 강북구 예시로 45",
+        "bbox": [
+          693,
+          737,
+          1151,
+          759
+        ]
+      },
+      "deposit": {
+        "raw_text": "팔천만",
+        "normalized": "80000000",
+        "bbox": [
+          788,
+          1072,
+          929,
+          1112
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "팔백만",
+        "normalized": "8000000",
+        "bbox": [
+          791,
+          1130,
+          929,
+          1170
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "박지훈",
+        "normalized": "박지훈",
+        "bbox": [
+          2131,
+          2902,
+          2291,
+          2996
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "최유진",
+        "normalized": "최유진",
+        "bbox": [
+          2153,
+          3134,
+          2331,
+          3229
+        ]
+      }
+    }
+  },
+  "tail_001": {
+    "document_group_id": "tail_docA",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 강서구 마곡중앙로 163, 702호",
+        "normalized": "서울특별시 강서구 마곡중앙로 163, 702호",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "이억칠천만",
+        "normalized": "270000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "이천칠백만",
+        "normalized": "27000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "장영숙",
+        "normalized": "장영숙",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "한도윤",
+        "normalized": "한도윤",
+        "bbox": null
+      }
+    }
+  },
+  "tail_002": {
+    "document_group_id": "tail_docA",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 강서구 마곡중앙로 163, 702호",
+        "normalized": "서울특별시 강서구 마곡중앙로 163, 702호",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "이억칠천만",
+        "normalized": "270000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "이천칠백만",
+        "normalized": "27000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "장영숙",
+        "normalized": "장영숙",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "한도윤",
+        "normalized": "한도윤",
+        "bbox": null
+      }
+    }
+  },
+  "tail_007": {
+    "document_group_id": "tail_docA",
+    "fields": {
+      "address": {
+        "raw_text": "서울특별시 강서구 마곡중앙로 163, 702호",
+        "normalized": "서울특별시 강서구 마곡중앙로 163, 702호",
+        "bbox": null
+      },
+      "deposit": {
+        "raw_text": "이억칠천만",
+        "normalized": "270000000",
+        "bbox": null
+      },
+      "contract_amount": {
+        "raw_text": "이천칠백만",
+        "normalized": "27000000",
+        "bbox": null
+      },
+      "lessor_name": {
+        "raw_text": "장영숙",
+        "normalized": "장영숙",
+        "bbox": null
+      },
+      "lessee_name": {
+        "raw_text": "한도윤",
+        "normalized": "한도윤",
+        "bbox": null
+      }
+    }
+  }
+}
