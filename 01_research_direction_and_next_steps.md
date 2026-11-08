@@ -1,6 +1,6 @@
 # 연구 방향성 · 가설 · 다음 작업 통합 문서
 
-> 마지막 업데이트: 2026-10-21
+> 마지막 업데이트: 2026-11-08
 > 상태: 연구축 동결, 데이터 보강 + 최종 평가 단계
 
 ## 1. 논문 중심 주제
@@ -114,10 +114,19 @@ OpenCV 구조 평가는 Affine 좌표 감사 후 재평가됐지만 단일 이�
 
 - ROI가 생성되지 않은 필드는 end-to-end Field Accuracy에서 실패로 계산한다.
 - ROI Coverage와 ROI가 존재할 때의 OCR 정확도를 분리해서 본다.
+- ROI Coverage용 GT BBox는 **셀 전체가 아니라 실제 정답 값(Value) 문자열 영역**으로 정의한다.
+- 성명 필드는 실제 이름 문자열만 포함하며 `(인)`, 도장, 인감 흔적, 서명은 GT BBox에서 제외한다.
+- GT BBox는 원본 이미지 기준 `[x_min, y_min, x_max, y_max]` 좌표를 사용한다.
+- ROI Coverage는 `Area(GT ∩ ROI) / Area(GT)`로 계산하며, 프로젝트 기준 `0.90 이상`을 Covered로 판정한다.
+- P3의 여러 ROI 후보는 최대 Coverage를 사용하고, P4는 알고리즘이 최종 선택한 ROI 1개만 평가한다.
+- `bbox: null` 또는 `unreadable`인 필드는 ROI Coverage 분모에 임의로 넣지 않는다.
+- ROI Coverage는 inclusion을 보는 지표이므로 IoU와 구분한다. 지나치게 큰 ROI 문제는 CER / Field Accuracy / failure reason에서 별도로 본다.
 - 좌표계가 다른 prediction/GT를 섞지 않는다.
 - 이미지 수, 원본 문서 그룹 수, field instance 수를 구분해 보고한다.
 - 같은 이미지에서 나온 여러 field를 독립 문서 표본처럼 해석하지 않는다.
 - holdout 결과를 보고 튜닝하면 해당 결과는 더 이상 untouched final test가 아니다.
+
+GT BBox의 상세 작성 규칙은 `04_data_collection_gt_protocol.md`를 단일 기준 문서로 사용한다.
 
 ## 8. 최종 해석 범위
 
