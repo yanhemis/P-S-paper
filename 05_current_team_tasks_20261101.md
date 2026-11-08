@@ -188,6 +188,9 @@ P4 성능이 낮아도 괜찮다. 그 경우 논문에서는 PoC/보조 비교�
 - [ ] 다음 두 수치를 반드시 분리해 보고한다.
   1. `ROI Coverage`
   2. ROI가 존재하는 경우의 OCR 정확도
+- [ ] ROI Coverage는 `Area(GT ∩ ROI) / Area(GT)`로 계산하고 `0.90 이상`을 Covered로 고정한다.
+- [ ] P3는 여러 ROI 후보 중 최대 Coverage, P4는 알고리즘이 최종 선택한 ROI 1개만 평가한다.
+- [ ] `bbox: null` / `unreadable` 필드를 ROI Coverage 분모에 임의로 포함하지 않는다.
 - [ ] 기존 공통 10장과 신규 데이터 결과를 먼저 별도 표로 만든다.
 - [ ] 필요할 때만 통합 표를 추가한다.
 - [ ] 같은 `document_group_id` 반복 촬영을 독립 문서 표본처럼 해석하지 않는다.
@@ -356,9 +359,14 @@ lessee_name
 
 1. text GT 정확성
 2. normalized 값 정확성
-3. 가능하면 bbox
+3. ROI 평가 대상 필드는 GT bbox 작성
+4. bbox 2차 검수
 
-시간이 부족하면 bbox보다 text GT를 먼저 끝낸다.
+ROI Coverage, GT ROI OCR(P2), Detected ROI(P3), Anchor ROI(P4)에 사용할 필드는 **bbox가 있어야 ROI 평가 가능**하다.
+
+GT bbox는 셀 전체가 아니라 실제 값(Value) 문자열 영역으로 잡는다. 성명 필드는 이름 문자열만 포함하고 `(인)`, 도장, 인감 흔적, 서명은 제외한다. 좌표는 원본 이미지 기준 `[x_min, y_min, x_max, y_max]`를 사용한다.
+
+상세 기준은 `04_data_collection_gt_protocol.md`의 **ROI Coverage용 GT BBox 정의**를 그대로 따른다.
 
 ## 4단계 — 2차 검수
 
