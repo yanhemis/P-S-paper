@@ -1,6 +1,7 @@
 # 데이터 수집 · GT 구축 프로토콜
 
 > 적용 시작: 2026-10-21
+> GT BBox / ROI Coverage 기준 확정: 2026-11-08
 > 목적: 단순히 사진 수를 늘리는 것이 아니라, 논문 평가에 사용할 수 있는 재현 가능한 Dataset v1.0을 만든다.
 
 ## 1. 핵심 원칙
@@ -234,9 +235,66 @@ new_003,docC,docC_distance_far_01.jpg,distance,none,none,far,normal,no,no,yes,ho
 
 1. text GT 정확성
 2. normalized 값 정확성
-3. 가능하면 bbox
+3. ROI 평가 대상이면 bbox
+4. bbox 검수
 
-시간이 부족하면 bbox보다 text GT를 먼저 완성한다.
+ROI Coverage, GT ROI OCR(P2), Detected ROI(P3), Anchor ROI(P4) 평가에 사용할 이미지는 **bbox가 있어야 ROI 평가 가능 데이터로 인정한다.**
+
+### ROI Coverage용 GT BBox 정의
+
+GT BBox는 셀 전체가 아니라 **해당 필드의 실제 정답 값(Value) 영역**을 뜻한다.
+
+공통 규칙:
+
+- 필드 라벨(예: `보증금`, `소재지`, `임대인`)은 포함하지 않는다.
+- `raw_text`에 해당하는 실제 문자 전체를 포함하는 **최소 직사각형**으로 지정한다.
+- 표선, 주변 셀, 관계없는 여백은 가능한 한 제외한다.
+- 여러 줄 주소처럼 값이 여러 줄이면 줄별 bbox로 나누지 않고, 모든 줄을 포함하는 하나의 최소 직사각형으로 지정한다.
+- 좌표 형식은 **원본 이미지 기준 `[x_min, y_min, x_max, y_max]`** 로 통일한다.
+- resize / deskew / crop / aligned image 이후 좌표를 GT BBox로 저장하지 않는다.
+- 좌표는 항상 원본 이미지의 픽셀 좌표이며, prediction과 비교할 때도 같은 원본 좌표계로 변환한 결과를 사용한다.
+
+성명 필드(`lessor_name`, `lessee_name`)는 다음처럼 처리한다.
+
+- **실제 이름 문자열만 포함한다.**
+- `(인)` 표시는 제외한다.
+- 도장, 인감 흔적, 서명, 서명선은 제외한다.
+- 이름과 도장이 겹치더라도 bbox 기준은 이름 문자열이 차지하는 영역을 우선한다.
+
+판독 불가한 경우:
+
+- 원본 이미지에서 사람이 확인해도 값을 읽을 수 없으면 bbox를 임의 추정하지 않는다.
+- `bbox: null`로 두고 `unreadable` 상태/notes를 남긴다.
+- `unreadable` 필드는 ROI Coverage 평가 분모에서 제외한다.
+- 정상적으로 읽을 수 있는 필드인데 ROI가 생성되지 않은 경우는 모델 실패이므로 Coverage = 0으로 계산한다.
+
+### ROI Coverage 계산 규칙
+
+필드별 Coverage는 다음과 같이 계산한다.
+
+```text
+Coverage = Area(GT_BBox ∩ Predicted_ROI) / Area(GT_BBox)
+```
+
+즉 **GT 값 영역 중 예측 ROI가 실제로 얼마나 포함했는지**를 측정한다.
+
+프로젝트 운영 기준:
+
+- `Coverage >= 0.90` → Covered(성공)
+- `Coverage < 0.90` → Not Covered(실패)
+- ROI 미생성 → Coverage = 0
+- `unreadable` GT → 평가 분모에서 제외
+- 평균 Coverage와 함께 `Covered Rate = 성공 필드 수 / 평가 가능 필드 수`를 보고한다.
+
+ROI Coverage에서는 IoU를 사용하지 않는다. 예측 ROI가 GT보다 조금 크더라도 정답 값 전체를 포함하면 localization 목적은 달성한 것으로 본다. 단, 지나치게 큰 ROI는 Coverage만으로 벌점이 생기지 않으므로 `ROI_TOO_LARGE` 같은 실패 사유, CER, Field Accuracy에서 별도로 확인한다.
+
+파이프라인별 적용:
+
+- **P2 GT ROI**: 유효한 GT bbox가 존재하는 필드만 평가 가능하며, 해당 GT bbox 자체를 ROI로 사용하므로 Coverage는 1.0(100%)이다.
+- **P3 bang Detected ROI**: 한 필드에 여러 ROI 후보가 존재하면 `max_i Coverage(GT, ROI_i)`를 사용한다.
+- **P4 taegu Anchor ROI**: 알고리즘이 최종 선택한 해당 필드 ROI 1개만 평가한다. 사후에 GT를 보고 가장 잘 맞는 후보를 고르지 않는다.
+
+주의: `bbox: null`인 필드는 P2/P3/P4 ROI Coverage의 정답 좌표가 없으므로 **ROI Coverage 미평가 상태**로 남기며, 임의로 100% 또는 0%를 부여하지 않는다.
 
 ---
 
