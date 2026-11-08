@@ -551,27 +551,52 @@
       "address": {
         "raw_text": "서울특별시 노원구 가상길 123, 201호",
         "normalized": "서울특별시 노원구 가상길 123, 201호",
-        "bbox": null
+        "bbox": [
+          587,
+          677,
+          1327,
+          744
+        ]
       },
       "deposit": {
         "raw_text": "일억",
         "normalized": "100000000",
-        "bbox": null
+        "bbox": [
+          881,
+          1115,
+          1019,
+          1174
+        ]
       },
       "contract_amount": {
         "raw_text": "일천만",
         "normalized": "10000000",
-        "bbox": null
+        "bbox": [
+          863,
+          1172,
+          1014,
+          1236
+        ]
       },
       "lessor_name": {
         "raw_text": "김민수",
         "normalized": "김민수",
-        "bbox": null
+        "bbox": [
+          2152,
+          2937,
+          2313,
+          2995
+        ]
       },
       "lessee_name": {
         "raw_text": "이서연",
         "normalized": "이서연",
-        "bbox": null
+        "bbox": [
+          2164,
+          3121,
+          2321,
+          3182
+        ]
       }
     }
   },
@@ -581,27 +606,52 @@
       "address": {
         "raw_text": "서울특별시 노원구 가상길 123, 201호",
         "normalized": "서울특별시 노원구 가상길 123, 201호",
-        "bbox": null
+        "bbox": [
+          871,
+          963,
+          1416,
+          985
+        ]
       },
       "deposit": {
         "raw_text": "일억",
         "normalized": "100000000",
-        "bbox": null
+        "bbox": [
+          1075,
+          1239,
+          1162,
+          1282
+        ]
       },
       "contract_amount": {
         "raw_text": "일천만",
         "normalized": "10000000",
-        "bbox": null
+        "bbox": [
+          1049,
+          1290,
+          1173,
+          1322
+        ]
       },
       "lessor_name": {
         "raw_text": "김민수",
         "normalized": "김민수",
-        "bbox": null
+        "bbox": [
+          2160,
+          2680,
+          2302,
+          2720
+        ]
       },
       "lessee_name": {
         "raw_text": "이서연",
         "normalized": "이서연",
-        "bbox": null
+        "bbox": [
+          2178,
+          2840,
+          2320,
+          2883
+        ]
       }
     }
   },
@@ -611,27 +661,52 @@
       "address": {
         "raw_text": "서울특별시 노원구 가상길 123, 201호",
         "normalized": "서울특별시 노원구 가상길 123, 201호",
-        "bbox": null
+        "bbox": [
+          1445,
+          603,
+          1913,
+          868
+        ]
       },
       "deposit": {
         "raw_text": "일억",
         "normalized": "100000000",
-        "bbox": null
+        "bbox": [
+          1452,
+          949,
+          1536,
+          1025
+        ]
       },
       "contract_amount": {
         "raw_text": "일천만",
         "normalized": "10000000",
-        "bbox": null
+        "bbox": [
+          1409,
+          981,
+          1510,
+          1065
+        ]
       },
       "lessor_name": {
         "raw_text": "김민수",
         "normalized": "김민수",
-        "bbox": null
+        "bbox": [
+          1637,
+          2753,
+          1742,
+          2848
+        ]
       },
       "lessee_name": {
         "raw_text": "이서연",
         "normalized": "이서연",
-        "bbox": null
+        "bbox": [
+          1565,
+          2906,
+          1674,
+          3004
+        ]
       }
     }
   },
@@ -641,27 +716,52 @@
       "address": {
         "raw_text": "서울특별시 강북구 예시로 45",
         "normalized": "서울특별시 강북구 예시로 45",
-        "bbox": null
+        "bbox": [
+          730,
+          915,
+          1589,
+          1008
+        ]
       },
       "deposit": {
         "raw_text": "팔천만",
         "normalized": "80000000",
-        "bbox": null
+        "bbox": [
+          987,
+          1565,
+          1219,
+          1652
+        ]
       },
       "contract_amount": {
         "raw_text": "팔백만",
         "normalized": "8000000",
-        "bbox": null
+        "bbox": [
+          1003,
+          1663,
+          1245,
+          1750
+        ]
       },
       "lessor_name": {
         "raw_text": "박지훈",
         "normalized": "박지훈",
-        "bbox": null
+        "bbox": [
+          3060,
+          4371,
+          3260,
+          4468
+        ]
       },
       "lessee_name": {
         "raw_text": "최유진",
         "normalized": "최유진",
-        "bbox": null
+        "bbox": [
+          3065,
+          4643,
+          3312,
+          4741
+        ]
       }
     }
   },
@@ -671,27 +771,52 @@
       "address": {
         "raw_text": "서울특별시 강북구 예시로 45",
         "normalized": "서울특별시 강북구 예시로 45",
-        "bbox": null
+        "bbox": [
+          1336,
+          610,
+          1735,
+          792
+        ]
       },
       "deposit": {
         "raw_text": "팔천만",
         "normalized": "80000000",
-        "bbox": null
+        "bbox": [
+          1307,
+          912,
+          1423,
+          999
+        ]
       },
       "contract_amount": {
         "raw_text": "팔백만",
         "normalized": "8000000",
-        "bbox": null
+        "bbox": [
+          1300,
+          963,
+          1412,
+          1042
+        ]
       },
       "lessor_name": {
         "raw_text": "박지훈",
         "normalized": "박지훈",
-        "bbox": null
+        "bbox": [
+          1801,
+          2811,
+          1917,
+          2920
+        ]
       },
       "lessee_name": {
         "raw_text": "최유진",
         "normalized": "최유진",
-        "bbox": null
+        "bbox": [
+          1753,
+          2989,
+          1877,
+          3087
+        ]
       }
     }
   },
@@ -701,27 +826,52 @@
       "address": {
         "raw_text": "서울특별시 강북구 예시로 45",
         "normalized": "서울특별시 강북구 예시로 45",
-        "bbox": null
+        "bbox": [
+          693,
+          737,
+          1151,
+          759
+        ]
       },
       "deposit": {
         "raw_text": "팔천만",
         "normalized": "80000000",
-        "bbox": null
+        "bbox": [
+          788,
+          1072,
+          929,
+          1112
+        ]
       },
       "contract_amount": {
         "raw_text": "팔백만",
         "normalized": "8000000",
-        "bbox": null
+        "bbox": [
+          791,
+          1130,
+          929,
+          1170
+        ]
       },
       "lessor_name": {
         "raw_text": "박지훈",
         "normalized": "박지훈",
-        "bbox": null
+        "bbox": [
+          2131,
+          2902,
+          2291,
+          2996
+        ]
       },
       "lessee_name": {
         "raw_text": "최유진",
         "normalized": "최유진",
-        "bbox": null
+        "bbox": [
+          2153,
+          3134,
+          2331,
+          3229
+        ]
       }
     }
   },
