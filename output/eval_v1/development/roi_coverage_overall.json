@@ -1,0 +1,113 @@
+{
+  "dataset": "development",
+  "pipeline": "P3 bang Detected ROI",
+  "run_at": "2026-11-09 01:30:09",
+  "command": "python p3_detected_roi_coverage.py --dataset development",
+  "rule": {
+    "coverage": "Area(GT ∩ ROI) / Area(GT)",
+    "covered_threshold": 0.9,
+    "multi_candidate": "max over candidates",
+    "no_roi": 0.0,
+    "excluded_status": [
+      "not_present",
+      "unreadable"
+    ],
+    "bbox_null": "not evaluated",
+    "roi_coordinate": "original (cells_original.json)",
+    "candidate_min_overlap": 0.5,
+    "max_candidates": 5
+  },
+  "images": 19,
+  "all": {
+    "evaluable_fields": 79,
+    "covered_fields": 29,
+    "covered_rate": 0.3671,
+    "mean_coverage": 0.5841,
+    "failure_counts": {
+      "TABLE_MISSING": 18,
+      "ROW_MERGE": 12,
+      "COORDINATE_ERROR": 20
+    }
+  },
+  "by_set": {
+    "common": {
+      "images": 10,
+      "evaluable_fields": 49,
+      "covered_fields": 21,
+      "covered_rate": 0.4286,
+      "mean_coverage": 0.6619,
+      "failure_counts": {
+        "TABLE_MISSING": 6,
+        "ROW_MERGE": 9,
+        "COORDINATE_ERROR": 13
+      }
+    },
+    "new": {
+      "images": 9,
+      "evaluable_fields": 30,
+      "covered_fields": 8,
+      "covered_rate": 0.2667,
+      "mean_coverage": 0.4571,
+      "failure_counts": {
+        "TABLE_MISSING": 12,
+        "ROW_MERGE": 3,
+        "COORDINATE_ERROR": 7
+      }
+    }
+  },
+  "by_condition": {
+    "baseline": {
+      "images": 3,
+      "evaluable_fields": 10,
+      "covered_fields": 5,
+      "covered_rate": 0.5,
+      "mean_coverage": 0.9186,
+      "failure_counts": {
+        "COORDINATE_ERROR": 5
+      }
+    },
+    "distance": {
+      "images": 2,
+      "evaluable_fields": 5,
+      "covered_fields": 3,
+      "covered_rate": 0.6,
+      "mean_coverage": 0.9053,
+      "failure_counts": {
+        "COORDINATE_ERROR": 2
+      }
+    },
+    "perspective": {
+      "images": 4,
+      "evaluable_fields": 15,
+      "covered_fields": 0,
+      "covered_rate": 0.0,
+      "mean_coverage": 0.0,
+      "failure_counts": {
+        "TABLE_MISSING": 12,
+        "ROW_MERGE": 3
+      }
+    },
+    "unknown": {
+      "images": 10,
+      "evaluable_fields": 49,
+      "covered_fields": 21,
+      "covered_rate": 0.4286,
+      "mean_coverage": 0.6619,
+      "failure_counts": {
+        "TABLE_MISSING": 6,
+        "ROW_MERGE": 9,
+        "COORDINATE_ERROR": 13
+      }
+    }
+  },
+  "not_evaluated_fields": {
+    "not_present": 1,
+    "GT_BBOX_NULL": 15
+  },
+  "frozen_commit": "11af31690af17dd4087a013d86c3c210c5329897",
+  "script_sha256": "e92a57a052b09e365c3369a3634adcb732212a8987d01f0e7c9b13869f349e81",
+  "dataset_sha256": {
+    "manifest.csv": "46086c3c13787f4d38f10cf087d56d32c2576f2ae27adb6c1832d483173b4155",
+    "field_gt.json": "a8f3270a27f832473074ffebf2d1f95172d8359b2540ad417f571f745773414d"
+  }
+}

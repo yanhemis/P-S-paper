@@ -2,86 +2,86 @@
   {
     "image_id": "common_001",
     "target_fields": 5,
-    "detected_fields": 5,
-    "roi_coverage": 1.0,
-    "failure_reason": ""
+    "detected_fields": 1,
+    "roi_coverage": 0.8477,
+    "failure_reason": "address:COORDINATE_ERROR; contract_amount:COORDINATE_ERROR; lessor_name:COORDINATE_ERROR; lessee_name:COORDINATE_ERROR"
   },
   {
     "image_id": "common_002",
     "target_fields": 5,
-    "detected_fields": 5,
-    "roi_coverage": 1.0,
-    "failure_reason": ""
+    "detected_fields": 4,
+    "roi_coverage": 0.9189,
+    "failure_reason": "address:COORDINATE_ERROR"
   },
   {
     "image_id": "common_003",
     "target_fields": 5,
-    "detected_fields": 1,
-    "roi_coverage": 0.2,
-    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessee_name:ROW_MERGE"
+    "detected_fields": 4,
+    "roi_coverage": 0.9464,
+    "failure_reason": "lessor_name:COORDINATE_ERROR"
   },
   {
     "image_id": "common_004",
     "target_fields": 5,
-    "detected_fields": 5,
-    "roi_coverage": 1.0,
-    "failure_reason": ""
+    "detected_fields": 2,
+    "roi_coverage": 0.8741,
+    "failure_reason": "address:COORDINATE_ERROR; lessor_name:COORDINATE_ERROR; lessee_name:COORDINATE_ERROR"
   },
   {
     "image_id": "common_005",
     "target_fields": 5,
-    "detected_fields": 0,
-    "roi_coverage": 0.0,
-    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING"
+    "detected_fields": 2,
+    "roi_coverage": 0.4,
+    "failure_reason": "address:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING"
   },
   {
     "image_id": "common_006",
     "target_fields": 5,
-    "detected_fields": 2,
-    "roi_coverage": 0.4,
-    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE"
+    "detected_fields": 0,
+    "roi_coverage": 0.4451,
+    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:COORDINATE_ERROR; lessee_name:COORDINATE_ERROR"
   },
   {
     "image_id": "common_007",
     "target_fields": 4,
-    "detected_fields": 0,
-    "roi_coverage": 0.0,
-    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING"
+    "detected_fields": 1,
+    "roi_coverage": 0.4584,
+    "failure_reason": "address:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING"
   },
   {
     "image_id": "common_008",
     "target_fields": 5,
     "detected_fields": 2,
-    "roi_coverage": 0.4,
-    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE"
+    "roi_coverage": 0.5439,
+    "failure_reason": "deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:COORDINATE_ERROR"
   },
   {
     "image_id": "common_009",
     "target_fields": 5,
-    "detected_fields": 1,
-    "roi_coverage": 0.2,
-    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessee_name:ROW_MERGE"
+    "detected_fields": 4,
+    "roi_coverage": 0.9441,
+    "failure_reason": "lessor_name:COORDINATE_ERROR"
   },
   {
     "image_id": "common_010",
     "target_fields": 5,
-    "detected_fields": 0,
-    "roi_coverage": 0.0,
-    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING"
+    "detected_fields": 1,
+    "roi_coverage": 0.2,
+    "failure_reason": "deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING"
   },
   {
     "image_id": "heewon_001",
     "target_fields": 5,
-    "detected_fields": 5,
-    "roi_coverage": 1.0,
-    "failure_reason": ""
+    "detected_fields": 1,
+    "roi_coverage": 0.8762,
+    "failure_reason": "address:COORDINATE_ERROR; deposit:COORDINATE_ERROR; contract_amount:COORDINATE_ERROR; lessee_name:COORDINATE_ERROR"
   },
   {
     "image_id": "heewon_002",
     "target_fields": 5,
-    "detected_fields": 4,
-    "roi_coverage": 0.8,
-    "failure_reason": "lessor_name:CELL_MERGE"
+    "detected_fields": 3,
+    "roi_coverage": 0.9053,
+    "failure_reason": "deposit:COORDINATE_ERROR; contract_amount:COORDINATE_ERROR"
   },
   {
     "image_id": "heewon_003",
@@ -93,9 +93,9 @@
   {
     "image_id": "heewon_004",
     "target_fields": 5,
-    "detected_fields": 2,
-    "roi_coverage": 0.4,
-    "failure_reason": "address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE"
+    "detected_fields": 4,
+    "roi_coverage": 0.9611,
+    "failure_reason": "lessee_name:COORDINATE_ERROR"
   },
   {
     "image_id": "heewon_005",
@@ -113,23 +113,23 @@
   },
   {
     "image_id": "tail_001",
-    "target_fields": 5,
+    "target_fields": 0,
     "detected_fields": 0,
-    "roi_coverage": 0.0,
-    "failure_reason": "address:TABLE_MISSING; deposit:TABLE_MISSING; contract_amount:TABLE_MISSING; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING"
+    "roi_coverage": null,
+    "failure_reason": ""
   },
   {
     "image_id": "tail_002",
-    "target_fields": 5,
-    "detected_fields": 4,
-    "roi_coverage": 0.8,
-    "failure_reason": "lessor_name:COLUMN_MERGE"
+    "target_fields": 0,
+    "detected_fields": 0,
+    "roi_coverage": null,
+    "failure_reason": ""
   },
   {
     "image_id": "tail_007",
-    "target_fields": 5,
-    "detected_fields": 5,
-    "roi_coverage": 1.0,
+    "target_fields": 0,
+    "detected_fields": 0,
+    "roi_coverage": null,
     "failure_reason": ""
   }
 ]
