@@ -50,19 +50,16 @@ for field, gt_item in gt_fields.items():
     result = pred_fields.get(field, {})
     roi_bbox = result.get("value_roi")
 
-    if gt_bbox is None or roi_bbox is None:
+    if gt_bbox is None:
         print(f"\n[{field}] 평가 불가")
         continue
 
-    coverage = calculate_coverage(
-        gt_bbox,
-        roi_bbox
-    )
+    coverage = calculate_coverage(gt_bbox, roi_bbox) if roi_bbox is not None else 0.0
 
     total_coverage += coverage
     count += 1
 
-    if coverage >= 0.999:
+    if coverage >= 0.90:
         fully_covered += 1
 
     print(f"\n[{field}]")

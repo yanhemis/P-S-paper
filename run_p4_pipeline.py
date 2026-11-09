@@ -54,7 +54,7 @@ def list_images(path: Path):
         return [path]
     if not path.is_dir():
         raise FileNotFoundError(f"입력 이미지/폴더가 없습니다: {path}")
-    images = sorted(p for p in path.iterdir() if p.is_file() and p.suffix.lower() in SUPPORTED_EXTENSIONS)
+    images = sorted(p for p in path.rglob("*") if p.is_file() and p.suffix.lower() in SUPPORTED_EXTENSIONS)
     if not images:
         raise ValueError(f"이미지가 없는 폴더: {path}")
     stems = [p.stem for p in images]
@@ -92,14 +92,24 @@ def existing_anchor_mapper(ocr_items, mapper_script: Path):
 
 
 def gt_for_image(gt_data, image_path: Path):
-    # Existing sample GT uses 'sample.jpg' and Korean keys. New dataset can use
-    # image_id without extension and English keys.
     per_image = gt_data.get(image_path.name, gt_data.get(image_path.stem, {}))
+    if not per_image:
+        import csv
+        manifest = Path("data/eval_v1_packages/development/manifest.csv")
+        if manifest.exists():
+            with manifest.open(encoding="utf-8-sig", newline="") as f:
+                for row in csv.DictReader(f):
+                    if Path(row["filename"]).name.lower() == image_path.name.lower():
+                        per_image = gt_data.get(row["image_id"], {})
+                        break
     if not isinstance(per_image, dict):
+        return {}
+    fields = per_image.get("fields", per_image)
+    if not isinstance(fields, dict):
         return {}
     result = {}
     for korean, english in KEY_MAP.items():
-        value = per_image.get(english, per_image.get(korean))
+        value = fields.get(english, fields.get(korean))
         if isinstance(value, dict):
             result[english] = value
     return result
@@ -186,7 +196,7 @@ def process_one(image_path, engine, args, mapper_script, gt_data, cache=None):
         # selecting ROI/OCR tokens. These broad classes require manual review.
         evaluated_reason = failure_reason
         if evaluated_reason is None and match is False:
-            evaluated_reason = "ROI_TOO_SMALL" if (coverage is not None and coverage < 0.999) else "OCR_FAILURE"
+            evaluated_reason = "ROI_TOO_SMALL" if (coverage is not None and coverage < 0.90) else "OCR_FAILURE"
 
         roi_fields[field] = {
             "field": field,

@@ -174,9 +174,17 @@ def select_field_value(field, all_tokens, anchor_bbox, crop_bbox):
         selected = candidates[:1]
 
     elif field == "address":
-        # PaddleOCR does not guarantee reading order inside a large crop.
-        # Reorder single-line address tokens in spatial left-to-right order.
-        selected = sorted(near_row, key=lambda t: t["bbox_in_crop"][0])
+        # Keep the full ROI for coverage; exclude neighboring land-rights
+        # information from the extracted address using OCR text only (no GT).
+        ordered = sorted(near_row, key=lambda t: t["bbox_in_crop"][0])
+        selected = []
+        for token in ordered:
+            token_text = token["text"].replace(" ", "")
+            if selected and (token_text.startswith("대지권") or
+                             token_text.startswith("(대지권")):
+                info["address_stopped_at"] = token_text
+                break
+            selected.append(token)
 
     else:
         selected = sorted(near_row, key=lambda t: t["bbox_in_crop"][0])

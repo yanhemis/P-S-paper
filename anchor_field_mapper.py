@@ -51,7 +51,7 @@ def find_split_anchor(target):
                 x1, y1, _, y2 = item["bbox"]
                 center_y = (y1 + y2) / 2
 
-                if x1 <= cx2:
+                if x1 < cx2 - current_h * 0.3:
                     continue
 
                 if abs(center_y - current_center_y) > current_h:
@@ -94,6 +94,35 @@ def find_split_anchor(target):
                 "method": "split_anchor"
             }
 
+    if target == "보증금":
+        for item in data:
+            if normalize(item["text"]) != "보증":
+                continue
+            x1,y1,x2,y2 = item["bbox"]
+            h = max(y2-y1,1)
+            for other in data:
+                if normalize(other["text"]) != "금":
+                    continue
+                nx1,ny1,nx2,ny2 = other["bbox"]
+                if -0.2*h <= nx1-x2 <= 2*h and abs((ny1+ny2-y1-y2)/2) <= h:
+                    return {"text":target,"bbox":[x1,min(y1,ny1),nx2,max(y2,ny2)],"method":"split_anchor"}
+    if target == "보증금":
+        starts = [item for item in data if normalize(item["text"]) in ("보", "보중", "보통")]
+        ends = [item for item in data if normalize(item["text"]) == "금"]
+        for first in starts:
+            x1,y1,x2,y2 = first["bbox"]
+            h = max(y2-y1,1)
+            matches = []
+            for last in ends:
+                nx1,ny1,nx2,ny2 = last["bbox"]
+                gap = nx1-x2
+                cy_diff = abs((ny1+ny2-y1-y2)/2)
+                if -0.3*h <= gap <= 4*h and cy_diff <= h:
+                    matches.append((abs(gap-h),last))
+            if matches:
+                last = min(matches,key=lambda v:v[0])[1]
+                nx1,ny1,nx2,ny2 = last["bbox"]
+                return {"text":target,"bbox":[x1,min(y1,ny1),nx2,max(y2,ny2)],"method":"partial_anchor"}
     return None
 
 
@@ -116,10 +145,13 @@ def extract_address():
     anchor_w = ax2 - ax1
     anchor_h = ay2 - ay1
 
+    # 주소는 길이가 다양하므로 짧은 라벨 너비의 6배로 제한하지 않는다.
+    # 페이지 너비를 추정할 수 없는 1차 OCR만 있으므로 충분히 넓은
+    # 상대 ROI를 만들고 실제 이미지 경계는 파이프라인에서 자른다.
     roi = [
         int(ax2),
-        int(ay1 - anchor_h * 0.5),
-        int(ax2 + anchor_w * 6.0),
+        int(ay1 - anchor_h * 1.2),
+        int(ax2 + anchor_w * 16.0),
         int(ay2 + anchor_h * 0.5)
     ]
 
@@ -191,7 +223,7 @@ def extract_party_name(party):
         _, y1, _, y2 = item["bbox"]
         cy = (y1 + y2) / 2
 
-        if py1 <= cy <= py2:
+        if py1 <= cy <= py2 + (py2 - py1) * 0.5:
             name_anchors.append(item)
 
     if not name_anchors:
@@ -204,17 +236,21 @@ def extract_party_name(party):
 
     name_anchor = min(
         name_anchors,
-        key=lambda x: x["bbox"][1]
+        key=lambda x: abs(
+            (x["bbox"][1] + x["bbox"][3]) / 2 - py2
+        )
     )
 
     nx1, ny1, nx2, ny2 = name_anchor["bbox"]
     name_w = nx2 - nx1
     name_h = ny2 - ny1
 
+    # 이름 칸이 OCR의 '성명' 라벨보다 훨씬 넓을 수 있으므로
+    # 수평 범위를 확장한다. 세로는 인접 행 유입을 피하도록 유지한다.
     roi = [
         int(nx2),
-        int(ny1 - name_h * 0.5),
-        int(nx2 + name_w * 4.0),
+        int(ny1 - name_h * 2.0),
+        int(nx2 + name_w * 7.0),
         int(ny2 + name_h * 0.5)
     ]
 
@@ -291,12 +327,13 @@ def extract_amount(target):
     anchor_w = ax2 - ax1
     anchor_center_y = (ay1 + ay2) / 2
 
-    # Anchor bbox를 기준으로 생성한 상대 ROI
+    # 1차 OCR 값 bbox로 ROI를 축소하면 누락된 글자가 영구히 잘린다.
+    # Anchor 기준 행 전체를 유지하고, 2차 OCR에서 값을 선택한다.
     roi = [
         int(ax2),
-        int(ay1 - anchor_h),
-        int(ax2 + anchor_w * 6.0),
-        int(ay2 + anchor_h)
+        int(ay1 - anchor_h * 0.8),
+        int(ax2 + anchor_w * 6.5),
+        int(ay2 + anchor_h * 0.8)
     ]
 
     candidates = []
@@ -322,23 +359,17 @@ def extract_amount(target):
 
         candidates.append(item)
 
-    candidates.sort(key=lambda x: x["bbox"][0])
+    def candidate_score(item):
+        x1, y1, x2, y2 = item["bbox"]
+        overlap = max(0, min(ay2, y2) - max(ay1, y1))
+        overlap_ratio = overlap / max(1, min(anchor_h, y2-y1))
+        text = normalize(item["text"])
+        amount_like = any(ch in text for ch in "억천백십만")
+        return (amount_like, overlap_ratio, -abs((y1+y2)/2-anchor_center_y), -x1)
 
+    candidates = [item for item in candidates if any(ch in normalize(item["text"]) for ch in "억천백십만")]
+    candidates.sort(key=candidate_score, reverse=True)
     value = candidates[0]["text"] if candidates else None
-
-        # 선택된 OCR 값의 bbox를 기준으로 금액 ROI 보정
-    if candidates:
-        vx1, vy1, vx2, vy2 = candidates[0]["bbox"]
-
-        # OCR 글자 높이를 기준으로 여유 공간 설정
-        margin = max(10, int((vy2 - vy1) * 0.5))
-
-        roi = [
-            max(ax2, vx1 - margin),
-            vy1 - margin,
-            vx2 + margin,
-            vy2 + margin
-        ]
 
     return {
         "value": value,
