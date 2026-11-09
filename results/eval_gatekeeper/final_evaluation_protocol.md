@@ -87,6 +87,23 @@ Scope: Development only; not Holdout or final frozen Dataset v1.0.
 - Recheck denominators when Tail BBoxes and Dataset v1.0 are finalized.
 - Do not merge these provisional Development counts with Holdout results.
 
+### Development GT Integrity Audit (2026-11-09)
+
+Source: `origin/dataset-v1` commit `d4b32b6`.
+Status: Automated Development checks passed; Dataset v1.0 is not frozen.
+
+- Manifest images: 19; GT images: 19; IDs matched.
+- Document groups: 13; all 19 images marked usable.
+- All manifest splits were `development`.
+- Image IDs, document group IDs, and five-field keys: 0 errors.
+- Text-eligible fields: 94.
+- Raw text / normalized GT completeness and money consistency: 0 issues.
+- Monetary fields requiring manual review in this automated check: 0.
+- Address and name normalization comparisons: 57 checked, 0 differences.
+- These checks do not establish visual BBox accuracy, privacy/EXIF clearance,
+  or Development/Holdout group disjointness.
+- Revalidate after the final Dataset v1.0 handoff and record frozen versions.
+
 ### P3 Development Independent Audit (2026-11-09)
 
 Status: Verified Development result; NOT a final frozen or Holdout score.
