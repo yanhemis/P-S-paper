@@ -70,7 +70,7 @@ def parse_ocr_amount(raw):
 
         # Numeric amount must have valid three-digit grouping.
         if not re.fullmatch(
-            r"\d+(?:[,.]\d+)*",
+            r"\d+|\d{1,3}(?P<sep>[,.])\d{3}(?:(?P=sep)\d{3})*",
             numeric_text,
         ):
             return None
@@ -94,7 +94,7 @@ def parse_ocr_amount(raw):
     for fragment in re.findall(r"\d[\d,.]*", text):
         if "," in fragment or "." in fragment:
             if not re.fullmatch(
-                r"\d+(?:[,.]\d+)*",
+                r"\d+|\d{1,3}(?P<sep>[,.])\d{3}(?:(?P=sep)\d{3})*",
                 fragment,
             ):
                 return None

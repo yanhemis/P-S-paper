@@ -57,8 +57,8 @@ class CommonEvaluatorTests(unittest.TestCase):
     def test_monetary_form_parsing(self):
         cases = {
             "원정(W30,000,000": "30000000",
-            "20,000000": "20000000",
-            "10.000,000": "10000000",
+            "20,000000": None,
+            "10.000,000": None,
             "원정(W180,000.OㅇO": None,
             "410, 000,0O0": None,
             "": None,
