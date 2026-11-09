@@ -104,6 +104,22 @@ Status: Automated Development checks passed; Dataset v1.0 is not frozen.
   or Development/Holdout group disjointness.
 - Revalidate after the final Dataset v1.0 handoff and record frozen versions.
 
+### Updated Development GT Snapshot - ead8436
+
+Source: `origin/dataset-v1` commit `ead8436`.
+Status: Latest Development GT structural validation; not a dataset freeze.
+
+- Images: 19; document groups: 13.
+- Text-eligible fields: 94.
+- ROI Coverage eligible fields: 94 (Common 49, Heewon 30, Tail 15).
+- Missing BBoxes: 0; `not_present`: 1; invalid BBoxes: 0.
+- Compared with `d4b32b6`: exactly 15 Tail BBoxes added.
+- No non-BBox GT fields or values changed.
+- Visual BBox accuracy and final Dataset v1.0 freeze remain unverified.
+- Previous P3 audit (29/79) is historical Development evidence,
+  not a score recalculated against this updated GT.
+- Re-evaluate with frozen P3/P4 submissions before final reporting.
+
 ### P3 Development Independent Audit (2026-11-09)
 
 Status: Verified Development result; NOT a final frozen or Holdout score.
