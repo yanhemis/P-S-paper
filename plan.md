@@ -1,7 +1,7 @@
 # tail 작업 — 난이도 촬영 / 이미지 품질 메타데이터
 
 > 기준: `issue/05_current_team_tasks_20261101.md` 6절 (최우선), `issue/04_data_collection_gt_protocol.md` (세부 규칙)
-> 마지막 업데이트: 2026-11-01
+> 마지막 업데이트: 2026-11-09
 > 이전 OCR 배정(10/08)은 [`docs/plan_20261008_ocr_experiments.md`](docs/plan_20261008_ocr_experiments.md)에 보관
 
 ## 1. 역할과 완료 기준
@@ -24,14 +24,21 @@ GT 작성·manifest 통일·development/holdout 분리는 가은 학우, 최종 
 - [x] 개인정보 없는 가상 문서 사용
 - [x] 이전 OCR 결과를 dahye에게 넘길 인계 문서 작성: [`docs/handoff_dahye_E0_E4.md`](docs/handoff_dahye_E0_E4.md)
 
+### 가은 학우 전달·bbox (완료)
+- [x] 신규 촬영본 전달 확인: 가은 학우 `dataset-v1`(Development 19장)에 docA 3장(tail_001 perspective, tail_002 distance, tail_007 baseline)이 반영됨. docB·docC 6장은 holdout 후보라 Development에 없음
+- [x] docA 3장 필드별 ROI bbox 15개 라벨링: [`roi_bbox_docA.json`](sample_data_jpg/sample_data_v2/roi_bbox_docA.json), 확인용 [`roi_check/`](sample_data_jpg/sample_data_v2/roi_check/)
+  - 기준: 공통 10장과 같이 **값이 기재되는 입력 칸을 감쌈**, 좌표는 EXIF 회전 후(3024×4032) `[x1,y1,x2,y2]`. 팀장 가이드(`roi_coverage_gt_bbox_guide.md`)의 "값 영역" 정의와 칸 기준이 다르다는 점은 가은 학우가 샘플 1~10 기준으로 정리하라고 답함
+  - tail_001(사선 강함)은 칸이 비스듬해 박스가 옆 칸 일부를 포함. 눈으로 지정한 값이라 검수 필요
+  - 희원 라벨(`heewon/field_gt_heewon_labeled (2).json`)에도 같은 3장이 있으나 "두 벌 라벨은 신경 쓰지 않아도 됨"(가은 학우 답)
+
 ### 남은 일 (사람이 해야 함)
-- [ ] **가은 학우에게 전달**: `sample_data_v2/` 폴더 (원본, `oriented/`, manifest, 기입 내용 문서)
-  - 알릴 것: docC는 **다른 사람이 기입**(필체 다름), docA 임대인·임차인은 계획과 다르게 기입(종이 기준이 GT), baseline도 3장 포함, `oriented/` 사본 사용 여부 결정 필요
-- [ ] **희원과 문서 그룹 맞추기**: docA/docB를 같은 원본으로 찍었는지, `document_group_id`가 일치하는지
-- [ ] docA 사선 사진이 가이드(10~20°)보다 강함(추정 25~30°). 그대로 쓸지, 약한 각도로 1장 더 찍을지 결정
-- [ ] (선택) 가장자리 누락(crop) 사진 1장 필요 여부 판단
+- [ ] 라벨 수정본(`f908c2b`)을 `tail` 브랜치에 push하고 가은 학우에게 알리기
+- [ ] **희원과 문서 그룹 맞추기**: docA/docB를 같은 원본으로 찍었는지, `document_group_id` 일치 여부 (현재 Development manifest는 `heewon_docA`, `tail_docA`로 별개 그룹)
+- [ ] (선택) docB·docC(holdout) bbox: 가은 학우가 요청하면 진행. 공개 전 holdout이라 요청 전에는 하지 않음
+- [ ] (선택) docA 사선 사진은 가이드(10~20°)보다 강함(추정 25~30°). 자동 구조 복원이 tail_001에서 표를 못 찾음(`bang_` 결과 TABLE_MISSING). 난이도 샘플로 그대로 둘지는 가은 학우 판단
+- [ ] (선택) 가장자리 누락(crop) 사진 1장 필요 여부
 - [ ] dahye에게 인계 문서 전달
-- [ ] 이전 커밋에 남은 GPS 원본 사진 처리: 히스토리 재작성이라 팀 합의 필요. 합의 전 push 보류
+- [ ] 이전 커밋에 남은 GPS 원본 사진 처리: 히스토리 재작성이라 팀 합의 필요. 합의 전 push 보류 (현재 `tail` 브랜치는 origin보다 1커밋 앞섬)
 
 ## 3. 하지 않을 것
 
@@ -45,10 +52,10 @@ GT 작성·manifest 통일·development/holdout 분리는 가은 학우, 최종 
 ```text
 [tail]
 1. 현재 작업: 난이도 촬영 데이터 정리 및 전달 준비
-2. 완료한 것: 신규 9장(난이도 6 + baseline 3) 촬영, GPS 제거, manifest·기입 내용 문서, 방향 보정 사본
-3. 생성/수정 파일: sample_data_jpg/sample_data_v2/ (이미지, oriented/, manifest_tail.csv, fake_contract_data_v2.md)
-4. 막힌 점: docA 사선 각도 판단, 이전 커밋의 GPS 원본 처리(팀 합의 필요)
-5. 다음 작업: 가은 학우에게 전달, 희원과 문서 그룹 확인, dahye 인계
+2. 완료한 것: 신규 9장(난이도 6 + baseline 3) 촬영·전달, GPS 제거, manifest·기입 내용 문서, 방향 보정 사본, docA 3장 ROI bbox 15개
+3. 생성/수정 파일: sample_data_jpg/sample_data_v2/ (이미지, oriented/, manifest_tail.csv, fake_contract_data_v2.md, roi_bbox_docA.json, roi_check/)
+4. 막힌 점: 이전 커밋의 GPS 원본 처리(팀 합의 필요)
+5. 다음 작업: 희원과 문서 그룹 확인, dahye 인계, holdout bbox는 요청 시
 ```
 
 ## 5. 이전 작업 요약 (OCR 실험, 기존 공통 10장)

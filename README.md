@@ -3,7 +3,7 @@
 > 담당 질문: **전체 페이지 OCR보다 핵심 필드 ROI를 잘라 다시 OCR했을 때 문자 인식과 Field Accuracy가 좋아지는가?** (H1, H5)
 > **현재 역할: 난이도 촬영 / 이미지 품질 메타데이터** (할 일: [`plan.md`](plan.md), 진행: [`PROGRESS.md`](PROGRESS.md)). 이 문서는 그 이전에 수행한 OCR 실험(E0~E4) 결과 기록이다.
 > 최종 수치 확정은 dahye, 인계: [`docs/handoff_dahye_E0_E4.md`](docs/handoff_dahye_E0_E4.md)
-> 마지막 업데이트: 2026-11-01
+> 마지막 업데이트: 2026-11-09
 
 ---
 
@@ -207,7 +207,7 @@ tail/
 │   │   ├── sample_1 ~ sample_10.JPG      # 자체 촬영본 (가짜 정보 손글씨 기입, 4032×3024)
 │   │   ├── sample_empty.JPG              # 빈 양식 촬영본
 │   │   └── fake_contract_data.md         # 세트 #1~#10 가짜 기입 데이터 (= 정답 원본)
-│   └── sample_data_v2/                   # 10/21 재배정 신규 난이도 촬영 6장 (docA~C)
+│   └── sample_data_v2/                   # 신규 촬영 9장(난이도 6 + baseline 3, docA~C), manifest, 기입 내용, docA ROI bbox
 │       ├── docX_<조건>_01.jpg            # 원본(무보정, GPS 제거). 일부는 문서가 90° 돌아감
 │       ├── oriented/                     # EXIF 방향만 바로잡은 사본
 │       ├── manifest_tail.csv             # 촬영 조건 메타데이터
