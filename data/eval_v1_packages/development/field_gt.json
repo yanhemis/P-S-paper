@@ -881,27 +881,52 @@
       "address": {
         "raw_text": "서울특별시 강서구 마곡중앙로 163, 702호",
         "normalized": "서울특별시 강서구 마곡중앙로 163, 702호",
-        "bbox": null
+        "bbox": [
+          742,
+          263,
+          2330,
+          868
+        ]
       },
       "deposit": {
         "raw_text": "이억칠천만",
         "normalized": "270000000",
-        "bbox": null
+        "bbox": [
+          814,
+          721,
+          1774,
+          1058
+        ]
       },
       "contract_amount": {
         "raw_text": "이천칠백만",
         "normalized": "27000000",
-        "bbox": null
+        "bbox": [
+          814,
+          781,
+          1403,
+          1010
+        ]
       },
       "lessor_name": {
         "raw_text": "장영숙",
         "normalized": "장영숙",
-        "bbox": null
+        "bbox": [
+          2217,
+          2767,
+          2417,
+          2872
+        ]
       },
       "lessee_name": {
         "raw_text": "한도윤",
         "normalized": "한도윤",
-        "bbox": null
+        "bbox": [
+          2233,
+          2923,
+          2431,
+          3030
+        ]
       }
     }
   },
@@ -911,27 +936,52 @@
       "address": {
         "raw_text": "서울특별시 강서구 마곡중앙로 163, 702호",
         "normalized": "서울특별시 강서구 마곡중앙로 163, 702호",
-        "bbox": null
+        "bbox": [
+          868,
+          1150,
+          2237,
+          1205
+        ]
       },
       "deposit": {
         "raw_text": "이억칠천만",
         "normalized": "270000000",
-        "bbox": null
+        "bbox": [
+          913,
+          1422,
+          1595,
+          1468
+        ]
       },
       "contract_amount": {
         "raw_text": "이천칠백만",
         "normalized": "27000000",
-        "bbox": null
+        "bbox": [
+          913,
+          1466,
+          1345,
+          1510
+        ]
       },
       "lessor_name": {
         "raw_text": "장영숙",
         "normalized": "장영숙",
-        "bbox": null
+        "bbox": [
+          1957,
+          2692,
+          2153,
+          2738
+        ]
       },
       "lessee_name": {
         "raw_text": "한도윤",
         "normalized": "한도윤",
-        "bbox": null
+        "bbox": [
+          1957,
+          2832,
+          2153,
+          2874
+        ]
       }
     }
   },
@@ -941,27 +991,52 @@
       "address": {
         "raw_text": "서울특별시 강서구 마곡중앙로 163, 702호",
         "normalized": "서울특별시 강서구 마곡중앙로 163, 702호",
-        "bbox": null
+        "bbox": [
+          580,
+          488,
+          2705,
+          548
+        ]
       },
       "deposit": {
         "raw_text": "이억칠천만",
         "normalized": "270000000",
-        "bbox": null
+        "bbox": [
+          645,
+          903,
+          1730,
+          962
+        ]
       },
       "contract_amount": {
         "raw_text": "이천칠백만",
         "normalized": "27000000",
-        "bbox": null
+        "bbox": [
+          645,
+          962,
+          1315,
+          1022
+        ]
       },
       "lessor_name": {
         "raw_text": "장영숙",
         "normalized": "장영숙",
-        "bbox": null
+        "bbox": [
+          2288,
+          2941,
+          2609,
+          3009
+        ]
       },
       "lessee_name": {
         "raw_text": "한도윤",
         "normalized": "한도윤",
-        "bbox": null
+        "bbox": [
+          2288,
+          3159,
+          2609,
+          3228
+        ]
       }
     }
   }
