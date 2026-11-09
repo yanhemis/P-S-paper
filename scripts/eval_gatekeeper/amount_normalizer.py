@@ -13,7 +13,14 @@ def normalize_amount(text):
     if text is None:
         return None
 
-    s = re.sub(r"\s+", "", str(text)).replace(",", "")
+    s = re.sub(r"\s+", "", str(text))
+
+    # Accept commas only in valid three-digit numeric groups.
+    for chunk in re.findall(r"[\d,]+", s):
+        if "," in chunk and not re.fullmatch(r"\d{1,3}(?:,\d{3})+", chunk):
+            return None
+
+    s = s.replace(",", "")
 
     if s.startswith("금"):
         s = s[1:]
@@ -86,6 +93,9 @@ if __name__ == "__main__":
         "1백만": "1000000",
         "금 오백만원정": "5000000",
         "1,800만원": "18000000",
+        "1,000원": "1000",
+        "1,2,3원": None,
+        "1,80만원": None,
         "십이만": "120000",
         "이억삼천만원": "230000000",
         "1억2천만원": "120000000",
