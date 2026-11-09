@@ -49,6 +49,72 @@ Conditional Field Accuracy = exact matched fields with recorded ROI / fields wit
 Geometric ROI Coverage must be evaluated separately when GT boxes exist.
 Do not label recorded ROI presence as verified geometric coverage.
 
+### Geometric ROI Coverage (2026-11-08 protocol)
+
+- GT BBox covers only the value text, not labels, cell borders, seals, signatures, or `(인)` marks.
+- GT and predicted ROI must use original-image pixel coordinates.
+- Coverage = Area(GT BBox intersection Predicted ROI) / Area(GT BBox).
+- Covered means unrounded Coverage >= 0.90.
+- Report both mean Coverage and Covered Rate.
+- Exclude GT `bbox: null`, `unreadable`, and `not_present` from the ROI Coverage denominator.
+- For an eligible field with no predicted ROI, Coverage = 0.
+- P2: the GT BBox itself is the ROI, so Coverage = 1.0.
+- P3: use the maximum Coverage across submitted ROI candidates.
+- P4: evaluate only the algorithm-selected final ROI, never a GT-selected candidate.
+- Excessively large ROIs require separate failure analysis; Coverage alone does not penalize them.
+- ROI Coverage, OCR-conditioned accuracy, and end-to-end Field Accuracy must be reported separately.
+- Report common-10 and new-development results separately before any combined table.
+
+### Development GT Denominator Snapshot (2026-11-09)
+
+Source: `origin/dataset-v1` commit `d4b32b6`.
+Scope: Development only; not Holdout or final frozen Dataset v1.0.
+
+| Set | Images | ROI Coverage eligible | BBox missing |
+|---|---:|---:|---:|
+| Common | 10 | 49 | 0 |
+| Heewon | 6 | 30 | 0 |
+| Tail | 3 | 0 | 15 |
+| Total | 19 | 79 | 15 |
+
+- Total five-field slots: 95.
+- Text-eligible slots in the current GT snapshot: 94.
+- `not_present`: 1; excluded from evaluation.
+- Valid GT BBox: 79; eligible for ROI Coverage.
+- `bbox: null` among text-eligible fields: 15; excluded from ROI Coverage only.
+- Missing predicted ROI for a BBox-eligible field counts as Coverage = 0.
+- Final text/E2E denominators also require GT, usable, and exclusion-policy validation.
+- Recheck denominators when Tail BBoxes and Dataset v1.0 are finalized.
+- Do not merge these provisional Development counts with Holdout results.
+
+### P3 Development Independent Audit (2026-11-09)
+
+Status: Verified Development result; NOT a final frozen or Holdout score.
+
+Sources:
+- GT: `origin/dataset-v1` commit `d4b32b6`.
+- P3 candidates: `origin/bang_` commit `4f48f6e`.
+- Independent evaluator: `scripts/eval_gatekeeper/roi_coverage_evaluator.py`.
+- GT `manifest.csv` and `field_gt.json` SHA-256 hashes matched the P3 report.
+
+| Set | Images | Eligible | Covered | Covered Rate | Mean Coverage |
+|---|---:|---:|---:|---:|---:|
+| Common | 10 | 49 | 21 | 42.86% | 66.19% |
+| Heewon | 6 | 30 | 8 | 26.67% | 45.71% |
+| Tail | 3 | 0 | N/A | N/A | N/A |
+| Total | 19 | 79 | 29 | 36.71% | 58.41% |
+
+Independent recalculation:
+- Covered count: 29/79, matching the submitted P3 report.
+- Mean Coverage: 0.584147, matching reported 0.5841 within 0.0001.
+- Excluded ROI Coverage fields: 16 (15 BBox-null, 1 not_present).
+- The omitted `common_007/contract_amount` candidate entry was `not_present`.
+- No Covered-status differences were caused by four-decimal rounding.
+- Evaluated submitted ROI candidates using the maximum geometric Coverage.
+- This does not validate visual BBox annotation accuracy or approve a freeze.
+- Re-evaluate after final Tail BBoxes and frozen P3 outputs are supplied.
+- Do not mix this Development snapshot with Holdout or historical OCR metrics.
+
 ### CER Calculation Policy
 
 Historical tail evaluation:
