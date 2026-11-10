@@ -1,5 +1,5 @@
 {
-  "frozen_at": "2026-11-06 14:49:31",
+  "frozen_at": "2026-11-10 16:42:08",
   "method": "opencv_grid_merge",
   "params": {
     "ref_diag": 2000,
@@ -43,7 +43,8 @@
   "code_sha256": {
     "Task_0930.py": "8830ca21eacddeeea56a21a2791645dca02d060a01565c58fda25b007f0b4ebc",
     "field_roi.py": "8b939da1f806ab054321c29eb5a1d4f84bf80b65f149dcca2ecc212d5e30d46b",
-    "Task_10_Renewal.py": "64e5e85cc87a9c3a84263a1f4e7f18a3cb82952affea5a7412ade87947346e89"
+    "Task_10_Renewal.py": "e0506d9242c03bc24a610757e70ce88a436c8c76a06a8bf3ae8502d7641324d3",
+    "p3_detected_roi_coverage.py": "10a5a377edb8d2054be061bf5efa300c4b154e8fbbcca797c0cb20f963fb463f"
   },
   "environment": {
     "python": "3.13.9",
@@ -52,8 +53,13 @@
     "pillow": "12.0.0"
   },
   "git": {
-    "commit": "11af31690af17dd4087a013d86c3c210c5329897",
+    "commit": "55c30b0ce3c84451bc52edf9275ccc394b9f527a",
     "code_files_modified": false
+  },
+  "p3_coverage": {
+    "covered_threshold": 0.9,
+    "candidate_min_overlap": 0.5,
+    "max_candidates": 5
   },
   "commands": {
     "common10": "python Task_10_Renewal.py",

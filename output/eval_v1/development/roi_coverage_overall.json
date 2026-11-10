@@ -1,7 +1,7 @@
 {
   "dataset": "development",
   "pipeline": "P3 bang Detected ROI",
-  "run_at": "2026-11-09 23:59:57",
+  "run_at": "2026-11-10 16:42:13",
   "command": "python p3_detected_roi_coverage.py --dataset development",
   "rule": {
     "coverage": "Area(GT ∩ ROI) / Area(GT)",
@@ -161,7 +161,7 @@
   "not_evaluated_fields": {
     "not_present": 1
   },
-  "frozen_commit": "11af31690af17dd4087a013d86c3c210c5329897",
+  "frozen_commit": "55c30b0ce3c84451bc52edf9275ccc394b9f527a",
   "script_sha256": "10a5a377edb8d2054be061bf5efa300c4b154e8fbbcca797c0cb20f963fb463f",
   "dataset_sha256": {
     "manifest.csv": "46086c3c13787f4d38f10cf087d56d32c2576f2ae27adb6c1832d483173b4155",
