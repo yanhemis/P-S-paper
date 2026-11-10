@@ -1,0 +1,64 @@
+{
+  "image_id": "tail_003",
+  "source_image": "images/tail/docB_lighting_01.jpg",
+  "coordinate": "original (EXIF 회전 적용 후)",
+  "reference": "sample_1.JPG",
+  "not_present": [],
+  "fields": {
+    "address": {
+      "cell_id": null,
+      "quad": null,
+      "bbox": null,
+      "failure": "TABLE_MISSING",
+      "size_ratio": null,
+      "gt_cover": null
+    },
+    "deposit": {
+      "cell_id": null,
+      "quad": null,
+      "bbox": null,
+      "failure": "TABLE_MISSING",
+      "size_ratio": null,
+      "gt_cover": null
+    },
+    "contract_amount": {
+      "cell_id": null,
+      "quad": null,
+      "bbox": null,
+      "failure": "TABLE_MISSING",
+      "size_ratio": null,
+      "gt_cover": null
+    },
+    "lessor_name": {
+      "cell_id": null,
+      "quad": null,
+      "bbox": null,
+      "failure": "TABLE_MISSING",
+      "size_ratio": null,
+      "gt_cover": null
+    },
+    "lessee_name": {
+      "cell_id": null,
+      "quad": null,
+      "bbox": null,
+      "failure": "TABLE_MISSING",
+      "size_ratio": null,
+      "gt_cover": null
+    }
+  },
+  "targets": [
+    "address",
+    "deposit",
+    "contract_amount",
+    "lessor_name",
+    "lessee_name"
+  ],
+  "detected": [],
+  "failures": {
+    "address": "TABLE_MISSING",
+    "deposit": "TABLE_MISSING",
+    "contract_amount": "TABLE_MISSING",
+    "lessor_name": "TABLE_MISSING",
+    "lessee_name": "TABLE_MISSING"
+  }
+}

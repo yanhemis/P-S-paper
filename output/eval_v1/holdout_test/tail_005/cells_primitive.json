@@ -1,0 +1,7 @@
+{
+  "image": "tail_005_aligned.png",
+  "source_image": "docC_perspective_01.jpg",
+  "method": "opencv_grid_merge",
+  "rotation_deg": 1.432,
+  "cells": []
+}

@@ -1,0 +1,7 @@
+﻿image_id,target_fields,detected_fields,roi_coverage,failure_reason,covered_rate,roi_generated_fields,not_evaluated,roi_flag,document_group_id,condition,pipeline_status
+tail_003,5,0,0.0,address:TABLE_MISSING; deposit:TABLE_MISSING; contract_amount:TABLE_MISSING; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,0.0,0,,,tail_docB,lighting,check
+tail_004,5,0,0.0,address:TABLE_MISSING; deposit:TABLE_MISSING; contract_amount:TABLE_MISSING; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,0.0,0,,,tail_docB,fold,check
+tail_005,5,0,0.0,address:TABLE_MISSING; deposit:TABLE_MISSING; contract_amount:TABLE_MISSING; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,0.0,0,,,tail_docC,perspective,grid_fail
+tail_006,5,0,0.0,address:TABLE_MISSING; deposit:TABLE_MISSING; contract_amount:TABLE_MISSING; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,0.0,0,,,tail_docC,lighting,check
+tail_008,5,3,0.8452,address:COORDINATE_ERROR; deposit:ROW_MERGE,0.6,5,,contract_amount:ROW_MERGE,tail_docB,baseline,check
+tail_009,5,0,0.7404,address:COORDINATE_ERROR; deposit:COORDINATE_ERROR; contract_amount:COORDINATE_ERROR; lessor_name:COORDINATE_ERROR; lessee_name:COORDINATE_ERROR,0.0,5,,,tail_docC,baseline,check

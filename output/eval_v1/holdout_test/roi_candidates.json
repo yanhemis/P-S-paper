@@ -1,0 +1,402 @@
+{
+  "tail_003": {
+    "coordinate": "original image pixel [x_min, y_min, x_max, y_max] (cells_original.json)",
+    "fields": {
+      "address": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "deposit": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "contract_amount": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "lessor_name": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "lessee_name": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      }
+    }
+  },
+  "tail_004": {
+    "coordinate": "original image pixel [x_min, y_min, x_max, y_max] (cells_original.json)",
+    "fields": {
+      "address": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "deposit": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "contract_amount": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "lessor_name": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "lessee_name": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      }
+    }
+  },
+  "tail_005": {
+    "coordinate": "original image pixel [x_min, y_min, x_max, y_max] (cells_original.json)",
+    "fields": {
+      "address": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "deposit": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "contract_amount": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "lessor_name": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "lessee_name": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      }
+    }
+  },
+  "tail_006": {
+    "coordinate": "original image pixel [x_min, y_min, x_max, y_max] (cells_original.json)",
+    "fields": {
+      "address": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "deposit": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "contract_amount": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "lessor_name": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      },
+      "lessee_name": {
+        "roi_generated": false,
+        "candidates": [],
+        "max_coverage": 0.0,
+        "best_cell_id": null
+      }
+    }
+  },
+  "tail_008": {
+    "coordinate": "original image pixel [x_min, y_min, x_max, y_max] (cells_original.json)",
+    "fields": {
+      "address": {
+        "roi_generated": true,
+        "candidates": [
+          {
+            "cell_id": 11,
+            "type": "merged",
+            "bbox_original": [
+              1611,
+              548,
+              2763,
+              605
+            ],
+            "primary": true,
+            "coverage": 0.4833
+          },
+          {
+            "cell_id": 9,
+            "type": "general",
+            "bbox_original": [
+              1086,
+              540,
+              1425,
+              597
+            ],
+            "primary": false,
+            "coverage": 0.1406
+          },
+          {
+            "cell_id": 10,
+            "type": "general",
+            "bbox_original": [
+              1425,
+              542,
+              1611,
+              599
+            ],
+            "primary": false,
+            "coverage": 0.08
+          },
+          {
+            "cell_id": 8,
+            "type": "general",
+            "bbox_original": [
+              827,
+              537,
+              1086,
+              594
+            ],
+            "primary": false,
+            "coverage": 0.1015
+          },
+          {
+            "cell_id": 7,
+            "type": "general",
+            "bbox_original": [
+              612,
+              535,
+              827,
+              592
+            ],
+            "primary": false,
+            "coverage": 0.0798
+          }
+        ],
+        "max_coverage": 0.4833,
+        "best_cell_id": 11
+      },
+      "deposit": {
+        "roi_generated": true,
+        "candidates": [
+          {
+            "cell_id": 32,
+            "type": "merged",
+            "bbox_original": [
+              607,
+              940,
+              2758,
+              1248
+            ],
+            "primary": true,
+            "coverage": 0.8276
+          }
+        ],
+        "max_coverage": 0.8276,
+        "best_cell_id": 32
+      },
+      "contract_amount": {
+        "roi_generated": true,
+        "candidates": [
+          {
+            "cell_id": 32,
+            "type": "merged",
+            "bbox_original": [
+              607,
+              940,
+              2758,
+              1248
+            ],
+            "primary": true,
+            "coverage": 1.0
+          }
+        ],
+        "max_coverage": 1.0,
+        "best_cell_id": 32
+      },
+      "lessor_name": {
+        "roi_generated": true,
+        "candidates": [
+          {
+            "cell_id": 46,
+            "type": "merged",
+            "bbox_original": [
+              2286,
+              2939,
+              2605,
+              3011
+            ],
+            "primary": true,
+            "coverage": 0.9874
+          }
+        ],
+        "max_coverage": 0.9874,
+        "best_cell_id": 46
+      },
+      "lessee_name": {
+        "roi_generated": true,
+        "candidates": [
+          {
+            "cell_id": 63,
+            "type": "merged",
+            "bbox_original": [
+              2284,
+              3151,
+              2603,
+              3221
+            ],
+            "primary": true,
+            "coverage": 0.9275
+          }
+        ],
+        "max_coverage": 0.9275,
+        "best_cell_id": 63
+      }
+    }
+  },
+  "tail_009": {
+    "coordinate": "original image pixel [x_min, y_min, x_max, y_max] (cells_original.json)",
+    "fields": {
+      "address": {
+        "roi_generated": true,
+        "candidates": [
+          {
+            "cell_id": 3,
+            "type": "merged",
+            "bbox_original": [
+              1180,
+              543,
+              2754,
+              599
+            ],
+            "primary": true,
+            "coverage": 0.5274
+          },
+          {
+            "cell_id": 2,
+            "type": "merged",
+            "bbox_original": [
+              650,
+              528,
+              1180,
+              584
+            ],
+            "primary": false,
+            "coverage": 0.2266
+          }
+        ],
+        "max_coverage": 0.5274,
+        "best_cell_id": 3
+      },
+      "deposit": {
+        "roi_generated": true,
+        "candidates": [
+          {
+            "cell_id": 26,
+            "type": "merged",
+            "bbox_original": [
+              645,
+              931,
+              2749,
+              991
+            ],
+            "primary": true,
+            "coverage": 0.8364
+          }
+        ],
+        "max_coverage": 0.8364,
+        "best_cell_id": 26
+      },
+      "contract_amount": {
+        "roi_generated": true,
+        "candidates": [
+          {
+            "cell_id": 28,
+            "type": "merged",
+            "bbox_original": [
+              644,
+              991,
+              2748,
+              1047
+            ],
+            "primary": true,
+            "coverage": 0.6714
+          }
+        ],
+        "max_coverage": 0.6714,
+        "best_cell_id": 28
+      },
+      "lessor_name": {
+        "roi_generated": true,
+        "candidates": [
+          {
+            "cell_id": 43,
+            "type": "merged",
+            "bbox_original": [
+              2285,
+              2905,
+              2837,
+              2978
+            ],
+            "primary": true,
+            "coverage": 0.8667
+          }
+        ],
+        "max_coverage": 0.8667,
+        "best_cell_id": 43
+      },
+      "lessee_name": {
+        "roi_generated": true,
+        "candidates": [
+          {
+            "cell_id": 59,
+            "type": "merged",
+            "bbox_original": [
+              2282,
+              3120,
+              2834,
+              3191
+            ],
+            "primary": true,
+            "coverage": 0.8
+          }
+        ],
+        "max_coverage": 0.8,
+        "best_cell_id": 59
+      }
+    }
+  }
+}

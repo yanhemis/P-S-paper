@@ -1,0 +1,31 @@
+﻿image_id,field,detected,failure_reason,cell_id,bbox_original,size_ratio_wh,gt_cover
+tail_003,address,False,TABLE_MISSING,,,,
+tail_003,deposit,False,TABLE_MISSING,,,,
+tail_003,contract_amount,False,TABLE_MISSING,,,,
+tail_003,lessor_name,False,TABLE_MISSING,,,,
+tail_003,lessee_name,False,TABLE_MISSING,,,,
+tail_004,address,False,TABLE_MISSING,,,,
+tail_004,deposit,False,TABLE_MISSING,,,,
+tail_004,contract_amount,False,TABLE_MISSING,,,,
+tail_004,lessor_name,False,TABLE_MISSING,,,,
+tail_004,lessee_name,False,TABLE_MISSING,,,,
+tail_005,address,False,TABLE_MISSING,,,,
+tail_005,deposit,False,TABLE_MISSING,,,,
+tail_005,contract_amount,False,TABLE_MISSING,,,,
+tail_005,lessor_name,False,TABLE_MISSING,,,,
+tail_005,lessee_name,False,TABLE_MISSING,,,,
+tail_006,address,False,TABLE_MISSING,,,,
+tail_006,deposit,False,TABLE_MISSING,,,,
+tail_006,contract_amount,False,TABLE_MISSING,,,,
+tail_006,lessor_name,False,TABLE_MISSING,,,,
+tail_006,lessee_name,False,TABLE_MISSING,,,,
+tail_008,address,True,,11,1611 543 2763 611,0.54 0.99,0.526
+tail_008,deposit,False,ROW_MERGE,32,606 930 2760 1258,1.01 4.9,0.943
+tail_008,contract_amount,False,ROW_MERGE,32,606 930 2760 1258,1.01 5.44,1.0
+tail_008,lessor_name,True,,46,2285 2937 2605 3012,1.0 1.03,0.991
+tail_008,lessee_name,True,,63,2283 3149 2603 3222,1.0 0.96,0.97
+tail_009,address,True,,3,1180 531 2755 611,0.75 0.99,0.668
+tail_009,deposit,True,,26,644 916 2749 1007,1.01 0.98,1.0
+tail_009,contract_amount,True,,28,643 976 2748 1063,1.01 1.01,0.9
+tail_009,lessor_name,True,,43,2285 2901 2838 2982,1.73 1.05,0.92
+tail_009,lessee_name,True,,59,2282 3116 2835 3195,1.73 0.98,0.847

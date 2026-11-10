@@ -1,0 +1,50 @@
+{
+  "dataset": "holdout_test",
+  "run_at": "2026-11-10 16:43:26",
+  "command": "python Task_10_Renewal.py --dataset holdout_test",
+  "images": 6,
+  "params": {
+    "ref_diag": 2000,
+    "deskew_angle_limit": 10.0,
+    "deskew_min_angle": 0.3,
+    "deskew_residual_max": 0.3,
+    "block_size_base": 15,
+    "binarize_C": 10,
+    "line_open_base": 30,
+    "line_open_ratio": null,
+    "close_ratio": 0.01,
+    "anchor_h_ratio": 0.15,
+    "anchor_v_ratio": 0.03,
+    "table_min_w_ratio": 0.1,
+    "table_min_h_ratio": 0.02,
+    "table_join_base": 3,
+    "gap_thresh_base": 10,
+    "strip_half_width_base": 2,
+    "corner_margin_base": 2,
+    "presence_ratio": 0.5,
+    "suspicious_score_min": 0.15,
+    "weak_score_max": 0.8,
+    "max_merged_area_ratio": 0.3,
+    "hidden_line_ratio": 0.8
+  },
+  "code_sha256": {
+    "Task_0930.py": "8830ca21eacddeeea56a21a2791645dca02d060a01565c58fda25b007f0b4ebc",
+    "field_roi.py": "8b939da1f806ab054321c29eb5a1d4f84bf80b65f149dcca2ecc212d5e30d46b",
+    "Task_10_Renewal.py": "e0506d9242c03bc24a610757e70ce88a436c8c76a06a8bf3ae8502d7641324d3",
+    "p3_detected_roi_coverage.py": "10a5a377edb8d2054be061bf5efa300c4b154e8fbbcca797c0cb20f963fb463f"
+  },
+  "environment": {
+    "python": "3.13.9",
+    "opencv": "5.0.0",
+    "numpy": "2.3.5",
+    "pillow": "12.0.0"
+  },
+  "git": {
+    "commit": "44bc72d61930c7e10872b118d8025fdbc27376fd",
+    "code_files_modified": false
+  },
+  "dataset_sha256": {
+    "manifest.csv": "b9942c92ead197d5296dcee39c170f8c92f059dfeaf761bfd5b6351160fe708e",
+    "field_gt.json": "950b3dbc0d3d4865c764dd4046df66d427660d724d34859638e9e2dd1f455970"
+  }
+}
