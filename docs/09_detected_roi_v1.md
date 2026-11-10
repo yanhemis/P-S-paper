@@ -44,7 +44,7 @@ python Task_10_Renewal.py --dataset holdout_test          # 동결·패키지 �
 ```text
 output/common10/                   공통 10장
 output/eval_v1/development/        development
-output/eval_v1/holdout_test/       holdout_test (미실행)
+output/eval_v1/holdout_test/       holdout_test (동결 commit 55c30b0 으로 1회 실행, 6장)
   <image_id>/cells_original.json   셀, 원본 좌표 — 원본 GT 와 비교할 때 사용
   <image_id>/report.json           구조 복원 status, 실패 사례, 파라미터
   <image_id>/cells.json            셀, aligned 좌표
@@ -144,6 +144,21 @@ development 의 common_001~010 `cells_original.json` 은 공통 10장 결과와 
 
 이전 P3 감사의 22/49 는 tail GT 위치로 셀을 고른 이전 전달본(`handoff_tail/`)의 ROI 기록 존재율이다. 이번 21/49 는 GT 없이 고른 후보의 기하 Coverage 이므로 두 값을 같은 지표로 비교하지 않는다.
 
+### holdout_test (동결 후 1회 실행)
+
+GT `dataset-v1` `fb069e7`, 동결 commit `55c30b0`. 결과를 본 뒤 코드·파라미터를 바꾸지 않았다. 동결 선언과 순서 기록은 [동결 선언](11_freeze_declaration.md).
+
+| image_id | 문서 그룹 | 조건 | 표 | Covered | 평균 Coverage | Covered 아님 |
+|---|---|---|---:|---:|---:|---|
+| tail_003 | tail_docB | lighting | 2 | 0/5 | 0.000 | 5필드 `TABLE_MISSING` |
+| tail_004 | tail_docB | fold | 2 | 0/5 | 0.000 | 5필드 `TABLE_MISSING` |
+| tail_005 | tail_docC | perspective | 0 | 0/5 | 0.000 | 5필드 `TABLE_MISSING` |
+| tail_006 | tail_docC | lighting | 2 | 0/5 | 0.000 | 5필드 `TABLE_MISSING` |
+| tail_008 | tail_docB | baseline | 2 | 3/5 | 0.845 | address `COORDINATE_ERROR`, deposit `ROW_MERGE` |
+| tail_009 | tail_docC | baseline | 2 | 0/5 | 0.740 | 5필드 `COORDINATE_ERROR` |
+
+전체 3/30 (10.0%), 평균 Coverage 0.264, ROI 생성 10/30. tail_003·004·006 은 표 2개를 찾았지만 기준 양식 위치에 맞는 표 또는 셀이 없어 `TABLE_MISSING` 으로 판정됐다.
+
 ## 5. 전달 시 확인이 필요한 사항
 
 - 평가 쪽에서 쓸 P3 입력은 `roi_candidates.json` (필드별 후보 bbox, 원본 좌표) 이다.
@@ -152,4 +167,4 @@ development 의 common_001~010 `cells_original.json` 은 공통 10장 결과와 
 ## 6. 하지 않은 것
 
 - 이미지별 파라미터 조정, 새 detector / model 추가, 구조 복원 알고리즘 재설계
-- holdout_test 접근·실행
+- 동결 전 holdout_test 접근·실행, holdout 결과를 본 뒤 재튜닝·재실행

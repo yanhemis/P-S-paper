@@ -2,7 +2,7 @@
 
 > 담당: OpenCV 구조 복원 / Detected ROI (논문 파이프라인의 P3 입력)
 > 기준: issue 브랜치 `05_current_team_tasks_20261101.md` 2절
-> 동결 기준: 기록 파일 `frozen_params.json` (첫 동결 `11af316`, 11/09 P3 Coverage 코드 추가 후 다시 동결)
+> 동결 commit: `55c30b0` (11/10 16:42), 기록 파일 `frozen_params.json` (첫 동결 `11af316`). 동결 선언: [11_freeze_declaration.md](11_freeze_declaration.md)
 
 ## 1. 한눈에 보기
 
@@ -245,7 +245,8 @@ OpenCV 버전은 같습니다(5.0.0). numpy와 pillow 중 어느 쪽이 원인�
 | aligned 이미지 | 🟡 19/19 생성, 용량 때문에 git 제외 |
 | 실패 유형 기록 | ✅ 94필드 모두 GT BBox로 판정 |
 | ROI Coverage summary | ✅ `summary.json`, `roi_coverage_overall.json` (Covered ≥ 0.90, 후보 최대값) |
-| holdout_test 1회 실행 | ⏳ 패키지 공개 대기 |
+| holdout_test 1회 실행 | ✅ 6장, 3/30 (10.0%), 평균 Coverage 0.264 (`60f52cf`) |
+| 동결 선언 | ✅ `docs/11_freeze_declaration.md` |
 
 ## 5. 재현 방법
 

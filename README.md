@@ -6,8 +6,9 @@
 |---|---|
 | 담당 범위 | OpenCV 구조 복원, Detected ROI 공급 (P3 평가 입력) |
 | 평가 필드 | `address`, `deposit`, `contract_amount`, `lessor_name`, `lessee_name` |
-| 현재 상태 | development 실행 완료, 코드 동결 완료, holdout_test 공개 대기 |
-| 동결 기준 | `frozen_params.json` (commit SHA, 코드 해시, 환경). 구조 복원 코드 `Task_0930.py`는 `8143969` 이후 변경 없음 |
+| 현재 상태 | development 실행, 코드 동결, holdout_test 1회 실행 완료 |
+| 동결 commit | **`55c30b0`** (11/10 16:42), 기록은 `frozen_params.json`. 구조 복원 코드 `Task_0930.py`는 `8143969` 이후 변경 없음 |
+| 동결 선언 | [`docs/11_freeze_declaration.md`](docs/11_freeze_declaration.md) |
 | 코드별 진행·결과 | [`docs/10_code_progress_results.md`](docs/10_code_progress_results.md) |
 | 전달 문서 | [`docs/09_detected_roi_v1.md`](docs/09_detected_roi_v1.md) |
 
@@ -22,6 +23,7 @@
 | 10/13 | 공통 10장 일괄 실행, tail 실험 C 입력 전달 | `Task_10_Renewal.py`, `tail_roi.py`, `output/common10/`, `docs/07`, `docs/08` |
 | 11/06 | 5필드 ROI·실패 유형 분류, 공통 10장 재현 확인, development 19장 실행, 코드·환경 동결 | `field_roi.py`, `output/eval_v1/development/`, `frozen_params.json`, `docs/09` |
 | 11/09 | GT BBox 기준 P3 ROI Coverage (0.90, 후보 최대값), tail GT BBox 반영, Coverage 계산까지 동결 대상에 포함 | `p3_detected_roi_coverage.py`, `roi_coverage_*.json/csv` |
+| 11/10 | 코드 동결 (`55c30b0`), holdout_test 6장 동결 설정 1회 실행, 동결 선언 | `frozen_params.json`, `output/eval_v1/holdout_test/`, `docs/11` |
 
 ## 결과
 
@@ -62,6 +64,20 @@ Covered 가 아닌 58필드의 유형: `TABLE_MISSING` 23, `COORDINATE_ERROR` 23
 - 구조 복원 시간은 이미지당 평균 1.18초입니다 (`report.json`의 `process_sec`, 필드 선택·OCR 제외).
 - 이전 기준(ROI 생성 비율 41/94)과 이전 GT(`d4b32b6`, 79필드 29/79)의 값은 [코드별 진행·결과](docs/10_code_progress_results.md)에 남겨 두었습니다.
 - 이미지별 결과는 `output/eval_v1/development/summary.json`, 필드별 결과는 `roi_coverage_fields.csv`에 있습니다.
+
+### Dataset v1.0 holdout_test: 동결 설정 1회 실행
+
+GT: `dataset-v1` `fb069e7`. 문서 그룹 tail_docB, tail_docC (development와 겹치지 않음). 동결 commit `55c30b0`으로 1회 실행했고, 결과를 본 뒤 코드·파라미터를 바꾸지 않았습니다.
+
+| 조건 | 이미지 | Covered | 평균 Coverage | ROI 생성 |
+|---|---:|---:|---:|---:|
+| baseline | 2 | 3/10 | 0.793 | 10/10 |
+| lighting | 2 | 0/10 | 0.000 | 0/10 |
+| fold | 1 | 0/5 | 0.000 | 0/5 |
+| perspective | 1 | 0/5 | 0.000 | 0/5 |
+| **전체** | **6** | **3/30 (10.0%)** | **0.264** | **10/30** |
+
+Covered 가 아닌 27필드의 유형: `TABLE_MISSING` 20, `COORDINATE_ERROR` 6, `ROW_MERGE` 1. lighting·fold·perspective 4장은 5필드 모두 `TABLE_MISSING`입니다.
 
 ## 처리 흐름
 
@@ -183,7 +199,8 @@ P3 Coverage에서는 Covered가 아닌 필드에만 실패 유형을 기록합�
 
 ## 알려진 한계
 
-- 원근 왜곡은 보정하지 않습니다. perspective 조건 4장은 모두 5필드 ROI를 만들지 못했습니다.
+- 원근 왜곡은 보정하지 않습니다. perspective 조건은 development 4장, holdout 1장 모두 5필드 ROI를 만들지 못했습니다.
+- 조명 변화와 종이 접힘(holdout lighting 2장, fold 1장)에서도 5필드가 모두 `TABLE_MISSING`이었습니다.
 - 촬영 원근이나 종이 휨이 있으면 가로선 투영이 겹쳐 여러 행이 하나로 합쳐질 수 있습니다.
 - 한 행 높이보다 짧은 세로 경계는 선 추출에서 지워져 라벨 칸과 값 칸이 합쳐질 수 있습니다.
 - 선이 없는 표는 지원하지 않습니다.
