@@ -134,7 +134,7 @@ def select_field_value(field, all_tokens, anchor_bbox, crop_bbox):
             overlap = max(0, min(bottom, anchor_bottom) - max(top, anchor_top))
             token_center = (top + bottom) / 2
             return abs(token_center - anchor_center_y) <= max_distance and overlap / token_height >= 0.45
-        near_row = [t for t in valid if in_anchor_row(t)]
+        near_row = valid if field in {"lessor_name", "lessee_name"} else [t for t in valid if in_anchor_row(t)]
         info["expected_row_center_y_in_crop"] = round(anchor_center_y, 2)
         info["allowed_row_center_distance"] = round(max_distance, 2)
     else:
@@ -152,7 +152,7 @@ def select_field_value(field, all_tokens, anchor_bbox, crop_bbox):
 
     if field in {"deposit", "contract_amount"}:
         # Exclude words from adjacent rows, e.g., '따라', '원정은', '사천2'.
-        candidates = [t for t in near_row if HANGUL_AMOUNT.fullmatch(t["text"].strip())
+        candidates = [t for t in near_row if HANGUL_AMOUNT.fullmatch(t["text"].replace(" ", ""))
                       or NUMBER_AMOUNT.fullmatch(t["text"].replace(" ", ""))]
         # Prefer a token closest to the printed-label row, then closest to
         # the LEFT edge of the mapped ROI. Do not inspect ground truth text.
@@ -163,7 +163,24 @@ def select_field_value(field, all_tokens, anchor_bbox, crop_bbox):
             ))
         else:
             candidates.sort(key=lambda t: t["bbox_in_crop"][0])
+        candidates.sort(key=lambda t: (0 if HANGUL_AMOUNT.fullmatch(t["text"].replace(" ", "")) else 1, t["bbox_in_crop"][0]))
         selected = candidates[:1]
+
+        # Development experiment: deposit may share a crop with the
+        # following contract-payment row. Prefer the uppermost Korean
+        # amount token; do not consult GT for prediction selection.
+        if field == "deposit":
+            hangul_candidates = [
+                t for t in near_row
+                if t.get("bbox_in_crop")
+                and HANGUL_AMOUNT.fullmatch(t.get("text", "").replace(" ", ""))
+            ]
+            if hangul_candidates:
+                hangul_candidates.sort(key=lambda t: (
+                    t["bbox_in_crop"][1], t["bbox_in_crop"][0]
+                ))
+                selected = hangul_candidates[:1]
+                info["deposit_selection_rule"] = "uppermost_hangul_amount_dev"
 
     elif field in {"lessor_name", "lessee_name"}:
         candidates = [t for t in near_row

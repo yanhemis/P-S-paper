@@ -272,6 +272,7 @@ def main():
     parser.add_argument("--output", type=Path, default=Path("results") / "p4_e2e")
     parser.add_argument("--gt", type=Path, default=Path("field_gt.json"))
     parser.add_argument("--padding", type=int, default=8)
+    parser.add_argument("--batch-cache-dir", type=Path, default=None)
     parser.add_argument("--first-pass-cache", type=Path, default=None,
                         help="single-image PoC reproduction only, not final measured e2e")
     args = parser.parse_args()
@@ -279,6 +280,8 @@ def main():
         parser.error("--padding must be >= 0")
 
     images = list_images(args.input)
+    if args.batch_cache_dir and args.first_pass_cache:
+        parser.error("두 캐시 옵션은 동시에 사용할 수 없습니다")
     if args.first_pass_cache and len(images) != 1:
         parser.error("--first-pass-cache works only for a single image")
     mapper_script = Path(__file__).resolve().parent / "anchor_field_mapper.py"
@@ -298,8 +301,13 @@ def main():
     all_rows = []
     for idx, image_path in enumerate(images, 1):
         print(f"\n[{idx}/{len(images)}] {image_path}")
+        cache = args.first_pass_cache
+        if args.batch_cache_dir:
+            cache = args.batch_cache_dir / image_path.stem / "first_pass_ocr.json"
+            if not cache.is_file():
+                raise FileNotFoundError(f"1차 OCR 캐시 없음: {cache}")
         rows = process_one(image_path, engine, args, mapper_script, gt_data,
-                           cache=args.first_pass_cache)
+                           cache=cache)
         all_rows.extend(rows)
     write_summary(args.output / "summary.csv", all_rows)
     scored = [r for r in all_rows if r["field_exact_match_raw"] != ""]
