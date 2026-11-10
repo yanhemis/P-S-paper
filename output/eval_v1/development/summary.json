@@ -113,23 +113,23 @@
   },
   {
     "image_id": "tail_001",
-    "target_fields": 0,
+    "target_fields": 5,
     "detected_fields": 0,
-    "roi_coverage": null,
-    "failure_reason": ""
+    "roi_coverage": 0.0,
+    "failure_reason": "address:TABLE_MISSING; deposit:TABLE_MISSING; contract_amount:TABLE_MISSING; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING"
   },
   {
     "image_id": "tail_002",
-    "target_fields": 0,
-    "detected_fields": 0,
-    "roi_coverage": null,
-    "failure_reason": ""
+    "target_fields": 5,
+    "detected_fields": 2,
+    "roi_coverage": 0.8696,
+    "failure_reason": "address:COORDINATE_ERROR; deposit:COORDINATE_ERROR; contract_amount:COORDINATE_ERROR"
   },
   {
     "image_id": "tail_007",
-    "target_fields": 0,
-    "detected_fields": 0,
-    "roi_coverage": null,
+    "target_fields": 5,
+    "detected_fields": 5,
+    "roi_coverage": 0.99,
     "failure_reason": ""
   }
 ]

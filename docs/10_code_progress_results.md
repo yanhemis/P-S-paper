@@ -2,7 +2,7 @@
 
 > 담당: OpenCV 구조 복원 / Detected ROI (논문 파이프라인의 P3 입력)
 > 기준: issue 브랜치 `05_current_team_tasks_20261101.md` 2절
-> 동결 기준: commit `11af316`, 기록 파일 `frozen_params.json`
+> 동결 기준: 기록 파일 `frozen_params.json` (첫 동결 `11af316`, 11/09 P3 Coverage 코드 추가 후 다시 동결)
 
 ## 1. 한눈에 보기
 
@@ -11,12 +11,14 @@
 | `TestResult.py` | 459 | 초기 구조 복원 | 09/14 | sample.jpg 표선 검출 실패 | 보관용 |
 | `Task_0930.py` | 1,046 | 구조 복원 메인 | 09/28 ~ 10/05 | sample.jpg F1 77.3% (IoU 0.5, 공통 평가) | 동결 |
 | `tail_roi.py` | 116 | tail OCR 입력 변환 | 10/13 | 필드 25/60 전달, OCR Field Accuracy 13/49 | 이전 전달본 |
-| `Task_10_Renewal.py` | 494 | 일괄 실행·재현 확인·동결 | 10/13 ~ 11/06 | 공통 10장 셀 파일 40/40 재현, development 19장 실행 | 동결 |
-| `field_roi.py` | 228 | 5필드 ROI·실패 유형 | 11/06 | ROI Coverage 41/94 (43.6%) | 동결 |
+| `Task_10_Renewal.py` | 550 | 일괄 실행·재현 확인·동결 | 10/13 ~ 11/06 | 공통 10장 셀 파일 40/40 재현, development 19장 실행 | 동결 |
+| `field_roi.py` | 228 | 5필드 ROI·실패 유형 | 11/06 | ROI 생성 41/94 (43.6%) | 동결 |
+| `p3_detected_roi_coverage.py` | 431 | GT BBox 기준 P3 ROI Coverage | 11/09 | Covered 36/94 (38.3%), 평균 Coverage 0.590 | 동결 |
 
 ```text
-이미지 → Task_0930.py → 셀 → field_roi.py → 5필드 ROI·실패 유형 → P3 평가 입력
+이미지 → Task_0930.py → 셀 → field_roi.py → 5필드 ROI·실패 유형
            (구조 복원)             (필드 대응)
+                              → p3_detected_roi_coverage.py → ROI 후보 + GT BBox Coverage → P3 평가 입력
                     Task_10_Renewal.py 가 전체 실행과 재현·동결을 관리
 ```
 
@@ -104,8 +106,10 @@ GT 위치로 셀을 골랐기 때문에 "필드 위치를 알 때 검출 셀 경
 | 재현 확인 | `--check-repro`: 임시 폴더에 다시 실행해 기존 결과와 비교 |
 | 실행 기록 | 명령, 파라미터, 코드 해시, 환경, commit, 데이터셋 해시 저장 |
 | 동결 | `--freeze`: 코드에 미커밋 변경이 있으면 거부 |
+| 패키지 사전 확인 | `--check-package`: 필수 열, 파일, GT 키, 그룹 중복, 동결 일치를 실행 없이 확인 (11/10) |
 | holdout 보호 | 동결 불일치, 재실행, 문서 그룹 중복이면 실행 거부 |
 | 전달 형식 | `summary.json`, `<image_id>_aligned.png` |
+| P3 Coverage 연결 | Dataset v1 실행 끝에 `p3_detected_roi_coverage.py` 를 자동 실행 (11/09) |
 
 **결과: 공통 10장 구조 복원 (육안 판정 포함)**
 
@@ -173,28 +177,74 @@ OpenCV 버전은 같습니다(5.0.0). numpy와 pillow 중 어느 쪽이 원인�
 | `COORDINATE_ERROR` | 0 (공통 10장 기준, 신규 9장은 판정 불가) |
 | `RUN_ERROR` | 0 |
 
-이미지별 결과는 [Detected ROI 전달 문서](09_detected_roi_v1.md)와 `output/eval_v1/development/summary.json`에 있습니다.
+위 값은 GT 없이 **ROI를 만든 비율**(11/06 기준)이며 위치 정합을 보증하지 않습니다. 평가 기준 수치는 아래 2.6의 GT BBox Coverage입니다.
 
-**ROI Coverage 해석:** 실패 유형 없이 ROI를 만든 비율입니다. OCR 정확도가 아니며, 신규 9장에서는 위치 정합을 보증하지 않습니다.
+### 2.6 `p3_detected_roi_coverage.py` — GT BBox 기준 P3 ROI Coverage
+
+**구현**
+
+- 기준 양식 위치의 중심을 포함하는 셀(primary)과 그 영역에 50% 이상 겹치는 같은 표의 셀을 필드별 ROI 후보로 냅니다 (최대 5개, GT 미사용).
+- `Coverage = Area(GT ∩ ROI) / Area(GT)`를 후보마다 계산해 최대값을 쓰고, 0.90 이상이면 Covered입니다.
+- Covered가 아닌 필드에 실패 유형을 남깁니다. GT를 0.90 이상 덮는 셀이 이미지에 있으면 `WRONG_MAPPING`, 없으면 `COORDINATE_ERROR`입니다.
+- 셀 결과를 다시 만들지 않고 읽기만 하므로 구조 복원 결과와 파라미터는 바뀌지 않습니다.
+- 11/09에 동결 대상(`CODE_FILES`)에 넣고, `Task_10_Renewal.py --dataset <split>` 끝에서 자동 실행되게 했습니다.
+
+**결과: Dataset v1.0 development 19장 (GT `ead8436`)**
+
+| 묶음 | 이미지 | Covered | Covered Rate | 평균 Coverage | ROI 생성 |
+|---|---:|---:|---:|---:|---:|
+| 공통 10장 | 10 | 21/49 | 42.9% | 0.662 | 43/49 |
+| 신규 heewon | 6 | 8/30 | 26.7% | 0.457 | 18/30 |
+| 신규 tail | 3 | 7/15 | 46.7% | 0.620 | 10/15 |
+| **전체** | **19** | **36/94** | **38.3%** | **0.590** | **71/94** |
+
+**필드별**
+
+| 필드 | Covered / 대상 | 평균 Coverage |
+|---|---:|---:|
+| `address` | 7/19 | 0.644 |
+| `deposit` | 9/19 | 0.601 |
+| `contract_amount` | 7/18 | 0.565 |
+| `lessor_name` | 6/19 | 0.557 |
+| `lessee_name` | 7/19 | 0.580 |
+
+**신규 9장 촬영 조건별**
+
+| 조건 | 이미지 | Covered | 평균 Coverage |
+|---|---:|---:|---:|
+| baseline | 3 | 10/15 | 0.942 |
+| distance | 2 | 5/10 | 0.888 |
+| perspective | 4 | 0/20 | 0.000 |
+
+**Covered 아님 (58필드)**: `TABLE_MISSING` 23, `COORDINATE_ERROR` 23 (Coverage 0.709~0.898), `ROW_MERGE` 12, `WRONG_MAPPING` 0
+
+**GT 버전별 기록**
+
+| GT | 평가 필드 | Covered | 비고 |
+|---|---:|---:|---|
+| `d4b32b6` | 79 | 29/79 (36.7%) | tail 15필드 `bbox: null`, dahye 독립 재계산과 일치 |
+| `ead8436` | 94 | 36/94 (38.3%) | tail GT BBox 추가, 공통·heewon 값은 같음 |
+
+이미지별 결과는 [Detected ROI 전달 문서](09_detected_roi_v1.md)와 `output/eval_v1/development/summary.json`에 있습니다.
 
 ## 3. 현재 결론
 
 1. **병합 복원 효과:** 단일 이미지 공통 평가에서 F1이 38.7%에서 77.3%로 관찰됐습니다.
-2. **병목은 촬영 조건:** 신규 데이터에서 perspective 조건은 ROI를 하나도 만들지 못했고, baseline과 distance는 80%였습니다.
-3. **주요 실패는 행 병합과 표 누락:** 53건 중 51건입니다.
+2. **병목은 촬영 조건:** 신규 데이터에서 perspective 조건은 Covered가 0/20이었고, baseline 10/15, distance 5/10이었습니다.
+3. **실패는 표 누락, 경계 오차, 행 병합:** Covered가 아닌 58필드가 `TABLE_MISSING` 23, `COORDINATE_ERROR` 23, `ROW_MERGE` 12입니다. `COORDINATE_ERROR`는 모두 GT의 70% 이상은 덮었습니다.
 4. **재현성은 환경에 달려 있음:** 코드와 파라미터가 같아도 라이브러리 버전이 다르면 셀 결과가 달라집니다.
 
 ## 4. 진행 상태
 
 | 지시 항목 | 상태 |
 |---|---|
-| commit·파라미터 기록 | ✅ `11af316`, `frozen_params.json` |
+| commit·파라미터 기록 | ✅ `frozen_params.json` (P3 Coverage 코드 포함) |
 | 공통 10장 재현 확인 | ✅ 40/40 |
 | development 동일 설정 실행 | ✅ 19/19 |
 | `cells_original.json`, `report.json`, `cells.json` | ✅ 19/19 |
 | aligned 이미지 | 🟡 19/19 생성, 용량 때문에 git 제외 |
-| 실패 유형 기록 | 🟡 신규 9장의 `WRONG_MAPPING`, `COORDINATE_ERROR`는 GT bbox 필요 |
-| ROI Coverage summary | ✅ `summary.json` |
+| 실패 유형 기록 | ✅ 94필드 모두 GT BBox로 판정 |
+| ROI Coverage summary | ✅ `summary.json`, `roi_coverage_overall.json` (Covered ≥ 0.90, 후보 최대값) |
 | holdout_test 1회 실행 | ⏳ 패키지 공개 대기 |
 
 ## 5. 재현 방법
@@ -205,3 +255,5 @@ git archive origin/dataset-v1 data/eval_v1_packages/development | tar -x
 python Task_10_Renewal.py --check-repro
 python Task_10_Renewal.py --dataset development
 ```
+
+PowerShell에서는 파이프 대신 `git archive -o dev.tar origin/dataset-v1 data/eval_v1_packages/development` 후 `tar -xf dev.tar`를 씁니다.

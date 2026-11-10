@@ -7,7 +7,7 @@
 | 담당 범위 | OpenCV 구조 복원, Detected ROI 공급 (P3 평가 입력) |
 | 평가 필드 | `address`, `deposit`, `contract_amount`, `lessor_name`, `lessee_name` |
 | 현재 상태 | development 실행 완료, 코드 동결 완료, holdout_test 공개 대기 |
-| 동결 기준 | commit `11af316`, 상세 기록은 `frozen_params.json` |
+| 동결 기준 | `frozen_params.json` (commit SHA, 코드 해시, 환경). 구조 복원 코드 `Task_0930.py`는 `8143969` 이후 변경 없음 |
 | 코드별 진행·결과 | [`docs/10_code_progress_results.md`](docs/10_code_progress_results.md) |
 | 전달 문서 | [`docs/09_detected_roi_v1.md`](docs/09_detected_roi_v1.md) |
 
@@ -21,6 +21,7 @@
 | 10/05 | 추가 인원 B에게 입출력 명세 전달, 원본 좌표 출력 추가, 성공·실패 사례 정리 | `1005_B에게_줄파일/`, `docs/02`, `docs/03`, `docs/06` |
 | 10/13 | 공통 10장 일괄 실행, tail 실험 C 입력 전달 | `Task_10_Renewal.py`, `tail_roi.py`, `output/common10/`, `docs/07`, `docs/08` |
 | 11/06 | 5필드 ROI·실패 유형 분류, 공통 10장 재현 확인, development 19장 실행, 코드·환경 동결 | `field_roi.py`, `output/eval_v1/development/`, `frozen_params.json`, `docs/09` |
+| 11/09 | GT BBox 기준 P3 ROI Coverage (0.90, 후보 최대값), tail GT BBox 반영, Coverage 계산까지 동결 대상에 포함 | `p3_detected_roi_coverage.py`, `roi_coverage_*.json/csv` |
 
 ## 결과
 
@@ -35,27 +36,32 @@
 
 사례 분석은 [성공 사례](docs/02_success_cases.md)와 [실패 사례](docs/03_failure_cases.md)에 있습니다.
 
-### Dataset v1.0 development: 핵심 5필드 ROI Coverage
+### Dataset v1.0 development: 핵심 5필드 P3 ROI Coverage
 
-| 묶음 | 이미지 | 5필드 | ROI Coverage |
+GT: `dataset-v1` `ead8436` (19장 모든 평가 필드에 GT BBox). 기준: `Coverage = Area(GT ∩ ROI) / Area(GT)`, 0.90 이상이면 Covered, ROI 후보가 여럿이면 최대값.
+
+| 묶음 | 이미지 | Covered | Covered Rate | 평균 Coverage | ROI 생성 |
+|---|---:|---:|---:|---:|---:|
+| 공통 10장 (common_001~010) | 10 | 21/49 | 42.9% | 0.662 | 43/49 |
+| 신규 heewon | 6 | 8/30 | 26.7% | 0.457 | 18/30 |
+| 신규 tail | 3 | 7/15 | 46.7% | 0.620 | 10/15 |
+| **전체** | **19** | **36/94** | **38.3%** | **0.590** | **71/94** |
+
+신규 9장의 조건별 결과입니다. 문서 그룹은 3개이므로 이미지 수를 독립 문서 수로 해석하면 안 됩니다.
+
+| 조건 | 이미지 | Covered | 평균 Coverage |
 |---|---:|---:|---:|
-| 공통 10장 (common_001~010) | 10 | 21/49 | 42.9% |
-| 신규 development | 9 | 20/45 | 44.4% |
-| **전체** | **19** | **41/94** | **43.6%** |
+| baseline | 3 | 10/15 | 0.942 |
+| distance | 2 | 5/10 | 0.888 |
+| perspective | 4 | 0/20 | 0.000 |
 
-신규 9장의 조건별 결과는 다음과 같습니다. 문서 그룹은 3개이므로 이미지 수를 독립 문서 수로 해석하면 안 됩니다.
-
-| 조건 | 이미지 | 5필드 |
-|---|---:|---:|
-| baseline | 3 | 12/15 |
-| distance | 2 | 8/10 |
-| perspective | 4 | 0/20 |
-
-실패 53건의 유형은 `ROW_MERGE` 28, `TABLE_MISSING` 23, `COLUMN_MERGE` 1, `CELL_MERGE` 1입니다.
+Covered 가 아닌 58필드의 유형: `TABLE_MISSING` 23, `COORDINATE_ERROR` 23, `ROW_MERGE` 12 (`WRONG_MAPPING` 0).
 
 - 분모 94는 GT가 `not_present`인 common_007의 `contract_amount`를 제외한 값입니다.
-- ROI Coverage는 ROI 생성 비율입니다. GT bbox가 없는 신규 9장은 위치 정합을 보증하지 않으며, `WRONG_MAPPING`과 `COORDINATE_ERROR`도 자동 판정하지 못합니다.
-- 이미지별 결과는 `output/eval_v1/development/summary.json`에 있습니다.
+- ROI 후보는 GT를 보지 않고 기준 양식의 상대 위치로 고릅니다. GT는 Coverage 계산에만 씁니다.
+- 구조 복원 시간은 이미지당 평균 1.18초입니다 (`report.json`의 `process_sec`, 필드 선택·OCR 제외).
+- 이전 기준(ROI 생성 비율 41/94)과 이전 GT(`d4b32b6`, 79필드 29/79)의 값은 [코드별 진행·결과](docs/10_code_progress_results.md)에 남겨 두었습니다.
+- 이미지별 결과는 `output/eval_v1/development/summary.json`, 필드별 결과는 `roi_coverage_fields.csv`에 있습니다.
 
 ## 처리 흐름
 
@@ -65,6 +71,7 @@
 4. 셀 경계 판정, Union-Find 병합, 비직사각형 병합 복구
 5. 자동 검증과 결과 저장 (`cells.json`, 시각화, 리포트)
 6. 기준 양식의 상대 위치로 5필드 셀 선택, 실패 유형 기록
+7. 필드별 ROI 후보와 GT BBox로 P3 ROI Coverage 계산 (Dataset v1)
 
 ## 폴더 구조
 
@@ -73,6 +80,7 @@ P-S-paper/
 ├─ Task_0930.py             구조 복원 메인 코드
 ├─ Task_10_Renewal.py       일괄 실행, 재현 확인, 동결, 결과 요약
 ├─ field_roi.py             5필드 → 셀 대응, 실패 유형 분류
+├─ p3_detected_roi_coverage.py  GT BBox 기준 P3 ROI Coverage
 ├─ tail_roi.py              공통 10장 셀 → tail 실험 C 입력 변환
 ├─ TestResult.py            이전 버전 (보관용)
 ├─ frozen_params.json       동결한 파라미터, 코드 해시, 환경, commit
@@ -109,11 +117,13 @@ git archive origin/dataset-v1 data/eval_v1_packages/development | tar -x
 | 공통 10장 재현 확인 (기존 결과 유지) | `python Task_10_Renewal.py --check-repro` |
 | 공통 10장 5필드 요약 | `python Task_10_Renewal.py` |
 | 공통 10장 다시 실행 (기존 결과 덮어씀) | `python Task_10_Renewal.py --rerun` |
-| development 일괄 실행 | `python Task_10_Renewal.py --dataset development` |
+| development 일괄 실행 + P3 Coverage | `python Task_10_Renewal.py --dataset development` |
+| 셀은 그대로 두고 Coverage만 다시 계산 | `python p3_detected_roi_coverage.py --dataset development` |
 | 코드 commit 후 동결 기록 | `python Task_10_Renewal.py --freeze` |
-| holdout_test 1회 실행 | `python Task_10_Renewal.py --dataset holdout_test` |
+| holdout_test 패키지 형식 확인 (실행 안 함) | `python Task_10_Renewal.py --dataset holdout_test --check-package` |
+| holdout_test 1회 실행 + P3 Coverage | `python Task_10_Renewal.py --dataset holdout_test` |
 
-`holdout_test`는 코드·파라미터·환경이 동결 기록과 다르거나, 이미 실행했거나, development와 `document_group_id`가 겹치면 실행되지 않습니다.
+`holdout_test`는 코드(`p3_detected_roi_coverage.py` 포함)·파라미터·환경이 동결 기록과 다르거나, 이미 실행했거나, development와 `document_group_id`가 겹치면 실행되지 않습니다.
 
 ## 출력
 
@@ -127,12 +137,16 @@ git archive origin/dataset-v1 data/eval_v1_packages/development | tar -x
 | `<image_id>/report.json` | status, 실패 사례, 파라미터, 처리 시간 | - |
 | `<image_id>/fields.json` | 5필드 ROI, 필드별 실패 유형 | 원본 |
 | `summary.json` | 전달용 요약: `image_id`, `target_fields`, `detected_fields`, `roi_coverage`, `failure_reason` | - |
-| `field_summary.csv` | `summary.json` + 문서 그룹, 조건, status, 표 수, GT bbox 수 | - |
+| `summary.csv` | `summary.json` + Covered Rate, ROI 생성 수, 문서 그룹, 조건, status (Dataset v1) | - |
+| `roi_coverage_overall.json` | 전체·공통·신규·조건별 Covered Rate, 평균 Coverage, 실패 수, sec/image, 동결 commit, 데이터 해시 (Dataset v1) | - |
+| `roi_coverage_fields.csv` | 필드별 GT BBox, Coverage, Covered, 실패 유형 (Dataset v1) | 원본 |
+| `roi_candidates.json` | 필드별 ROI 후보와 후보별 Coverage (Dataset v1) | 원본 |
+| `field_summary.csv` | ROI 생성 기준 요약 + 문서 그룹, 조건, status, 표 수, GT bbox 수 | - |
 | `field_results.csv` | 필드 단위 상세 | 원본 |
 | `detected_roi.json` | 5필드 ROI 모음 (quad) | 원본 |
 | `run_info.json` | 명령, 파라미터, 코드 해시, 환경, commit (`--dataset`, `--rerun` 실행 시 생성) | - |
 
-`output/common10/summary.csv`는 `run_batch()`가 만드는 구조 복원 요약이므로, 5필드 요약은 `summary.json`을 사용합니다.
+`summary.json`의 의미는 폴더마다 다릅니다. Dataset v1(`output/eval_v1/`)은 GT BBox 기준 Coverage(`detected_fields` = Covered 필드 수, `roi_coverage` = 평균 Coverage)이고, 공통 10장(`output/common10/`)은 ROI 생성 비율입니다. `output/common10/summary.csv`는 `run_batch()`가 만드는 구조 복원 요약입니다.
 
 ### cells.json 형식
 
@@ -161,9 +175,11 @@ git archive origin/dataset-v1 data/eval_v1_packages/development | tar -x
 | `ROW_MERGE` | 셀 높이 > 기준 셀 높이 × 1.8 |
 | `COLUMN_MERGE` | 셀 폭 > 기준 셀 폭 × 1.8 |
 | `CELL_MERGE` | 높이와 폭 모두 초과 |
-| `WRONG_MAPPING` | 고른 셀은 GT bbox를 50% 이상 못 덮는데 다른 셀이 덮음 (GT bbox 필요) |
-| `COORDINATE_ERROR` | GT bbox를 50% 이상 덮는 셀이 없음 (GT bbox 필요) |
+| `WRONG_MAPPING` | 후보는 GT BBox를 0.90 이상 못 덮는데 이미지의 다른 셀이 덮음 |
+| `COORDINATE_ERROR` | GT BBox를 0.90 이상 덮는 셀이 이미지 어디에도 없음 (경계 어긋남·분할) |
 | `RUN_ERROR` | 파이프라인 실행 실패 |
+
+P3 Coverage에서는 Covered가 아닌 필드에만 실패 유형을 기록합니다. Covered이지만 고른 셀이 병합 크기인 18필드는 실패로 세지 않고 `roi_flag`에 `ROW_MERGE` 등을 남겼습니다 (ROI가 커서 OCR에 다른 글자가 섞일 수 있음).
 
 ## 알려진 한계
 

@@ -9,9 +9,10 @@ P3 Detected ROI Coverage — bang_ (05_current_team_tasks_20261101.md 2절, 04_d
 을 만든다. 파이프라인을 다시 돌리지 않으며 파라미터도 바꾸지 않는다.
 
 실행 (프로젝트 폴더에서)
-  python Task_10_Renewal.py --dataset development        # 셀 결과 생성 (이미 있으면 생략 가능)
-  python p3_detected_roi_coverage.py --dataset development
-  python p3_detected_roi_coverage.py --dataset holdout_test   # 동결 후 holdout 1회 실행 결과에 그대로 적용
+  python Task_10_Renewal.py --dataset development        # 셀 결과 생성 + 이 파일까지 자동 실행
+  python p3_detected_roi_coverage.py --dataset development   # 셀 결과는 그대로 두고 Coverage 만 다시 계산
+  python Task_10_Renewal.py --dataset holdout_test       # 동결 후 1회: 셀 결과 + Coverage
+  holdout_test 는 코드·환경이 frozen_params.json 과 같을 때만 계산한다 (이 파일도 동결 대상).
 
 입력
   output/eval_v1/<split>/<image_id>/{cells_original.json, cells.json, report.json}
@@ -264,6 +265,12 @@ def run(split):
     if not out_dir.exists():
         print(f"[대기] {out_dir} 없음 — 먼저 python Task_10_Renewal.py --dataset {split}")
         return 1
+    if split == "holdout_test":
+        import Task_10_Renewal as tr          # 순환 import 방지: holdout 일 때만
+        p_ok, c_ok, msgs = tr.check_frozen()
+        if not (p_ok and c_ok):
+            print("[중단] holdout_test 는 동결된 코드·환경으로만 평가합니다:\n  - " + "\n  - ".join(msgs))
+            return 1
 
     ref = fr.load_reference()
     summary, details, candidates_json = [], [], {}
@@ -324,21 +331,37 @@ def run(split):
     return 0
 
 
-def _block(details, image_ids=None):
+def _block(details, image_ids=None, sec=None):
     ev = [d for d in details if d["gt_state"] == "eval" and (image_ids is None or d["image_id"] in image_ids)]
     cov = [d["coverage"] for d in ev]
     fails = {k: sum(d["failure_reason"] == k for d in ev) for k in FAIL_ORDER}
-    return {"evaluable_fields": len(ev), "covered_fields": sum(d["covered"] is True for d in ev),
-            "covered_rate": _rate(sum(d["covered"] is True for d in ev), len(ev)),
-            "mean_coverage": round(sum(cov) / len(cov), 4) if cov else None,
-            "failure_counts": {k: v for k, v in fails.items() if v}}
+    out = {"evaluable_fields": len(ev), "covered_fields": sum(d["covered"] is True for d in ev),
+           "covered_rate": _rate(sum(d["covered"] is True for d in ev), len(ev)),
+           "mean_coverage": round(sum(cov) / len(cov), 4) if cov else None,
+           "roi_generated_fields": sum(d["roi_generated"] is True for d in ev),
+           "failure_counts": {k: v for k, v in fails.items() if v}}
+    if sec is not None:
+        t = [v for k, v in sec.items() if v is not None and (image_ids is None or k in image_ids)]
+        out["structure_sec_per_image"] = round(sum(t) / len(t), 3) if t else None
+    return out
+
+
+def _process_sec(out_dir, summary):
+    """report.json 의 process_sec (Task_0930 구조 복원 시간). 필드 후보 선택·OCR 은 포함하지 않는다."""
+    sec = {}
+    for s in summary:
+        p = out_dir / s["image_id"] / "report.json"
+        sec[s["image_id"]] = _read_json(p).get("process_sec") if p.exists() else None
+    return sec
 
 
 def write_overall(out_dir, split, summary, details):
-    groups = {}
+    sec = _process_sec(out_dir, summary)
+    groups, sources = {}, {}
     for s in summary:
         key = "common" if s["image_id"].startswith("common_") else "new"
         groups.setdefault(key, set()).add(s["image_id"])
+        sources.setdefault(s["image_id"].rsplit("_", 1)[0], set()).add(s["image_id"])
     conds = {}
     for s in summary:
         conds.setdefault(s["condition"] or "unknown", set()).add(s["image_id"])
@@ -356,9 +379,12 @@ def write_overall(out_dir, split, summary, details):
                  "roi_coordinate": "original (cells_original.json)",
                  "candidate_min_overlap": CAND_MIN_OVERLAP, "max_candidates": MAX_CANDIDATES},
         "images": len(summary),
-        "all": _block(details),
-        "by_set": {k: {"images": len(v), **_block(details, v)} for k, v in sorted(groups.items())},
-        "by_condition": {k: {"images": len(v), **_block(details, v)} for k, v in sorted(conds.items())},
+        "all": _block(details, sec=sec),
+        "by_set": {k: {"images": len(v), **_block(details, v, sec)} for k, v in sorted(groups.items())},
+        "by_source": {k: {"images": len(v), **_block(details, v, sec)} for k, v in sorted(sources.items())},
+        "by_condition": {k: {"images": len(v), **_block(details, v, sec)} for k, v in sorted(conds.items())},
+        "timing_note": "structure_sec_per_image = report.json process_sec 평균 (Task_0930 구조 복원만, "
+                       "필드 후보 선택·OCR 제외, 캐시 없음)",
         "not_evaluated_fields": not_eval,
         "frozen_commit": frozen.get("git", {}).get("commit"),
         "script_sha256": _sha256(Path(__file__)),
@@ -380,10 +406,13 @@ def print_result(split, summary, overall):
         note = s["failure_reason"] or ("-" if not s["not_evaluated"] else f"(미평가 {s['not_evaluated']})")
         print(f"{s['image_id']:<12}{s['condition']:<13}{s['detected_fields']:>4}/{s['target_fields']:<4}  {cov:>9}  {note}")
     print("-" * 92)
-    for name, b in [("전체", overall["all"])] + [(k, v) for k, v in overall["by_set"].items()]:
+    blocks = ([("전체", overall["all"])] + list(overall["by_set"].items())
+              + [(f"  {k}", v) for k, v in overall["by_source"].items() if k != "common"])
+    for name, b in blocks:
         mc = "-" if b["mean_coverage"] is None else f"{b['mean_coverage']:.3f}"
         cr = "-" if b["covered_rate"] is None else f"{b['covered_rate']:.1%}"
         print(f"{name:<8} Covered {b['covered_fields']}/{b['evaluable_fields']} ({cr}) | 평균 Coverage {mc}"
+              f" | ROI 생성 {b['roi_generated_fields']} | {b['structure_sec_per_image']}s/img"
               f" | 실패 {b['failure_counts']}")
     if overall["not_evaluated_fields"]:
         print(f"분모 제외/미평가: {overall['not_evaluated_fields']}")

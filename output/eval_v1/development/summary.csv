@@ -15,6 +15,6 @@ heewon_003,5,0,0.0,address:TABLE_MISSING; deposit:TABLE_MISSING; contract_amount
 heewon_004,5,4,0.9611,lessee_name:COORDINATE_ERROR,0.8,5,,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE,heewon_docB,baseline,check
 heewon_005,5,0,0.0,address:TABLE_MISSING; deposit:TABLE_MISSING; contract_amount:TABLE_MISSING; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,0.0,0,,,heewon_docB,perspective,grid_fail
 heewon_006,5,0,0.0,address:ROW_MERGE; deposit:ROW_MERGE; contract_amount:ROW_MERGE; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,0.0,3,,,heewon_docB,perspective,check
-tail_001,0,0,,,,0,address:GT_BBOX_NULL; deposit:GT_BBOX_NULL; contract_amount:GT_BBOX_NULL; lessor_name:GT_BBOX_NULL; lessee_name:GT_BBOX_NULL,,tail_docA,perspective,grid_fail
-tail_002,0,0,,,,5,address:GT_BBOX_NULL; deposit:GT_BBOX_NULL; contract_amount:GT_BBOX_NULL; lessor_name:GT_BBOX_NULL; lessee_name:GT_BBOX_NULL,,tail_docA,distance,check
-tail_007,0,0,,,,5,address:GT_BBOX_NULL; deposit:GT_BBOX_NULL; contract_amount:GT_BBOX_NULL; lessor_name:GT_BBOX_NULL; lessee_name:GT_BBOX_NULL,,tail_docA,baseline,check
+tail_001,5,0,0.0,address:TABLE_MISSING; deposit:TABLE_MISSING; contract_amount:TABLE_MISSING; lessor_name:TABLE_MISSING; lessee_name:TABLE_MISSING,0.0,0,,,tail_docA,perspective,grid_fail
+tail_002,5,2,0.8696,address:COORDINATE_ERROR; deposit:COORDINATE_ERROR; contract_amount:COORDINATE_ERROR,0.4,5,,lessor_name:COLUMN_MERGE,tail_docA,distance,check
+tail_007,5,5,0.99,,1.0,5,,,tail_docA,baseline,check

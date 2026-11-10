@@ -11,6 +11,7 @@ bang_ 일괄 실행 — OpenCV 구조 복원 / Detected ROI 공급 (issue/05_cur
   python Task_10_Renewal.py --rerun                  공통 10장: 파이프라인까지 다시 실행 (기존 결과 덮어씀)
   python Task_10_Renewal.py --dataset development    Dataset v1.0 development 일괄 실행
   python Task_10_Renewal.py --freeze                 파라미터·코드 해시·환경·commit 을 frozen_params.json 에 고정
+  python Task_10_Renewal.py --dataset holdout_test --check-package   실행 전 패키지 형식만 확인
   python Task_10_Renewal.py --dataset holdout_test   동결 확인 후 holdout_test 1회 실행 (재실행 거부)
 
 입력
@@ -25,7 +26,9 @@ bang_ 일괄 실행 — OpenCV 구조 복원 / Detected ROI 공급 (issue/05_cur
   <image_id>/<image_id>_aligned.png  보정본. 보정이 없었던 이미지는 생성되지 않음 (cells.json 좌표 = 원본)
   <image_id>/fields.json           핵심 5필드 ROI (원본 좌표) + 필드별 실패 유형
   summary.json                     전달용 요약: image_id / target_fields / detected_fields / roi_coverage / failure_reason
-  field_summary.csv                summary.json + 문서 그룹·조건·status·GT bbox 수
+                                   (공통 10장 = ROI 생성 비율, Dataset v1 = p3_detected_roi_coverage.py 의 GT BBox Coverage)
+  roi_coverage_*.json/csv, roi_candidates.json, summary.csv   Dataset v1 P3 Coverage (p3_detected_roi_coverage.py)
+  field_summary.csv                ROI 생성 기준 요약 + 문서 그룹·조건·status·GT bbox 수
   field_results.csv                필드 단위 상세 (셀 id, 크기 비, GT 덮는 비율, 실패 유형)
   detected_roi.json                5필드 ROI 모음 (tail roi_ocr.py 입력 형식, 원본 좌표 quad)
   run_info.json                    실행 명령, 파라미터, 코드 해시, 환경, git commit, 데이터셋 해시, 실행 시각
@@ -49,6 +52,7 @@ import PIL
 
 import Task_0930 as t
 import field_roi as fr
+import p3_detected_roi_coverage as p3
 
 ROOT = Path(__file__).resolve().parent
 COMMON_DIR = ROOT / "data" / "common10"
@@ -57,7 +61,7 @@ COMMON_GT = COMMON_DIR / "tail_gt_roi.json"
 EVAL_DIR = ROOT / "data" / "eval_v1_packages"
 EVAL_OUT = ROOT / "output" / "eval_v1"
 FROZEN = ROOT / "frozen_params.json"
-CODE_FILES = ["Task_0930.py", "field_roi.py", "Task_10_Renewal.py"]
+CODE_FILES = ["Task_0930.py", "field_roi.py", "Task_10_Renewal.py", "p3_detected_roi_coverage.py"]
 CELL_FILES = ["cells.json", "cells_original.json", "cells_primitive.json", "cells_primitive_original.json"]
 FAIL_TYPES = ["TABLE_MISSING", "ROW_MERGE", "COLUMN_MERGE", "CELL_MERGE", "WRONG_MAPPING",
               "COORDINATE_ERROR", "RUN_ERROR"]
@@ -121,6 +125,8 @@ def freeze():
             "field_roi": {"table_match_tol": fr.TABLE_MATCH_TOL, "merge_ratio": fr.MERGE_RATIO,
                           "gt_min_cover": fr.GT_MIN_COVER},
             "code_sha256": code_state(), "environment": env_state(), "git": git,
+            "p3_coverage": {"covered_threshold": p3.COVERED_THRESHOLD, "candidate_min_overlap": p3.CAND_MIN_OVERLAP,
+                            "max_candidates": p3.MAX_CANDIDATES},
             "commands": {"common10": "python Task_10_Renewal.py",
                          "development": "python Task_10_Renewal.py --dataset development",
                          "holdout_test": "python Task_10_Renewal.py --dataset holdout_test"}}
@@ -265,6 +271,43 @@ def _group_overlap(rows):
     return sorted({r["document_group_id"] for r in rows} & {r["document_group_id"] for r in dev})
 
 
+def check_package(split):
+    """
+    실행 전 패키지 형식만 확인한다 (이미지·GT 값은 열어 보지 않음, 개수만 출력).
+    holdout_test 는 1회만 실행되므로 경로·형식 오류로 실행을 낭비하지 않기 위함.
+    """
+    pkg = EVAL_DIR / split
+    rows = read_eval_manifest(split)
+    if rows is None:
+        print(f"[대기] {_rel(pkg / 'manifest.csv')} 없음")
+        return False
+    need = ["image_id", "filename", "split", "document_group_id"]
+    with open(pkg / "manifest.csv", encoding="utf-8-sig") as f:
+        header = next(csv.reader(f), [])
+    gt_path = pkg / "field_gt.json"
+    gt = json.loads(gt_path.read_text(encoding="utf-8-sig")) if gt_path.exists() else {}
+    ids = [r["image_id"].strip() for r in rows]
+    checks = [
+        ("manifest 필수 열", not [c for c in need if c not in header]),
+        (f"split={split} 이미지 수 {len(rows)}", len(rows) > 0),
+        ("image_id 중복 없음", len(ids) == len(set(ids))),
+        ("이미지 파일 모두 있음", all((pkg / r["filename"].strip()).exists() for r in rows)),
+        ("field_gt.json 있음", gt_path.exists()),
+        ("GT 에 모든 image_id 있음", all(i in gt for i in ids)),
+        ("GT 에 5필드 키 있음", all(set(fr.FIELDS) <= set((gt.get(i) or {}).get("fields", {})) for i in ids)),
+    ]
+    if split == "holdout_test":
+        checks.append(("development 와 document_group_id 겹치지 않음", not _group_overlap(rows)))
+        checks.append(("아직 실행 안 함", not (EVAL_OUT / split / "run_info.json").exists()))
+        p_ok, c_ok, _ = check_frozen()
+        checks.append(("코드·파라미터·환경 = 동결 기록", p_ok and c_ok))
+    for name, ok in checks:
+        print(f"  [{'OK' if ok else '확인 필요'}] {name}")
+    ok = all(v for _, v in checks)
+    print("→ 실행 가능" if ok else "→ 위 항목을 먼저 해결 (실행하지 않음)")
+    return ok
+
+
 def _rename_aligned(folder, image_id):
     """보정본 이름을 전달 형식 <image_id>_aligned.png 로 맞추고, 이를 가리키는 JSON 도 같이 고친다"""
     report_path = folder / "report.json"
@@ -337,7 +380,8 @@ def _load_gt(it, gt_path):
     return gt, excluded
 
 
-def write_field_outputs(items, out_dir, gt_path):
+def write_field_outputs(items, out_dir, gt_path, write_summary=True):
+    """write_summary=False (Dataset v1): summary.json 은 p3_detected_roi_coverage.py 가 GT BBox Coverage 로 쓴다."""
     ref = fr.load_reference()
     summary, details, roi = [], [], {}
     for it in items:
@@ -373,9 +417,10 @@ def write_field_outputs(items, out_dir, gt_path):
                              "source": f"bang_ {t.METHOD} + field_roi (reference {ref['image']})",
                              "fields": {f: {"quad": v["quad"], "cell_id": v["cell_id"]}
                                         for f, v in res["fields"].items() if v["failure"] is None}}
-    deliver = ("image_id", "target_fields", "detected_fields", "roi_coverage", "failure_reason")
-    (out_dir / "summary.json").write_text(json.dumps([{k: s[k] for k in deliver} for s in summary],
-                                                     ensure_ascii=False, indent=2), encoding="utf-8")
+    if write_summary:
+        deliver = ("image_id", "target_fields", "detected_fields", "roi_coverage", "failure_reason")
+        (out_dir / "summary.json").write_text(json.dumps([{k: s[k] for k in deliver} for s in summary],
+                                                         ensure_ascii=False, indent=2), encoding="utf-8")
     _write_csv(out_dir / "field_summary.csv", summary)
     _write_csv(out_dir / "field_results.csv", details)
     (out_dir / "detected_roi.json").write_text(json.dumps(roi, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -408,7 +453,10 @@ def _dataset_state(out_dir):
             fails[part.split(":")[1]] += 1
     det = sum(int(r["detected_fields"]) for r in rows)
     tgt = sum(int(r["target_fields"]) for r in rows)
-    return {"rows": rows, "n": len(rows), "orig": n_orig, "report": n_rep, "fails": fails, "det": det, "tgt": tgt}
+    ov = out_dir / "roi_coverage_overall.json"
+    cov = json.loads(ov.read_text(encoding="utf-8"))["all"] if ov.exists() else None
+    return {"rows": rows, "n": len(rows), "orig": n_orig, "report": n_rep, "fails": fails, "det": det, "tgt": tgt,
+            "cov": cov}
 
 
 def print_final(current, current_rows):
@@ -442,7 +490,9 @@ def print_final(current, current_rows):
           + " | ".join(parts))
     print(f"{mark(True)} 5. 원본 / aligned 좌표 분리        : cells_original.json·fields.json·detected_roi.json = 원본 좌표,"
           f" cells.json = aligned")
-    parts = [f"{n} {s['det']}/{s['tgt']} ({s['det'] / s['tgt']:.0%})" for n, s in states.items() if s]
+    parts = [f"{n} ROI 생성 {s['det']}/{s['tgt']}"
+             + (f", Covered {s['cov']['covered_fields']}/{s['cov']['evaluable_fields']}" if s["cov"] else "")
+             for n, s in states.items() if s]
     print(f"{mark(True)} 6. 5필드 ROI Coverage 전달         : " + " | ".join(parts) + "  → summary.json")
     for n, s in states.items():
         if s:
@@ -469,10 +519,14 @@ def main():
     ap.add_argument("--rerun", action="store_true", help="공통 10장 파이프라인을 다시 실행")
     ap.add_argument("--check-repro", action="store_true", help="공통 10장을 임시 폴더에 다시 실행해 기존 결과와 비교")
     ap.add_argument("--freeze", action="store_true", help="파라미터·코드 해시·환경·commit 을 frozen_params.json 에 고정")
+    ap.add_argument("--check-package", action="store_true",
+                    help="--dataset 패키지 형식만 확인 (실행하지 않음, 이미지·GT 값은 열어 보지 않음)")
     args = ap.parse_args()
 
     if args.freeze:
         return 0 if freeze() else 1
+    if args.check_package:
+        return 0 if check_package(args.dataset) else 1
     if args.check_repro:
         return 0 if check_repro() else 1
     if args.dataset == "common10":
@@ -486,8 +540,10 @@ def main():
         return
     if args.dataset == "common10" and args.rerun:
         write_run_info(out_dir, "common10", len(items))
-    rows = write_field_outputs(items, out_dir, gt_path)
+    rows = write_field_outputs(items, out_dir, gt_path, write_summary=args.dataset == "common10")
     print_final(args.dataset, rows)
+    if args.dataset != "common10":
+        p3.run(args.dataset)          # GT BBox 기준 P3 ROI Coverage → summary.json
 
 
 if __name__ == "__main__":

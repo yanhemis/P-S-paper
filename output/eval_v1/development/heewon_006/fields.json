@@ -36,7 +36,7 @@
         1.11,
         35.54
       ],
-      "gt_cover": null
+      "gt_cover": 0.0
     },
     "deposit": {
       "cell_id": 0,
@@ -69,7 +69,7 @@
         1.11,
         32.63
       ],
-      "gt_cover": null
+      "gt_cover": 0.0
     },
     "contract_amount": {
       "cell_id": 1,
@@ -102,7 +102,7 @@
         1.11,
         17.18
       ],
-      "gt_cover": null
+      "gt_cover": 0.0
     },
     "lessor_name": {
       "cell_id": null,

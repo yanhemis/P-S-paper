@@ -36,7 +36,7 @@
         1.0,
         1.06
       ],
-      "gt_cover": null
+      "gt_cover": 0.709
     },
     "deposit": {
       "cell_id": 17,
@@ -69,7 +69,7 @@
         1.0,
         1.02
       ],
-      "gt_cover": null
+      "gt_cover": 0.891
     },
     "contract_amount": {
       "cell_id": 19,
@@ -102,7 +102,7 @@
         1.0,
         1.05
       ],
-      "gt_cover": null
+      "gt_cover": 0.841
     },
     "lessor_name": {
       "cell_id": 33,
@@ -135,7 +135,7 @@
         2.17,
         1.04
       ],
-      "gt_cover": null
+      "gt_cover": 0.978
     },
     "lessee_name": {
       "cell_id": 46,
@@ -168,7 +168,7 @@
         1.7,
         0.95
       ],
-      "gt_cover": null
+      "gt_cover": 0.929
     }
   },
   "targets": [

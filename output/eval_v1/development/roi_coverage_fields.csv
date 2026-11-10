@@ -79,18 +79,18 @@ heewon_006,deposit,eval,788 1072 929 1112,True,1,0,0.0,False,ROW_MERGE,,,1.11 32
 heewon_006,contract_amount,eval,791 1130 929 1170,True,1,1,0.0,False,ROW_MERGE,,,1.11 17.18
 heewon_006,lessor_name,eval,2131 2902 2291 2996,False,0,,0.0,False,TABLE_MISSING,,,
 heewon_006,lessee_name,eval,2153 3134 2331 3229,False,0,,0.0,False,TABLE_MISSING,,,
-tail_001,address,bbox_null,,False,0,,,,,,GT_BBOX_NULL,
-tail_001,deposit,bbox_null,,False,0,,,,,,GT_BBOX_NULL,
-tail_001,contract_amount,bbox_null,,False,0,,,,,,GT_BBOX_NULL,
-tail_001,lessor_name,bbox_null,,False,0,,,,,,GT_BBOX_NULL,
-tail_001,lessee_name,bbox_null,,False,0,,,,,,GT_BBOX_NULL,
-tail_002,address,bbox_null,,True,1,,,,,,GT_BBOX_NULL,1.0 1.06
-tail_002,deposit,bbox_null,,True,1,,,,,,GT_BBOX_NULL,1.0 1.02
-tail_002,contract_amount,bbox_null,,True,1,,,,,,GT_BBOX_NULL,1.0 1.05
-tail_002,lessor_name,bbox_null,,True,1,,,,,,GT_BBOX_NULL,2.17 1.04
-tail_002,lessee_name,bbox_null,,True,1,,,,,,GT_BBOX_NULL,1.7 0.95
-tail_007,address,bbox_null,,True,1,,,,,,GT_BBOX_NULL,1.11 1.04
-tail_007,deposit,bbox_null,,True,1,,,,,,GT_BBOX_NULL,1.01 0.99
-tail_007,contract_amount,bbox_null,,True,1,,,,,,GT_BBOX_NULL,1.01 1.06
-tail_007,lessor_name,bbox_null,,True,1,,,,,,GT_BBOX_NULL,1.0 1.04
-tail_007,lessee_name,bbox_null,,True,1,,,,,,GT_BBOX_NULL,1.0 0.97
+tail_001,address,eval,742 263 2330 868,False,0,,0.0,False,TABLE_MISSING,,,
+tail_001,deposit,eval,814 721 1774 1058,False,0,,0.0,False,TABLE_MISSING,,,
+tail_001,contract_amount,eval,814 781 1403 1010,False,0,,0.0,False,TABLE_MISSING,,,
+tail_001,lessor_name,eval,2217 2767 2417 2872,False,0,,0.0,False,TABLE_MISSING,,,
+tail_001,lessee_name,eval,2233 2923 2431 3030,False,0,,0.0,False,TABLE_MISSING,,,
+tail_002,address,eval,868 1150 2237 1205,True,1,2,0.7091,False,COORDINATE_ERROR,,,1.0 1.06
+tail_002,deposit,eval,913 1422 1595 1468,True,1,17,0.8913,False,COORDINATE_ERROR,,,1.0 1.02
+tail_002,contract_amount,eval,913 1466 1345 1510,True,1,19,0.8409,False,COORDINATE_ERROR,,,1.0 1.05
+tail_002,lessor_name,eval,1957 2692 2153 2738,True,1,33,0.9783,True,,COLUMN_MERGE,,2.17 1.04
+tail_002,lessee_name,eval,1957 2832 2153 2874,True,1,46,0.9286,True,,,,1.7 0.95
+tail_007,address,eval,580 488 2705 548,True,1,1,1.0,True,,,,1.11 1.04
+tail_007,deposit,eval,645 903 1730 962,True,1,21,1.0,True,,,,1.01 0.99
+tail_007,contract_amount,eval,645 962 1315 1022,True,1,23,0.95,True,,,,1.01 1.06
+tail_007,lessor_name,eval,2288 2941 2609 3009,True,1,38,1.0,True,,,,1.0 1.04
+tail_007,lessee_name,eval,2288 3159 2609 3228,True,1,55,1.0,True,,,,1.0 0.97
