@@ -1,0 +1,332 @@
+{
+  "tail_003": {
+    "document_group_id": "tail_docB",
+    "fields": {
+      "address": {
+        "raw_text": "??? ??? ???? ??? 1275?? 38, 105? 1203?",
+        "normalized": "??? ??? ???? ??? 1275?? 38, 105? 1203?",
+        "bbox": [
+          556,
+          599,
+          2686,
+          704
+        ]
+      },
+      "deposit": {
+        "raw_text": "?? ???",
+        "normalized": "380000000",
+        "bbox": [
+          625,
+          1035,
+          1675,
+          1105
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "?????",
+        "normalized": "38000000",
+        "bbox": [
+          625,
+          1098,
+          1302,
+          1165
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "????",
+        "normalized": "????",
+        "bbox": [
+          2187,
+          2985,
+          2493,
+          3049
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": [
+          2187,
+          3182,
+          2493,
+          3250
+        ]
+      }
+    }
+  },
+  "tail_004": {
+    "document_group_id": "tail_docB",
+    "fields": {
+      "address": {
+        "raw_text": "??? ??? ???? ??? 1275?? 38, 105? 1203?",
+        "normalized": "??? ??? ???? ??? 1275?? 38, 105? 1203?",
+        "bbox": [
+          553,
+          505,
+          2712,
+          604
+        ]
+      },
+      "deposit": {
+        "raw_text": "?? ???",
+        "normalized": "380000000",
+        "bbox": [
+          612,
+          930,
+          1715,
+          1038
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "?????",
+        "normalized": "38000000",
+        "bbox": [
+          612,
+          996,
+          1310,
+          1082
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "????",
+        "normalized": "????",
+        "bbox": [
+          2247,
+          2952,
+          2569,
+          3018
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": [
+          2247,
+          3150,
+          2569,
+          3219
+        ]
+      }
+    }
+  },
+  "tail_005": {
+    "document_group_id": "tail_docC",
+    "fields": {
+      "address": {
+        "raw_text": "???? ??? ??? ???? 211, 304?",
+        "normalized": "???? ??? ??? ???? 211, 304?",
+        "bbox": [
+          715,
+          480,
+          2350,
+          815
+        ]
+      },
+      "deposit": {
+        "raw_text": "???",
+        "normalized": "60000000",
+        "bbox": [
+          820,
+          937,
+          1735,
+          1170
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "???",
+        "normalized": "6000000",
+        "bbox": [
+          820,
+          1000,
+          1420,
+          1195
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": [
+          2098,
+          2775,
+          2279,
+          2862
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "????",
+        "normalized": "????",
+        "bbox": [
+          2100,
+          2937,
+          2279,
+          3017
+        ]
+      }
+    }
+  },
+  "tail_006": {
+    "document_group_id": "tail_docC",
+    "fields": {
+      "address": {
+        "raw_text": "???? ??? ??? ???? 211, 304?",
+        "normalized": "???? ??? ??? ???? 211, 304?",
+        "bbox": [
+          561,
+          621,
+          2721,
+          681
+        ]
+      },
+      "deposit": {
+        "raw_text": "???",
+        "normalized": "60000000",
+        "bbox": [
+          636,
+          1038,
+          1730,
+          1101
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "???",
+        "normalized": "6000000",
+        "bbox": [
+          636,
+          1104,
+          1288,
+          1172
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": [
+          2175,
+          2994,
+          2490,
+          3098
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "????",
+        "normalized": "????",
+        "bbox": [
+          2175,
+          3225,
+          2490,
+          3300
+        ]
+      }
+    }
+  },
+  "tail_008": {
+    "document_group_id": "tail_docB",
+    "fields": {
+      "address": {
+        "raw_text": "??? ??? ???? ??? 1275?? 38, 105? 1203?",
+        "normalized": "??? ??? ???? ??? 1275?? 38, 105? 1203?",
+        "bbox": [
+          615,
+          543,
+          2715,
+          605
+        ]
+      },
+      "deposit": {
+        "raw_text": "?? ???",
+        "normalized": "380000000",
+        "bbox": [
+          685,
+          925,
+          1740,
+          1012
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "?????",
+        "normalized": "38000000",
+        "bbox": [
+          685,
+          990,
+          1350,
+          1065
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "????",
+        "normalized": "????",
+        "bbox": [
+          2282,
+          2943,
+          2600,
+          3009
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": [
+          2282,
+          3147,
+          2600,
+          3222
+        ]
+      }
+    }
+  },
+  "tail_009": {
+    "document_group_id": "tail_docC",
+    "fields": {
+      "address": {
+        "raw_text": "???? ??? ??? ???? 211, 304?",
+        "normalized": "???? ??? ??? ???? 211, 304?",
+        "bbox": [
+          636,
+          525,
+          2715,
+          588
+        ]
+      },
+      "deposit": {
+        "raw_text": "???",
+        "normalized": "60000000",
+        "bbox": [
+          726,
+          945,
+          1745,
+          1000
+        ]
+      },
+      "contract_amount": {
+        "raw_text": "???",
+        "normalized": "6000000",
+        "bbox": [
+          726,
+          1000,
+          1360,
+          1070
+        ]
+      },
+      "lessor_name": {
+        "raw_text": "???",
+        "normalized": "???",
+        "bbox": [
+          2285,
+          2913,
+          2610,
+          2988
+        ]
+      },
+      "lessee_name": {
+        "raw_text": "????",
+        "normalized": "????",
+        "bbox": [
+          2285,
+          3123,
+          2610,
+          3208
+        ]
+      }
+    }
+  }
+}
