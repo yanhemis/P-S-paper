@@ -120,6 +120,29 @@ Status: Latest Development GT structural validation; not a dataset freeze.
   not a score recalculated against this updated GT.
 - Re-evaluate with frozen P3/P4 submissions before final reporting.
 
+### P3 Development Independent Audit - Updated GT (2026-11-10)
+
+Status: Independent P3 Development ROI Coverage verification PASS.
+This is not a Holdout evaluation.
+
+- GT source: `origin/dataset-v1` at `ead8436`.
+- P3 output source: `origin/bang_` at `91fb3ee`.
+- P3 reported frozen code commit: `55c30b0`.
+- Input: `output/eval_v1/development/roi_candidates.json`.
+- Method: recomputed original-coordinate ROI Coverage from GT BBoxes
+  and each field's ROI candidates; used maximum candidate Coverage.
+- Covered threshold: unrounded Coverage >= 0.90.
+- Common: 21/49 covered; mean Coverage 0.661941.
+- Heewon: 8/30 covered; mean Coverage 0.457083.
+- Tail: 7/15 covered; mean Coverage 0.619876.
+- Overall: 36/94 covered (38.30%); mean Coverage 0.589848.
+- Evaluated images: 19; missing prediction images: 0.
+- Excluded from ROI Coverage: 1 `not_present` field.
+- Result: Matches P3's reported 36/94 and rounded mean 0.590.
+- Previous 29/79 result remains a historical snapshot.
+- Failure taxonomy, E2E metrics, and final Holdout protocol
+  are not verified by this ROI Coverage check.
+
 ### P3 Development Independent Audit (2026-11-09)
 
 Status: Verified Development result; NOT a final frozen or Holdout score.
