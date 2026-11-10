@@ -120,6 +120,45 @@ Status: Latest Development GT structural validation; not a dataset freeze.
   not a score recalculated against this updated GT.
 - Re-evaluate with frozen P3/P4 submissions before final reporting.
 
+### P3/P4 실패 유형 집계 (2026-11-10)
+
+상태: 제출된 실패 사유의 독립 집계 완료.
+실패 원인의 독립적인 확정 또는 최종 Holdout 분석은 아님.
+
+#### P3 - 하겸
+
+출처: `origin/bang_`, `output/eval_v1/development/summary.json`.
+
+| 실패 유형 | Common 10장 | Development 19장 |
+|---|---:|---:|
+| COORDINATE_ERROR | 13 | 23 |
+| ROW_MERGE | 9 | 12 |
+| TABLE_MISSING | 6 | 23 |
+
+- 이미지별 `failure_reason`을 세미콜론으로 분리하여 집계.
+- 표의 숫자는 제출된 실패 사유 기록 건수이며 Covered Rate가 아님.
+
+#### P4 - 태구
+
+출처: `origin/taegu`, `results/p4_handoff_verified_v1.zip`의 `summary.csv`.
+
+| 제출된 분류 | Common 10장 기록 건수 |
+|---|---:|
+| ANCHOR_NOT_FOUND | 2 |
+| VALUE_SELECTION_FAILED | 11 |
+| OCR_TEXT_MISMATCH_OR_INCOMPLETE_VALUE_UNDETERMINED | 12 |
+| GT_PRESENT_IN_OCR_TOKENS_SELECTION_OR_JOIN_ERROR | 1 |
+| WHITESPACE_ONLY_MISMATCH | 2 |
+| NONE | 22 |
+
+- 총 50필드의 원본 실패 사유를 집계.
+- `common_007/contract_amount`는 `not_present`이며
+  제출 분류는 VALUE_SELECTION_FAILED.
+- 따라서 P4 Raw Exact Accuracy 평가 분모는 49필드.
+- 실패 유형은 진단용 분류이며 확정된 근본 원인을 뜻하지 않음.
+- P3/P4는 실패 유형 정의와 평가 범위가 달라 단순 건수 비교 금지.
+- 전체 Development 및 Holdout의 최종 failure breakdown은 별도 확정.
+
 ### P4 Common10 독립 검증 (2026-11-10, v6 중간 결과)
 
 상태: P4 Common 10장 ROI Coverage 및 Raw Exact Accuracy 독립 검증 통과.
