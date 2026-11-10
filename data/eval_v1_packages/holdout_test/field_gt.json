@@ -3,8 +3,8 @@
     "document_group_id": "tail_docB",
     "fields": {
       "address": {
-        "raw_text": "??? ??? ???? ??? 1275?? 38, 105? 1203?",
-        "normalized": "??? ??? ???? ??? 1275?? 38, 105? 1203?",
+        "raw_text": "경기도 고양시 일산동구 중앙로 1275번길 38, 105동 1203호",
+        "normalized": "경기도 고양시 일산동구 중앙로 1275번길 38, 105동 1203호",
         "bbox": [
           556,
           599,
@@ -13,7 +13,7 @@
         ]
       },
       "deposit": {
-        "raw_text": "?? ???",
+        "raw_text": "삼억팔천만",
         "normalized": "380000000",
         "bbox": [
           625,
@@ -23,7 +23,7 @@
         ]
       },
       "contract_amount": {
-        "raw_text": "?????",
+        "raw_text": "삼천팔백만",
         "normalized": "38000000",
         "bbox": [
           625,
@@ -33,8 +33,8 @@
         ]
       },
       "lessor_name": {
-        "raw_text": "????",
-        "normalized": "????",
+        "raw_text": "사공태현",
+        "normalized": "사공태현",
         "bbox": [
           2187,
           2985,
@@ -43,8 +43,8 @@
         ]
       },
       "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
+        "raw_text": "한지우",
+        "normalized": "한지우",
         "bbox": [
           2187,
           3182,
@@ -58,8 +58,8 @@
     "document_group_id": "tail_docB",
     "fields": {
       "address": {
-        "raw_text": "??? ??? ???? ??? 1275?? 38, 105? 1203?",
-        "normalized": "??? ??? ???? ??? 1275?? 38, 105? 1203?",
+        "raw_text": "경기도 고양시 일산동구 중앙로 1275번길 38, 105동 1203호",
+        "normalized": "경기도 고양시 일산동구 중앙로 1275번길 38, 105동 1203호",
         "bbox": [
           553,
           505,
@@ -68,7 +68,7 @@
         ]
       },
       "deposit": {
-        "raw_text": "?? ???",
+        "raw_text": "삼억팔천만",
         "normalized": "380000000",
         "bbox": [
           612,
@@ -78,7 +78,7 @@
         ]
       },
       "contract_amount": {
-        "raw_text": "?????",
+        "raw_text": "삼천팔백만",
         "normalized": "38000000",
         "bbox": [
           612,
@@ -88,8 +88,8 @@
         ]
       },
       "lessor_name": {
-        "raw_text": "????",
-        "normalized": "????",
+        "raw_text": "사공태현",
+        "normalized": "사공태현",
         "bbox": [
           2247,
           2952,
@@ -98,8 +98,8 @@
         ]
       },
       "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
+        "raw_text": "한지우",
+        "normalized": "한지우",
         "bbox": [
           2247,
           3150,
@@ -113,8 +113,8 @@
     "document_group_id": "tail_docC",
     "fields": {
       "address": {
-        "raw_text": "???? ??? ??? ???? 211, 304?",
-        "normalized": "???? ??? ??? ???? 211, 304?",
+        "raw_text": "충청북도 청주시 서원구 사직대로 211, 304호",
+        "normalized": "충청북도 청주시 서원구 사직대로 211, 304호",
         "bbox": [
           715,
           480,
@@ -123,7 +123,7 @@
         ]
       },
       "deposit": {
-        "raw_text": "???",
+        "raw_text": "육천만",
         "normalized": "60000000",
         "bbox": [
           820,
@@ -133,7 +133,7 @@
         ]
       },
       "contract_amount": {
-        "raw_text": "???",
+        "raw_text": "육백만",
         "normalized": "6000000",
         "bbox": [
           820,
@@ -143,8 +143,8 @@
         ]
       },
       "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
+        "raw_text": "최계석",
+        "normalized": "최계석",
         "bbox": [
           2098,
           2775,
@@ -153,8 +153,8 @@
         ]
       },
       "lessee_name": {
-        "raw_text": "????",
-        "normalized": "????",
+        "raw_text": "제갈지윤",
+        "normalized": "제갈지윤",
         "bbox": [
           2100,
           2937,
@@ -168,8 +168,8 @@
     "document_group_id": "tail_docC",
     "fields": {
       "address": {
-        "raw_text": "???? ??? ??? ???? 211, 304?",
-        "normalized": "???? ??? ??? ???? 211, 304?",
+        "raw_text": "충청북도 청주시 서원구 사직대로 211, 304호",
+        "normalized": "충청북도 청주시 서원구 사직대로 211, 304호",
         "bbox": [
           561,
           621,
@@ -178,7 +178,7 @@
         ]
       },
       "deposit": {
-        "raw_text": "???",
+        "raw_text": "육천만",
         "normalized": "60000000",
         "bbox": [
           636,
@@ -188,7 +188,7 @@
         ]
       },
       "contract_amount": {
-        "raw_text": "???",
+        "raw_text": "육백만",
         "normalized": "6000000",
         "bbox": [
           636,
@@ -198,8 +198,8 @@
         ]
       },
       "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
+        "raw_text": "최계석",
+        "normalized": "최계석",
         "bbox": [
           2175,
           2994,
@@ -208,8 +208,8 @@
         ]
       },
       "lessee_name": {
-        "raw_text": "????",
-        "normalized": "????",
+        "raw_text": "제갈지윤",
+        "normalized": "제갈지윤",
         "bbox": [
           2175,
           3225,
@@ -223,8 +223,8 @@
     "document_group_id": "tail_docB",
     "fields": {
       "address": {
-        "raw_text": "??? ??? ???? ??? 1275?? 38, 105? 1203?",
-        "normalized": "??? ??? ???? ??? 1275?? 38, 105? 1203?",
+        "raw_text": "경기도 고양시 일산동구 중앙로 1275번길 38, 105동 1203호",
+        "normalized": "경기도 고양시 일산동구 중앙로 1275번길 38, 105동 1203호",
         "bbox": [
           615,
           543,
@@ -233,7 +233,7 @@
         ]
       },
       "deposit": {
-        "raw_text": "?? ???",
+        "raw_text": "삼억팔천만",
         "normalized": "380000000",
         "bbox": [
           685,
@@ -243,7 +243,7 @@
         ]
       },
       "contract_amount": {
-        "raw_text": "?????",
+        "raw_text": "삼천팔백만",
         "normalized": "38000000",
         "bbox": [
           685,
@@ -253,8 +253,8 @@
         ]
       },
       "lessor_name": {
-        "raw_text": "????",
-        "normalized": "????",
+        "raw_text": "사공태현",
+        "normalized": "사공태현",
         "bbox": [
           2282,
           2943,
@@ -263,8 +263,8 @@
         ]
       },
       "lessee_name": {
-        "raw_text": "???",
-        "normalized": "???",
+        "raw_text": "한지우",
+        "normalized": "한지우",
         "bbox": [
           2282,
           3147,
@@ -278,8 +278,8 @@
     "document_group_id": "tail_docC",
     "fields": {
       "address": {
-        "raw_text": "???? ??? ??? ???? 211, 304?",
-        "normalized": "???? ??? ??? ???? 211, 304?",
+        "raw_text": "충청북도 청주시 서원구 사직대로 211, 304호",
+        "normalized": "충청북도 청주시 서원구 사직대로 211, 304호",
         "bbox": [
           636,
           525,
@@ -288,7 +288,7 @@
         ]
       },
       "deposit": {
-        "raw_text": "???",
+        "raw_text": "육천만",
         "normalized": "60000000",
         "bbox": [
           726,
@@ -298,7 +298,7 @@
         ]
       },
       "contract_amount": {
-        "raw_text": "???",
+        "raw_text": "육백만",
         "normalized": "6000000",
         "bbox": [
           726,
@@ -308,8 +308,8 @@
         ]
       },
       "lessor_name": {
-        "raw_text": "???",
-        "normalized": "???",
+        "raw_text": "최계석",
+        "normalized": "최계석",
         "bbox": [
           2285,
           2913,
@@ -318,8 +318,8 @@
         ]
       },
       "lessee_name": {
-        "raw_text": "????",
-        "normalized": "????",
+        "raw_text": "제갈지윤",
+        "normalized": "제갈지윤",
         "bbox": [
           2285,
           3123,
