@@ -120,6 +120,26 @@ Status: Latest Development GT structural validation; not a dataset freeze.
   not a score recalculated against this updated GT.
 - Re-evaluate with frozen P3/P4 submissions before final reporting.
 
+### P4 Common10 독립 검증 (2026-11-10, v6 중간 결과)
+
+상태: P4 Common 10장 ROI Coverage 및 Raw Exact Accuracy 독립 검증 통과.
+전체 Development 또는 Holdout 최종 평가 결과는 아님.
+
+- GT 출처: `origin/dataset-v1` (`fb069e7`).
+- P4 제출물: `results/p4_handoff_verified_v1.zip` (`063c656`).
+- `sample_1.JPG`~`sample_10.JPG`와 `common_001`~`common_010` 매핑 검증 통과.
+- 총 50필드 중 `common_007/contract_amount`는 `not_present`로 평가 제외.
+- ROI Coverage: 46/49 (93.88%), 평균 Coverage 0.956120.
+- P4는 필드별 최종 선택 `bbox` 1개만 사용.
+- ROI 미생성: `common_010`의 임대인·임차인 성명 2건.
+- ROI 좌표 구조 및 이미지 범위 오류: 0건.
+- Raw Exact Accuracy: 22/49 (44.90%).
+- 공식 GT 원문 불일치 및 제출 정확도 플래그 오류: 0건.
+- ROI 미생성은 유효한 GT에 대해 Coverage 0으로 처리.
+- Raw Exact Accuracy는 정규화 기반 최종 Field Accuracy와 별도 지표.
+- 실패 유형의 상세 독립 검증 및 전체 Development 평가는 별도 진행.
+- Holdout 평가 결과로 사용하지 않음.
+
 ### P3 Development Independent Audit - Updated GT (2026-11-10)
 
 Status: Independent P3 Development ROI Coverage verification PASS.
