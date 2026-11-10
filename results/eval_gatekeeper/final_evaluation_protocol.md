@@ -159,6 +159,27 @@ Status: Latest Development GT structural validation; not a dataset freeze.
 - P3/P4는 실패 유형 정의와 평가 범위가 달라 단순 건수 비교 금지.
 - 전체 Development 및 Holdout의 최종 failure breakdown은 별도 확정.
 
+### P4 Development 19장 결과 집계 (GT 수정 확인 전)
+
+상태: P4 동결 버전 Development 19장 제출물 집계.
+가은·tail의 GT 수정본 정합성 확인 전이므로 최종 논문 수치로 확정하지 않음.
+
+- 제출물: `p4_development_19_frozen.zip` (태구 전달).
+- 보고된 코드 기준: `00e3e4e` (실제 실행 버전의 별도 확인 필요).
+- 이미지 19장, 필드 95개.
+- GT `not_present` 1개를 제외한 평가 가능 필드 94개.
+- ROI Covered: 66/94 (70.21%).
+- 평균 ROI Coverage: 0.731590.
+- Raw Exact Accuracy: 29/94 (30.85%).
+- Common 10장: ROI Covered 46/49, Raw Exact 22/49.
+- 신규 Development 9장: ROI Covered 20/45, Raw Exact 7/45.
+- GT가 유효하지만 ROI가 없는 필드는 Coverage 0으로 집계.
+- Raw Exact Accuracy는 공식 정규화 기반 Field Accuracy와 구분.
+- 제출 CSV 집계와 공식 GT BBox 좌표 재검증 결과를 구분하여 관리.
+- 가은·tail 수정 GT 수령 후 기존 동결 ROI·OCR 결과와 정합성 확인.
+- 기존 Common 10장 검증 기록과 OCR 캐시는 보존.
+- Holdout 최종 평가 결과가 아님.
+
 ### P4 Common10 독립 검증 (2026-11-10, v6 중간 결과)
 
 상태: P4 Common 10장 ROI Coverage 및 Raw Exact Accuracy 독립 검증 통과.
