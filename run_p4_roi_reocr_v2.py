@@ -163,7 +163,14 @@ def select_field_value(field, all_tokens, anchor_bbox, crop_bbox):
             ))
         else:
             candidates.sort(key=lambda t: t["bbox_in_crop"][0])
-        candidates.sort(key=lambda t: (0 if HANGUL_AMOUNT.fullmatch(t["text"].replace(" ", "")) else 1, t["bbox_in_crop"][0]))
+        # Stable ordering: preserve anchor-row proximity, use amount script only
+        # as a tie breaker rather than overwriting the previous sort entirely.
+        candidates.sort(key=lambda t: (
+            abs((t["bbox_in_crop"][1] + t["bbox_in_crop"][3]) / 2 - anchor_center_y)
+            if anchor_bbox and crop_bbox else 0,
+            0 if HANGUL_AMOUNT.fullmatch(t["text"].replace(" ", "")) else 1,
+            t["bbox_in_crop"][0],
+        ))
         selected = candidates[:1]
 
         # Development experiment: deposit may share a crop with the

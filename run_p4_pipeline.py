@@ -59,7 +59,7 @@ def list_images(path: Path):
         raise ValueError(f"이미지가 없는 폴더: {path}")
     stems = [p.stem for p in images]
     if len(set(stems)) != len(stems):
-        raise ValueError("같은 폴더 안에 확장자만 다른 동명이미지가 있습니다. image_id 충돌 방지가 필요합니다.")
+        raise ValueError("하위 폴더를 포함하여 동일한 이미지 stem이 있습니다. 출력 폴더 충돌 방지가 필요합니다.")
     return images
 
 
@@ -196,7 +196,10 @@ def process_one(image_path, engine, args, mapper_script, gt_data, cache=None):
         # selecting ROI/OCR tokens. These broad classes require manual review.
         evaluated_reason = failure_reason
         if evaluated_reason is None and match is False:
-            evaluated_reason = "ROI_TOO_SMALL" if (coverage is not None and coverage < 0.90) else "OCR_FAILURE"
+            # GT disagreement alone cannot identify OCR vs token selection failure.
+            evaluated_reason = ("ROI_GT_COVERAGE_BELOW_THRESHOLD"
+                                if coverage is not None and coverage < 0.90
+                                else "GT_TEXT_MISMATCH_UNDETERMINED")
 
         roi_fields[field] = {
             "field": field,

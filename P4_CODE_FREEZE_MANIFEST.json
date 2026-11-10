@@ -1,0 +1,19 @@
+{
+  "freeze_type": "CODE_BASELINE_ONLY",
+  "date": "2026-11-10",
+  "anchor_regression": {
+    "images": 19,
+    "fields": 95,
+    "unchanged": 95,
+    "source": "user-provided command output"
+  },
+  "static_gate": "PASS (user-provided command output, hash-matched)",
+  "e2e_19_images": "NOT_VERIFIED",
+  "final_roi_coverage": "NOT_VERIFIED",
+  "files": {
+    "anchor_field_mapper.py": "4dac6d87841bcd2e3fd5dd228f892b78f29e7da2f1d764cd4c2900b1458cc1ae",
+    "run_p4_pipeline.py": "d02a3da0ef30787d38e57c29db29be8ebbcc88a18ba14934064b7b07b9058874",
+    "run_p4_roi_reocr_v2.py": "5ef5ac4864e80355839ff01287abcf0290b85e7c208eb351e4aaf68f138a3e18",
+    "evaluate_roi_coverage.py": "0e3c0d88717ae63822e722f3c078c652db8ef85bbc447bef9f3c87838f31f678"
+  }
+}
