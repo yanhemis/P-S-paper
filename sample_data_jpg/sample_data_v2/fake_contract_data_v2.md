@@ -105,5 +105,6 @@ baseline 3장은 처음에 `original_JPG/` 폴더에 넣어 둔 "그냥 찍은 �
 - [x] 기입자 확인 완료: docA 임대인 장영숙 / 임차인 한도윤, docC 임대인 허재석 / 임차인 제갈다온, docB 날짜는 사진에서 확인
 - [ ] docA perspective가 가이드(10~20°)보다 강한지 판단. 필요하면 약한 각도로 1장 추가 촬영
 - [x] 사진 + `manifest_tail.csv` + 이 문서 가은 학우에게 전달 (Development에 docA 3장 반영, docB·docC는 holdout 후보)
+- [x] docB·docC 6장 ROI bbox: [`roi_bbox_docBC.json`](roi_bbox_docBC.json) (docA와 같은 기준)
 - [x] docA 3장 ROI bbox: [`roi_bbox_docA.json`](roi_bbox_docA.json) (입력 칸 기준, EXIF 회전 후 좌표, 확인용 `roi_check/`)
 - [ ] 이 폴더 사진을 git에 올리기 전에 GPS 제거 확인 (이미 제거함) 및 개인정보 확인

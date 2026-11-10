@@ -29,12 +29,12 @@ GT 작성·manifest 통일·development/holdout 분리는 가은 학우, 최종 
 - [x] docA 3장 필드별 ROI bbox 15개 라벨링: [`roi_bbox_docA.json`](sample_data_jpg/sample_data_v2/roi_bbox_docA.json), 확인용 [`roi_check/`](sample_data_jpg/sample_data_v2/roi_check/)
   - 기준: 공통 10장과 같이 **값이 기재되는 입력 칸을 감쌈**, 좌표는 EXIF 회전 후(3024×4032) `[x1,y1,x2,y2]`. 팀장 가이드(`roi_coverage_gt_bbox_guide.md`)의 "값 영역" 정의와 칸 기준이 다르다는 점은 가은 학우가 샘플 1~10 기준으로 정리하라고 답함
   - tail_001(사선 강함)은 칸이 비스듬해 박스가 옆 칸 일부를 포함. 눈으로 지정한 값이라 검수 필요
+- [x] docB·docC 6장(tail_003·004·005·006·008·009) ROI bbox 30개 라벨링: [`roi_bbox_docBC.json`](sample_data_jpg/sample_data_v2/roi_bbox_docBC.json), 같은 기준·확인용 `roi_check/`. holdout 후보라 가은 학우 확인 후 전달 (tail_005 사선은 박스가 옆 칸 일부 포함)
   - 희원 라벨(`heewon/field_gt_heewon_labeled (2).json`)에도 같은 3장이 있으나 "두 벌 라벨은 신경 쓰지 않아도 됨"(가은 학우 답)
 
 ### 남은 일 (사람이 해야 함)
-- [ ] 라벨 수정본(`f908c2b`)을 `tail` 브랜치에 push하고 가은 학우에게 알리기
+- [ ] docB·docC bbox(`roi_bbox_docBC.json`)를 push하고 가은 학우에게 전달. 가은 학우가 받아 holdout 쪽에 반영
 - [ ] **희원과 문서 그룹 맞추기**: docA/docB를 같은 원본으로 찍었는지, `document_group_id` 일치 여부 (현재 Development manifest는 `heewon_docA`, `tail_docA`로 별개 그룹)
-- [ ] (선택) docB·docC(holdout) bbox: 가은 학우가 요청하면 진행. 공개 전 holdout이라 요청 전에는 하지 않음
 - [ ] (선택) docA 사선 사진은 가이드(10~20°)보다 강함(추정 25~30°). 자동 구조 복원이 tail_001에서 표를 못 찾음(`bang_` 결과 TABLE_MISSING). 난이도 샘플로 그대로 둘지는 가은 학우 판단
 - [ ] (선택) 가장자리 누락(crop) 사진 1장 필요 여부
 - [ ] dahye에게 인계 문서 전달
