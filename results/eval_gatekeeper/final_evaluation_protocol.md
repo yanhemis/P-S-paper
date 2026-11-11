@@ -518,3 +518,14 @@ parameters, and this evaluation protocol are frozen and versioned.
 
 Current blocker:
 Dataset v1.0 development package has not yet been received.
+
+### 최종 GT 14f240a 정합성 확인
+
+- 최종 Dataset GT: `origin/dataset-v1` / `14f240a`.
+- 변경 범위: Development `tail_001` 5필드, Holdout `tail_005` 5필드의 Value-only BBox 총 10개.
+- 두 이미지 모두 기존 P3 `roi_candidates.json`에서 5필드 전체 `roi_generated=false`, 후보 0개 확인.
+- 기존 P3 ROI와 수정 전후 GT BBox를 대조한 결과, 두 이미지 모두 Covered 0/5 -> 0/5.
+- 따라서 P3 Development Covered 36/94 및 Holdout Covered 3/30은 기존 수치 유지.
+- Holdout은 코드 동결 이전에 공개된 절차상 예외가 있으므로 untouched Holdout으로 주장하지 않고 보조 검증으로만 기록.
+- P4 공식 평가 범위는 Common 10장으로 유지. 별도 제출된 Development 19장 집계는 참고 기록으로 보존.
+- P3/P4 코드 수정, OCR 재실행, Holdout 재실행 없음.
