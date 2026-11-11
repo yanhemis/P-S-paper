@@ -13,7 +13,7 @@ References:
 |---|---|
 | Dataset GT | `origin/dataset-v1` / `14f240a` (verified) |
 | Dataset-wide freeze / file hashes | TBD |
-| Evaluation code commit | TBD |
+| Evaluation code commit | `e46062a` (common evaluator and amount normalizer; unchanged through `26ec97b`) |
 | Normalization policy version | TBD |
 | P0-P2 code and parameters | TBD |
 | P3 code freeze | `55c30b0` (reported); parameters/provenance TBD |
