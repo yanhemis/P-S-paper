@@ -1,12 +1,19 @@
 # P-S-paper — issue branch
 
-> 마지막 업데이트: 2026-11-01
+> **현재 최종 마감 기준 (2026-11-12): [`06_final_closeout_and_evidence_policy_20261112.md`](06_final_closeout_and_evidence_policy_20261112.md)**. 아래 2026-11-01 역할/실험 내용은 이력으로 유지하며, 종료·완료 기준이 충돌하면 06 문서가 우선합니다.
+
+최종 결론: 다혜 `de7073b` 평가 검증 보고서 제출은 **담당 완료**. ROI Coverage와 기존 정규화 참고 결과는 분리 보존하고, 동일 조건 P0~P4 Live E2E 정확도·CER·sec/image는 **미검증**으로 남깁니다. 새 알고리즘·새 촬영·OCR 재실행·Holdout 재실행 없이 기존 증빙만 확인합니다. GT `14f240a`, 공통 평가 구현 `e46062a`(팀 규약 승인 별도).
+
+**담당자별 최종 확인 이슈:** [bang_ #5](https://github.com/yanhemis/P-S-paper/issues/5) · [taegu #6](https://github.com/yanhemis/P-S-paper/issues/6) · [다혜 #7](https://github.com/yanhemis/P-S-paper/issues/7) · [가은 #8](https://github.com/yanhemis/P-S-paper/issues/8) · [heewon #9](https://github.com/yanhemis/P-S-paper/issues/9) · [tail #10](https://github.com/yanhemis/P-S-paper/issues/10).
+
+
+> 기존 실행계획 작성: 2026-11-01 / 최종 마감 안내: 2026-11-12
 
 이 브랜치는 공동연구의 연구 방향, 일정, 담당자별 작업, 데이터/GT 규칙과 피드백을 관리한다.
 
 ## 가장 먼저 볼 문서
 
-**현재 팀원이 무엇을 해야 하는지 확인할 때는 `05_current_team_tasks_20261101.md`를 가장 먼저 본다.**
+**최종 마감 및 지금 할 일을 확인할 때는 `06_final_closeout_and_evidence_policy_20261112.md`를 먼저 본다.** `05_current_team_tasks_20261101.md`는 당시 실행 지시 이력이다.
 
 이 문서는 2026-10-21의 `03_team_execution_plan_20261021.md`와 과거 `assignment_*.md`보다 우선한다.
 
