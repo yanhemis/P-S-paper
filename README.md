@@ -207,7 +207,7 @@ tail/
 │   │   ├── sample_1 ~ sample_10.JPG      # 자체 촬영본 (가짜 정보 손글씨 기입, 4032×3024)
 │   │   ├── sample_empty.JPG              # 빈 양식 촬영본
 │   │   └── fake_contract_data.md         # 세트 #1~#10 가짜 기입 데이터 (= 정답 원본)
-│   └── sample_data_v2/                   # 신규 촬영 9장(난이도 6 + baseline 3, docA~C), manifest, 기입 내용, docA ROI bbox
+│   └── sample_data_v2/                   # 신규 촬영 9장(난이도 6 + baseline 3, docA~C), manifest, 기입 내용, ROI bbox(docA·docBC)
 │       ├── docX_<조건>_01.jpg            # 원본(무보정, GPS 제거). 일부는 문서가 90° 돌아감
 │       ├── oriented/                     # EXIF 방향만 바로잡은 사본
 │       ├── manifest_tail.csv             # 촬영 조건 메타데이터
