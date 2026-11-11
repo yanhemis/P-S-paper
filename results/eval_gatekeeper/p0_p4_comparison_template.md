@@ -57,6 +57,27 @@ ROI Coverage eligible fields: 45
 P4 Development 19-image submission is preserved as a provisional reference,
 not used as an official new-Development comparison result.
 
+## 3A. Historical Common10 field accuracy audit
+
+Read-only verification of `origin/tail` field evaluation outputs.
+These values are historical normalized exact-match audit results,
+NOT final GT-independent E2E Field Accuracy.
+
+| Pipeline | Exact Match | Accuracy | Evaluation status |
+|---|---:|---:|---|
+| P0 Full OCR | 29/49 | 59.18% | Historical, GT-assisted field assignment |
+| P1 Rectified Full OCR | 31/49 | 63.27% | Historical, GT-assisted field assignment |
+| P2 GT ROI OCR | 31/49 | 63.27% | Historical GT ROI reference |
+| P3 Detected ROI OCR | 13/49 | 26.53% | Historical, not frozen P3 E2E |
+
+- All four results: 10 images, 49 unique image-field pairs, zero duplicates.
+- P0/P2 source: `origin/tail:results/eval/field_results.json`.
+- P1 source: `origin/tail:results/h1/eval_rectified/field_results.json`.
+- P3 source: `origin/tail:results/eval/detected_bang_pad25/field_results.json`.
+- Official five fields only; `deposit_kor` excluded.
+- Do not place these values in final E2E Field Accuracy cells without methodology verification.
+- P4 Common10 Raw Exact 22/49 is separately recorded and is not normalized Field Accuracy.
+
 ## 4. Required separate metrics
 
 | Set | Pipeline | Text/E2E denominator | ROI Coverage denominator | ROI-generated fields | OCR-conditioned correct/denominator | E2E correct/denominator | CER denominator |
