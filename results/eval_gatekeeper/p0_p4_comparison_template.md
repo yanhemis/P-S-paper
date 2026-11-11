@@ -12,7 +12,7 @@ References:
 | Item | Version / Commit |
 |---|---|
 | Dataset GT | `origin/dataset-v1` / `14f240a` (verified) |
-| Dataset-wide freeze / file hashes | TBD |
+| Dataset-wide freeze / file hashes | TBD (Development README reports 2026-11-05 image SHA-256 copy check: 0 mismatches; final dataset-wide freeze approval and per-file hash inventory not verified) |
 | Evaluation code commit | `e46062a` (common evaluator and amount normalizer; unchanged through `26ec97b`) |
 | Normalization policy version | TBD (team-wide policy not frozen; provisional implementation at `e46062a`) |
 | P0-P2 code and parameters | TBD |
