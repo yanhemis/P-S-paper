@@ -15,7 +15,7 @@ References:
 | Dataset-wide freeze / file hashes | TBD (Development README reports 2026-11-05 image SHA-256 copy check: 0 mismatches; final dataset-wide freeze approval and per-file hash inventory not verified) |
 | Evaluation code commit | `e46062a` (common evaluator and amount normalizer; unchanged through `26ec97b`) |
 | Normalization policy version | TBD (team-wide policy not frozen; provisional implementation at `e46062a`) |
-| P0-P2 code and parameters | Code reviewed at `origin/tail` (`3eb44cb`); latest change across evaluation/ROI scripts: `9a53f3c`. Defaults: `PAD_RATIO=0.25`, `WHOLE_BOX_RATIO=0.5`, `BORDER_PX=32`. Actual run commit and arguments: TBD. |
+| P0-P2 code and parameters | P0/P2 results modified at `a92c1c8` alongside evaluation/ROI code changes; P1 rectified results added at `45abadb` alongside H1 code changes. Reviewed defaults: P0/P2 `PAD_RATIO=0.25`, `WHOLE_BOX_RATIO=0.5`, `BORDER_PX=32`; P1 `LINE_PAD=0.15`, `NO_WHOLE_BOX=1.01`. Latest reviewed code: `origin/tail` (`3eb44cb`); actual run provenance and arguments: TBD. |
 | P3 code freeze | `55c30b0` (commit verified; ROI evaluator script SHA-256 matches result; execution parameters/provenance TBD) |
 | P3 result execution metadata | `run_at=2026-11-09 23:59:57`; recorded `frozen_commit=11af316`; exact execution provenance unverified |
 | P3 result GT provenance | Recorded GT SHA-256 matches pre-correction `6c7180f`, not final `14f240a`; final-GT ROI Coverage independently rechecked |
