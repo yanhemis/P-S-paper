@@ -28,7 +28,7 @@ GT 작성·manifest 통일·development/holdout 분리는 가은 학우, 최종 
 - [x] 신규 촬영본 전달 확인: 가은 학우 `dataset-v1`(Development 19장)에 docA 3장(tail_001 perspective, tail_002 distance, tail_007 baseline)이 반영됨. docB·docC 6장은 holdout 후보라 Development에 없음
 - [x] docA 3장 필드별 ROI bbox 15개 라벨링: [`roi_bbox_docA.json`](sample_data_jpg/sample_data_v2/roi_bbox_docA.json), 확인용 [`roi_check/`](sample_data_jpg/sample_data_v2/roi_check/)
   - 기준: 공통 10장과 같이 **값이 기재되는 입력 칸을 감쌈**, 좌표는 EXIF 회전 후(3024×4032) `[x1,y1,x2,y2]`. 팀장 가이드(`roi_coverage_gt_bbox_guide.md`)의 "값 영역" 정의와 칸 기준이 다르다는 점은 가은 학우가 샘플 1~10 기준으로 정리하라고 답함
-  - tail_001(사선 강함)은 칸이 비스듬해 박스가 옆 칸 일부를 포함. 눈으로 지정한 값이라 검수 필요
+  - **11-11 수정:** tail_001·tail_005를 Value-only 기준(11-08 확정, 실제 값 글자를 감싸는 최소 영역)으로 재라벨. 이전 입력 칸 기준 값(tail_001 계약금 `[814,781,1445,1010]`)과 Dataset GT의 옛 값 `[814,781,1403,1010]`는 폐기, 새 계약금 `[1255,930,1430,1008]`. docC 성명은 허재석·제갈다온 확정. tail_002·007·나머지 docB/docC는 아직 입력 칸 기준
 - [x] docB·docC 6장(tail_003·004·005·006·008·009) ROI bbox 30개 라벨링: [`roi_bbox_docBC.json`](sample_data_jpg/sample_data_v2/roi_bbox_docBC.json), 같은 기준·확인용 `roi_check/`. holdout 후보라 가은 학우 확인 후 전달 (tail_005 사선은 박스가 옆 칸 일부 포함)
   - 희원 라벨(`heewon/field_gt_heewon_labeled (2).json`)에도 같은 3장이 있으나 "두 벌 라벨은 신경 쓰지 않아도 됨"(가은 학우 답)
 
