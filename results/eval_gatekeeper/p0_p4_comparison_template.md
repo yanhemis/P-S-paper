@@ -104,6 +104,33 @@ same-version P0-P4 CER or end-to-end latency measurements.
 - Do not populate final CER or sec/image comparison cells from these values.
 - P4 comparable CER and timing remain unverified.
 
+### Common10 normalized reference reevaluation
+
+All five pipelines were evaluated against Dataset GT `14f240a`
+using the existing common evaluator and the same 49-field denominator.
+
+| Pipeline | Correct / Eligible | Field Accuracy | Mean field CER |
+|---|---:|---:|---:|
+| P0 | 29/49 | 59.18% | 0.577415 |
+| P1 | 29/49 | 59.18% | 0.555744 |
+| P2 | 30/49 | 61.22% | 0.554512 |
+| P3 historical | 12/49 | 24.49% | 1.156608 |
+| P4 cached reference | 24/49 | 48.98% | 0.339115 |
+
+- Evaluation code: `scripts/eval_gatekeeper/common_evaluator.py`.
+- Evaluation/normalization code last modified at `e46062a`.
+- P0-P3 predictions: existing `origin/tail` OCR evaluation results.
+- P4 predictions: `origin/taegu:results/p4_handoff_verified_v1.zip`.
+- P4 input source: `cached_ocr`, not a new live OCR execution.
+- P4 reference: 12 empty predictions, 8 invalid monetary values.
+- CER is the arithmetic mean of normalized field-level CER values.
+- P0/P1 field assignment was GT-assisted.
+- P3 predictions are historical, not frozen P3 E2E outputs.
+- These are common-evaluator reference results, NOT final
+  same-version, GT-independent P0-P4 E2E performance.
+- Preserve previously reported historical scores separately.
+- Keep final E2E, CER and timing cells unverified pending provenance.
+
 ## 4. Required separate metrics
 
 | Set | Pipeline | Text/E2E denominator | ROI Coverage denominator | ROI-generated fields | OCR-conditioned correct/denominator | E2E correct/denominator | CER denominator |
