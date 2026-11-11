@@ -513,11 +513,17 @@ parameters, and this evaluation protocol are frozen and versioned.
 - Receive bang/taegu outputs and code-freeze commit SHAs.
 - Produce separate common-10 and new-data comparison tables.
 - Produce failure breakdown and comparable stage-specific timing.
-- Run untouched holdout evaluation once after freeze.
+- Preserve the existing Holdout run as supplementary validation due to the release-before-freeze exception; do not rerun.
 - Publish final paper-ready results with explicit denominators.
 
-Current blocker:
-Dataset v1.0 development package has not yet been received.
+Current evaluation status:
+- Final Dataset GT: origin/dataset-v1, commit 14f240a.
+- P3 Development ROI Covered: 36/94 (38.30%).
+- P3 Holdout ROI Covered: 3/30 (10.00%); supplementary validation only due to the release/freeze sequence exception.
+- P4 official evaluation scope: Common 10 images only.
+- P4 Development 19-image results: retained as provisional reference, not official final comparison.
+- No algorithm modification, OCR rerun, or Holdout rerun is required.
+- Final P0-P4 comparison must distinguish verified results from missing metrics.
 
 ### 최종 GT 14f240a 정합성 확인
 
