@@ -25,7 +25,7 @@ TBD means not yet verified. Do not substitute Raw Exact for normalized E2E Field
 ## 2. Common 10 images
 
 Images: 10
-Document groups: TBD
+Document groups: 10
 Text/E2E eligible fields: TBD
 ROI Coverage eligible fields: 49 (one `not_present` excluded)
 
@@ -42,7 +42,7 @@ P4 Common10 Raw Exact: 22/49 (44.90%); diagnostic only, not normalized E2E Field
 ## 3. New Development images (excluding common 10)
 
 Images: 9
-Document groups: TBD
+Document groups: 3
 Text/E2E eligible fields: TBD
 ROI Coverage eligible fields: 45
 
