@@ -156,12 +156,14 @@ proven root causes or directly comparable failure rates.
 
 ## 7. Final evaluation status
 
-- [ ] Dataset and split finalized
-- [ ] P0-P4 field keys and normalization verified
-- [ ] Development denominators finalized
-- [ ] P3/P4 frozen commits recorded
-- [ ] Frozen pipeline outputs received
-- [ ] Common and new Development comparison tables filled
-- [ ] Failure breakdown and timing verified
-- [ ] Holdout released and evaluated once after freeze
-- [ ] Final paper-ready figures reviewed
+- [x] Final GT version confirmed: 14f240a
+- [x] Development split and document-group counts confirmed
+- [ ] Dataset-wide freeze hashes and all pipeline provenance verified
+- [ ] Same-version P0-P4 normalization and E2E accuracy verified
+- [x] Development denominators finalized: Common 49, New 45
+- [x] P3/P4 official-scope ROI Coverage recorded
+- [x] P3/P4 diagnostic failure breakdown recorded
+- [x] Historical accuracy, CER and timing references separated
+- [ ] Final comparable CER and end-to-end timing verified
+- [x] Holdout release-before-freeze exception documented; P3 3/30 supplementary only
+- [ ] Final paper-ready figures reviewed and approved
