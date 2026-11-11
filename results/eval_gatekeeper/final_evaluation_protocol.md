@@ -1,4 +1,4 @@
-﻿# Final Evaluation Protocol — 2026-11-01
+# Final Evaluation Protocol — 2026-11-01
 
 Status: DRAFT — pending normalization policy and Dataset v1.0 handoff
 Owner: dahye_cell_DetectionSurvey
@@ -535,3 +535,93 @@ Current evaluation status:
 - Holdout은 코드 동결 이전에 공개된 절차상 예외가 있으므로 untouched Holdout으로 주장하지 않고 보조 검증으로만 기록.
 - P4 공식 평가 범위는 Common 10장으로 유지. 별도 제출된 Development 19장 집계는 참고 기록으로 보존.
 - P3/P4 코드 수정, OCR 재실행, Holdout 재실행 없음.
+
+---
+
+## 최종 평가 규약 승인용 요약 (2026-11-12)
+
+### 1. 기준 버전 및 승인 상태
+
+- 최종 GT: `origin/dataset-v1` / `14f240a`
+- 공통 평가 코드 기준: `e46062a` (팀장 고정)
+- 구현: `scripts/eval_gatekeeper/common_evaluator.py`,
+  `scripts/eval_gatekeeper/amount_normalizer.py`
+- 공통 정규화·평가 규약: 본 문서 정리 후 최종 승인 예정
+- 평가 검증 보고서: 팀장 업무 완료 인정
+- 최종 Live-OCR E2E 성능: 증빙 없는 항목은 미검증 유지
+
+### 2. 공통 필드 및 분모
+
+공식 평가 필드는 `address`, `deposit`, `contract_amount`,
+`lessor_name`, `lessee_name`의 5개로 고정한다.
+
+기존 필드의 `deposit_num`은 `deposit`,
+`down_payment`는 `contract_amount`에 대응한다.
+`deposit_kor`는 보조 필드이므로 공식 5필드에서 제외한다.
+
+| 평가 세트 | 이미지 | 문서 그룹 | 유효 필드 |
+|---|---:|---:|---:|
+| Common | 10 | 10 | 49 |
+| 신규 Development | 9 | 3 | 45 |
+| Development 전체 | 19 | 13 | 94 |
+| Holdout 후보 | 6 | 2 | 30 |
+
+Development 총 95개 슬롯 중
+`common_007/contract_amount`는 `not_present`로 제외한다.
+동일 `document_group_id`의 반복 촬영은 독립 문서로 해석하지 않는다.
+
+### 3. ROI Coverage 및 제외 규칙
+
+ROI Coverage = `Area(GT ∩ ROI) / Area(GT)`.
+
+- GT BBox 및 ROI는 원본 이미지 좌표를 사용한다.
+- GT BBox는 필드 라벨이 아닌 실제 값 영역을 기준으로 한다.
+- 반올림 전 Coverage `>= 0.90`을 Covered로 판정한다.
+- P3는 생성된 여러 ROI 후보의 최대 Coverage를 사용한다.
+- P4는 알고리즘이 최종 선택한 ROI 1개만 평가한다.
+- 유효한 GT BBox에 ROI가 없으면 Coverage는 0이다.
+- `bbox:null`, `unreadable`, `not_present`는
+  ROI Coverage 분모에서 제외한다.
+- GT를 사용해 P3/P4 ROI를 사후 선택하지 않는다.
+
+### 4. 정확도·정규화·CER
+
+ROI Coverage, ROI 존재 시 OCR 정확도,
+전체 E2E Field Accuracy는 서로 구분한다.
+
+- E2E Field Accuracy에서 유효한 GT가 있는 필드는
+  ROI 생성 실패나 예측 누락이 발생해도 분모에 포함하고
+  오답으로 처리한다.
+- 원본에 실제 값이 없는 `not_present`는 평가 분모에서 제외한다.
+- 금액 필드 정확도는 금액을 KRW 숫자 값으로 정규화해 비교한다.
+- 금액 CER는 숫자 변환 성공 여부와 무관하게
+  GT와 예측 양쪽에 동일한 텍스트 정규화를 적용한다.
+- 금액 정규화에서 OCR 오인식을 임의로 정답 교정하지 않는다.
+- 평균 Field CER는 필드별 문자 편집거리 /
+  정규화 GT 문자열 길이의 산술평균으로 계산한다.
+- 과거 CER와 새로운 공통 정규화 CER는 혼합하지 않는다.
+
+### 5. 적용 범위 및 결과 인정 기준
+
+- P3 공식 ROI 결과: Development 19장
+- P4 공식 ROI 결과: Common 10장
+- P3/P4 직접 비교: Common 10장 49필드로 제한
+- P4 별도 Development 19장 제출물: 참고용
+- P0/P1 기존 GT 위치 기반 필드 할당: 독립 E2E 아님
+- P2 GT ROI: Oracle 평가
+- P4 공식 Common 10장 `cached_ocr`: Live-OCR E2E 아님
+- 공통 정규화 기존 예측 재평가: 참고 결과
+- 최종 E2E 정확도, CER 및 sec/image: 동일 조건의
+  실행 증빙이 없는 경우 미검증 유지
+- P3 Holdout 3/30: 공개·동결 순서의 절차상 예외를
+  명시한 보조 결과이며 untouched Holdout으로 주장하지 않음
+- 새로운 알고리즘 수정 또는 Holdout 재실행은 진행하지 않음
+
+### 6. 최종 승인 구분
+
+팀장은 평가 담당자의 기존 검증 보고서를 업무 완료로 인정하고
+공통 평가 코드 기준 버전 `e46062a`를 고정하였다.
+
+본 정규화·분모·제외 규칙 및 적용 범위의 최종 규약 승인은
+문서 정리 후 별도로 확정한다.
+코드 기준 고정과 규약 최종 승인을 동일하게 취급하지 않는다.
