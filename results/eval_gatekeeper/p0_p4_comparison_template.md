@@ -39,6 +39,12 @@ ROI Coverage eligible fields: 49 (one `not_present` excluded)
 
 P4 Common10 Raw Exact: 22/49 (44.90%); diagnostic only, not normalized E2E Field Accuracy.
 
+P4 OCR provenance note:
+- Git handoff `p4_handoff_verified_v1.zip`: 10/10 `cached_ocr`; ROI Coverage evidence only, not final live-OCR E2E evidence.
+- Separately delivered `p4_development_19_frozen.zip`: 19/19 `live_paddleocr` metadata confirmed.
+- Actual frozen-code execution provenance of the separate ZIP remains unverified.
+- Official P4 comparison scope remains Common 10; preserve the 19-image submission as reference.
+
 ## 3. New Development images (excluding common 10)
 
 Images: 9
