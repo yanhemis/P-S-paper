@@ -87,12 +87,34 @@ NOT final GT-independent E2E Field Accuracy.
 
 ## 5. Failure breakdown
 
-| Set | Pipeline | Failure reason | Count | Interpretation |
-|---|---|---|---|---|
-| Common | P3/P4 | TBD | TBD | TBD |
-| New Development | P3/P4 | TBD | TBD | TBD |
+Counts below are submitted diagnostic reason records, not independently
+proven root causes or directly comparable failure rates.
 
-Track ROI missing, wrong mapping, OCR error, and execution error separately.
+| Set | Pipeline | Submitted failure reason | Count |
+|---|---|---|---:|
+| Common 10 | P3 | COORDINATE_ERROR | 13 |
+| Common 10 | P3 | ROW_MERGE | 9 |
+| Common 10 | P3 | TABLE_MISSING | 6 |
+| New Development 9 | P3 | COORDINATE_ERROR | 10 |
+| New Development 9 | P3 | ROW_MERGE | 3 |
+| New Development 9 | P3 | TABLE_MISSING | 17 |
+| Common 10 | P4 | ANCHOR_NOT_FOUND | 2 |
+| Common 10 | P4 | VALUE_SELECTION_FAILED | 11 |
+| Common 10 | P4 | OCR_TEXT_MISMATCH_OR_INCOMPLETE_VALUE_UNDETERMINED | 12 |
+| Common 10 | P4 | GT_PRESENT_IN_OCR_TOKENS_SELECTION_OR_JOIN_ERROR | 1 |
+| Common 10 | P4 | WHITESPACE_ONLY_MISMATCH | 2 |
+| Common 10 | P4 | NONE | 22 |
+
+- P3 source: `origin/bang_:output/eval_v1/development/summary.json`.
+- P3 New Development counts = Development 19 counts minus Common 10 counts.
+- P3 counts represent submitted reason occurrences, not unique failed fields.
+- P4 source: `origin/taegu:results/p4_handoff_verified_v1.zip`, `summary.csv`.
+- P4 counts cover 50 submitted field rows, including one `not_present` GT field.
+- P4 ROI Coverage and Raw Exact denominators exclude that GT field (49).
+- `NONE` is not a failure; other labels are diagnostic, not proven causes.
+- P3 and P4 differ in evaluation scope and reason definitions.
+- P4 New Development is outside the agreed official comparison scope.
+- Holdout remains supplementary due to the release-before-freeze exception.
 
 ## 6. Evaluation rules
 
