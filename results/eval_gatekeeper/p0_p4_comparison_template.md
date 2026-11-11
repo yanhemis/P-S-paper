@@ -16,7 +16,9 @@ References:
 | Evaluation code commit | `e46062a` (common evaluator and amount normalizer; unchanged through `26ec97b`) |
 | Normalization policy version | TBD (team-wide policy not frozen; provisional implementation at `e46062a`) |
 | P0-P2 code and parameters | TBD |
-| P3 code freeze | `55c30b0` (reported); parameters/provenance TBD |
+| P3 code freeze | `55c30b0` (commit verified; ROI evaluator script SHA-256 matches result; execution parameters/provenance TBD) |
+| P3 result execution metadata | `run_at=2026-11-09 23:59:57`; recorded `frozen_commit=11af316`; exact execution provenance unverified |
+| P3 result GT provenance | Recorded GT SHA-256 matches pre-correction `6c7180f`, not final `14f240a`; final-GT ROI Coverage independently rechecked |
 | P4 code freeze | `00e3e4e` (CODE_BASELINE_ONLY) |
 | P4 official Common10 handoff | v6 handoff at `063c656`; exact frozen-code provenance not established |
 
