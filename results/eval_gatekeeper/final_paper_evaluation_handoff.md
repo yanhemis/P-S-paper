@@ -335,6 +335,29 @@ P4 Anchor ROI는 알고리즘이 선택한 단일 최종 ROI 기준
 다만 최종 E2E 비교 수치가 확보되지 않은 상태에서
 논문의 전체 성능 평가가 완료됐다고 표시하지 않는다.
 
+### 10.1 최종 E2E 증빙 추가 확인
+
+2026-11-12 Git 기반 추가 확인 결과:
+
+- P4 `P4_CODE_FREEZE_MANIFEST.json`의 동결 유형은
+  `CODE_BASELINE_ONLY`이며 `e2e_19_images=NOT_VERIFIED`이다.
+- P4 `results/p4_e2e/summary.csv`에는 `sample.jpg`
+  한 장의 5개 필드 결과만 존재한다.
+  이는 공식 Common 10장 전체 E2E 결과가 아니다.
+- 해당 샘플의 기록된 `total_sec=11.9423`은
+  단일 샘플 측정치로, 공식 Common 10장
+  평균 Live E2E 처리 시간으로 사용할 수 없다.
+- P3 `output/common10/manifest.json`에는
+  구조 검출 파라미터가 기록돼 있다.
+  그러나 해당 자료만으로 최종 Field Accuracy,
+  OCR 조건부 정확도 또는 E2E CER를 검증할 수 없다.
+
+최종 판정:
+기존 Git 증빙을 추가 검토했으나 P0~P4 전체의
+동일 조건 독립 Live E2E 수치는 확정할 수 없다.
+따라서 검증된 ROI Coverage와 참고 평가 결과는
+보존하고, 미검증 최종 수치는 임의로 채우지 않는다.
+
 ## 11. 근거 자료
 
 - `results/eval_gatekeeper/final_evaluation_protocol.md`
