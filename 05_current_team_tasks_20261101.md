@@ -1,5 +1,7 @@
 # 2026-11-01 현재 팀 작업 지시 — 이 문서부터 확인
 
+> **2026-11-12 최종 마감 기준 변경:** [`06_final_closeout_and_evidence_policy_20261112.md`](06_final_closeout_and_evidence_policy_20261112.md)가 현재 종료/완료 판단의 최우선 문서입니다. 이 문서는 2026-11-01 당시의 실행 지시 이력으로 유지합니다. 다혜 `de7073b` 평가 검증 보고서는 **담당 업무 완료**로 인정하며, P0~P4 전체 동일 조건 Live E2E 정확도·CER·sec/image는 **증빙 부족으로 미검증**입니다. 담당자에게는 기존 실행·인계 증빙의 유무만 확인하고 **새 알고리즘 수정, 추가 촬영, OCR 재실행 또는 Holdout 재실행을 요구하지 않습니다.** 최종 GT `14f240a`, 평가 구현 `e46062a`(팀 규약 승인 별도)를 기준으로 참조하십시오.
+
 > **현재 최우선 작업 지시 문서.** 2026-10-21의 `03_team_execution_plan_20261021.md`와 과거 `assignment_*.md`보다 이 문서를 우선한다.
 > 연구 방향 자체는 `01_research_direction_and_next_steps.md`, 데이터/GT 세부 규칙은 `04_data_collection_gt_protocol.md`를 따른다.
 
