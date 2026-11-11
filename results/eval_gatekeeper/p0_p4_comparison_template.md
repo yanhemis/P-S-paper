@@ -1,6 +1,6 @@
 # P0-P4 Final Evaluation Comparison Template
 
-Status: TEMPLATE - waiting for frozen pipeline outputs
+Status: DRAFT - verified ROI metrics entered; final E2E/CER/timing pending
 Owner: dahye_cell_DetectionSurvey
 
 References:
@@ -11,45 +11,51 @@ References:
 
 | Item | Version / Commit |
 |---|---|
-| Dataset v1.0 | TBD |
-| GT / manifest hashes | TBD |
+| Dataset GT | `origin/dataset-v1` / `14f240a` (verified) |
+| Dataset-wide freeze / file hashes | TBD |
 | Evaluation code commit | TBD |
 | Normalization policy version | TBD |
 | P0-P2 code and parameters | TBD |
-| P3 frozen commit and parameters | TBD |
-| P4 frozen commit and parameters | TBD |
+| P3 code freeze | `55c30b0` (reported); parameters/provenance TBD |
+| P4 code freeze | `00e3e4e` (CODE_BASELINE_ONLY) |
+| P4 official Common10 handoff | v6 handoff at `063c656`; exact frozen-code provenance not established |
 
-TBD means not yet verified. Historical scores must not be treated as final scores.
+TBD means not yet verified. Do not substitute Raw Exact for normalized E2E Field Accuracy.
 
 ## 2. Common 10 images
 
-Images: TBD
+Images: 10
 Document groups: TBD
 Text/E2E eligible fields: TBD
-ROI Coverage eligible fields: TBD
+ROI Coverage eligible fields: 49 (one `not_present` excluded)
 
 | Pipeline | Image correction | ROI source | Mean ROI Coverage | Covered Rate (>=0.90) | E2E Field Accuracy | CER | sec/image |
 |---|---|---|---|---|---|---|---|
 | P0 | No | Full page | N/A | N/A | TBD | TBD | TBD |
 | P1 | Yes | Full page | N/A | N/A | TBD | TBD | TBD |
-| P2 | Fixed | GT ROI | 100% of eligible GT BBoxes | 100% of eligible GT BBoxes | TBD | TBD | TBD |
-| P3 | Fixed | bang Detected ROI | TBD | TBD | TBD | TBD | TBD |
-| P4 | Fixed | taegu Anchor ROI | TBD | TBD | TBD | TBD | TBD |
+| P2 | Fixed | GT ROI | 1.000000 | 49/49 (100%) | TBD | TBD | TBD |
+| P3 | Fixed | bang Detected ROI | 0.661941 | 21/49 (42.86%) | TBD | TBD | TBD |
+| P4 | Fixed | taegu Anchor ROI | 0.956120 | 46/49 (93.88%) | TBD | TBD | TBD |
+
+P4 Common10 Raw Exact: 22/49 (44.90%); diagnostic only, not normalized E2E Field Accuracy.
 
 ## 3. New Development images (excluding common 10)
 
-Images: TBD
+Images: 9
 Document groups: TBD
 Text/E2E eligible fields: TBD
-ROI Coverage eligible fields: TBD
+ROI Coverage eligible fields: 45
 
 | Pipeline | Image correction | ROI source | Mean ROI Coverage | Covered Rate (>=0.90) | E2E Field Accuracy | CER | sec/image |
 |---|---|---|---|---|---|---|---|
 | P0 | No | Full page | N/A | N/A | TBD | TBD | TBD |
 | P1 | Yes | Full page | N/A | N/A | TBD | TBD | TBD |
-| P2 | Fixed | GT ROI | 100% of eligible GT BBoxes | 100% of eligible GT BBoxes | TBD | TBD | TBD |
-| P3 | Fixed | bang Detected ROI | TBD | TBD | TBD | TBD | TBD |
-| P4 | Fixed | taegu Anchor ROI | TBD | TBD | TBD | TBD | TBD |
+| P2 | Fixed | GT ROI | 1.000000 | 45/45 (100%) | TBD | TBD | TBD |
+| P3 | Fixed | bang Detected ROI | 0.511347 | 15/45 (33.33%) | TBD | TBD | TBD |
+| P4 | Fixed | taegu Anchor ROI | N/A (official scope: Common10) | N/A | N/A | N/A | N/A |
+
+P4 Development 19-image submission is preserved as a provisional reference,
+not used as an official new-Development comparison result.
 
 ## 4. Required separate metrics
 
