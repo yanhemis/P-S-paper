@@ -133,6 +133,27 @@ using the existing common evaluator and the same 49-field denominator.
 - Preserve previously reported historical scores separately.
 - Keep final E2E, CER and timing cells unverified pending provenance.
 
+### Gatekeeper publication-readiness verdict
+
+Assessment date: 2026-11-12.
+
+| Evidence | Result | Classification |
+|---|---|---|
+| P3 Development ROI Coverage | 36/94 (38.30%), final GT `14f240a` rechecked | Publication candidate; approval pending |
+| P3 Common10 ROI Coverage | 21/49 (42.86%) | Publication candidate; approval pending |
+| P4 official Common10 ROI Coverage | 46/49 (93.88%) | Publication candidate; approval pending |
+| P4 separate Development19 ROI Coverage | 66/94 (70.21%) | Reference only; outside official P4 scope |
+| Common10 normalized P0-P4 accuracy and CER | Existing common-evaluator results | Reference only; mixed execution provenance |
+| Final E2E accuracy, CER and sec/image | Comparable live-run evidence incomplete | Not verified |
+| Holdout results | Holdout disclosed before pipeline freeze | Not an independent clean holdout |
+
+- Compare P3 and P4 directly only on Common10, with 49 ROI-eligible fields.
+- P3 ROI metric uses maximum coverage over candidates; P4 uses its selected final ROI.
+- P4 Common10 OCR source is `cached_ocr`; do not label its normalized accuracy as live E2E.
+- P0/P1 legacy field assignment uses GT geometry; P2 uses oracle GT ROI.
+- Dataset-wide freeze and team-wide normalization-policy approval remain pending.
+- Do not fill final E2E, CER or end-to-end timing cells without matching provenance.
+
 ## 4. Required separate metrics
 
 | Set | Pipeline | Text/E2E denominator | ROI Coverage denominator | ROI-generated fields | OCR-conditioned correct/denominator | E2E correct/denominator | CER denominator |
