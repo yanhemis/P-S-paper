@@ -26,7 +26,7 @@ TBD means not yet verified. Do not substitute Raw Exact for normalized E2E Field
 
 Images: 10
 Document groups: 10
-Text/E2E eligible fields: TBD
+Text/E2E eligible fields: 49
 ROI Coverage eligible fields: 49 (one `not_present` excluded)
 
 | Pipeline | Image correction | ROI source | Mean ROI Coverage | Covered Rate (>=0.90) | E2E Field Accuracy | CER | sec/image |
@@ -43,7 +43,7 @@ P4 Common10 Raw Exact: 22/49 (44.90%); diagnostic only, not normalized E2E Field
 
 Images: 9
 Document groups: 3
-Text/E2E eligible fields: TBD
+Text/E2E eligible fields: 45
 ROI Coverage eligible fields: 45
 
 | Pipeline | Image correction | ROI source | Mean ROI Coverage | Covered Rate (>=0.90) | E2E Field Accuracy | CER | sec/image |
@@ -102,8 +102,8 @@ same-version P0-P4 CER or end-to-end latency measurements.
 
 | Set | Pipeline | Text/E2E denominator | ROI Coverage denominator | ROI-generated fields | OCR-conditioned correct/denominator | E2E correct/denominator | CER denominator |
 |---|---|---|---|---|---|---|---|
-| Common | P0-P4 (each separately) | TBD | TBD/N/A | TBD/N/A | TBD/N/A | TBD | TBD |
-| New Development | P0-P4 (each separately) | TBD | TBD/N/A | TBD/N/A | TBD/N/A | TBD | TBD |
+| Common | P0-P4 (each separately) | 49 | TBD/N/A | TBD/N/A | TBD/N/A | TBD | TBD |
+| New Development | P0-P3 (P4 outside official scope) | 45 | TBD/N/A | TBD/N/A | TBD/N/A | TBD | TBD |
 
 ## 5. Failure breakdown
 
