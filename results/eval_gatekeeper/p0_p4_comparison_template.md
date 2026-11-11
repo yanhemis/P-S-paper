@@ -78,6 +78,26 @@ NOT final GT-independent E2E Field Accuracy.
 - Do not place these values in final E2E Field Accuracy cells without methodology verification.
 - P4 Common10 Raw Exact 22/49 is separately recorded and is not normalized Field Accuracy.
 
+### Historical Common10 CER and reported timing
+
+These are read-only historical results from `origin/tail`, not final
+same-version P0-P4 CER or end-to-end latency measurements.
+
+| Pipeline | Mean field CER | Reported sec/image | Status |
+|---|---:|---:|---|
+| P0 Full OCR | 0.140964 | 29.318067 | Historical reference |
+| P1 Rectified Full OCR | 0.119981 | 31.126809 | Historical reference |
+| P2 GT ROI OCR | 0.116765 | 0.925516 | Historical reference |
+| P3 Detected ROI OCR | 0.985010 | 0.951126 | Historical reference |
+
+- Each CER is the arithmetic mean of 49 stored field-level CER values.
+- These values are not character-count-weighted corpus CER.
+- P3 here refers to historical Detected ROI OCR, not frozen P3.
+- Timing values are as recorded by the original evaluations.
+- Timing stage boundaries, preprocessing, and cache use are not yet verified.
+- Do not populate final CER or sec/image comparison cells from these values.
+- P4 comparable CER and timing remain unverified.
+
 ## 4. Required separate metrics
 
 | Set | Pipeline | Text/E2E denominator | ROI Coverage denominator | ROI-generated fields | OCR-conditioned correct/denominator | E2E correct/denominator | CER denominator |
