@@ -145,7 +145,7 @@ Assessment date: 2026-11-12.
 | P4 separate Development19 ROI Coverage | 66/94 (70.21%) | Reference only; outside official P4 scope |
 | Common10 normalized P0-P4 accuracy and CER | Existing common-evaluator results | Reference only; mixed execution provenance |
 | Final E2E accuracy, CER and sec/image | Comparable live-run evidence incomplete | Not verified |
-| Holdout results | Holdout disclosed before pipeline freeze | Not an independent clean holdout |
+| P3 Holdout ROI Coverage | 3/30 (10.00%); final GT `14f240a` rechecked | Supplementary only; procedural exception, not untouched Holdout |
 
 - Compare P3 and P4 directly only on Common10, with 49 ROI-eligible fields.
 - P3 ROI metric uses maximum coverage over candidates; P4 uses its selected final ROI.
