@@ -169,7 +169,11 @@ Status: Latest Development GT structural validation; not a dataset freeze.
 - 이미지 19장, 필드 95개.
 - GT `not_present` 1개를 제외한 평가 가능 필드 94개.
 - ROI Covered: 66/94 (70.21%).
-- 평균 ROI Coverage: 0.731590.
+- 평균 ROI Coverage: 0.722892 (GT `14f240a` 반영; 수정 전 0.731590).
+- GT 변경: Development `tail_001`의 5필드 BBox만 수정, GT 텍스트는 동일.
+- P3 `tail_001`: 후보 ROI가 5필드 모두 없으므로 Coverage 0 유지. Development 36/94 유지.
+- P4 `tail_001`: Covered 개수 변동 없음. Development 66/94 유지.
+- `tail_005`는 Holdout으로 Development 집계에서 제외.
 - Raw Exact Accuracy: 29/94 (30.85%).
 - Common 10장: ROI Covered 46/49, Raw Exact 22/49.
 - 신규 Development 9장: ROI Covered 20/45, Raw Exact 7/45.
