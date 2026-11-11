@@ -143,8 +143,8 @@
         ]
       },
       "lessor_name": {
-        "raw_text": "최계석",
-        "normalized": "최계석",
+        "raw_text": "허재석",
+        "normalized": "허재석",
         "bbox": [
           2098,
           2775,
@@ -153,8 +153,8 @@
         ]
       },
       "lessee_name": {
-        "raw_text": "제갈지윤",
-        "normalized": "제갈지윤",
+        "raw_text": "제갈다온",
+        "normalized": "제갈다온",
         "bbox": [
           2100,
           2937,
@@ -198,8 +198,8 @@
         ]
       },
       "lessor_name": {
-        "raw_text": "최계석",
-        "normalized": "최계석",
+        "raw_text": "허재석",
+        "normalized": "허재석",
         "bbox": [
           2175,
           2994,
@@ -208,8 +208,8 @@
         ]
       },
       "lessee_name": {
-        "raw_text": "제갈지윤",
-        "normalized": "제갈지윤",
+        "raw_text": "제갈다온",
+        "normalized": "제갈다온",
         "bbox": [
           2175,
           3225,
@@ -308,8 +308,8 @@
         ]
       },
       "lessor_name": {
-        "raw_text": "최계석",
-        "normalized": "최계석",
+        "raw_text": "허재석",
+        "normalized": "허재석",
         "bbox": [
           2285,
           2913,
@@ -318,8 +318,8 @@
         ]
       },
       "lessee_name": {
-        "raw_text": "제갈지윤",
-        "normalized": "제갈지윤",
+        "raw_text": "제갈다온",
+        "normalized": "제갈다온",
         "bbox": [
           2285,
           3123,
